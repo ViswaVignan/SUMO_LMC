@@ -1,0 +1,19 @@
+# Ignore heavy Shared_Data entirely
+Shared_Data/
+
+# Ignore output state dumps and traces
+*.xml
+!*net.xml
+!*rou.xml
+!*add.xml
+!edges_to_remove.xml
+*.json
+!scenario_data.json
+*.csv
+*.txt
+
+# Keep standard Python ignores
+__pycache__/
+*.pyc
+venv/
+.env

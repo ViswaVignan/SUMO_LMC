@@ -1,0 +1,12 @@
+<configuration>
+    <input>
+    <net-file value="../net/small_area.net.xml"/>
+    <route-files value="../routes/simple.rou.xml,../routes/passengers.rou.xml"/>
+</input>
+
+    <time>
+        <begin value="0"/>
+        <end value="500"/>
+    </time>
+</configuration>
+
