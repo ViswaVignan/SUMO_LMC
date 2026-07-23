@@ -34,7 +34,7 @@ random.seed(42)
 
 # ── I/O paths ────────────────────────────────────────────────────────────────
 INPUT_CSV      = "filtered_1hr_trips.csv"
-SUMO_NET_XML   = "manhattan.net.xml"
+SUMO_NET_XML   = "manhattan_clean.net.xml"
 OUTPUT_JSON    = "simulation_state.json"
 
 # ── Real-world GPS bounding box (from file0.py) — MUST MATCH file0.py ────────
@@ -549,31 +549,51 @@ def build_vehicle_fleet(net, node_coords, adj_drive, scc_nodes):
     vehicles = []
     random.seed(42)
 
+    import os
+    dynamic_soft_routes = {}
+    if os.path.exists("dynamic_soft_routes.json"):
+        with open("dynamic_soft_routes.json") as f:
+            dynamic_soft_routes = json.load(f)
+            
+    all_trunks = []
+    for trunks in dynamic_soft_routes.values():
+        all_trunks.extend(trunks)
+
     for v_idx in range(NUM_VEHICLES):
-        # Pick a random spatial cell, then pick a random node within that cell
-        start_cell = random.choice(active_cells)
-        start_node = random.choice(cells[start_cell])
-        
-        # Pick a completely different end cell for the initial base route
-        end_cell = random.choice(active_cells)
-        end_node = random.choice(cells[end_cell])
-        
-        label = f"grid_{start_cell}_to_{end_cell}"
+        route_nodes = []
+        if all_trunks:
+            trunk = random.choice(all_trunks)
+            if trunk and len(trunk) >= 2:
+                try:
+                    for eid in trunk:
+                        route_nodes.append(net.getEdge(eid).getFromNode().getID())
+                    route_nodes.append(net.getEdge(trunk[-1]).getToNode().getID())
+                    start_node = route_nodes[0]
+                    label = f"soft_route_{len(trunk)}_edges"
+                except Exception:
+                    route_nodes = []
+                    
+        if not route_nodes:
+            # Pick a random spatial cell, then pick a random node within that cell
+            start_cell = random.choice(active_cells)
+            start_node = random.choice(cells[start_cell])
+            
+            # Pick a completely different end cell for the initial base route
+            end_cell = random.choice(active_cells)
+            end_node = random.choice(cells[end_cell])
+            
+            label = f"grid_{start_cell}_to_{end_cell}"
 
-        # Find shortest path from start to end using Dijkstra
-        route_nodes = _find_node_path(start_node, end_node, adj_drive)
+            # Find shortest path from start to end using Dijkstra
+            route_nodes = _find_node_path(start_node, end_node, adj_drive)
 
-        if not route_nodes or len(route_nodes) < 2:
-            # Fallback: just use start node with a short route to a neighbor
-            neighbors = adj_drive.get(start_node, [])
-            if neighbors:
-                route_nodes = [start_node, neighbors[0][0]]
-            else:
-                continue
-
-        # Limit route to reasonable length (max 50 nodes to avoid huge routes)
-        if len(route_nodes) > 50:
-            route_nodes = route_nodes[:50]
+            if not route_nodes or len(route_nodes) < 2:
+                # Fallback: just use start node with a short route to a neighbor
+                neighbors = adj_drive.get(start_node, [])
+                if neighbors:
+                    route_nodes = [start_node, neighbors[0][0]]
+                else:
+                    continue
 
         sx, sy = node_coords[start_node]
 

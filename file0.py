@@ -15,10 +15,36 @@ INPUT_CSV      = "yellow_tripdata_2016-01.csv"   # path to the raw Kaggle file
 OUTPUT_CSV     = "filtered_1hr_trips.csv"
 CHUNK_SIZE     = 200_000                          # rows per chunk (RAM-safe)
 
-# Manhattan bounding box — covers the full island (Battery Park to Inwood)
-# Matches the SUMO network boundary in manhattan.net.xml
-LAT_MIN, LAT_MAX =  40.6990,  40.8820
-LON_MIN, LON_MAX = -74.0200, -73.9070
+import numpy as np
+from matplotlib.path import Path
+
+# Manhattan Polygon — tightly traces the Hudson, Harlem, and East Rivers
+# to perfectly exclude New Jersey, The Bronx, Queens, and Brooklyn.
+MANHATTAN_POLYGON = [
+    (-74.0200, 40.7000), # Battery Park West
+    (-74.0200, 40.7100),
+    (-74.0130, 40.7200),
+    (-74.0100, 40.7400),
+    (-74.0000, 40.7600),
+    (-73.9850, 40.7800),
+    (-73.9700, 40.8000),
+    (-73.9450, 40.8400),
+    (-73.9300, 40.8750), # Inwood West
+    (-73.9100, 40.8780), # Inwood North tip
+    (-73.9100, 40.8700), # Harlem River (separating Bronx)
+    (-73.9200, 40.8500),
+    (-73.9300, 40.8300),
+    (-73.9350, 40.8000), # Harlem River end
+    (-73.9300, 40.7800), # East River (separating Queens/Brooklyn)
+    (-73.9500, 40.7600),
+    (-73.9650, 40.7400),
+    (-73.9700, 40.7200),
+    (-73.9800, 40.7100), # Corlears Hook
+    (-73.9950, 40.7050), # Brooklyn Bridge
+    (-74.0100, 40.7000), # Staten Island Ferry
+    (-74.0200, 40.7000)  # Close polygon
+]
+MANHATTAN_PATH = Path(MANHATTAN_POLYGON)
 
 # Columns we care about
 KEEP_COLS = [
@@ -34,13 +60,12 @@ KEEP_COLS = [
 
 def _within_box(df, lon_col, lat_col):
     """
-    Returns a boolean mask: True when (lon, lat) lies inside the bounding box.
+    Returns a boolean mask (pandas Series): True when (lon, lat) lies inside the strict Manhattan polygon.
     Automatically drops NaN coordinates (treated as outside).
     """
-    return (
-        df[lon_col].between(LON_MIN, LON_MAX) &
-        df[lat_col].between(LAT_MIN, LAT_MAX)
-    )
+    coords = np.column_stack((df[lon_col].values, df[lat_col].values))
+    mask = MANHATTAN_PATH.contains_points(coords)
+    return pd.Series(mask, index=df.index)
 
 
 def load_and_filter_spatial(csv_path):

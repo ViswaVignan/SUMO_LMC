@@ -1,0 +1,135 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, calc}
+
+% Define TikZ styles
+\tikzstyle{block} = [rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm,text centered, draw=black, fill=blue!10]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{process} = [rectangle, draw=black, fill=orange!10, text centered, rounded corners, minimum height=0.8cm, inner sep=4pt]
+
+\title[Soft Routes Integration]{Theoretical Models for Integrating Soft Routes\\ into the Ride-Sharing Cost Function}
+\author[Intern Name]{Intern Name}
+\institute[University/Lab]{University/Lab}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Motivation: Moving Beyond Heuristics}
+  \textbf{The Problem with Hardcoded Rules:}
+  \begin{itemize}
+      \item Forcing vehicles to park specifically on predefined trunks (or bypassing feasibility checks if they share a trunk) is an \textbf{engineering heuristic}.
+      \item It artificially frames the simulation results, leading to unrealistic traffic distributions and removing the natural flexibility of the ride-sharing algorithm.
+  \end{itemize}
+  
+  \vspace{0.3cm}
+  \textbf{The Academic Objective:}
+  \begin{itemize}
+      \item We must build a \textbf{mathematical model} where soft routes (high-demand corridors extracted via topology scanning) are integrated organically into the objective optimization engine.
+      \item By bringing soft routes into the \textbf{Cost Function}, the fleet naturally gravitates towards these corridors because the math makes it the globally optimal choice.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The Current Baseline: Version 1 Base Cost Function}
+  Before integrating the soft routes, we must understand the baseline optimization objective. The simulation evaluates any passenger subset $S$ assigned to a vehicle $v$ by minimizing the total penalty cost:
+  
+  \vspace{0.3cm}
+  \begin{block}{Base Objective Cost Function}
+  \[ C_{base}(v, S) = \underbrace{\gamma \cdot \Delta_{new}}_{\text{Detour Cost}} + \underbrace{\alpha \sum_{p \in S} d_{walk}(p)}_{\text{Walking Penalty}} + \underbrace{\beta \sum_{p \in S} \delta_{delay}(p)}_{\text{Trip Delay}} + \underbrace{\mu(Cap_v - |S|)}_{\text{Unused Capacity}} \]
+  \end{block}
+  
+  \vspace{0.2cm}
+  \begin{itemize}
+      \item The algorithm strictly minimizes distance, walking discomfort, and wait times.
+      \item \textbf{Limitation:} It is completely "blind" to future demand patterns. A 500m detour into a high-demand downtown corridor costs exactly the same as a 500m detour into a dead-zone.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach 1: The Corridor Adherence Reward (Path-Based)}
+  \textbf{Concept:} Introduce a dynamic reward term that subsidizes the base cost if the proposed subset's path travels along the edges of an active soft route.
+  
+  \vspace{0.3cm}
+  \begin{block}{Mathematical Formulation}
+  Let $\Omega(R)$ represent the fraction of the proposed vehicle route $R$ that overlaps with the set of active soft route edges $E_{soft}$.
+  \[ C_{new} = C_{base}(v, S) \textbf{ } \mathbf{-} \textbf{ } \lambda \cdot \Omega(R) \]
+  Where $\lambda$ is a tunable reward coefficient.
+  \end{block}
+  
+  \vspace{0.3cm}
+  \textbf{Algorithmic Logic:}
+  \begin{itemize}
+      \item The optimizer naturally prefers to pick up passengers whose trips run parallel to the soft routes.
+      \item This effectively "subsidizes" the detour cost: a longer detour that drops a passenger along a trunk might become mathematically cheaper than a short detour into a dead-zone.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach 2: Spatially-Weighted Detour Cost (Edge-Based)}
+  \textbf{Concept:} Instead of applying a flat penalty for detour distance, we alter how the vehicle "perceives" distance based on its geographical location.
+  
+  \vspace{0.3cm}
+  \begin{block}{Mathematical Formulation}
+  We replace the flat detour term $\gamma \cdot \Delta_{new}$ with a discrete, edge-by-edge summation:
+  \[ DetourCost = \gamma \cdot \sum_{e \in Route} \Big( length(e) \cdot W(e) \Big) \]
+  \[ 
+    W(e) = 
+    \begin{cases} 
+      \omega_{soft} & \text{if } e \in E_{soft} \quad (\text{e.g., } 0.5) \\
+      1.0 & \text{otherwise} 
+    \end{cases}
+  \]
+  \end{block}
+  
+  \vspace{0.2cm}
+  \textbf{Algorithmic Logic:}
+  \begin{itemize}
+      \item Driving 500 meters along a soft route is calculated by the optimizer as only 250 meters.
+      \item The algorithm will aggressively route empty vehicles towards soft routes to pick up passengers, because traversing that space incurs less mathematical penalty.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach 3: Terminal Opportunity Cost (Destination-Based)}
+  \textbf{Concept:} The system ignores \textit{how} the vehicle travels, but heavily scrutinizes \textit{where it ends up}. Dropping off a passenger in a dead-zone incurs an opportunity cost.
+  
+  \vspace{0.3cm}
+  \begin{block}{Mathematical Formulation}
+  Let $e_{tail}$ be the final drop-off edge of the proposed subset $S$. We introduce a penalty for Euclidean or Network distance to the nearest active soft route $E_{soft}$.
+  \[ C_{new} = C_{base}(v, S) \textbf{ } \mathbf{+} \textbf{ } \kappa \cdot \min_{e \in E_{soft}} \text{Distance}(e_{tail}, e) \]
+  Where $\kappa$ is the penalty weight per meter.
+  \end{block}
+  
+  \vspace{0.3cm}
+  \textbf{Algorithmic Logic:}
+  \begin{itemize}
+      \item Acts as a mathematical "rubber band". The greedy algorithm will heavily penalize passenger combinations that pull the fleet away from the city's main demand arteries.
+      \item Ensures vehicles are naturally pre-positioned for their next trip the moment they finish their current one.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Comparative Analysis \& Conclusion}
+  \begin{table}[]
+      \centering
+      \small
+      \begin{tabular}{|p{2.5cm}|p{4cm}|p{4cm}|}
+      \hline
+      \textbf{Approach} & \textbf{Primary Advantage} & \textbf{Computational Trade-off} \\ \hline
+      \textbf{1. Adherence Reward} & Highly effective at maximizing fleet utilization along major corridors. & Requires calculating subset overlaps for every route permutation. \\ \hline
+      \textbf{2. Spatial Detour} & Simplest to implement natively inside the TraCI/Dijkstra router algorithms. & Can lead to vehicles taking strange zigzag paths just to touch soft-route edges. \\ \hline
+      \textbf{3. Terminal Cost} & Directly solves the "deadheading" problem by ensuring perfect drop-off placement. & Requires real-time nearest-neighbor calculations to the soft-route network. \\ \hline
+      \end{tabular}
+  \end{table}
+  
+  \vspace{0.3cm}
+  \textbf{Recommendation for Next Steps:}
+  \begin{itemize}
+      \item \textbf{Approach 3 (Terminal Opportunity Cost)} offers the most elegant solution to the predictive rebalancing problem. It directly tackles the 86\% deadheading ratio by ensuring vehicles terminate trips inside active demand zones without breaking the natural flow of the simulation.
+  \end{itemize}
+\end{frame}
+
+\end{document}

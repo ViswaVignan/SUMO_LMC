@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{\textbf{Hierarchical Spatial Decomposition and Predictive Soft Route Integration for Large-Scale Ride-Sharing}}
+\author{Research Draft - Version 2.0}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document outlines the architectural upgrade to the Last Mile Assignment Model. It details the transition from a monolithic, reactive combinatorial dispatch system into a predictive, parallelized hybrid transit model. By introducing 30-minute sliding window forecasts, spatial decomposition of soft routes, and dynamic reserve fleet scaling, the simulation overcomes combinatorial explosion bottlenecks ($O(N!)$) and accurately models dynamic rebalancing based on localized supply-demand ratios.
+\end{abstract}
+
+\section{Predictive Inputs: The Sliding Window Forecast}
+To transition the simulation from a reactive state to a predictive state, soft routes are calculated using a 1-hour demand forecast window, which advances in 30-minute sliding steps (e.g., 08:00--09:00, 08:30--09:30). 
+
+Within the simulation engine, the active soft route architecture is updated strictly every 30 minutes. This provides the dispatcher with a 60-minute "predictive vision" while maintaining a highly responsive 30-minute refresh rate. Vehicles organically reposition themselves to serve anticipated demand spikes before they physically manifest in the localized network.
+
+\section[Dynamic Demand Normalization (demVar and demSupVar)]{Dynamic Demand Normalization}
+To prevent all empty vehicles from converging on a single high-demand trunk (herd behavior), soft routes are treated as capacity-bounded entities through \texttt{demVar} and \texttt{demSupVar}. 
+
+During the external Toposcan calculation, each $i$-th soft route is assigned a pre-calculated demand variable, $demVar_i$, normalized to a scale (e.g., $0 \to 100$). This represents the anticipated request density for that specific corridor.
+
+During the real-time simulation, the dispatcher calculates a continuous metric for each active soft route representing the current localized supply-demand saturation:
+\begin{equation}
+    demSupVar_i = \frac{Active\_Supply_i}{Active\_Demand_i} \times \text{Scaling Factor}
+\end{equation}
+
+When $demSupVar_i > demVar_i$, the soft route is considered saturated. Idle vehicles are rejected from joining this corridor and are organically pushed to secondary or tertiary soft routes, guaranteeing a perfect spatial distribution of the fleet that matches the precalculated topological demand.
+
+\section{Spatial Decomposition and Parallelization}
+The primary computational bottleneck of the legacy model is the monolithic combinatorial search, where every unassigned vehicle evaluates every unassigned passenger.
+
+To solve this, the architecture implements \textbf{Spatial Decomposition}. Each active soft route is instantiated as an independent mathematical subproblem (a "Bucket"). Passengers and vehicles are segregated into specific buckets via a triage Meta-Cost Function. 
+
+Because these buckets are mathematically isolated, the core optimization routines are executed concurrently using multi-core parallel processing (Map-Reduce architecture). These routines include \texttt{evaluate\_subset} and \texttt{choose\_best\_assignments}. 
+\begin{itemize}
+    \item \textbf{Map (Multi-Core):} Combinatorial routing permutations and cost scoring are calculated in isolated CPU threads per soft route.
+    \item \textbf{Reduce (Single-Core):} The finalized, lowest-cost assignments are merged back into the main thread. TraCI physical routing commands (\texttt{setVia}, \texttt{changeTarget}) and the simulation physics step (\texttt{simulationStep}) are executed on a single core to prevent microscopic traffic deadlocks.
+\end{itemize}
+
+\section{Hybrid Transit and The Grounded Reserve Fleet}
+A fundamental challenge of spatial decomposition is the routing of "outlier" passengers whose trips span multiple soft route boundaries or travel entirely perpendicular to the active corridors.
+
+To service these requests without breaking the soft route isolation, the simulation operates as a \textbf{Hybrid Transit System}. A portion of the 3,000-vehicle fleet is intentionally withheld from the soft route assignment buckets and placed in a "Grounded Reserve Fleet." This reserve fleet acts as a traditional point-to-point Dial-a-Ride service.
+
+The size of the reserve fleet is dynamically calculated at the start of every 30-minute simulation block to mirror the proportion of historical demand that falls outside the active soft routes:
+\begin{equation}
+    ReserveRatio = 1.0 - \left( \frac{\sum_{i} demVar_i}{Total\_Expected\_Demand} \right)
+\end{equation}
+
+\subsection{Low-Demand Thresholding}
+This dynamic scaling inherently solves the low-demand thresholding constraint requested during peer review. During off-peak hours (e.g., 03:00 AM) where ride-sharing is mathematically improbable and $\sum demVar_i \approx 0$, the $ReserveRatio$ approaches $1.0$. Consequently, $100\%$ of the fleet transitions into the reserve pool, effectively disabling soft-route pre-positioning and preventing inefficient deadheading.
+
+\section{The Triage Layer: The Meta-Cost Function}
+To securely isolate the soft routes for parallel execution, a low-latency "Triage" Meta-Cost Function is executed prior to the multi-core combinatorial step. This function sorts vehicles and passengers into their optimal soft-route buckets while dynamically preventing mathematical deadlocks and traffic saturation.
+
+\subsection[Vehicle Assignment Meta-Cost (M v,i)]{Vehicle Assignment Meta-Cost ($M_{v, i}$)}
+Every idle vehicle $v$ is scored against every active soft route $i$. The vehicle is assigned to the route that minimizes $M_{v, i}$. If $\forall i, M_{v, i} \to \infty$, the vehicle is overflowed into the Grounded Reserve Fleet ($R$).
+
+\begin{equation}
+    M_{v, i} = \frac{Dist(v, i) \times Saturation_i \times Fatigue_v}{Stress_i}
+\end{equation}
+
+\textbf{Variable Definitions and Deadlock Prevention:}
+\begin{itemize}
+    \item \textbf{$Dist(v, i)$:} The spatial distance (meters) from the vehicle to the trunk. Bounded constraint: If $Dist > 3000m$, $M_{v, i} = \infty$.
+    \item \textbf{$Saturation_i$:} The dynamic ratio of $\frac{demSupVar_i}{demVar_i}$. Bounded continuously between $[0.0, 1.0]$. If $\geq 1.0$, $M_{v,i} = \infty$. This hard threshold guarantees vehicles naturally overflow to the reserve pool once a soft route is fully supplied.
+    \item \textbf{$Fatigue_v$:} A dynamic scalar tracking vehicle wear and idle time. Overworked vehicles are penalized ($>1.0$) to force parking, while long-standing idle reserve vehicles are mathematically subsidized ($<1.0$) to encourage mobilization.
+    \item \textbf{$Stress_i$:} A dynamic multiplier representing chronic undersupply or high localized rejection rates. Lower-bounded at $1.0$ (preventing division-by-zero deadlocks). A high stress value ($>1.0$) proportionally reduces the vehicle cost, acting as a "Surge Pricing" magnet to attract supply from a wider radius.
+\end{itemize}
+
+\subsection[Passenger Assignment Meta-Cost (M p,i)]{Passenger Assignment Meta-Cost ($M_{p, i}$)}
+Passengers are triaged solely on geometric trajectory alignment to prevent forcing extreme detours onto the active trunks.
+\begin{equation}
+    M_{p, i} = \text{Overlap}(p, i)
+\end{equation}
+
+\textbf{$Overlap(p, i)$} represents the scalar projection of the passenger's Origin-Destination vector onto the soft route $i$. If the overlap percentage falls below a strict threshold $\theta$ (e.g., $60\%$), the passenger is categorized as an outlier ($M_{p, i} = \infty$). All outliers are routed to the Reserve Fleet ($R$) for standard point-to-point dial-a-ride fulfillment.
+\section{Global Cost Function Integration}
+While the Meta-Cost ($M_{v, i}$ and $M_{p, i}$) successfully triages entities into parallel subproblems, these abstract constraints must be enforced within the physical routing algorithm without causing unit scaling distortions.
+
+\subsection{Exclusion of Passenger Meta-Cost}
+The passenger meta-cost ($M_{p, i}$) is purely a software sorting mechanism ensuring spatial congruence. Because passengers are stationary entities awaiting pickup, adding $M_{p, i}$ to the final physical cost function introduces mathematical distortion. It is strictly excluded from the final objective function.
+
+\subsection{Dynamic Operating Cost ($\gamma$) Modulation}
+Integrating the vehicle Meta-Cost variables ($Fatigue_v$ and $Stress_i$) via flat addition to the final cost function is mathematically unsafe, as it merges abstract multipliers with physical distance penalties. This imbalance forces the greedy assignment algorithm into making extreme physical detours to satisfy minor abstract conditions.
+
+Instead, the global integration modulates the vehicle's dynamic operating cost parameter ($\gamma \cdot C^{km}_v$) within the final subset evaluation formula:
+\begin{equation}
+    C^{km}_{Dynamic} = C^{km}_v \times \frac{Fatigue_v}{Stress_i}
+\end{equation}
+
+This seamlessly integrates the abstract constraints into the physical routing math:
+\begin{itemize}
+    \item \textbf{Fatigued Vehicles:} An overworked vehicle ($Fatigue_v > 1.0$) experiences an artificially inflated operating cost. The greedy dispatcher naturally rejects utilizing this vehicle unless no alternative supply exists, safely enforcing rotation.
+    \item \textbf{Stressed Routes:} A highly stressed route ($Stress_i > 1.0$) suppresses the operating cost. The dispatcher perceives driving towards this route as mathematically "cheaper," willingly tolerating longer physical detours ($\Delta_{new}$) to satisfy the chronic undersupply.
+\end{itemize}
+
+\end{document}

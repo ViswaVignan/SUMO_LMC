@@ -54,7 +54,30 @@ else:
 
 
 STATE_FILE = "simulation_state.json"
-NET_FILE = "manhattan.net.xml"
+NET_FILE = "manhattan_clean.net.xml"
+_dynamic_soft_routes = {}
+
+# ── Trunk Edge Index: edge_id → set of trunk indices for O(1) lookup ──
+# Rebuilt every time the 30-min bin changes. Allows instant answers to:
+#   "Is this vehicle/passenger on an active soft route trunk?"
+_trunk_edge_index: Dict[str, Set[int]] = {}   # edge_id → {trunk_idx, ...}
+_trunk_edge_index_bin: str = ""                # which bin the index was built for
+
+TRUNK_PROXIMITY_M = 500.0  # metres — vehicles within this distance of a trunk edge count as "on trunk"
+
+def _rebuild_trunk_edge_index(current_bin: str):
+    """Rebuild the inverted edge→trunk index when the 30-min bin changes."""
+    global _trunk_edge_index, _trunk_edge_index_bin
+    if current_bin == _trunk_edge_index_bin:
+        return  # already up to date
+    _trunk_edge_index = {}
+    trunks = _dynamic_soft_routes.get(current_bin, [])
+    for trunk_idx, trunk in enumerate(trunks):
+        for edge_id in trunk:
+            _trunk_edge_index.setdefault(edge_id, set()).add(trunk_idx)
+    _trunk_edge_index_bin = current_bin
+
+HEATUP_SEC = 900.0  # 15-minute physical fleet warm-up to proactively distribute vehicles
 
 # Timestamped output files so each run is preserved
 from datetime import datetime as _dt
@@ -82,10 +105,9 @@ def log_detail(*args, **kwargs):
 _route_cache: Dict[Tuple[str, str], Tuple[List[str], float, float]] = {}
 _node_to_edge_cache: Dict[str, str] = {}
 _reduced_choices_cache: Dict[str, Dict[str, List[Dict[str, Any]]]] = {}
+_blacklisted_edges: set = set()
 
-# Pre-computed far edge destinations for immortality extension.
-# Computed once at startup from the network, reused every step.
-_far_edge_candidates: List[Tuple[float, float, str]] = []  # (x, y, edge_id)
+
 
 
 # ============================================================
@@ -160,11 +182,13 @@ def start_sumo():
         "-n", NET_FILE,
         "--step-length", "1",
         "--collision.action", "warn",
-        "--time-to-teleport", "-1",
+        "--time-to-teleport", "150",
         "--no-step-log", "true",
         "--duration-log.disable", "true",
         # ── Pedestrian support ──
-        "--pedestrian.model", "striping",
+        # Use nonInteracting to prevent pedestrians from getting jammed, 
+        # colliding with vehicles, or being teleported/evicted.
+        "--pedestrian.model", "nonInteracting",
     ]
     traci.start(cmd)
 
@@ -256,7 +280,9 @@ def node_to_edge(net, node_id: str, vclass: str = "passenger") -> str:
         
     outgoing = [e for e in node.getOutgoing() if _is_allowed(e)]
     if valid_edges is not None:
-        outgoing = [e for e in outgoing if e.getID() in valid_edges]
+        outgoing = [e for e in outgoing if e.getID() in valid_edges and e.getID() not in _blacklisted_edges]
+    else:
+        outgoing = [e for e in outgoing if e.getID() not in _blacklisted_edges]
         
     if outgoing:
         result = outgoing[0].getID()
@@ -265,7 +291,9 @@ def node_to_edge(net, node_id: str, vclass: str = "passenger") -> str:
         
     incoming = [e for e in node.getIncoming() if _is_allowed(e)]
     if valid_edges is not None:
-        incoming = [e for e in incoming if e.getID() in valid_edges]
+        incoming = [e for e in incoming if e.getID() in valid_edges and e.getID() not in _blacklisted_edges]
+    else:
+        incoming = [e for e in incoming if e.getID() not in _blacklisted_edges]
         
     if incoming:
         result = incoming[0].getID()
@@ -308,8 +336,12 @@ def find_route_cached(start_edge: str, end_edge: str) -> Tuple[List[str], float,
     # causing "No connection" warnings and stuck vehicles in setRoute.
     stage = traci.simulation.findRoute(start_edge, end_edge, vType="DEFAULT_VEHTYPE")
     edges = list(stage.edges)
-    tt = float(stage.travelTime)
     length = float(getattr(stage, "length", 0.0))
+    # STRICT CONSISTENCY WITH file1.py: T_ideal uses exactly 8.33 m/s (30 km/h).
+    # SUMO's native travelTime uses the edge speed limits (up to 50 km/h), which artificially
+    # made the predicted in-vehicle time look FASTER than T_ideal.
+    # By forcing the math to use exactly 8.33 m/s, the predictive model perfectly aligns with T_ideal.
+    tt = length / 8.33 if length > 0 else 0.0
     _route_cache[key] = (edges, tt, length)
     return edges, tt, length
 
@@ -404,7 +436,7 @@ def get_live_remaining_route(veh_id: str) -> List[str]:
     return compact if compact else [current_edge]
 
 
-def set_vehicle_route(veh_id: str, waypoints: List[str]):
+def set_vehicle_route(veh_id: str, waypoints: List[str], is_patrol: bool = False):
     """
     Route a vehicle through a sequence of waypoints (pickup/dropoff edges).
     
@@ -428,17 +460,59 @@ def set_vehicle_route(veh_id: str, waypoints: List[str]):
     if not clean_waypoints:
         return
 
-    vias = clean_waypoints[:-1]
-    target = clean_waypoints[-1]
+    if is_patrol:
+        target = clean_waypoints[-1]
+        vias = clean_waypoints[:-1]
+    else:
+        # Instead of adding a random tail edge which might be unreachable and requires expensive topological
+        # checks, we just set the target to the last passenger drop-off edge.
+        # To prevent the vehicle from despawning when it arrives, we add a STOP_PARKING command at the target.
+        target = clean_waypoints[-1]
+        vias = clean_waypoints[:-1]
 
     try:
-        # Resume vehicle in case it was idling (speed set to 0)
+        # Cancel the existing parking stop to prevent changeTarget errors
+        try:
+            for s in traci.vehicle.getStops(veh_id):
+                edge = getattr(s, 'edgeId', getattr(s, 'edge', getattr(s, 'lane', '').split('_')[0]))
+                if edge:
+                    traci.vehicle.setStop(veh_id, edge, duration=0)
+        except: pass
+
+        # Resume vehicle in case it was parked (via setStop) or idling
+        try:
+            traci.vehicle.resume(veh_id)
+        except Exception:
+            pass
         traci.vehicle.setSpeed(veh_id, -1)  # -1 = hand back to SUMO default
         if vias:
             traci.vehicle.setVia(veh_id, vias)
+        else:
+            traci.vehicle.setVia(veh_id, "")
         traci.vehicle.changeTarget(veh_id, target)
         traci.vehicle.rerouteTraveltime(veh_id)
+        
+        # Apply the parking stop to prevent despawning upon reaching the final destination.
+        if not is_patrol:
+            try:
+                lane_len = traci.lane.getLength(target + "_0")
+                pos = max(0.0, lane_len - 2.0)
+                traci.vehicle.setStop(veh_id, target, pos=pos, laneIndex=0, duration=86400, flags=2)
+            except Exception:
+                pass
+                
     except traci.TraCIException as e:
+        error_msg = str(e)
+        if "is not known" in error_msg:
+            import re
+            m = re.search(r"edge '([^']+)' is not known", error_msg)
+            if m:
+                bad_edge = m.group(1)
+                _blacklisted_edges.add(bad_edge)
+                # Invalidate node cache to force re-evaluation
+                global _node_to_edge_cache
+                _node_to_edge_cache = {k: v for k, v in _node_to_edge_cache.items() if v != bad_edge}
+                log_detail(f"  [WARN] Blacklisted unknown edge '{bad_edge}' and cleared it from cache.")
         log_detail(f"  [WARN] Failed to setVia for {veh_id}: {e}")
         raise
 
@@ -538,13 +612,36 @@ def _get_edge_coord(net, edge_id: str) -> Tuple[float, float]:
     return coord
 
 def passenger_feasible_for_vehicle(net, node_coords, vehicle, current_edge: str, passenger: Passenger) -> bool:
-    # ── SOFT ROUTE VICINITY FILTER ──────────────────────────────────────────
-    # The "soft route" is mathematically defined as the base route + detour tolerance.
-    # Therefore, if a passenger's pickup location is further from the vehicle's 
-    # route than the detour tolerance, the vehicle cannot possibly serve them.
-    # HOWEVER: If the vehicle is completely empty, its current_route is just a random
-    # wandering path. We must NOT restrict it to that path.
+    # ── TRUNK-AWARE FEASIBILITY FILTER ──────────────────────────────────────
+    # If the vehicle is empty, check trunk congruence first.
+    # Vehicles on a trunk should prefer passengers on the same trunk.
+    # Vehicles NOT on a trunk use a 2km proximity clamp.
     if not vehicle.assigned_passengers and not vehicle.onboard_passengers:
+        try:
+            px, py = passenger.raw["origin_xy"]
+            vx, vy = _get_edge_coord(net, current_edge)
+            dist_sq = (px - vx)**2 + (py - vy)**2
+            
+            # Check if both vehicle and passenger share a trunk
+            veh_trunks = _trunk_edge_index.get(current_edge, set())
+            pax_trunks = set()
+            for node in passenger.raw.get("S_p_pickup", []):
+                try:
+                    pedge = node_to_edge(net, node)
+                    if pedge and pedge in _trunk_edge_index:
+                        pax_trunks.update(_trunk_edge_index[pedge])
+                except Exception:
+                    pass
+            
+            if veh_trunks and pax_trunks and veh_trunks & pax_trunks:
+                # Same trunk — always feasible (the trunk IS the soft route)
+                return True
+            
+            # Not on the same trunk — use proximity clamp (2km)
+            if dist_sq > 2000.0**2:
+                return False
+        except Exception:
+            pass
         return True
 
     try:
@@ -760,7 +857,7 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
     best = None
     best_cost = float("inf")
 
-    def recurse(cursor_edge, path_len_so_far, walk_discomfort_accum):
+    def recurse(cursor_edge, path_len_so_far, path_time_so_far, walk_discomfort_accum):
         nonlocal best, best_cost
 
         if len(dropped) == n_subset:
@@ -799,6 +896,10 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
                 excess = t_in_veh_final[pid] - t_ideal[pid]
                 if excess > 0.0:
                     trip_term += excess
+                
+                # Penalize wait time (ETA) to prevent starvation of existing assignments
+                if "pickup_eta" in assignment[pid]:
+                    trip_term += assignment[pid]["pickup_eta"]
 
             vehicle_detour_cost = w_gamma * vehicle.cost_per_km * (delta_cost * 0.001)
             cost = vehicle_detour_cost + w_alpha * walk_discomfort_accum + w_beta * trip_term + fixed_cost
@@ -856,6 +957,12 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
 
                     new_walk_discomfort = walk_discomfort_accum + pick_choice["pick_discomfort"]
 
+                    # ── Check Wait Timeout Constraint ─────────────────────────
+                    # If the vehicle cannot arrive before the passenger abandons the request, skip this assignment.
+                    arrival_time = path_time_so_far + seg_tt
+                    if arrival_time > passengers_by_id[pid].wait_remaining:
+                        continue
+
                     # ── Mutate state (backtracking) ───────────────────────
                     assignment[pid] = {
                         "pickup_node": pick_choice["node"],
@@ -865,6 +972,7 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
                         "walk_pick": pick_choice["walk_pick"],
                         "walk_drop": 0.0,
                         "d_walk": pick_choice["walk_pick"],
+                        "pickup_eta": arrival_time,
                     }
                     # Update time accumulators for onboard passengers
                     old_accums = {}
@@ -876,7 +984,7 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
                     onboard.add(pid)
                     event_order.append(("P", pid))
 
-                    recurse(next_edge, path_len_so_far + seg_len, new_walk_discomfort)
+                    recurse(next_edge, path_len_so_far + seg_len, path_time_so_far + seg_tt, new_walk_discomfort)
 
                     # ── Undo mutations ────────────────────────────────────
                     event_order.pop()
@@ -917,7 +1025,7 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
                     dropped.add(pid)
                     event_order.append(("D", pid))
 
-                    recurse(next_edge, path_len_so_far + seg_len, new_walk_discomfort)
+                    recurse(next_edge, path_len_so_far + seg_len, path_time_so_far + seg_tt, new_walk_discomfort)
 
                     # ── Undo mutations ────────────────────────────────────
                     event_order.pop()
@@ -933,41 +1041,46 @@ def evaluate_subset(net, node_coords, vehicle: VehicleState, subset: List[Passen
                     assignment[pid]["d_walk"] = _saved_d_walk
                     t_in_veh_final.pop(pid, None)
 
-    recurse(cursor_edge=current_edge, path_len_so_far=0.0, walk_discomfort_accum=0.0)
+    recurse(cursor_edge=current_edge, path_len_so_far=0.0, path_time_so_far=0.0, walk_discomfort_accum=0.0)
     return best
 
 
 def choose_best_assignments(net, node_coords, vehicles, active_passengers,
                             weights, passengers_by_id: Dict[str, "Passenger"]):
     """
-    For each vehicle that is ready to take new passengers, find the best
-    subset from the active pool.
+    Soft-Route-Aware Assignment Engine.
 
-    Key invariant
-    -------------
-    We NEVER assign new passengers to a vehicle that still has
-    *assigned_passengers* (committed but not yet boarded) OR
-    *onboard_passengers* (boarded but not yet dropped off).
-    Doing so would call set_vehicle_route() and silently overwrite the
-    route, removing the pickup/dropoff edges for those passengers.
+    Two-phase candidate selection:
+      Phase 1 (Trunk-Match): For passengers whose pickup edge falls on an
+        active soft route, ONLY consider vehicles that are also on the SAME
+        trunk. This ensures vehicle density stays congruent to request density.
+      Phase 2 (Proximity Fallback): For passengers NOT on any trunk (dead-zone
+        requests), fall back to the nearest 5 vehicles within wait-time radius.
+
+    The recursive evaluate_subset solver is unchanged — only the candidate
+    selection is replaced.
     """
     available = {p.raw["id"]: p for p in active_passengers
                  if not p.assigned and not p.rejected}
     if not available:
         return []
 
-    assignments = []
+    # ── Rebuild trunk edge index for current 30-min bin ──
+    import time as _time
+    current_time = traci.simulation.getTime()
+    current_bin = str(int((current_time % 86400) / 1800))
+    _rebuild_trunk_edge_index(current_bin)
+    active_trunks = _dynamic_soft_routes.get(current_bin, [])
 
-    # Call getIDList() ONCE per step instead of once per vehicle
+    assignments = []
     live_vids = set(traci.vehicle.getIDList())
 
-    # ── Build a spatial grid index over VEHICLES for fast nearest-vehicle lookups ──
-    VEH_GRID_CELL = 500.0  # metres
-    MAX_VEHICLES_PER_PASSENGER = 5  # only consider the 5 nearest vehicles
-
-    # Pre-fetch all vehicle positions and edges in one pass
-    vehicle_positions: Dict[str, Tuple[str, float, float]] = {}  # vid -> (edge, x, y)
+    # ── Pre-fetch all vehicle positions and edges in one pass ──
+    VEH_GRID_CELL = 500.0
+    vehicle_positions: Dict[str, Tuple[str, float, float]] = {}
     vehicle_grid: Dict[Tuple[int, int], List[str]] = {}
+    vehicle_trunk_map: Dict[str, Set[int]] = {}  # vid → set of trunk indices
+
     for vid, veh in vehicles.items():
         if vid not in live_vids:
             continue
@@ -986,15 +1099,150 @@ def choose_best_assignments(net, node_coords, vehicles, active_passengers,
             vehicle_positions[vid] = (edge, ex, ey)
             cell = (int(ex // VEH_GRID_CELL), int(ey // VEH_GRID_CELL))
             vehicle_grid.setdefault(cell, []).append(vid)
+
+            # Map this vehicle to its trunk(s) — check current edge AND route edges
+            trunks_for_veh = set()
+            if edge in _trunk_edge_index:
+                trunks_for_veh.update(_trunk_edge_index[edge])
+            # Also check a few upcoming route edges for vehicles approaching a trunk
+            for re in veh.current_route[:10]:
+                if re in _trunk_edge_index:
+                    trunks_for_veh.update(_trunk_edge_index[re])
+            if trunks_for_veh:
+                vehicle_trunk_map[vid] = trunks_for_veh
         except Exception:
             continue
 
-    # ── For each available passenger, find the nearest K vehicles ─────────
-    vehicle_candidates: Dict[str, List[Tuple[float, Passenger]]] = {}
-    passenger_nearest_vids: Dict[str, List[str]] = {}
+    assignments = []
+    locally_assigned_vids = set()
 
-    expand_cells = 5  # search in a 11x11 grid neighbourhood (~5000m)
+    # ── Phase 1: Trunk-matched assignments ──
+    # Group passengers by the trunk they fall on
+    trunk_passengers: Dict[int, List[Passenger]] = {}
+    fallback_passengers: List[Passenger] = []
+
     for p in available.values():
+        try:
+            # Check if any of the passenger's pickup candidate edges are on a trunk
+            matched_trunks = set()
+            for node in p.raw.get("S_p_pickup", []):
+                try:
+                    pedge = node_to_edge(net, node)
+                    if pedge and pedge in _trunk_edge_index:
+                        matched_trunks.update(_trunk_edge_index[pedge])
+                except Exception:
+                    pass
+            if matched_trunks:
+                for tidx in matched_trunks:
+                    trunk_passengers.setdefault(tidx, []).append(p)
+            else:
+                fallback_passengers.append(p)
+        except Exception:
+            fallback_passengers.append(p)
+
+    # For each trunk, find vehicles on that trunk and assign passengers
+    for trunk_idx, t_passengers in trunk_passengers.items():
+        # Get vehicles on this trunk
+        trunk_vids = [vid for vid, t_set in vehicle_trunk_map.items()
+                      if trunk_idx in t_set and vid in vehicle_positions]
+        if not trunk_vids:
+            # No vehicles on this trunk — these passengers go to fallback
+            for p in t_passengers:
+                if p.raw["id"] in available:
+                    fallback_passengers.append(p)
+            continue
+
+        # Build per-vehicle candidate lists with distances
+        trunk_veh_candidates: Dict[str, List[Tuple[float, Passenger]]] = {}
+        for p in t_passengers:
+            pid = p.raw["id"]
+            if pid not in available:
+                continue
+            try:
+                px, py = p.raw["origin_xy"]
+            except (KeyError, TypeError):
+                continue
+
+            for vid in trunk_vids:
+                if vid not in vehicle_positions:
+                    continue
+                veh = vehicles[vid]
+                remaining_cap = veh.capacity - len(veh.assigned_passengers) - len(veh.onboard_passengers)
+                if remaining_cap <= 0:
+                    continue
+                _, vx, vy = vehicle_positions[vid]
+                dsq = (px - vx) ** 2 + (py - vy) ** 2
+                # Reachability check: can the vehicle arrive before the passenger times out?
+                if dsq > (p.wait_remaining * veh.speed_m_s) ** 2:
+                    continue
+                if not passenger_feasible_for_vehicle(net, node_coords, veh,
+                                                       vehicle_positions[vid][0], p):
+                    continue
+                tt = math.sqrt(dsq) / veh.speed_m_s
+                trunk_veh_candidates.setdefault(vid, []).append((tt, p))
+
+        # Evaluate each vehicle on this trunk
+        for vid, cand_list in trunk_veh_candidates.items():
+            if vid in locally_assigned_vids:
+                continue
+                
+            veh = vehicles[vid]
+            current_edge = vehicle_positions[vid][0]
+            remaining_cap = veh.capacity - len(veh.assigned_passengers) - len(veh.onboard_passengers)
+            if remaining_cap <= 0:
+                continue
+
+            cand_list = [(tt, cp) for tt, cp in cand_list if cp.raw["id"] in available]
+            if not cand_list:
+                continue
+
+            cand_list.sort(key=lambda x: x[0])
+            group_index = _build_group_index([cp for _, cp in cand_list])
+            multi_gids = {gid for gid, members in group_index.items() if len(members) >= 2}
+
+            def _sort_key(item):
+                tt, cp = item
+                key = (cp.raw["origin_node"], cp.raw["dest_node"])
+                is_multi = 1 if key in multi_gids else 0
+                return (-is_multi, tt)
+
+            cand_list.sort(key=_sort_key)
+
+            search_capacity = remaining_cap
+            if not veh.assigned_passengers and not veh.onboard_passengers:
+                search_capacity = min(2, remaining_cap)
+
+            top_n = max(1, 6 * search_capacity)
+            candidate_pool = [cp for _, cp in cand_list[:top_n]]
+            subsets = sample_subsets(candidate_pool, search_capacity, N_SUBSETS_DEFAULT)
+            best = None
+            for subset in subsets:
+                result = evaluate_subset(net, node_coords, veh, subset,
+                                         current_edge, weights, passengers_by_id)
+                if result is None:
+                    continue
+                if best is None or result["cost"] < best["cost"]:
+                    best = result
+            if best is None:
+                continue
+
+            assignments.append((vid, best))
+            locally_assigned_vids.add(vid)
+            for cp in best["subset"]:
+                available.pop(cp.raw["id"], None)
+
+    # ── Phase 2: Proximity fallback for dead-zone passengers ──
+    MAX_VEHICLES_PER_PASSENGER = 5
+    expand_cells = 5
+
+    # Anyone not assigned in Phase 1 (whether in a dead zone, or on a trunk but 
+    # no trunk-vehicles could reach them in time) falls back to proximity search.
+    ordered_fallback = sorted(available.values(), key=lambda p: p.wait_remaining)
+
+    for p in ordered_fallback:
+        pid = p.raw["id"]
+        if pid not in available:
+            continue
         try:
             px, py = p.raw["origin_xy"]
         except (KeyError, TypeError):
@@ -1003,109 +1251,39 @@ def choose_best_assignments(net, node_coords, vehicles, active_passengers,
         pcx = int(px // VEH_GRID_CELL)
         pcy = int(py // VEH_GRID_CELL)
 
-        # Collect nearby vehicles with distances
         nearby: List[Tuple[float, str]] = []
         for dx in range(-expand_cells, expand_cells + 1):
             for dy in range(-expand_cells, expand_cells + 1):
                 for vid in vehicle_grid.get((pcx + dx, pcy + dy), []):
+                    veh = vehicles[vid]
+                    remaining_cap = veh.capacity - len(veh.assigned_passengers) - len(veh.onboard_passengers)
+                    if remaining_cap <= 0:
+                        continue
                     _, vx, vy = vehicle_positions[vid]
                     dsq = (px - vx) ** 2 + (py - vy) ** 2
+                    if dsq > (p.wait_remaining * veh.speed_m_s) ** 2:
+                        continue
                     nearby.append((dsq, vid))
 
-        # Keep only the K nearest vehicles
         nearby.sort()
-        nearest_vids = []
         for dsq, vid in nearby[:MAX_VEHICLES_PER_PASSENGER]:
-            veh = vehicles[vid]
-            if not passenger_feasible_for_vehicle(net, node_coords, veh,
-                                                   vehicle_positions[vid][0], p):
+            if vid in locally_assigned_vids:
                 continue
-            best_pick_tt = math.sqrt(dsq) / veh.speed_m_s
-            vehicle_candidates.setdefault(vid, []).append((best_pick_tt, p))
-            nearest_vids.append(vid)
-            
-        passenger_nearest_vids[p.raw["id"]] = nearest_vids
-        if not nearest_vids:
-            p.fail_reason = "no_vehicles_nearby"
-        else:
-            p.fail_reason = "capacity_or_detour"
-
-    # ── Batched Lazy Evaluation ───────────────────────────────────────────
-    # We evaluate the closest 10 vehicles for a passenger. If a valid
-    # assignment is found, we STOP evaluating further vehicles for them.
-    # Passengers waiting the longest get evaluated first.
-    evaluated_vids = set()
-    ordered_passengers = sorted(list(available.values()), key=lambda p: p.wait_remaining)
-
-    for p in ordered_passengers:
-        pid = p.raw["id"]
-        if pid not in available:
-            continue
-            
-        nearest_vids = passenger_nearest_vids.get(pid, [])
-        if not nearest_vids:
-            continue
-            
-        BATCH_SIZE = 10
-        for batch_start in range(0, len(nearest_vids), BATCH_SIZE):
-            batch = nearest_vids[batch_start : batch_start + BATCH_SIZE]
-            for vid in batch:
-                if vid in evaluated_vids:
-                    continue
-                evaluated_vids.add(vid)
                 
-                # Evaluate this vehicle
-                cand_list = vehicle_candidates.get(vid, [])
-                veh = vehicles[vid]
-                current_edge = vehicle_positions[vid][0]
-                remaining_capacity = veh.capacity - len(veh.assigned_passengers) - len(veh.onboard_passengers)
-                if remaining_capacity <= 0:
-                    continue
+            veh = vehicles[vid]
+            current_edge = vehicle_positions[vid][0]
+            if not passenger_feasible_for_vehicle(net, node_coords, veh, current_edge, p):
+                continue
+            remaining_cap = veh.capacity - len(veh.assigned_passengers) - len(veh.onboard_passengers)
+            if remaining_cap <= 0:
+                continue
 
-                # Filter out already-assigned passengers
-                cand_list = [(tt, cp) for tt, cp in cand_list if cp.raw["id"] in available]
-                if not cand_list:
-                    continue
-
-                # Sort by pickup travel time; same-OD passengers get a bonus
-                group_index = _build_group_index([cp for _, cp in cand_list])
-                multi_gids = {gid for gid, members in group_index.items() if len(members) >= 2}
-
-                def _sort_key(item):
-                    tt, cp = item
-                    key = (cp.raw["origin_node"], cp.raw["dest_node"])
-                    is_multi = 1 if key in multi_gids else 0
-                    return (-is_multi, tt)
-
-                cand_list.sort(key=_sort_key)
-                
-                # OPTIMIZATION: Empty vehicles do not need to evaluate 4-person combinatorial routes across the city.
-                # Cap their initial search to 2 passengers. Once they grab them, they will naturally fill the rest
-                # of the seats in subsequent steps using fast, localized route filtering.
-                search_capacity = remaining_capacity
-                if not veh.assigned_passengers and not veh.onboard_passengers:
-                    search_capacity = min(2, remaining_capacity)
-                    
-                top_n = max(1, 6 * search_capacity)
-                candidate_pool = [cp for _, cp in cand_list[:top_n]]
-                subsets = sample_subsets(candidate_pool, search_capacity, N_SUBSETS_DEFAULT)
-                best = None
-                for subset in subsets:
-                    result = evaluate_subset(net, node_coords, veh, subset,
-                                             current_edge, weights, passengers_by_id)
-                    if result is None:
-                        continue
-                    if best is None or result["cost"] < best["cost"]:
-                        best = result
-                if best is None:
-                    continue
-
-                assignments.append((vid, best))
-                for cp in best["subset"]:
-                    available.pop(cp.raw["id"], None)
-            
-            # If the passenger got assigned during this batch, skip remaining batches
-            if pid not in available:
+            result = evaluate_subset(net, node_coords, veh, [p],
+                                     current_edge, weights, passengers_by_id)
+            if result is not None:
+                assignments.append((vid, result))
+                locally_assigned_vids.add(vid)
+                available.pop(pid, None)
                 break
 
     return assignments
@@ -1162,13 +1340,15 @@ def rescue_stranded_passengers(net, node_coords, vehicles, stranded_passengers,
         except (KeyError, TypeError):
             continue
 
-        # Find nearest idle vehicle within 2km
-        best_dist_sq = RESCUE_RADIUS_SQ
+        # Find nearest idle vehicle that can physically arrive in time
+        best_dist_sq = float('inf')
         best_match = None
         for vid, veh, edge, vx, vy in idle_vehicles:
             if vid in used_vids:
                 continue
             dsq = (px - vx) ** 2 + (py - vy) ** 2
+            if dsq > (p.wait_remaining * veh.speed_m_s) ** 2:
+                continue
             if dsq < best_dist_sq:
                 best_dist_sq = dsq
                 best_match = (vid, veh, edge)
@@ -1273,8 +1453,8 @@ def detect_pickups_and_dropoffs(vehicles: Dict[str, VehicleState],
     Returns (boardings_this_step, dropoffs_this_step).
     """
     EDGE_LOOKBACK = 100  # Manhattan edges can be very short (e.g. 10m). At 15m/s, 30s = 450m = up to 45 edges.
-    boardings = 0
-    dropoffs = 0
+    boarded_pids = []
+    dropped_pids = []
     # Accept pre-computed live set to avoid redundant TraCI call
     live_vehicles = live_vids_set if live_vids_set is not None else set(traci.vehicle.getIDList())
 
@@ -1289,7 +1469,7 @@ def detect_pickups_and_dropoffs(vehicles: Dict[str, VehicleState],
                     veh.completed_passengers.append(pid)
                     p.completed = True
                     p.t_completed = sim_time
-                    dropoffs += 1
+                    dropped_pids.append(pid)
                     if net is not None:
                         spawn_walking_from_dropoff(net, p, sim_time)
                     log_detail(f"  [DROP-END] t={sim_time:6.0f}s  vehicle={vid:5s}  passenger={pid:6s}")
@@ -1301,8 +1481,8 @@ def detect_pickups_and_dropoffs(vehicles: Dict[str, VehicleState],
                     p.t_boarded = p.t_boarded or sim_time
                     p.completed = True
                     p.t_completed = sim_time
-                    boardings += 1
-                    dropoffs += 1
+                    boarded_pids.append(pid)
+                    dropped_pids.append(pid)
                     if net is not None:
                         spawn_walking_from_dropoff(net, p, sim_time)
                     log_detail(f"  [BOARD+DROP-END] t={sim_time:6.0f}s  vehicle={vid:5s}  passenger={pid:6s}")
@@ -1348,7 +1528,7 @@ def detect_pickups_and_dropoffs(vehicles: Dict[str, VehicleState],
                 if pid not in veh.onboard_passengers:
                     veh.onboard_passengers.append(pid)
                 p.t_boarded = sim_time
-                boardings += 1
+                boarded_pids.append(pid)
                 # Remove walking-to-pickup person entity
                 remove_pickup_walker(pid)
                 log_detail(f"  [BOARD]  t={sim_time:6.0f}s  "
@@ -1365,38 +1545,185 @@ def detect_pickups_and_dropoffs(vehicles: Dict[str, VehicleState],
             if p.dropoff_edge in traversed:
                 veh.onboard_passengers.remove(pid)
                 veh.completed_passengers.append(pid)
-                p.completed = True
-                p.t_completed = sim_time
-                dropoffs += 1
+                
                 # Spawn walking-from-dropoff person entity
                 if net is not None:
-                    spawn_walking_from_dropoff(net, p, sim_time)
-                log_detail(f"  [DROP]   t={sim_time:6.0f}s  "
-                      f"vehicle={vid:5s}  passenger={pid:6s}  "
-                      f"edge={p.dropoff_edge}  "
-                      f"trip_time={sim_time - (p.t_boarded or sim_time):.0f}s")
+                    walk_spawned = spawn_walking_from_dropoff(net, p, sim_time)
+                else:
+                    walk_spawned = False
+                    
+                if not walk_spawned:
+                    p.completed = True
+                    p.t_completed = sim_time
+                    dropped_pids.append(pid)
+                    log_detail(f"  [DROP]   t={sim_time:6.0f}s  "
+                          f"vehicle={vid:5s}  passenger={pid:6s}  "
+                          f"edge={p.dropoff_edge}  "
+                          f"trip_time={sim_time - float(p.raw['t_req']):.0f}s")
+                else:
+                    log_detail(f"  [DEBOARD] t={sim_time:6.0f}s vehicle={vid:5s} passenger={pid:6s} edge={p.dropoff_edge} (Walking to final dest...)")
 
-    return boardings, dropoffs
+
+    return boarded_pids, dropped_pids
 
 def _rescue_stuck_vehicles_and_passengers(net, vehicles: Dict[str, VehicleState], 
                                           passengers_by_id: Dict[str, Passenger], 
-                                          sim_time: float, live_vehicles: set) -> Tuple[int, int]:
+                                          sim_time: float, live_vehicles: set,
+                                          cooldown_mode: bool = False) -> Tuple[List[str], List[str], List[Passenger]]:
     """
     Actively detect and rescue vehicles that are trapped in microscopic routing errors
     (e.g., "No connection" warnings) or permanent traffic jams.
     If a vehicle fails to reach a passenger's dropoff after a long time, we organically
     drop the passenger at the vehicle's current safe location and let them walk the rest.
     """
-    forced_boardings = 0
-    forced_dropoffs = 0
+    forced_boardings = []
+    forced_dropoffs = []
+    forced_rejections = []
 
-    for vid, veh in vehicles.items():
+    for vid in list(vehicles.keys()):
+        veh = vehicles[vid]
+        
+        # If it is successfully driving, clear any pending respawn timers
+        if vid in live_vehicles:
+            veh._respawn_time = 0.0
+            
         if vid not in live_vehicles:
+            # Vehicle vanished from SUMO (teleported, crashed, or arrived)!
+            
+            # 1. If it's completely empty...
+            if not veh.onboard_passengers and not veh.assigned_passengers:
+                if cooldown_mode:
+                    del vehicles[vid]
+                    continue
+                else:
+                    respawn_time = getattr(veh, '_respawn_time', 0.0)
+                    if respawn_time > 0 and (sim_time - respawn_time) < 60.0:
+                        # Just respawned, likely in depart queue. Give it time to appear.
+                        continue
+                        
+                    # Forcibly remove to prevent ghosts
+                    try: traci.vehicle.remove(vid)
+                    except Exception: pass
+                    
+                    base_vid = vid.split('_r')[0] if '_r' in vid else vid
+                    new_vid = f"{base_vid}_r{int(sim_time)}"
+                    
+                    try:
+                        safe_edge = getattr(veh, 'last_road_id', None) or "1024556683#0"
+                        if safe_edge.startswith(":"):
+                            safe_edge = "1024556683#0"
+                            
+                        route_edges = [safe_edge]
+
+                        route_id = f"respawn_{new_vid}_{int(sim_time*100)}"
+                        traci.route.add(route_id, route_edges)
+                        traci.vehicle.add(new_vid, route_id, typeID="DEFAULT_VEHTYPE", depart="now", 
+                                          departPos="free", departSpeed="max", departLane="best")
+                        try: 
+                            target = route_edges[-1]
+                            lane_len = traci.lane.getLength(target + "_0")
+                            pos = max(0.0, lane_len - 2.0)
+                            traci.vehicle.setStop(new_vid, target, pos=pos, laneIndex=0, duration=86400, flags=2)
+                        except: pass
+                        
+                        veh.vid = new_vid
+                        veh._respawn_time = sim_time
+                        vehicles[new_vid] = veh
+                        del vehicles[vid]
+                        log_detail(f"  [RESPAWN-EMPTY] t={sim_time:6.0f}s vehicle={vid:5s} -> {new_vid:7s} route={len(route_edges)}edges to maintain fleet.")
+                    except Exception:
+                        pass
+                    continue
+                
+            # 2. It has passengers. Have we already tried to respawn it?
+            respawn_time = getattr(veh, '_respawn_time', 0.0)
+            if respawn_time > 0 and (sim_time - respawn_time) > 120.0:
+                # It's been stuck in the SUMO depart queue for over 2 minutes!
+                # User request: DO NOT DROP PASSENGERS. Remove completely and push again elsewhere!
+                log_detail(f"  [RESPAWN-RETRY] t={sim_time:6.0f}s vehicle={vid:5s} stuck with passengers. Re-pushing to new edge.")
+                try: traci.vehicle.remove(vid)
+                except Exception: pass
+                
+                safe_edge = "1024556683#0"
+                base_vid = vid.split('_r')[0] if '_r' in vid else vid
+                new_vid = f"{base_vid}_r{int(sim_time)}"
+                
+                route_edges = [safe_edge]
+                    
+                route_id = f"respawn_{new_vid}_{int(sim_time*100)}"
+                try:
+                    traci.route.add(route_id, route_edges)
+                    traci.vehicle.add(new_vid, route_id, typeID="DEFAULT_VEHTYPE", depart="now", 
+                                      departPos="free", departSpeed="max", departLane="best")
+                    try: 
+                        target = route_edges[-1]
+                        lane_len = traci.lane.getLength(target + "_0")
+                        pos = max(0.0, lane_len - 2.0)
+                        traci.vehicle.setStop(new_vid, target, pos=pos, laneIndex=0, duration=86400, flags=2)
+                    except: pass
+                    veh.vid = new_vid
+                    veh._respawn_time = sim_time
+                    vehicles[new_vid] = veh
+                    del vehicles[vid]
+                    for pid in veh.onboard_passengers + veh.assigned_passengers:
+                        p = passengers_by_id.get(pid)
+                        if p: p.assigned_vehicle = new_vid
+                except Exception: pass
+                continue
+
+            # 3. It has passengers and hasn't timed out. Queue it for respawn!
+            try:
+                if respawn_time == 0.0:
+                    safe_edge = getattr(veh, 'last_road_id', None)
+                    if not safe_edge or safe_edge.startswith(":"):
+                        safe_edge = "1024556683#0"
+                        
+                    # FIX: Cap chain depth to prevent v28_r30_r60_r90... cascades
+                    base_vid = vid.split('_r')[0] if '_r' in vid else vid
+                    new_vid = f"{base_vid}_r{int(sim_time)}"
+                    
+                    # FIX: Build a proper multi-edge route
+                    route_edges = [safe_edge]
+                    
+                    route_id = f"respawn_{new_vid}_{int(sim_time*100)}"
+                    traci.route.add(route_id, route_edges)
+                    traci.vehicle.add(new_vid, route_id, typeID="DEFAULT_VEHTYPE", depart="now", 
+                                      departPos="free", departSpeed="max", departLane="best")
+                    try: 
+                        target = route_edges[-1]
+                        lane_len = traci.lane.getLength(target + "_0")
+                        pos = max(0.0, lane_len - 2.0)
+                        traci.vehicle.setStop(new_vid, target, pos=pos, laneIndex=0, duration=86400, flags=2)
+                    except: pass
+                    
+                    # Update the Python vehicle state
+                    veh.vid = new_vid
+                    veh._respawn_time = sim_time  # Start the timeout clock!
+                    vehicles[new_vid] = veh
+                    del vehicles[vid]
+                    
+                    # Update the passenger pointers
+                    for pid in veh.onboard_passengers + veh.assigned_passengers:
+                        p = passengers_by_id.get(pid)
+                        if p: p.assigned_vehicle = new_vid
+                    
+                    log_detail(f"  [RESPAWN-QUEUED] t={sim_time:6.0f}s vehicle={vid:5s} -> {new_vid:7s} edge={safe_edge} route={len(route_edges)}edges (Passengers: {len(veh.onboard_passengers)}on/{len(veh.assigned_passengers)}pn)")
+                    
+                    # Trick the immortality logic in the main loop to immediately re-route it!
+                    veh.immortality_until = sim_time - 1
+            except Exception as e:
+                pass
             continue
         
         current_edge = traci.vehicle.getRoadID(vid)
+        
+        # If the vehicle is deadlocked inside an intersection (edge starts with ':'), 
+        # we still want to evaluate timeouts! We just need a valid non-internal edge to drop them on.
+        safe_drop_edge = current_edge
         if not current_edge or current_edge.startswith(":"):
-            continue
+            safe_drop_edge = getattr(veh, 'last_road_id', None) or "1024556683#0"
+            if safe_drop_edge.startswith(":"):
+                safe_drop_edge = "1024556683#0"
 
         # 1. Rescue Onboard Passengers (Dropoff failure)
         for pid in list(veh.onboard_passengers):
@@ -1404,54 +1731,49 @@ def _rescue_stuck_vehicles_and_passengers(net, vehicles: Dict[str, VehicleState]
             if not p or p.completed or p.rejected:
                 continue
                 
-            # If they've been in the car significantly longer than ideal (min 15 mins)
+            # If they've been in the car significantly longer than ideal
             time_in_car = sim_time - (p.t_boarded or sim_time)
-            max_allowed_time = max(900.0, float(p.raw["T_ideal"]) * 3.0)
+            # Cap at 45 minutes maximum so it triggers before the 1.5h cooldown limit
+            max_allowed_time = min(2700.0, max(600.0, float(p.raw["T_ideal"]) * 3.0))
             
             if time_in_car > max_allowed_time:
                 # The vehicle is stuck or looping. Drop them here!
                 veh.onboard_passengers.remove(pid)
                 veh.completed_passengers.append(pid)
-                p.completed = True
-                p.t_completed = sim_time
-                
-                # Override their dropoff edge to the current safe edge so the walking model
-                # calculates the walk from here to their true destination node.
-                p.dropoff_edge = current_edge
+                p.dropoff_edge = safe_drop_edge
                 if net is not None:
-                    spawn_walking_from_dropoff(net, p, sim_time)
+                    walk_spawned = spawn_walking_from_dropoff(net, p, sim_time)
+                else:
+                    walk_spawned = False
                     
-                forced_dropoffs += 1
-                log_detail(f"  [RESCUE-DROP] t={sim_time:6.0f}s vehicle={vid:5s} passenger={pid:6s} "
-                           f"edge={current_edge} (Walk to true dest)")
+                if not walk_spawned:
+                    p.completed = True
+                    p.t_completed = sim_time
+                    forced_dropoffs.append(pid)
+                    log_detail(f"  [RESCUE-DROP] t={sim_time:6.0f}s vehicle={vid:5s} passenger={pid:6s} "
+                               f"edge={safe_drop_edge} (Instantly completed)")
+                else:
+                    log_detail(f"  [RESCUE-DEBOARD] t={sim_time:6.0f}s vehicle={vid:5s} passenger={pid:6s} "
+                               f"edge={safe_drop_edge} (Walking to true dest...)")
 
         # 2. Rescue Assigned Passengers (Pickup failure)
         for pid in list(veh.assigned_passengers):
             p = passengers_by_id.get(pid)
             if not p or p.completed or p.rejected:
                 continue
-                
-            time_waiting = sim_time - float(p.raw["t_req"])
-            if time_waiting > 1200.0:  # 20 minutes waiting
-                # The vehicle can't physically reach their exact pickup edge.
-                # If the vehicle is somewhat nearby, have the passenger walk to the vehicle and board!
-                try:
-                    px, py = p.raw["origin_xy"]
-                    vx, vy = traci.vehicle.getPosition(vid)
-                    dist = ((px - vx)**2 + (py - vy)**2)**0.5
-                    
-                    if dist < 800.0:  # Within walking distance
-                        veh.assigned_passengers.remove(pid)
-                        veh.onboard_passengers.append(pid)
-                        p.t_boarded = sim_time
-                        remove_pickup_walker(pid)
-                        forced_boardings += 1
-                        log_detail(f"  [RESCUE-BOARD] t={sim_time:6.0f}s vehicle={vid:5s} passenger={pid:6s} "
-                                   f"edge={current_edge} (Walked {dist:.0f}m to vehicle)")
-                except Exception:
-                    pass
+            
+            # If they've been waiting for this specific vehicle for > 30 minutes, 
+            # the vehicle is deadlocked and won't ever arrive.
+            time_waiting = sim_time - (p.t_assigned or float(p.raw["t_req"]))
+            if time_waiting > 1800.0:
+                veh.assigned_passengers.remove(pid)
+                p.rejected = True
+                p.rejection_reason = "vehicle_deadlocked_before_pickup"
+                forced_rejections.append(p)
+                log_detail(f"  [RESCUE-REJECT] t={sim_time:6.0f}s vehicle={vid:5s} passenger={pid:6s} "
+                           f"(Vehicle deadlocked, passenger gave up)")
 
-    return forced_boardings, forced_dropoffs
+    return forced_boardings, forced_dropoffs, forced_rejections
 
 
 # ============================================================
@@ -1526,7 +1848,7 @@ def spawn_walking_to_pickup(net, passenger: "Passenger", sim_time: float):
 
         # Create person and add walking stage
         walk_speed = float(passenger.raw.get("walk_speed", 1.24))
-        traci.person.add(person_id, origin_edge, pos=0.0, depart=sim_time,
+        traci.person.add(person_id, origin_edge, pos=0.0, depart=sim_time + HEATUP_SEC,
                          typeID="DEFAULT_PEDTYPE")
         traci.person.setSpeed(person_id, walk_speed)
         traci.person.appendWalkingStage(person_id, walk_edges, arrivalPos=-1)
@@ -1547,10 +1869,11 @@ def spawn_walking_to_pickup(net, passenger: "Passenger", sim_time: float):
             pass
 
 
-def spawn_walking_from_dropoff(net, passenger: "Passenger", sim_time: float):
+def spawn_walking_from_dropoff(net, passenger: "Passenger", sim_time: float) -> bool:
     """
     Create a traci.person entity that walks from the dropoff edge to the
     passenger's final destination.  Called when passenger is dropped off.
+    Returns True if a walk was successfully spawned, False otherwise.
     """
     pid = passenger.raw["id"]
     person_id = f"walk_{pid}_dropoff"
@@ -1559,26 +1882,27 @@ def spawn_walking_from_dropoff(net, passenger: "Passenger", sim_time: float):
     dest_edge = node_to_edge(net, passenger.raw["dest_node"], vclass="pedestrian")
 
     if dropoff_edge is None or dest_edge is None:
-        return
+        return False
 
     # If dropoff == destination, no walk needed
     if dropoff_edge == dest_edge:
-        return
+        return False
 
     try:
         walk_edges = _compute_walking_edges(net, dropoff_edge, dest_edge)
 
         # Skip if no valid route found
         if not walk_edges:
-            return
+            return False
 
         walk_speed = float(passenger.raw.get("walk_speed", 1.24))
-        traci.person.add(person_id, dropoff_edge, pos=0.0, depart=sim_time,
+        traci.person.add(person_id, dropoff_edge, pos=0.0, depart=sim_time + HEATUP_SEC,
                          typeID="DEFAULT_PEDTYPE")
         traci.person.setSpeed(person_id, walk_speed)
         traci.person.appendWalkingStage(person_id, walk_edges, arrivalPos=-1)
 
         _walkers_from_dropoff[person_id] = pid
+        return True
 
     except traci.TraCIException:
         # Non-fatal: dropoff walking is purely visual; clean up
@@ -1586,18 +1910,20 @@ def spawn_walking_from_dropoff(net, passenger: "Passenger", sim_time: float):
             traci.person.remove(person_id)
         except Exception:
             pass
+        return False
     except Exception:
         try:
             traci.person.remove(person_id)
         except Exception:
             pass
+        return False
 
 
-def cleanup_arrived_walkers():
+def cleanup_arrived_walkers(passengers_by_id: Dict[str, "Passenger"], sim_time: float) -> Tuple[int, List[str]]:
     """
     Remove walker entries for persons that have finished their walking
-    stage (no longer in the SUMO simulation).  Called every delta_t step.
-    Returns count of pickup walkers and dropoff walkers cleaned up.
+    stage. Returns count of pickup walkers cleaned up, and a list of passenger
+    IDs who successfully finished their dropoff walk.
     """
     try:
         live_persons = set(traci.person.getIDList())
@@ -1610,13 +1936,18 @@ def cleanup_arrived_walkers():
             del _walkers_to_pickup[person_id]
             pickup_cleaned += 1
 
-    dropoff_cleaned = 0
-    for person_id in list(_walkers_from_dropoff.keys()):
+    dropped_pids = []
+    for person_id, pid in list(_walkers_from_dropoff.items()):
         if person_id not in live_persons:
             del _walkers_from_dropoff[person_id]
-            dropoff_cleaned += 1
+            p = passengers_by_id.get(pid)
+            if p and not p.completed:
+                p.completed = True
+                p.t_completed = sim_time
+                dropped_pids.append(pid)
+                log_detail(f"  [DROP]   t={sim_time:6.0f}s  passenger={pid:6s}  (Arrived at true dest)  trip_time={sim_time - float(p.raw['t_req']):.0f}s")
 
-    return pickup_cleaned, dropoff_cleaned
+    return pickup_cleaned, dropped_pids
 
 
 def remove_pickup_walker(passenger_id: str):
@@ -1708,7 +2039,7 @@ def maybe_extend_vehicle(net, real_edges, veh: VehicleState, sim_time: float,
         remaining = route[idx:]
         if not remaining or remaining[0] != current_edge:
             remaining = [current_edge] + [e for e in remaining if e != current_edge]
-        if len(remaining) <= 2 and sim_time >= veh.immortality_until:
+        if len(remaining) <= 50 and sim_time >= veh.immortality_until:
             cur_to_node = net.getEdge(current_edge).getToNode()
             cx, cy = cur_to_node.getCoord()
 
@@ -1743,31 +2074,11 @@ def maybe_extend_vehicle(net, real_edges, veh: VehicleState, sim_time: float,
             all_waypoints = pending_pickups + pending_dropoffs
 
             if all_waypoints:
-                # Stitch a route through all pending stops, then continue
-                # to a far edge to keep the vehicle alive afterward.
-                # Use pre-computed edge coordinates for fast farthest-edge lookup
-                wp_set = set(all_waypoints)
-                best_dist_sq = -1.0
-                tail_edge = None
-                for ex, ey, eid in _far_edge_candidates:
-                    if eid == current_edge or eid in wp_set:
-                        continue
-                    dsq = (ex - cx) ** 2 + (ey - cy) ** 2
-                    if dsq > best_dist_sq:
-                        best_dist_sq = dsq
-                        tail_edge = eid
-
-                waypoints = list(all_waypoints)
-                if tail_edge:
-                    waypoints.append(tail_edge)
-
-                stitched_route, _, _ = stitch_route_through_waypoints(current_edge, waypoints)
-                if stitched_route:
-                    new_route = stitched_route
-                else:
-                    # fallback: just go to first waypoint
-                    seg, _, _ = find_route_cached(current_edge, all_waypoints[0])
-                    new_route = seg if seg else [current_edge]
+                set_vehicle_route(veh.vid, all_waypoints)
+                try:
+                    new_route = list(traci.vehicle.getRoute(veh.vid))
+                except Exception:
+                    new_route = all_waypoints
 
                 label = "EXTEND-STOPS"
                 log_detail(f"  [{label}] t={sim_time:6.0f}s  vehicle={veh.vid:5s}  "
@@ -1775,22 +2086,45 @@ def maybe_extend_vehicle(net, real_edges, veh: VehicleState, sim_time: float,
                       f"{len(pending_dropoffs)} dropoffs")
 
             else:
-                # ── Density-based idle/rebalance decision ─────────────────
-                # Uses the pre-computed idle_grid (built once per step) for
-                # O(1) lookup instead of iterating over the entire fleet.
-                MIN_IDLE_DENSITY = 3
+                # ── Congruent Density-Based Parking & Rebalancing ─────────────────
+                # Core value: Maintain vehicle density congruent to request density (soft routes)
+                # without excessive deadheading.
+                
+                is_on_trunk = False
+                global _dynamic_soft_routes
+                current_bin = str(int((sim_time % 86400) / 1800))
+                active_trunks = _dynamic_soft_routes.get(current_bin, []) if _dynamic_soft_routes else []
+                
+                # Check if currently on an active trunk
+                if active_trunks:
+                    for trunk in active_trunks:
+                        if current_edge in trunk:
+                            is_on_trunk = True
+                            break
+
+                # If on a trunk, allow up to 30 idle vehicles in the local 3x3 grid to park.
+                # If in a dead zone, only allow 2 idle vehicles to park (baseline coverage).
+                ALLOWED_IDLE = 30 if is_on_trunk else 2
+
                 idle_count = 0
                 if idle_grid is not None:
-                    idle_count = _count_idle_nearby(idle_grid, cx, cy,
-                                                    own_vid_counted=True)
+                    idle_count = _count_idle_nearby(idle_grid, cx, cy, own_vid_counted=True)
 
-                if idle_count < MIN_IDLE_DENSITY:
-                    # Area is under-served → idle here as a neighbourhood guard.
-                    # Use setSpeed(0) to freeze the vehicle on its current edge.
-                    # This is much faster than traci.vehicle.setStop and avoids
-                    # edge-length / position errors that cause SUMO to hang.
+                if idle_count <= ALLOWED_IDLE:
+                    # Area is not saturated based on its demand profile. PARK to prevent deadheading!
                     try:
-                        traci.vehicle.setSpeed(veh.vid, 0)
+                        # If the vehicle already has a stop, DO NOT add another one!
+                        # This prevents appending 300+ parking stops per vehicle over the simulation
+                        if traci.vehicle.getStops(veh.vid):
+                            pass
+                        else:
+                            # Use STOP_PARKING (flags=2) to pull off the road and avoid blocking traffic!
+                            # Stop near the end of the edge to allow smooth deceleration
+                            lane_len = traci.lane.getLength(current_edge + "_0")
+                            pos = max(0.0, lane_len - 2.0)
+                            if pos < traci.vehicle.getLanePosition(veh.vid):
+                                pos = traci.vehicle.getLanePosition(veh.vid) # if already past, stop immediately
+                            traci.vehicle.setStop(veh.vid, current_edge, pos=pos, laneIndex=0, duration=86400, flags=2)
                     except Exception:
                         pass
                     veh.immortality_until = sim_time + 10.0
@@ -1798,33 +2132,55 @@ def maybe_extend_vehicle(net, real_edges, veh: VehicleState, sim_time: float,
                         veh.delta_used = 0.0
                     return
 
-                # Redundant area — dispatch empty vehicle to a historical high-demand edge
-                if _high_demand_edges:
-                    target_edge = random.choice(_high_demand_edges)
-                else:
-                    far_with_dist = []
-                    for ex, ey, eid in _far_edge_candidates:
-                        if eid == current_edge:
-                            continue
-                        dsq = (ex - cx) ** 2 + (ey - cy) ** 2
-                        far_with_dist.append((dsq, eid))
-                    far_with_dist.sort(reverse=True)
-                    sample_pool = [eid for _, eid in far_with_dist[:max(10, min(50, len(far_with_dist)))]]
-                    if not sample_pool:
+                # Area is over-saturated (or we are stuck in a dead zone).
+                # Disperse the vehicle to a RANDOM point along a soft route to maintain 
+                # even fleet distribution across the demand corridors!
+                new_route = None
+                if active_trunks:
+                    trunk = random.choice(active_trunks)
+                    if trunk:
+                        target_edge = random.choice(trunk)
+                        if target_edge != current_edge:
+                            try:
+                                set_vehicle_route(veh.vid, [target_edge], is_patrol=True)
+                                new_route = list(traci.vehicle.getRoute(veh.vid))
+                            except Exception:
+                                pass
+                
+                # 2. Fallback to point-based hotspot or random rebalancing
+                if not new_route:
+                    for _retry in range(10):
+                        if _high_demand_edges:
+                            hot_with_dist = []
+                            for ex, ey, eid in _high_demand_edges:
+                                if eid == current_edge: continue
+                                dsq = (ex - cx) ** 2 + (ey - cy) ** 2
+                                hot_with_dist.append((dsq, eid))
+                            hot_with_dist.sort()  # Sort by closest!
+                            sample_pool = [eid for _, eid in hot_with_dist[:max(5, min(20, len(hot_with_dist)))]]
+                            if not sample_pool: return
+                            target_edge = random.choice(sample_pool)
+                        else:
+                            target_edge = random.choice(real_edges).getID()
+                            
+                        try:
+                            set_vehicle_route(veh.vid, [target_edge])
+                            new_route = list(traci.vehicle.getRoute(veh.vid))
+                            break
+                        except Exception:
+                            pass
+                                
+                    if not new_route:
                         return
-                    target_edge = random.choice(sample_pool)
-                    
-                ext_edges, _, _ = find_route_cached(current_edge, target_edge)
-                if not ext_edges:
-                    return
-                new_route = [current_edge]
-                for e in ext_edges[1:]:
-                    if new_route[-1] != e:
-                        new_route.append(e)
-
-            traci.vehicle.setRoute(veh.vid, new_route)
-            veh.current_route = list(new_route)
-            veh.planned_route = list(new_route)
+            
+            # Refresh the vehicle's route from SUMO (it may differ from new_route)
+            try:
+                actual_route = list(traci.vehicle.getRoute(veh.vid))
+                veh.current_route = actual_route
+                veh.planned_route = actual_route
+            except Exception:
+                veh.current_route = list(new_route)
+                veh.planned_route = list(new_route)
             # Per PDF: δ_v(t) ≤ Δmax_v must remain binding while passengers
             # are onboard.  Only reset the detour budget when the vehicle is
             # empty (no onboard or pending passengers), i.e. when the base
@@ -1915,19 +2271,21 @@ def run_cooldown_phase(net, real_edges, vehicles: Dict[str, VehicleState],
     Returns updated (system_cost_total, total_boardings, total_dropoffs).
     """
     # How many passengers still need delivery?
-    def _remaining() -> Tuple[int, int]:
+    def _remaining() -> Tuple[int, int, int]:
         onb = sum(len(v.onboard_passengers) for v in vehicles.values())
         asgn = sum(len(v.assigned_passengers) for v in vehicles.values())
-        return onb, asgn
+        walking = len(_walkers_from_dropoff)
+        return onb, asgn, walking
 
-    onboard_left, assigned_left = _remaining()
-    if onboard_left == 0 and assigned_left == 0:
+    onboard_left, assigned_left, walking_left = _remaining()
+    if onboard_left == 0 and assigned_left == 0 and walking_left == 0:
         return system_cost_total, total_boardings, total_dropoffs
 
     print("\n" + "=" * 72)
     print("  [COOLDOWN] Post-horizon delivery phase")
     print(f"  Passengers still onboard : {onboard_left}")
     print(f"  Passengers still assigned: {assigned_left}")
+    print(f"  Passengers walking to dst: {walking_left}")
     print("=" * 72)
 
     # Cap extra time to 1.5 hours (5400 seconds)
@@ -1945,35 +2303,41 @@ def run_cooldown_phase(net, real_edges, vehicles: Dict[str, VehicleState],
     n_micro = int(delta_t / MICRO_DT)
 
     while extra_elapsed < max_extra_time:
-        onboard_left, assigned_left = _remaining()
-        if onboard_left == 0 and assigned_left == 0:
+        onboard_left, assigned_left, walking_left = _remaining()
+        if onboard_left == 0 and assigned_left == 0 and walking_left == 0:
             print(f"  [COOLDOWN] All passengers delivered at t={current_time:.0f}s "
                   f"(+{extra_elapsed:.0f}s past horizon)")
             break
 
-        boardings_this_step = 0
-        dropoffs_this_step = 0
+        step_boarded_pids = []
+        step_dropped_pids = []
 
         for _mi in range(n_micro):
-            traci.simulationStep(current_time + (_mi + 1) * MICRO_DT)
+            traci.simulationStep(HEATUP_SEC + current_time + (_mi + 1) * MICRO_DT)
             _b, _d = detect_pickups_and_dropoffs(
                 vehicles, passengers_by_id,
                 current_time + (_mi + 1) * MICRO_DT, net=net
             )
-            boardings_this_step += _b
-            dropoffs_this_step += _d
+            step_boarded_pids.extend(_b)
+            step_dropped_pids.extend(_d)
 
         # Check for stuck vehicles/passengers after stepping
         _live_post_micro = set(traci.vehicle.getIDList())
-        _rb, _rd = _rescue_stuck_vehicles_and_passengers(net, vehicles, passengers_by_id, 
-                                                         current_time + delta_t, _live_post_micro)
-        boardings_this_step += _rb
-        dropoffs_this_step += _rd
+        _rb, _rd, _rr = _rescue_stuck_vehicles_and_passengers(net, vehicles, passengers_by_id, 
+                                                         current_time + delta_t, _live_post_micro,
+                                                         cooldown_mode=True)
+        step_boarded_pids.extend(_rb)
+        step_dropped_pids.extend(_rd)
+        rejected_now = _rr
+        
+        # Check for arrived walkers
+        _, arrived_pids = cleanup_arrived_walkers(passengers_by_id, current_time + delta_t)
+        step_dropped_pids.extend(arrived_pids)
 
         current_time += delta_t
         extra_elapsed += delta_t
-        total_boardings += boardings_this_step
-        total_dropoffs += dropoffs_this_step
+        total_boardings += len(step_boarded_pids)
+        total_dropoffs += len(step_dropped_pids)
 
         # Every macro-step (delta_t): keep vehicles with work alive
         live_vids = set(traci.vehicle.getIDList())
@@ -1986,17 +2350,25 @@ def run_cooldown_phase(net, real_edges, vehicles: Dict[str, VehicleState],
                                          passengers_by_id,
                                          cooldown_mode=True)
 
-        # Re-route ALL vehicles that still have work — not just those
-        # with remaining <= 2.  This ensures newly-boarded passengers'
-        # dropoff edges are always on the vehicle's route.
+        # Re-route ONLY vehicles whose work state (number of boarded/assigned passengers)
+        # has changed. Constantly calling setRoute() every 30 seconds ruins SUMO's lane-change
+        # models and causes vehicles to get stuck or drastically slow down.
+        if "last_work_state" not in locals():
+            last_work_state = {}
+            for _vid, _veh in vehicles.items():
+                last_work_state[_vid] = (len(_veh.onboard_passengers), len(_veh.assigned_passengers))
+                
         for vid, veh in vehicles.items():
             if vid not in live_vids:
                 continue
-            has_work = (len(veh.onboard_passengers) > 0 or
-                        len(veh.assigned_passengers) > 0)
+            current_state = (len(veh.onboard_passengers), len(veh.assigned_passengers))
+            has_work = current_state[0] > 0 or current_state[1] > 0
+            
             if has_work:
-                _route_vehicle_to_pending_stops(net, real_edges, vid, veh,
-                                                 passengers_by_id, current_time)
+                if current_state != last_work_state.get(vid):
+                    _route_vehicle_to_pending_stops(net, real_edges, vid, veh,
+                                                     passengers_by_id, current_time)
+                    last_work_state[vid] = current_state
                 veh.immortality_until = current_time + 2.0
 
         # Per-step operating cost (same formula as main loop)
@@ -2010,13 +2382,14 @@ def run_cooldown_phase(net, real_edges, vehicles: Dict[str, VehicleState],
         assigned_now = sum(len(v.assigned_passengers) for v in vehicles.values())
         completed_now = sum(len(v.completed_passengers) for v in vehicles.values())
         
-        serving_count = sum(1 for v in vehicles.values() if v.vid in live_vids and (v.onboard_passengers or v.assigned_passengers))
-        idle_count = len(live_vids) - serving_count
+        tracked_live_cd = set(vid for vid in live_vids if vid in vehicles)
+        serving_count = sum(1 for v in vehicles.values() if v.vid in tracked_live_cd and (v.onboard_passengers or v.assigned_passengers))
+        idle_count = len(tracked_live_cd) - serving_count
         
         summary_line = (
             f"[COOLDOWN t={current_time:6.0f}s] "
-            f"board={boardings_this_step:2d}  drop={dropoffs_this_step:2d}  "
-            f"| fleet={len(live_vids)} (serve={serving_count} idle={idle_count}) "
+            f"board={len(step_boarded_pids):2d}  drop={len(step_dropped_pids):2d}  "
+            f"| fleet={len(tracked_live_cd)} (serve={serving_count} idle={idle_count}) "
             f"| pax={onboard_now}on,{assigned_now}pn,{completed_now}dn"
         )
         print(summary_line)
@@ -2024,57 +2397,24 @@ def run_cooldown_phase(net, real_edges, vehicles: Dict[str, VehicleState],
 
         # Record in trace
         append_step_trace(trace_root, current_time, [], [],
-                          [], [], vehicles,
-                          boardings_this_step, dropoffs_this_step, live_vids)
+                          rejected_now, [], vehicles,
+                          step_boarded_pids, step_dropped_pids, passengers_by_id, live_vids)
         step_stats.append({
             "time": current_time,
             "new": 0,
             "active": 0,
             "rejected": 0,
             "assigned": 0,
-            "boarded": boardings_this_step,
-            "dropped": dropoffs_this_step
+            "boarded": len(step_boarded_pids),
+            "dropped": len(step_dropped_pids)
         })
     else:
-        # Safety cap reached — force-complete any remaining passengers
-        onboard_left, assigned_left = _remaining()
-        if onboard_left > 0 or assigned_left > 0:
+        # Safety cap reached
+        onboard_left, assigned_left, walking_left = _remaining()
+        if onboard_left > 0 or assigned_left > 0 or walking_left > 0:
             print(f"\n  [COOLDOWN] Safety cap reached ({max_extra_time:.0f}s extra). "
-                  f"Force-completing {onboard_left} onboard + {assigned_left} assigned passengers.")
-            force_boardings = 0
-            force_dropoffs = 0
-            for vid, veh in vehicles.items():
-                for pid in list(veh.onboard_passengers):
-                    p = passengers_by_id.get(pid)
-                    if p and not p.completed:
-                        veh.onboard_passengers.remove(pid)
-                        veh.completed_passengers.append(pid)
-                        p.completed = True
-                        p.t_completed = current_time
-                        total_dropoffs += 1
-                        force_dropoffs += 1
-                        log_detail(f"    [FORCE-DROP] vehicle={vid}  passenger={pid}")
-                for pid in list(veh.assigned_passengers):
-                    p = passengers_by_id.get(pid)
-                    if p and not p.completed:
-                        # Board then immediately drop off
-                        veh.assigned_passengers.remove(pid)
-                        veh.completed_passengers.append(pid)
-                        p.completed = True
-                        p.t_boarded = p.t_boarded or current_time
-                        p.t_completed = current_time
-                        total_dropoffs += 1
-                        total_boardings += 1
-                        force_dropoffs += 1
-                        force_boardings += 1
-                        log_detail(f"    [FORCE-BOARD+DROP] vehicle={vid}  passenger={pid}")
-
-            # Append a final trace step to record the force-completions
-            # IMPORTANT: pass only the INCREMENTAL force counts, not cumulative totals
-            live_vids = set(traci.vehicle.getIDList())
-            append_step_trace(trace_root, current_time, [], [],
-                              [], [], vehicles,
-                              force_boardings, force_dropoffs, live_vids)
+                  f"Ending simulation with {onboard_left} onboard, {assigned_left} assigned, and {walking_left} walking passengers stuck.")
+            # We no longer force-complete them. They remain incomplete, reflecting true simulation constraints.
 
     return system_cost_total, total_boardings, total_dropoffs
 
@@ -2094,7 +2434,7 @@ def init_trace_xml():
 
 def append_step_trace(root, step_time, new_passengers, active_passengers,
                       rejected_passengers, assignments, vehicles,
-                      boardings_count, dropoffs_count, live_vids=None):
+                      boarded_pids, dropped_pids, passengers_by_id, live_vids=None):
     if live_vids is None:
         live_vids = set()
     step = ET.SubElement(root, "step", time=str(step_time))
@@ -2103,8 +2443,22 @@ def append_step_trace(root, step_time, new_passengers, active_passengers,
     rej_el = ET.SubElement(step, "rejected_passengers", count=str(len(rejected_passengers)))
     for p in rejected_passengers:
         ET.SubElement(rej_el, "passenger", id=str(p.raw["id"]), reason=str(p.rejection_reason))
-    ET.SubElement(step, "boardings", count=str(boardings_count))
-    ET.SubElement(step, "dropoffs", count=str(dropoffs_count))
+    ET.SubElement(step, "boardings", count=str(len(boarded_pids)))
+    ET.SubElement(step, "dropoffs", count=str(len(dropped_pids)))
+    
+    if boarded_pids:
+        b_el = ET.SubElement(step, "true_boardings")
+        for pid in boarded_pids:
+            p = passengers_by_id[pid]
+            wait_time = (p.t_boarded or step_time) - float(p.raw["t_req"])
+            ET.SubElement(b_el, "passenger", id=pid, true_wait_time=f"{wait_time:.1f}")
+
+    if dropped_pids:
+        d_el = ET.SubElement(step, "true_dropoffs")
+        for pid in dropped_pids:
+            p = passengers_by_id[pid]
+            t_in_veh = (p.t_completed or step_time) - (p.t_boarded or step_time)
+            ET.SubElement(d_el, "passenger", id=pid, true_in_veh_time=f"{t_in_veh:.1f}")
 
     vehicles_el = ET.SubElement(step, "vehicles")
     for vid, veh in vehicles.items():
@@ -2242,10 +2596,28 @@ def main():
                 pass
     
     global _high_demand_edges
-    _high_demand_edges = [edge for edge, count in sorted(demand_counts.items(), key=lambda x: x[1], reverse=True)[:100]]
-    if not _high_demand_edges:
-        _high_demand_edges = real_edges
+    _high_demand_edges = []
+    top_edges = [edge for edge, count in sorted(demand_counts.items(), key=lambda x: x[1], reverse=True)[:1000]]
+    if not top_edges:
+        top_edges = real_edges
+    
+    for edge in top_edges:
+        try:
+            eid = edge if isinstance(edge, str) else edge.getID()
+            tx, ty = net.getEdge(eid).getToNode().getCoord()
+            _high_demand_edges.append((tx, ty, eid))
+        except Exception:
+            pass
+            
     print(f"  [INIT] Identified {len(_high_demand_edges)} high-demand rebalancing edges.")
+
+    global _dynamic_soft_routes
+    try:
+        with open("dynamic_soft_routes.json", "r") as f:
+            _dynamic_soft_routes = json.load(f)
+        print(f"  [INIT] Loaded dynamic soft routes for {len(_dynamic_soft_routes)} time bins.")
+    except Exception as e:
+        print(f"  [WARN] Could not load dynamic_soft_routes.json: {e}")
 
     start_sumo()
 
@@ -2255,6 +2627,8 @@ def main():
         vid = v["id"]
         try:
             base_route_edges = build_connected_route_from_node_sequence(net, v["base_route"])
+            if base_route_edges:
+                pass
         except Exception as e:
             log_detail(f"  [WARN] could not build initial route for {vid}: {e}")
             continue
@@ -2267,12 +2641,53 @@ def main():
         except traci.TraCIException:
             pass
         try:
-            traci.vehicle.add(vid, route_id, depart="0")
+            traci.vehicle.add(vid, route_id, depart="0", departPos="free")
+            try: 
+                target = base_route_edges[-1]
+                lane_len = traci.lane.getLength(target + "_0")
+                pos = max(0.0, lane_len - 2.0)
+                traci.vehicle.setStop(vid, target, pos=pos, laneIndex=0, duration=86400, flags=2)
+            except: pass
             log_detail(f"  spawned {vid} on {len(base_route_edges)}-edge base route")
         except traci.TraCIException as e:
             log_detail(f"  [WARN] could not add vehicle {vid}: {e}")
 
     traci.simulationStep()
+
+    if HEATUP_SEC > 0:
+        import random as _random
+        print(f"\n[HEAT-UP] Running {HEATUP_SEC}s physical fleet warm-up to distribute vehicles...")
+        heat_time = 0.0
+        MICRO_DT_HEAT = 5.0
+        heat_edges = _high_demand_edges if _high_demand_edges else real_edges[:500]
+        while heat_time < HEATUP_SEC:
+            if heat_time % 300 == 0:
+                live_now = traci.vehicle.getIDList()
+                for vid in live_now:
+                    target = _random.choice(heat_edges)
+                    try:
+                        edge = traci.vehicle.getRoadID(vid)
+                        if edge and not edge.startswith(":"):
+                            route = traci.simulation.findRoute(edge, target, vType="DEFAULT_VEHTYPE")
+                            if route and route.edges:
+                                traci.vehicle.setRoute(vid, list(route.edges))
+                    except Exception:
+                        pass
+            heat_time += MICRO_DT_HEAT
+            traci.simulationStep(heat_time)
+            
+            # Print status every 30s so the operator sees the fleet moving into position
+            if heat_time % delta_t == 0:
+                live_vids = traci.vehicle.getIDList()
+                parked = 0
+                for _v in live_vids:
+                    try:
+                        if traci.vehicle.getSpeed(_v) < 0.1:
+                            parked += 1
+                    except: pass
+                print(f"[HEAT-UP t={heat_time:6.0f}s] fleet={len(live_vids)} (moving={len(live_vids)-parked} parked={parked}) | distributing to hotspots...")
+                
+        print(f"[HEAT-UP] Fleet successfully distributed. SUMO internal time is {heat_time}s.\n")
 
     _init_live_vids = set(traci.vehicle.getIDList())
     for vid, veh in vehicles.items():
@@ -2283,15 +2698,6 @@ def main():
             except Exception:
                 pass
 
-    # Pre-compute far edge candidates for immortality extension.
-    # This list is computed once and reused every step instead of 
-    # scanning all 1520 edges per vehicle per step.
-    global _far_edge_candidates
-    _far_edge_candidates = []
-    for e in real_edges:
-        eid = e.getID()
-        tx, ty = e.getToNode().getCoord()
-        _far_edge_candidates.append((tx, ty, eid))
 
     trace_root = init_trace_xml()
     step_stats = []
@@ -2316,12 +2722,12 @@ def main():
         # Instead of one 30s jump, we step in MICRO_DT increments and check
         # for boardings at each micro-step.  This dramatically reduces the
         # time vehicles spend in the "assigned, waiting for boarding" state.
-        boardings_this_step = 0
-        dropoffs_this_step = 0
+        step_boarded_pids = []
+        step_dropped_pids = []
 
         for _mi in range(n_micro):
             _micro_time = current_time + (_mi + 1) * MICRO_DT
-            traci.simulationStep(_micro_time)
+            traci.simulationStep(HEATUP_SEC + _micro_time)
 
             # Detect boardings/dropoffs at every micro-step
             # Pass live_vids to avoid redundant TraCI call inside
@@ -2330,15 +2736,20 @@ def main():
                 vehicles, passengers_by_id,
                 _micro_time, net=net, live_vids_set=_micro_live
             )
-            boardings_this_step += _b
-            dropoffs_this_step += _d
+            step_boarded_pids.extend(_b)
+            step_dropped_pids.extend(_d)
 
         # Check for stuck vehicles/passengers after stepping
         _live_post_micro = set(traci.vehicle.getIDList())
-        _rb, _rd = _rescue_stuck_vehicles_and_passengers(net, vehicles, passengers_by_id, 
+        _rb, _rd, _rr = _rescue_stuck_vehicles_and_passengers(net, vehicles, passengers_by_id, 
                                                          current_time + delta_t, _live_post_micro)
-        boardings_this_step += _rb
-        dropoffs_this_step += _rd
+        step_boarded_pids.extend(_rb)
+        step_dropped_pids.extend(_rd)
+        rejected_now = _rr
+
+        # Check for arrived pedestrians before updating time and stats
+        _, arrived_pids = cleanup_arrived_walkers(passengers_by_id, current_time + delta_t)
+        step_dropped_pids.extend(arrived_pids)
 
         _t1 = _time.time()
         print(f"  [TIMING] micro-steps: {_t1-_t0:.1f}s", flush=True)
@@ -2364,8 +2775,8 @@ def main():
             if _vid in live_vids_now:
                 system_cost_total += _gamma_dt * _veh.cost_per_km * _veh.speed_m_s
 
-        total_boardings += boardings_this_step
-        total_dropoffs += dropoffs_this_step
+        total_boardings += len(step_boarded_pids)
+        total_dropoffs += len(step_dropped_pids)
 
         # ----- passenger pool update -----
         p_new = [
@@ -2373,28 +2784,34 @@ def main():
             if (current_time - delta_t) < float(p.raw["t_req"]) <= current_time
             and not p.assigned and not p.rejected
         ]
-        p_wait = [
-            p for p in passengers
-            if float(p.raw["t_req"]) <= (current_time - delta_t)
-            and not p.assigned and not p.rejected and not p.completed
-        ]
-        p_active_map = {p.raw["id"]: p for p in (p_new + p_wait)}
-        p_active = list(p_active_map.values())
-
-        p_new_ids = {p.raw["id"] for p in p_new}
-        still_active = []
-        rejected_now = []
-        for p in p_active:
-            if p.raw["id"] not in p_new_ids:
+        for p in passengers:
+            if p.completed or p.rejected or p.t_boarded is not None:
+                continue
+            if float(p.raw["t_req"]) > (current_time - delta_t):
+                continue  # Hasn't spawned yet or just spawned
+                
+            if not p.assigned:
                 p.wait_remaining -= delta_t
+                
             if p.wait_remaining <= 0:
                 p.rejected = True
-                p.rejection_reason = p.fail_reason  # Use the specific tracked reason
+                p.rejection_reason = "timeout_assigned" if p.assigned else (p.fail_reason or "timeout_unassigned")
                 rejected_now.append(p)
                 system_cost_total += float(weights["lambda"])
-            else:
-                still_active.append(p)
-        p_active = still_active
+                
+                # If they were assigned, we must actively remove them from their vehicle
+                if p.assigned and p.assigned_vehicle:
+                    v = vehicles.get(p.assigned_vehicle)
+                    if v and p.raw["id"] in v.assigned_passengers:
+                        v.assigned_passengers.remove(p.raw["id"])
+                        log_detail(f"  [TIMEOUT] Passenger {p.raw['id']} timed out while waiting for vehicle {p.assigned_vehicle}.")
+
+        # Re-build active list for assignment (only strictly unassigned and unrejected passengers)
+        p_active = [
+            p for p in passengers
+            if float(p.raw["t_req"]) <= current_time
+            and not p.assigned and not p.rejected and not p.completed
+        ]
 
         # ----- immortality check -----
         # Build idle-vehicle spatial grid ONCE per step — O(n).
@@ -2547,10 +2964,12 @@ def main():
         total_assigned_pending = sum(len(v.assigned_passengers) for v in vehicles.values())
         total_completed = sum(len(v.completed_passengers) for v in vehicles.values())
         
-        # fleet status
+        # fleet status — only count vehicles we actually track
+        # (prevents orphan SUMO vehicles from inflating the count)
+        tracked_live = [vid for vid in live_vids_now if vid in vehicles]
         serving_count = 0
         parked_count = 0
-        for vid in live_vids_now:
+        for vid in tracked_live:
             v = vehicles.get(vid)
             if v and (v.onboard_passengers or v.assigned_passengers):
                 serving_count += 1
@@ -2560,20 +2979,17 @@ def main():
                         parked_count += 1
                 except Exception:
                     pass
-        idle_count = len(live_vids_now) - serving_count
+        idle_count = len(tracked_live) - serving_count
 
         summary_line = (
             f"[t={current_time:6.0f}s] new={len(p_new):3d}  "
             f"active={len(p_active):3d}  rej={len(rejected_now):2d}  "
-            f"assn={n_assigned_now:2d}  board={boardings_this_step:2d}  drop={dropoffs_this_step:2d}  "
-            f"| fleet={len(live_vids_now)} (serve={serving_count} idle={idle_count} park={parked_count}) "
+            f"assn={n_assigned_now:2d}  board={len(step_boarded_pids):2d}  drop={len(step_dropped_pids):2d}  "
+            f"| fleet={len(tracked_live)} (serve={serving_count} idle={idle_count} park={parked_count}) "
             f"| pax={total_onboard}on,{total_assigned_pending}pn,{total_completed}dn"
         )
         print(summary_line)
         log_detail(summary_line)
-
-        # ----- cleanup finished walking person entities -----
-        cleanup_arrived_walkers()
 
         step_stats.append({
             "time": current_time,
@@ -2581,13 +2997,13 @@ def main():
             "active": len(p_active),
             "rejected": len(rejected_now),
             "assigned": n_assigned_now,
-            "boarded": boardings_this_step,
-            "dropped": dropoffs_this_step,
+            "boarded": len(step_boarded_pids),
+            "dropped": len(step_dropped_pids),
         })
 
         append_step_trace(trace_root, current_time, p_new, p_active,
                           rejected_now, assignments, vehicles,
-                          boardings_this_step, dropoffs_this_step, live_vids_now)
+                          step_boarded_pids, step_dropped_pids, passengers_by_id, live_vids_now)
 
     # ----- post-horizon cooldown: deliver all assigned / onboard passengers -----
     system_cost_total, total_boardings, total_dropoffs = run_cooldown_phase(
