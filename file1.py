@@ -1,17 +1,24 @@
 """
-file1.py — Spatial Translator & JSON Generator
-================================================
-Reads filtered_2hr_trips.csv (produced by file0.py) and nyc_grid.net.xml,
-maps real-world NYC taxi GPS coordinates onto the synthetic 5 km × 5 km
-SUMO grid network, computes all required algorithmic parameters for every
-passenger and vehicle, then writes a self-contained simulation_state.json
-that file2.py (the TraCI simulation engine) will consume at runtime.
+file1.py — Spatial Translator & JSON Generator (Real Manhattan Network)
+========================================================================
+Reads filtered_1hr_trips.csv (produced by file0.py) and manhattan.net.xml,
+maps real-world NYC taxi GPS coordinates onto the real Manhattan SUMO network
+using sumolib's coordinate conversion, computes all required algorithmic
+parameters for every passenger and vehicle, then writes a self-contained
+simulation_state.json that file2.py (the TraCI simulation engine) will
+consume at runtime.
+
+Key difference from the grid version:
+  - Uses sumolib.net.convertLonLat2XY() for proper UTM projection
+  - Snaps to nearest SUMO node using actual network coordinates
+  - No more linear scaling to a synthetic grid
+  - Vehicles placed on actual Manhattan road edges/nodes
 
 Architecture note
 -----------------
-  file0.py  →  filtered_2hr_trips.csv
+  file0.py  →  filtered_1hr_trips.csv
   file1.py  →  simulation_state.json   ← YOU ARE HERE
-  file2.py  →  TraCI dynamic simulation (future)
+  file2.py  →  TraCI dynamic simulation
 """
 
 import json
@@ -25,24 +32,14 @@ import sumolib
 # Seed for reproducible per-passenger walk flexibility
 random.seed(42)
 
-import sys
-
 # ── I/O paths ────────────────────────────────────────────────────────────────
-INPUT_CSV      = "filtered_2hr_trips.csv"
-SUMO_NET_XML   = "nyc_grid.net.xml"
+INPUT_CSV      = "filtered_1hr_trips.csv"
+SUMO_NET_XML   = "manhattan.net.xml"
 OUTPUT_JSON    = "simulation_state.json"
 
-if len(sys.argv) > 1:
-    INPUT_CSV = sys.argv[1]
-if len(sys.argv) > 2:
-    OUTPUT_JSON = sys.argv[2]
-
-# ── Real-world GPS bounding box (from file0.py) ───────────────────────────────
-LAT_MIN, LAT_MAX =  40.7000,  40.7550
-LON_MIN, LON_MAX = -74.0200, -73.9700
-
-# ── SUMO grid logical bounds (metres) ────────────────────────────────────────
-GRID_MIN, GRID_MAX = 0.0, 5000.0          # target mapping space
+# ── Real-world GPS bounding box (from file0.py) — MUST MATCH file0.py ────────
+LAT_MIN, LAT_MAX =  40.7000,  40.8820
+LON_MIN, LON_MAX = -74.0200, -73.9070
 
 # ── Passenger constants ───────────────────────────────────────────────────────
 # Distance decay parameters (Yang & Diez-Roux [16], via referenced paper)
@@ -60,10 +57,10 @@ WALK_SPEED_MIN   = 0.80      # m/s — floor to avoid unrealistic values
 
 # ── Vehicle constants ─────────────────────────────────────────────────────────
 VEHICLE_CAPACITY   = 4
-DELTA_MAX          = 3000  # maximum allowable detour (m) — was 2000
+DELTA_MAX          = 1000  # maximum allowable detour (m)
 COST_PER_KM        = 1.0
 SPEED_M_S          = 8.33     # 30 km/h in m/s
-NUM_VEHICLES       = 500
+NUM_VEHICLES       = 3000
 
 # ── Simulation meta-parameters ────────────────────────────────────────────────
 SIM_PARAMS = {
@@ -103,36 +100,40 @@ def load_network(net_xml_path):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# §2  SPATIAL MAPPING UTILITIES
+# §2  SPATIAL MAPPING UTILITIES (Real Map — UTM projection)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def gps_to_sumo_xy(lon, lat):
+def gps_to_sumo_xy(net, lon, lat):
     """
-    Linearly scale a (longitude, latitude) GPS point from the real-world
-    NYC bounding box onto the SUMO grid's [0, 5000] × [0, 5000] metre space.
+    Convert GPS (longitude, latitude) to SUMO network (x, y) coordinates
+    using the network's built-in coordinate projection.
 
-    Mapping convention
-    ------------------
-      longitude  →  X axis   (LON_MIN → 0,   LON_MAX → 5000)
-      latitude   →  Y axis   (LAT_MIN → 0,   LAT_MAX → 5000)
+    This replaces the old linear-scaling approach used for the synthetic grid.
+    The real Manhattan network uses UTM projection, and sumolib handles the
+    conversion automatically using the projection parameters stored in the
+    .net.xml <location> element.
     """
-    x = (lon - LON_MIN) / (LON_MAX - LON_MIN) * (GRID_MAX - GRID_MIN) + GRID_MIN
-    y = (lat - LAT_MIN) / (LAT_MAX - LAT_MIN) * (GRID_MAX - GRID_MIN) + GRID_MIN
+    x, y = net.convertLonLat2XY(lon, lat)
     return x, y
 
 
-def nearest_node(x, y, node_coords):
+def nearest_node(x, y, valid_nodes, max_dist=200.0):
     """
-    Snap a scaled (x, y) SUMO-space point to the closest network node using
-    Euclidean straight-line distance.  Returns the node_id string.
+    Snap a (x, y) SUMO-space point to the closest valid network node using
+    Euclidean straight-line distance.  Returns the node_id string,
+    or None if the nearest node is further than max_dist.
     """
     best_id   = None
     best_dist = float("inf")
-    for nid, (nx, ny) in node_coords.items():
+    for nid, (nx, ny) in valid_nodes.items():
         d = math.hypot(x - nx, y - ny)
         if d < best_dist:
             best_dist = d
             best_id   = nid
+            
+    if best_dist > max_dist:
+        return None
+        
     return best_id
 
 
@@ -193,27 +194,36 @@ def dijkstra_distances_within(center_node_id, radius, adj):
 # §3  SHORTEST-PATH DISTANCE  (Dijkstra on SUMO graph)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def build_adjacency(net, node_coords):
+def build_adjacencies(net, node_coords):
     """
-    Build a node-level adjacency dict  {node_id: [(neighbour_id, edge_len), …]}
-    from the SUMO edge set, ignoring internal junction edges (ids that start
-    with ':').  Edge length is taken from sumolib's getLaneLength() summed
-    over the lanes.
+    Build two node-level adjacency graphs:
+    1. adj_walk: Includes all edges allowing pedestrians (for passenger walk routing).
+    2. adj_drive: Includes only edges allowing passenger vehicles (for vehicle fleet).
     """
-    print("[2/5] Building node adjacency graph …")
-    adj = {nid: [] for nid in node_coords}
+    print("[2/5] Building node adjacency graphs (walk & drive) …")
+    adj_walk  = {nid: [] for nid in node_coords}
+    adj_drive = {nid: [] for nid in node_coords}
 
     for edge in net.getEdges():
-        # Skip internal connector edges generated by SUMO
         if edge.getID().startswith(":"):
             continue
+            
         from_id = edge.getFromNode().getID()
         to_id   = edge.getToNode().getID()
-        # Use the physical length of the edge (average lane length)
         length  = edge.getLength()
-        adj[from_id].append((to_id, length))
+        
+        # In city networks imported from OSM, explicit pedestrian lanes are often missing.
+        # We assume pedestrians can walk alongside any passenger-drivable road, plus any 
+        # explicit pedestrian-only paths (like parks).
+        if edge.allows("pedestrian") or edge.allows("passenger"):
+            # Also add the reverse edge to the walking graph since people can walk both ways on a street
+            adj_walk[from_id].append((to_id, length))
+            adj_walk[to_id].append((from_id, length))
+            
+        if edge.allows("passenger"):
+            adj_drive[from_id].append((to_id, length))
 
-    return adj
+    return adj_walk, adj_drive
 
 
 def dijkstra_distance(src_id, dst_id, adj):
@@ -244,13 +254,86 @@ def dijkstra_distance(src_id, dst_id, adj):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# §3b  DRIVE GRAPH SCC (matches file2.py's edge-level SCC at the node level)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def compute_drive_scc(net):
+    """
+    Compute the largest strongly connected component of the drive graph at the EDGE level,
+    respecting actual turn restrictions (matches file2.py get_edge_scc exactly).
+    Returns a set of node IDs that belong to the edges in this SCC.
+    """
+    vclass = "passenger"
+    graph = {}
+    for edge in net.getEdges():
+        eid = edge.getID()
+        if eid.startswith(":") or not edge.allows(vclass):
+            continue
+        graph[eid] = []
+        for out_edge in edge.getOutgoing().keys():
+            oid = out_edge.getID()
+            if not oid.startswith(":") and out_edge.allows(vclass):
+                graph[eid].append(oid)
+                
+    import sys
+    sys.setrecursionlimit(200000)
+    visited = set()
+    finish_stack = []
+    
+    def dfs1(u):
+        visited.add(u)
+        for v in graph.get(u, []):
+            if v not in visited:
+                dfs1(v)
+        finish_stack.append(u)
+        
+    for u in graph:
+        if u not in visited:
+            dfs1(u)
+            
+    rev_graph = {u: [] for u in graph}
+    for u in graph:
+        for v in graph[u]:
+            rev_graph[v].append(u)
+            
+    visited.clear()
+    largest_scc_edges = set()
+    
+    def dfs2(u, scc):
+        visited.add(u)
+        scc.add(u)
+        for v in rev_graph.get(u, []):
+            if v not in visited:
+                dfs2(v, scc)
+                
+    while finish_stack:
+        u = finish_stack.pop()
+        if u not in visited:
+            scc = set()
+            dfs2(u, scc)
+            if len(scc) > len(largest_scc_edges):
+                largest_scc_edges = scc
+                
+    # Extract nodes that belong to these valid edges
+    largest_scc_nodes = set()
+    for eid in largest_scc_edges:
+        edge = net.getEdge(eid)
+        largest_scc_nodes.add(edge.getFromNode().getID())
+        largest_scc_nodes.add(edge.getToNode().getID())
+        
+    print(f"       Drive SCC: {len(largest_scc_edges)} edges, {len(largest_scc_nodes)} nodes")
+    return largest_scc_nodes
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # §4  PASSENGER PROCESSING
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def process_passengers(csv_path, node_coords, adj):
+def process_passengers(csv_path, net, node_coords, adj_walk, adj_drive, scc_nodes):
     """
-    Read filtered_2hr_trips.csv, map every trip to the SUMO grid, and
-    return a list of passenger dictionaries ready for JSON serialisation.
+    Read filtered_1hr_trips.csv, map every trip to the real Manhattan SUMO
+    network, and return a list of passenger dictionaries ready for JSON
+    serialisation.
 
     Per-passenger fields
     --------------------
@@ -258,16 +341,16 @@ def process_passengers(csv_path, node_coords, adj):
     group_id      : int — passengers from the same original taxi trip share
                     the same group_id (same pickup time, origin, destination)
     t_req         : seconds elapsed since the earliest pickup (t = 0)
-    origin_node   : nearest grid node to the scaled pickup coordinate
-    dest_node     : nearest grid node to the scaled dropoff coordinate
+    origin_node   : nearest network node to the pickup GPS coordinate
+    dest_node     : nearest network node to the dropoff GPS coordinate
     origin_xy     : [x, y] of origin_node (metres, for debugging)
     dest_xy       : [x, y] of dest_node   (metres, for debugging)
-    l_max         : 600  m
+    l_max         : personalized maximum walking distance (m)
     l_ideal       : 0    m
     W_max         : 600  s
     S_p_pickup    : list of node IDs within l_max of origin_node
     S_p_dropoff   : list of node IDs within l_max of dest_node
-    T_ideal       : shortest grid path distance / speed_m_s  (seconds)
+    T_ideal       : shortest network path distance / speed_m_s  (seconds)
     """
     print(f"[3/5] Processing passengers from '{csv_path}' …")
     df = pd.read_csv(
@@ -286,17 +369,34 @@ def process_passengers(csv_path, node_coords, adj):
     print(f"       t=0 anchor: {t_zero}")
 
     passengers = []
-    skipped    = 0
+    skipped = 0
+    skipped_out_of_bounds = 0
+    skipped_pickup = 0
+    skipped_dropoff = 0
+    skipped_path = 0
+    next_pid = 0
+
+    # To completely avoid "dead-end" mapping, we ONLY snap passengers to nodes
+    # that are GUARANTEED to have outgoing passenger-drivable edges.
+    valid_car_node_ids = {nid for nid, edges in adj_drive.items() if len(edges) > 0}
+    valid_node_coords = {nid: coords for nid, coords in node_coords.items() if nid in valid_car_node_ids}
 
     for idx, row in df.iterrows():
         t_req = (row["tpep_pickup_datetime"] - t_zero).total_seconds()
 
-        # ── GPS → SUMO XY → nearest node ─────────────────────────────────────
-        px, py = gps_to_sumo_xy(row["pickup_longitude"],  row["pickup_latitude"])
-        dx, dy = gps_to_sumo_xy(row["dropoff_longitude"], row["dropoff_latitude"])
+        # ── GPS → SUMO XY using proper UTM projection ────────────────────────
+        px, py = gps_to_sumo_xy(net, row["pickup_longitude"],  row["pickup_latitude"])
+        dx, dy = gps_to_sumo_xy(net, row["dropoff_longitude"], row["dropoff_latitude"])
 
-        origin_node = nearest_node(px, py, node_coords)
-        dest_node   = nearest_node(dx, dy, node_coords)
+        # Snap directly to the nearest fully drivable node!
+        origin_node = nearest_node(px, py, valid_node_coords)
+        dest_node   = nearest_node(dx, dy, valid_node_coords)
+
+        # Skip if we can't find nodes (shouldn't happen if GPS is within bounds)
+        if origin_node is None or dest_node is None:
+            skipped += 1
+            skipped_out_of_bounds += 1
+            continue
 
         # ── Per-passenger walk flexibility (distance decay function) ─────────
         # P ~ Uniform(0.1, 1.0); d = -ln(1-P) / β  (miles → metres + baseline)
@@ -315,26 +415,32 @@ def process_passengers(csv_path, node_coords, adj):
 
         # ── Feasible stop sets (Dijkstra flood-fill using network distance) ───
         # Returns {node_id: network_distance_m} for all nodes within l_max_p.
-        pickup_dists  = dijkstra_distances_within(origin_node, l_max_p, adj)
-        dropoff_dists = dijkstra_distances_within(dest_node,   l_max_p, adj)
+        pickup_dists  = dijkstra_distances_within(origin_node, l_max_p, adj_walk)
+        dropoff_dists = dijkstra_distances_within(dest_node,   l_max_p, adj_walk)
 
         # ── IMPORTANT: Exclude the exact origin/destination nodes ─────────────
         # If we include them the optimizer will always choose d_walk=0
         # (walk nowhere) making the decay penalty meaningless and forcing
         # vehicles to drive to each passenger's exact location.  Excluding
-        # them means every passenger must walk at least one edge (~236 m)
-        # to a shared stop, which is the core of the walking model and
-        # enables proper ride-sharing at common stops.
+        # them means every passenger must walk at least one edge to a shared
+        # stop, which is the core of the walking model and enables proper
+        # ride-sharing at common stops.
         pickup_dists.pop(origin_node, None)
         dropoff_dists.pop(dest_node, None)
 
-        s_pickup  = list(pickup_dists.keys())
-        s_dropoff = list(dropoff_dists.keys())
+        # Filter the feasible stops to ONLY include nodes in the drive SCC
+        # (matching file2.py's edge-level SCC) so assignments can always route.
+        s_pickup  = [nid for nid in pickup_dists.keys() if nid in scc_nodes]
+        s_dropoff = [nid for nid in dropoff_dists.keys() if nid in scc_nodes]
 
-        # Sanity: if no feasible stops remain (shouldn't happen on a 20×20
-        # grid unless l_max is extremely small), skip this passenger.
-        if not s_pickup or not s_dropoff:
+        # Sanity: if no feasible stops remain, skip this passenger.
+        if not s_pickup:
             skipped += 1
+            skipped_pickup += 1
+            continue
+        if not s_dropoff:
+            skipped += 1
+            skipped_dropoff += 1
             continue
 
         # ── Pre-computed walk distances for each feasible stop ────────────────
@@ -344,10 +450,11 @@ def process_passengers(csv_path, node_coords, adj):
         dropoff_walk_dists = {nid: round(d, 2) for nid, d in dropoff_dists.items()}
 
         # ── T_ideal: shortest network path distance ÷ speed ──────────────────
-        path_dist = dijkstra_distance(origin_node, dest_node, adj)
+        path_dist = dijkstra_distance(origin_node, dest_node, adj_drive)
         if math.isinf(path_dist):
-            # No path found (should not happen on a connected grid); skip trip
+            # No path found — may happen on disconnected sub-networks
             skipped += 1
+            skipped_path += 1
             continue
         t_ideal = path_dist / SPEED_M_S
 
@@ -385,61 +492,90 @@ def process_passengers(csv_path, node_coords, adj):
     multi_groups = sum(1 for c in gid_counts.values() if c > 1)
     multi_passengers = sum(c for c in gid_counts.values() if c > 1)
     print(f"       Done. {len(passengers)} passengers kept, {skipped} skipped.")
+    print(f"         (Skipped reasons: {skipped_out_of_bounds} out of bounds, {skipped_pickup} no pickup, {skipped_dropoff} no dropoff, {skipped_path} no path)")
     print(f"       Multi-passenger groups: {multi_groups} "
           f"({multi_passengers} passengers in those groups)")
     return passengers
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# §5  VEHICLE FLEET GENERATION
+# §5  VEHICLE FLEET GENERATION (Real Manhattan Network)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def build_vehicle_fleet(node_coords):
+def build_vehicle_fleet(net, node_coords, adj_drive, scc_nodes):
     """
-    Generate NUM_VEHICLES synthetic vehicles spread across the grid using distinct
-    corridor orientations so vehicles have initial paths.
+    Generate NUM_VEHICLES vehicles spread across the real Manhattan network.
 
-    Corridors
-    ---------
-    North→South corridors (fixed column, all rows descending)
-    West→East corridors (all columns, fixed row)
+    Strategy: Place vehicles at random nodes on the network. Build initial
+    base routes by finding a path from the start node to a distant node
+    (simulating a North-South or East-West corridor through Manhattan).
+
+    Unlike the grid version, we can't use column/row corridors. Instead,
+    we pick random start nodes and route them to nodes on the opposite
+    side of the network for diverse initial coverage.
     """
-    import random
     print(f"[4/5] Generating vehicle fleet ({NUM_VEHICLES} vehicles) …")
 
-    # Column letters A=0, B=1, …, T=19  (20 columns at 250 m spacing)
-    COL_LETTERS = [chr(ord('A') + i) for i in range(20)]   # ['A','B',…,'T']
-    ROW_NUMBERS = list(range(20))                           # [0, 1, …, 19]
+    # Get all real (non-internal) edges with their from/to nodes
+    real_edges = [e for e in net.getEdges() if not e.getID().startswith(":")]
+    if not real_edges:
+        raise ValueError("No real edges found in the network!")
 
-    def ns_route(col_idx):
-        """All nodes in column col_idx from row 19 (North) to row 0 (South)."""
-        col = COL_LETTERS[col_idx]
-        return [f"{col}{row}" for row in reversed(ROW_NUMBERS)
-                if f"{col}{row}" in node_coords]
+    # Use the pre-computed SCC nodes (guaranteed to match file2.py's edge SCC)
+    valid_nodes = list(scc_nodes)
 
-    def ew_route(row_idx):
-        """All nodes in row row_idx from column A (West) to column T (East)."""
-        return [f"{COL_LETTERS[col]}{row_idx}" for col in range(len(COL_LETTERS))
-                if f"{COL_LETTERS[col]}{row_idx}" in node_coords]
+    if not valid_nodes:
+        raise ValueError("No valid nodes with outgoing edges found!")
 
-    all_corridors = []
-    for ci in range(20):
-        all_corridors.append((f"N-S col {COL_LETTERS[ci]}", ns_route(ci)))
-    for ri in range(20):
-        all_corridors.append((f"W-E row {ri}", ew_route(ri)))
+    print(f"       {len(valid_nodes)} valid nodes available for vehicle placement")
 
-    vehicles = []
-    random.seed(42)  # For reproducible fleet generation
+    # To achieve a perfectly uniform spatial distribution, we partition the map into a 2D grid.
+    min_x = min(node_coords[n][0] for n in valid_nodes)
+    max_x = max(node_coords[n][0] for n in valid_nodes)
+    min_y = min(node_coords[n][1] for n in valid_nodes)
+    max_y = max(node_coords[n][1] for n in valid_nodes)
     
-    for v_idx in range(NUM_VEHICLES):
-        label, route_nodes = random.choice(all_corridors)
+    GRID_CELL_SIZE = 500.0  # 500x500m cells
+    cells = {}
+    
+    for n in valid_nodes:
+        cx = int((node_coords[n][0] - min_x) // GRID_CELL_SIZE)
+        cy = int((node_coords[n][1] - min_y) // GRID_CELL_SIZE)
+        cells.setdefault((cx, cy), []).append(n)
         
-        # Ensure we have a valid route
-        if not route_nodes:
-            continue
-            
-        start_node = route_nodes[0]
-        sx, sy     = node_coords[start_node]
+    # Keep only non-empty cells
+    active_cells = list(cells.keys())
+    
+    vehicles = []
+    random.seed(42)
+
+    for v_idx in range(NUM_VEHICLES):
+        # Pick a random spatial cell, then pick a random node within that cell
+        start_cell = random.choice(active_cells)
+        start_node = random.choice(cells[start_cell])
+        
+        # Pick a completely different end cell for the initial base route
+        end_cell = random.choice(active_cells)
+        end_node = random.choice(cells[end_cell])
+        
+        label = f"grid_{start_cell}_to_{end_cell}"
+
+        # Find shortest path from start to end using Dijkstra
+        route_nodes = _find_node_path(start_node, end_node, adj_drive)
+
+        if not route_nodes or len(route_nodes) < 2:
+            # Fallback: just use start node with a short route to a neighbor
+            neighbors = adj_drive.get(start_node, [])
+            if neighbors:
+                route_nodes = [start_node, neighbors[0][0]]
+            else:
+                continue
+
+        # Limit route to reasonable length (max 50 nodes to avoid huge routes)
+        if len(route_nodes) > 50:
+            route_nodes = route_nodes[:50]
+
+        sx, sy = node_coords[start_node]
 
         vehicles.append({
             "id":           f"v{v_idx}",
@@ -452,13 +588,47 @@ def build_vehicle_fleet(node_coords):
             "start_xy":     [round(sx, 2), round(sy, 2)],
             "base_route":   route_nodes
         })
-        
+
         if v_idx < 5 or v_idx >= NUM_VEHICLES - 5:
             print(f"       v{v_idx} ({label}): {len(route_nodes)} nodes, start={start_node}")
         elif v_idx == 5:
             print(f"       ... (skipping print for {NUM_VEHICLES - 10} vehicles) ...")
 
     return vehicles
+
+
+def _find_node_path(src_id, dst_id, adj):
+    """
+    Find the shortest path (as a list of node IDs) from src to dst.
+    Returns the path including both endpoints, or empty list if no path.
+    """
+    if src_id == dst_id:
+        return [src_id]
+
+    dist = {src_id: 0.0}
+    prev = {src_id: None}
+    heap = [(0.0, src_id)]
+
+    while heap:
+        d, u = heapq.heappop(heap)
+        if d > dist.get(u, float("inf")):
+            continue
+        if u == dst_id:
+            # Reconstruct path
+            path = []
+            node = dst_id
+            while node is not None:
+                path.append(node)
+                node = prev[node]
+            return list(reversed(path))
+        for v, w in adj.get(u, []):
+            nd = d + w
+            if nd < dist.get(v, float("inf")):
+                dist[v] = nd
+                prev[v] = u
+                heapq.heappush(heap, (nd, v))
+
+    return []
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -497,19 +667,23 @@ def write_json(passengers, vehicles, output_path):
 if __name__ == "__main__":
     print("=" * 62)
     print("  file1.py — Spatial Translator & JSON Generator")
+    print("  (Real Manhattan Network Edition)")
     print("=" * 62)
 
     # 1. Load SUMO network
     net, node_coords = load_network(SUMO_NET_XML)
 
-    # 2. Build node adjacency for Dijkstra (shortest-path computation)
-    adj = build_adjacency(net, node_coords)
+    # 2. Build node adjacency for Dijkstra
+    adj_walk, adj_drive = build_adjacencies(net, node_coords)
+
+    # 2b. Compute drive-graph SCC (used by both passengers and vehicles)
+    scc_nodes = compute_drive_scc(net)
 
     # 3. Convert all taxi trips → passenger records
-    passengers = process_passengers(INPUT_CSV, node_coords, adj)
+    passengers = process_passengers(INPUT_CSV, net, node_coords, adj_walk, adj_drive, scc_nodes)
 
-    # 4. Synthesise vehicle fleet with diverse grid corridors
-    vehicles = build_vehicle_fleet(node_coords)
+    # 4. Synthesise vehicle fleet with diverse corridors
+    vehicles = build_vehicle_fleet(net, node_coords, adj_drive, scc_nodes)
 
     # 5. Write the static simulation snapshot to JSON
     write_json(passengers, vehicles, OUTPUT_JSON)

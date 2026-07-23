@@ -1,0 +1,553 @@
+  spawned v0 on 50-edge base route
+  spawned v1 on 162-edge base route
+  spawned v2 on 57-edge base route
+  spawned v3 on 61-edge base route
+  spawned v4 on 53-edge base route
+  spawned v5 on 36-edge base route
+  spawned v6 on 66-edge base route
+  spawned v7 on 58-edge base route
+  spawned v8 on 66-edge base route
+  spawned v9 on 50-edge base route
+  spawned v10 on 57-edge base route
+  spawned v11 on 65-edge base route
+  spawned v12 on 50-edge base route
+  spawned v13 on 68-edge base route
+  spawned v14 on 2-edge base route
+  spawned v15 on 91-edge base route
+  [WARN] could not build initial route for v16: No usable passenger edge attached to node 100662028
+  spawned v17 on 32-edge base route
+  spawned v18 on 42-edge base route
+  spawned v19 on 54-edge base route
+  spawned v20 on 41-edge base route
+  spawned v21 on 93-edge base route
+  spawned v22 on 25-edge base route
+  spawned v23 on 51-edge base route
+  spawned v24 on 43-edge base route
+  spawned v25 on 47-edge base route
+  spawned v26 on 49-edge base route
+  spawned v27 on 48-edge base route
+  spawned v28 on 46-edge base route
+  spawned v29 on 66-edge base route
+  [WARN] could not build initial route for v30: No usable passenger edge attached to node 277482087
+  spawned v31 on 117-edge base route
+  spawned v32 on 50-edge base route
+  spawned v33 on 49-edge base route
+  spawned v34 on 50-edge base route
+  spawned v35 on 68-edge base route
+  spawned v36 on 61-edge base route
+  spawned v37 on 43-edge base route
+  spawned v38 on 74-edge base route
+  spawned v39 on 38-edge base route
+  spawned v40 on 70-edge base route
+  [WARN] could not build initial route for v41: No usable passenger edge attached to node 276032821
+  [WARN] could not build initial route for v42: No usable passenger edge attached to node cluster_11998094745_42759314
+  spawned v43 on 53-edge base route
+  spawned v44 on 52-edge base route
+  spawned v45 on 50-edge base route
+  spawned v46 on 58-edge base route
+  [WARN] could not build initial route for v47: No usable passenger edge attached to node 13068268097
+  spawned v48 on 50-edge base route
+  spawned v49 on 73-edge base route
+  spawned v50 on 63-edge base route
+  [WARN] could not build initial route for v51: No usable passenger edge attached to node 8123418696
+  spawned v52 on 73-edge base route
+  spawned v53 on 50-edge base route
+  spawned v54 on 50-edge base route
+  spawned v55 on 36-edge base route
+  spawned v56 on 71-edge base route
+  spawned v57 on 37-edge base route
+  [WARN] could not build initial route for v58: No usable passenger edge attached to node 11288880278
+  spawned v59 on 31-edge base route
+  spawned v60 on 40-edge base route
+  spawned v61 on 54-edge base route
+  spawned v62 on 37-edge base route
+  spawned v63 on 52-edge base route
+  [WARN] could not build initial route for v64: No usable passenger edge attached to node 42777962
+  spawned v65 on 52-edge base route
+  spawned v66 on 50-edge base route
+  spawned v67 on 56-edge base route
+  spawned v68 on 39-edge base route
+  spawned v69 on 51-edge base route
+  spawned v70 on 60-edge base route
+  spawned v71 on 58-edge base route
+  spawned v72 on 61-edge base route
+  spawned v73 on 50-edge base route
+  spawned v74 on 50-edge base route
+  spawned v75 on 43-edge base route
+  spawned v76 on 80-edge base route
+  spawned v77 on 38-edge base route
+  spawned v78 on 52-edge base route
+  spawned v79 on 50-edge base route
+  [WARN] could not build initial route for v80: No usable passenger edge attached to node 1545097288
+  spawned v81 on 50-edge base route
+  [WARN] could not build initial route for v82: No usable passenger edge attached to node 748726602
+  spawned v83 on 160-edge base route
+  spawned v84 on 73-edge base route
+  spawned v85 on 47-edge base route
+  [WARN] could not build initial route for v86: No usable passenger edge attached to node 1203709420
+  spawned v87 on 66-edge base route
+  spawned v88 on 71-edge base route
+  spawned v89 on 50-edge base route
+  [WARN] could not build initial route for v90: No usable passenger edge attached to node 13068325352
+  spawned v91 on 55-edge base route
+  spawned v92 on 50-edge base route
+  spawned v93 on 62-edge base route
+  spawned v94 on 30-edge base route
+  spawned v95 on 44-edge base route
+  spawned v96 on 50-edge base route
+  spawned v97 on 48-edge base route
+  spawned v98 on 84-edge base route
+  [WARN] could not build initial route for v99: No usable passenger edge attached to node 13068269725
+  spawned v100 on 64-edge base route
+  spawned v101 on 60-edge base route
+  spawned v102 on 68-edge base route
+  spawned v103 on 66-edge base route
+  spawned v104 on 37-edge base route
+  spawned v105 on 60-edge base route
+  spawned v106 on 50-edge base route
+  spawned v107 on 46-edge base route
+  spawned v108 on 76-edge base route
+  spawned v109 on 50-edge base route
+  [WARN] could not build initial route for v110: No usable passenger edge attached to node 9561543911
+  spawned v111 on 67-edge base route
+  spawned v112 on 36-edge base route
+  spawned v113 on 54-edge base route
+  [WARN] could not build initial route for v114: No usable passenger edge attached to node cluster_3040306808_7734633964
+  spawned v115 on 142-edge base route
+  spawned v116 on 29-edge base route
+  spawned v117 on 49-edge base route
+  spawned v118 on 36-edge base route
+  spawned v119 on 42-edge base route
+  spawned v120 on 117-edge base route
+  spawned v121 on 73-edge base route
+  spawned v122 on 53-edge base route
+  spawned v123 on 44-edge base route
+  spawned v124 on 55-edge base route
+  spawned v125 on 64-edge base route
+  [WARN] could not build initial route for v126: No usable passenger edge attached to node cluster_11998094746_7532175317
+  spawned v127 on 50-edge base route
+  spawned v128 on 54-edge base route
+  spawned v129 on 42-edge base route
+  spawned v130 on 50-edge base route
+  spawned v131 on 44-edge base route
+  spawned v132 on 49-edge base route
+  spawned v133 on 51-edge base route
+  spawned v134 on 66-edge base route
+  spawned v135 on 50-edge base route
+  spawned v136 on 53-edge base route
+  spawned v137 on 62-edge base route
+  spawned v138 on 41-edge base route
+  spawned v139 on 61-edge base route
+  spawned v140 on 67-edge base route
+  [WARN] could not build initial route for v141: No usable passenger edge attached to node 1544756440
+  spawned v142 on 52-edge base route
+  spawned v143 on 45-edge base route
+  spawned v144 on 38-edge base route
+  spawned v145 on 78-edge base route
+  spawned v146 on 50-edge base route
+  spawned v147 on 47-edge base route
+  spawned v148 on 59-edge base route
+  [WARN] could not build initial route for v149: No usable passenger edge attached to node 1544847091
+  [WARN] could not build initial route for v150: No usable passenger edge attached to node 3040306430
+  spawned v151 on 59-edge base route
+  spawned v152 on 64-edge base route
+  spawned v153 on 146-edge base route
+  spawned v154 on 50-edge base route
+  spawned v155 on 56-edge base route
+  spawned v156 on 57-edge base route
+  spawned v157 on 42-edge base route
+  spawned v158 on 27-edge base route
+  spawned v159 on 47-edge base route
+  spawned v160 on 49-edge base route
+  spawned v161 on 54-edge base route
+  [WARN] could not build initial route for v162: No usable passenger edge attached to node 11288880278
+  spawned v163 on 46-edge base route
+  spawned v164 on 50-edge base route
+  spawned v165 on 55-edge base route
+  spawned v166 on 67-edge base route
+  spawned v167 on 65-edge base route
+  spawned v168 on 52-edge base route
+  spawned v169 on 36-edge base route
+  spawned v170 on 50-edge base route
+  [WARN] could not build initial route for v171: No usable passenger edge attached to node 3786876211
+  spawned v172 on 50-edge base route
+  [WARN] could not build initial route for v173: No usable passenger edge attached to node 5324454006
+  [WARN] could not build initial route for v174: No usable passenger edge attached to node cluster_10207247487_10207250517
+  spawned v175 on 50-edge base route
+  spawned v176 on 56-edge base route
+  spawned v177 on 39-edge base route
+  [WARN] could not build initial route for v178: No usable passenger edge attached to node 10132643449
+  spawned v179 on 46-edge base route
+  spawned v180 on 46-edge base route
+  spawned v181 on 50-edge base route
+  spawned v182 on 75-edge base route
+  spawned v183 on 52-edge base route
+  spawned v184 on 71-edge base route
+  spawned v185 on 50-edge base route
+  spawned v186 on 54-edge base route
+  spawned v187 on 55-edge base route
+  spawned v188 on 52-edge base route
+  spawned v189 on 70-edge base route
+  spawned v190 on 66-edge base route
+  spawned v191 on 52-edge base route
+  spawned v192 on 84-edge base route
+  spawned v193 on 143-edge base route
+  spawned v194 on 55-edge base route
+  spawned v195 on 55-edge base route
+  spawned v196 on 50-edge base route
+  spawned v197 on 42-edge base route
+  spawned v198 on 44-edge base route
+  spawned v199 on 50-edge base route
+  spawned v200 on 70-edge base route
+  spawned v201 on 50-edge base route
+  spawned v202 on 44-edge base route
+  spawned v203 on 44-edge base route
+  spawned v204 on 40-edge base route
+  spawned v205 on 48-edge base route
+  spawned v206 on 50-edge base route
+  spawned v207 on 43-edge base route
+  spawned v208 on 37-edge base route
+  spawned v209 on 54-edge base route
+  spawned v210 on 50-edge base route
+  spawned v211 on 36-edge base route
+  spawned v212 on 22-edge base route
+  spawned v213 on 138-edge base route
+  spawned v214 on 161-edge base route
+  spawned v215 on 55-edge base route
+  spawned v216 on 76-edge base route
+  spawned v217 on 46-edge base route
+  spawned v218 on 52-edge base route
+  spawned v219 on 50-edge base route
+  spawned v220 on 50-edge base route
+  spawned v221 on 59-edge base route
+  spawned v222 on 45-edge base route
+  spawned v223 on 54-edge base route
+  spawned v224 on 71-edge base route
+  [WARN] could not build initial route for v225: No usable passenger edge attached to node 2520376055
+  spawned v226 on 66-edge base route
+  spawned v227 on 48-edge base route
+  spawned v228 on 52-edge base route
+  spawned v229 on 50-edge base route
+  spawned v230 on 57-edge base route
+  spawned v231 on 51-edge base route
+  spawned v232 on 52-edge base route
+  [WARN] could not build initial route for v233: No usable passenger edge attached to node 42777962
+  spawned v234 on 63-edge base route
+  spawned v235 on 45-edge base route
+  spawned v236 on 50-edge base route
+  spawned v237 on 46-edge base route
+  spawned v238 on 2-edge base route
+  spawned v239 on 48-edge base route
+  spawned v240 on 50-edge base route
+  spawned v241 on 50-edge base route
+  spawned v242 on 44-edge base route
+  spawned v243 on 57-edge base route
+  spawned v244 on 57-edge base route
+  spawned v245 on 98-edge base route
+  spawned v246 on 68-edge base route
+  spawned v247 on 50-edge base route
+  spawned v248 on 39-edge base route
+  spawned v249 on 50-edge base route
+  spawned v250 on 53-edge base route
+  [WARN] could not build initial route for v251: No usable passenger edge attached to node 10868090826
+  spawned v252 on 42-edge base route
+  spawned v253 on 62-edge base route
+  spawned v254 on 2-edge base route
+  spawned v255 on 73-edge base route
+  spawned v256 on 52-edge base route
+  spawned v257 on 37-edge base route
+  spawned v258 on 47-edge base route
+  spawned v259 on 56-edge base route
+  spawned v260 on 59-edge base route
+  spawned v261 on 100-edge base route
+  spawned v262 on 51-edge base route
+  [WARN] could not build initial route for v263: No usable passenger edge attached to node 12527858540
+  spawned v264 on 43-edge base route
+  spawned v265 on 54-edge base route
+  spawned v266 on 51-edge base route
+  spawned v267 on 47-edge base route
+  spawned v268 on 50-edge base route
+  [WARN] could not build initial route for v269: No usable passenger edge attached to node 42445561
+  spawned v270 on 50-edge base route
+  spawned v271 on 50-edge base route
+  spawned v272 on 51-edge base route
+  spawned v273 on 55-edge base route
+  spawned v274 on 49-edge base route
+  spawned v275 on 52-edge base route
+  spawned v276 on 81-edge base route
+  spawned v277 on 107-edge base route
+  spawned v278 on 50-edge base route
+  spawned v279 on 66-edge base route
+  spawned v280 on 46-edge base route
+  spawned v281 on 52-edge base route
+  spawned v282 on 52-edge base route
+  spawned v283 on 35-edge base route
+  spawned v284 on 155-edge base route
+  spawned v285 on 60-edge base route
+  spawned v286 on 49-edge base route
+  spawned v287 on 57-edge base route
+  spawned v288 on 40-edge base route
+  spawned v289 on 46-edge base route
+  [WARN] could not build initial route for v290: No usable passenger edge attached to node 2385899532
+  spawned v291 on 68-edge base route
+  spawned v292 on 68-edge base route
+  spawned v293 on 34-edge base route
+  spawned v294 on 50-edge base route
+  spawned v295 on 42-edge base route
+  spawned v296 on 27-edge base route
+  spawned v297 on 63-edge base route
+  spawned v298 on 37-edge base route
+  spawned v299 on 56-edge base route
+  spawned v300 on 55-edge base route
+  spawned v301 on 38-edge base route
+  spawned v302 on 37-edge base route
+  [WARN] could not build initial route for v303: No usable passenger edge attached to node 3036361485
+  [WARN] could not build initial route for v304: No usable passenger edge attached to node 1544847090
+  spawned v305 on 53-edge base route
+  spawned v306 on 64-edge base route
+  spawned v307 on 53-edge base route
+  spawned v308 on 59-edge base route
+  spawned v309 on 38-edge base route
+  spawned v310 on 47-edge base route
+  spawned v311 on 66-edge base route
+  spawned v312 on 2-edge base route
+  spawned v313 on 56-edge base route
+  [WARN] could not build initial route for v314: No usable passenger edge attached to node 1544756425
+  spawned v315 on 39-edge base route
+  spawned v316 on 50-edge base route
+  [WARN] could not build initial route for v317: No usable passenger edge attached to node 42432875
+  spawned v318 on 140-edge base route
+  spawned v319 on 68-edge base route
+  spawned v320 on 68-edge base route
+  spawned v321 on 74-edge base route
+  spawned v322 on 49-edge base route
+  spawned v323 on 34-edge base route
+  spawned v324 on 50-edge base route
+  spawned v325 on 51-edge base route
+  spawned v326 on 37-edge base route
+  spawned v327 on 57-edge base route
+  spawned v328 on 64-edge base route
+  [WARN] could not build initial route for v329: No usable passenger edge attached to node cluster_3040261609_731930601
+  spawned v330 on 55-edge base route
+  spawned v331 on 59-edge base route
+  spawned v332 on 39-edge base route
+  spawned v333 on 61-edge base route
+  spawned v334 on 79-edge base route
+  spawned v335 on 63-edge base route
+  spawned v336 on 63-edge base route
+  spawned v337 on 54-edge base route
+  spawned v338 on 21-edge base route
+  spawned v339 on 71-edge base route
+  spawned v340 on 50-edge base route
+  spawned v341 on 31-edge base route
+  [WARN] could not build initial route for v342: No usable passenger edge attached to node 5309056465
+  spawned v343 on 57-edge base route
+  spawned v344 on 60-edge base route
+  spawned v345 on 53-edge base route
+  spawned v346 on 52-edge base route
+  spawned v347 on 47-edge base route
+  spawned v348 on 53-edge base route
+  [WARN] could not build initial route for v349: No usable passenger edge attached to node 60923321
+  spawned v350 on 54-edge base route
+  spawned v351 on 120-edge base route
+  spawned v352 on 46-edge base route
+  spawned v353 on 47-edge base route
+  spawned v354 on 58-edge base route
+  spawned v355 on 48-edge base route
+  spawned v356 on 53-edge base route
+  spawned v357 on 54-edge base route
+  spawned v358 on 49-edge base route
+  [WARN] could not build initial route for v359: No usable passenger edge attached to node 42456979
+  spawned v360 on 47-edge base route
+  spawned v361 on 55-edge base route
+  spawned v362 on 50-edge base route
+  spawned v363 on 52-edge base route
+  spawned v364 on 28-edge base route
+  spawned v365 on 66-edge base route
+  spawned v366 on 2-edge base route
+  spawned v367 on 49-edge base route
+  spawned v368 on 50-edge base route
+  spawned v369 on 47-edge base route
+  spawned v370 on 55-edge base route
+  spawned v371 on 32-edge base route
+  spawned v372 on 64-edge base route
+  spawned v373 on 44-edge base route
+  spawned v374 on 47-edge base route
+  spawned v375 on 37-edge base route
+  spawned v376 on 2-edge base route
+  spawned v377 on 50-edge base route
+  spawned v378 on 54-edge base route
+  spawned v379 on 46-edge base route
+  spawned v380 on 49-edge base route
+  [WARN] could not build initial route for v381: No usable passenger edge attached to node 1545097337
+  spawned v382 on 60-edge base route
+  spawned v383 on 52-edge base route
+  spawned v384 on 86-edge base route
+  spawned v385 on 62-edge base route
+  [WARN] could not build initial route for v386: No usable passenger edge attached to node 1545521302
+  spawned v387 on 50-edge base route
+  spawned v388 on 50-edge base route
+  spawned v389 on 56-edge base route
+  spawned v390 on 58-edge base route
+  [WARN] could not build initial route for v391: No usable passenger edge attached to node cluster_13041475432_1545120631_42747751_5588603828
+  spawned v392 on 51-edge base route
+  spawned v393 on 45-edge base route
+  spawned v394 on 53-edge base route
+  spawned v395 on 51-edge base route
+  spawned v396 on 77-edge base route
+  spawned v397 on 59-edge base route
+  spawned v398 on 49-edge base route
+  spawned v399 on 64-edge base route
+  spawned v400 on 42-edge base route
+  spawned v401 on 55-edge base route
+  spawned v402 on 80-edge base route
+  spawned v403 on 36-edge base route
+  spawned v404 on 63-edge base route
+  [WARN] could not build initial route for v405: No usable passenger edge attached to node cluster_10868090805_10868090807_2302043705_2302043706_#1more
+  spawned v406 on 57-edge base route
+  spawned v407 on 41-edge base route
+  spawned v408 on 43-edge base route
+  spawned v409 on 50-edge base route
+  spawned v410 on 50-edge base route
+  spawned v411 on 46-edge base route
+  spawned v412 on 50-edge base route
+  spawned v413 on 57-edge base route
+  spawned v414 on 48-edge base route
+  spawned v415 on 40-edge base route
+  spawned v416 on 79-edge base route
+  spawned v417 on 143-edge base route
+  spawned v418 on 57-edge base route
+  spawned v419 on 60-edge base route
+  spawned v420 on 115-edge base route
+  spawned v421 on 75-edge base route
+  spawned v422 on 42-edge base route
+  spawned v423 on 50-edge base route
+  [WARN] could not build initial route for v424: No usable passenger edge attached to node 7612920641
+  [WARN] could not build initial route for v425: No usable passenger edge attached to node 42422449
+  spawned v426 on 60-edge base route
+  [WARN] could not build initial route for v427: No usable passenger edge attached to node 721834116
+  spawned v428 on 84-edge base route
+  spawned v429 on 73-edge base route
+  spawned v430 on 49-edge base route
+  [WARN] could not build initial route for v431: No usable passenger edge attached to node 3040306397
+  spawned v432 on 73-edge base route
+  spawned v433 on 52-edge base route
+  spawned v434 on 62-edge base route
+  [WARN] could not build initial route for v435: No usable passenger edge attached to node 8003296012
+  spawned v436 on 50-edge base route
+  spawned v437 on 32-edge base route
+  spawned v438 on 50-edge base route
+  spawned v439 on 46-edge base route
+  spawned v440 on 2-edge base route
+  spawned v441 on 58-edge base route
+  spawned v442 on 68-edge base route
+  spawned v443 on 50-edge base route
+  spawned v444 on 17-edge base route
+  [WARN] could not build initial route for v445: No usable passenger edge attached to node 60918579
+  spawned v446 on 56-edge base route
+  spawned v447 on 42-edge base route
+  spawned v448 on 51-edge base route
+  spawned v449 on 50-edge base route
+  spawned v450 on 59-edge base route
+  spawned v451 on 50-edge base route
+  [WARN] could not build initial route for v452: No usable passenger edge attached to node cluster_11882279795_7591586309
+  [WARN] could not build initial route for v453: No usable passenger edge attached to node 42747763
+  [WARN] could not build initial route for v454: No usable passenger edge attached to node 2411418430
+  [WARN] could not build initial route for v455: No usable passenger edge attached to node 100662028
+  [WARN] could not build initial route for v456: No usable passenger edge attached to node 277482223
+  spawned v457 on 52-edge base route
+  spawned v458 on 52-edge base route
+  spawned v459 on 56-edge base route
+  spawned v460 on 54-edge base route
+  spawned v461 on 33-edge base route
+  spawned v462 on 51-edge base route
+  spawned v463 on 52-edge base route
+  [WARN] could not build initial route for v464: No usable passenger edge attached to node cluster_10868090808_42443990
+  spawned v465 on 59-edge base route
+  spawned v466 on 59-edge base route
+  spawned v467 on 43-edge base route
+  spawned v468 on 63-edge base route
+  spawned v469 on 47-edge base route
+  spawned v470 on 42-edge base route
+  spawned v471 on 50-edge base route
+  spawned v472 on 50-edge base route
+  spawned v473 on 49-edge base route
+  spawned v474 on 66-edge base route
+  [WARN] could not build initial route for v475: No usable passenger edge attached to node 3786728763
+  spawned v476 on 155-edge base route
+  spawned v477 on 49-edge base route
+  spawned v478 on 126-edge base route
+  spawned v479 on 55-edge base route
+  spawned v480 on 66-edge base route
+  spawned v481 on 50-edge base route
+  spawned v482 on 66-edge base route
+  spawned v483 on 52-edge base route
+  [WARN] could not build initial route for v484: No usable passenger edge attached to node 60929035
+  spawned v485 on 50-edge base route
+  spawned v486 on 59-edge base route
+  spawned v487 on 52-edge base route
+  spawned v488 on 47-edge base route
+  spawned v489 on 47-edge base route
+  spawned v490 on 50-edge base route
+  spawned v491 on 56-edge base route
+  spawned v492 on 64-edge base route
+  spawned v493 on 46-edge base route
+  spawned v494 on 2-edge base route
+  spawned v495 on 51-edge base route
+  spawned v496 on 107-edge base route
+  [WARN] could not build initial route for v497: No usable passenger edge attached to node 1544756314
+  spawned v498 on 51-edge base route
+  spawned v499 on 44-edge base route
+  [ASSIGN] t=    30s  vehicle=v1     subset=['p66', 'p64', 'p63']  cost=1.677  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v8     subset=['p44', 'p45']  cost=4.939  delta_new=1741.1m
+  [ASSIGN] t=    30s  vehicle=v12    subset=['p78', 'p79']  cost=4.574  delta_new=1366.0m
+  [ASSIGN] t=    30s  vehicle=v15    subset=['p87', 'p86']  cost=3.858  delta_new=541.9m
+  [ASSIGN] t=    30s  vehicle=v21    subset=['p18', 'p15', 'p16']  cost=3.686  delta_new=1849.5m
+  [ASSIGN] t=    30s  vehicle=v38    subset=['p56', 'p55']  cost=5.263  delta_new=2008.1m
+  [ASSIGN] t=    30s  vehicle=v76    subset=['p81', 'p82', 'p80']  cost=4.035  delta_new=2254.5m
+  [ASSIGN] t=    30s  vehicle=v88    subset=['p102']  cost=5.912  delta_new=1333.0m
+  [ASSIGN] t=    30s  vehicle=v93    subset=['p110', 'p111']  cost=6.046  delta_new=2903.0m
+  [ASSIGN] t=    30s  vehicle=v95    subset=['p65']  cost=6.488  delta_new=1894.6m
+  [ASSIGN] t=    30s  vehicle=v129   subset=['p37']  cost=6.970  delta_new=2218.5m
+  [ASSIGN] t=    30s  vehicle=v134   subset=['p1']  cost=6.391  delta_new=1779.5m
+  [ASSIGN] t=    30s  vehicle=v153   subset=['p75', 'p76', 'p77']  cost=1.726  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v172   subset=['p28']  cost=6.877  delta_new=2234.4m
+  [ASSIGN] t=    30s  vehicle=v180   subset=['p36']  cost=5.735  delta_new=1074.9m
+  [ASSIGN] t=    30s  vehicle=v188   subset=['p20']  cost=6.664  delta_new=2048.7m
+  [ASSIGN] t=    30s  vehicle=v203   subset=['p90']  cost=5.432  delta_new=850.1m
+  [ASSIGN] t=    30s  vehicle=v214   subset=['p46', 'p47']  cost=3.149  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v221   subset=['p58']  cost=6.061  delta_new=1346.7m
+  [ASSIGN] t=    30s  vehicle=v289   subset=['p101']  cost=7.236  delta_new=2599.0m
+  [ASSIGN] t=    30s  vehicle=v297   subset=['p72', 'p70', 'p54']  cost=1.725  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v318   subset=['p19', 'p17']  cost=3.208  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v339   subset=['p59']  cost=7.089  delta_new=2552.3m
+  [ASSIGN] t=    30s  vehicle=v377   subset=['p33']  cost=4.552  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v395   subset=['p35']  cost=4.601  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v432   subset=['p21']  cost=6.335  delta_new=1720.7m
+  [ASSIGN] t=    30s  vehicle=v437   subset=['p69']  cost=6.872  delta_new=2234.5m
+  [ASSIGN] t=    30s  vehicle=v439   subset=['p85']  cost=4.543  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v477   subset=['p23']  cost=6.821  delta_new=2219.0m
+  [ASSIGN] t=    30s  vehicle=v485   subset=['p39']  cost=7.031  delta_new=2396.1m
+  [ASSIGN] t=    30s  vehicle=v489   subset=['p74', 'p71', 'p73']  cost=1.754  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v491   subset=['p8']  cost=6.852  delta_new=2183.8m
+  [ASSIGN] t=    60s  vehicle=v0     subset=['p173', 'p176', 'p177']  cost=1.693  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v2     subset=['p174', 'p175', 'p178']  cost=1.693  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v6     subset=['p125', 'p124']  cost=4.125  delta_new=785.5m
+  [ASSIGN] t=    60s  vehicle=v9     subset=['p217', 'p222', 'p218']  cost=4.774  delta_new=2642.3m
+  [ASSIGN] t=    60s  vehicle=v19    subset=['p138']  cost=5.849  delta_new=1229.3m
+  [ASSIGN] t=    60s  vehicle=v22    subset=['p195']  cost=6.038  delta_new=1487.9m
+  [ASSIGN] t=    60s  vehicle=v43    subset=['p208', 'p207']  cost=6.148  delta_new=2938.3m
+  [ASSIGN] t=    60s  vehicle=v52    subset=['p221', 'p219', 'p220']  cost=4.737  delta_new=2605.2m
+  [ASSIGN] t=    60s  vehicle=v55    subset=['p128', 'p131']  cost=5.631  delta_new=2351.5m
+  [ASSIGN] t=    60s  vehicle=v72    subset=['p144', 'p143']  cost=5.069  delta_new=1849.1m
+  [ASSIGN] t=    60s  vehicle=v83    subset=['p163']  cost=6.756  delta_new=2142.5m
+  [ASSIGN] t=    60s  vehicle=v91    subset=['p223']  cost=7.355  delta_new=2723.8m
+  [ASSIGN] t=    60s  vehicle=v122   subset=['p152']  cost=7.154  delta_new=2526.4m
+  [ASSIGN] t=    60s  vehicle=v139   subset=['p126']  cost=5.084  delta_new=464.3m
+  [ASSIGN] t=    60s  vehicle=v148   subset=['p118', 'p117']  cost=4.458  delta_new=1182.9m
+  [ASSIGN] t=    60s  vehicle=v170   subset=['p155', 'p156']  cost=6.257  delta_new=2988.0m
+  [ASSIGN] t=    60s  vehicle=v286   subset=['p186', 'p185']  cost=6.015  delta_new=2871.8m
+  [ASSIGN] t=    60s  vehicle=v307   subset=['p121']  cost=7.177  delta_new=2581.1m
+  [ASSIGN] t=    60s  vehicle=v322   subset=['p120']  cost=6.246  delta_new=1605.8m
+  [ASSIGN] t=    60s  vehicle=v356   subset=['p200']  cost=6.835  delta_new=2198.0m
+  [ASSIGN] t=    60s  vehicle=v461   subset=['p189']  cost=5.514  delta_new=835.9m

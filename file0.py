@@ -1,30 +1,24 @@
 """
-file0.py — Monthly Data Extraction & Per-Day Splitting
-=======================================================
+file0.py — Data Extraction & Filtering for Last Mile Assignment Model
+======================================================================
 Reads the raw 2016 NYC Yellow Taxi CSV in memory-safe chunks, applies
 a Manhattan bounding-box filter (pickup AND dropoff must be inside),
-then splits the data into one CSV per calendar day.
+then extracts a clean 1-hour window centred on the median pickup time.
 
-Output: day_data/day_01.csv, day_data/day_02.csv, …, day_data/day_31.csv
-        Each file contains the full 24 hours of that day, sorted
-        chronologically, with passengers expanded (one row per person).
-
-Can also be imported and called for a specific day number:
-    from file0 import generate_day_data
-    generate_day_data(day=5)   # produces day_data/day_05.csv
+Output: filtered_1hr_trips.csv  (5 columns, sorted chronologically)
 """
 
-import os
 import pandas as pd
 
 # ── Configuration ────────────────────────────────────────────────────
 INPUT_CSV      = "yellow_tripdata_2016-01.csv"   # path to the raw Kaggle file
-OUTPUT_DIR     = "day_data"                       # per-day CSVs go here
+OUTPUT_CSV     = "filtered_1hr_trips.csv"
 CHUNK_SIZE     = 200_000                          # rows per chunk (RAM-safe)
 
-# Manhattan 5 km x 5 km bounding box
-LAT_MIN, LAT_MAX =  40.7000,  40.7550
-LON_MIN, LON_MAX = -74.0200, -73.9700
+# Manhattan bounding box — covers the full island (Battery Park to Inwood)
+# Matches the SUMO network boundary in manhattan.net.xml
+LAT_MIN, LAT_MAX =  40.6990,  40.8820
+LON_MIN, LON_MAX = -74.0200, -73.9070
 
 # Columns we care about
 KEEP_COLS = [
@@ -35,7 +29,6 @@ KEEP_COLS = [
     "dropoff_longitude",
     "dropoff_latitude",
 ]
-
 
 # ── Phase 1: Chunk-based spatial filtering ───────────────────────────
 
@@ -54,7 +47,7 @@ def load_and_filter_spatial(csv_path):
     """
     Streams the raw CSV in chunks, keeps only rows where BOTH the pickup
     and dropoff coordinates are inside the bounding box, and returns a
-    single concatenated DataFrame with just the relevant columns.
+    single concatenated DataFrame with just the 5 relevant columns.
     """
     filtered_chunks = []
 
@@ -93,31 +86,39 @@ def load_and_filter_spatial(csv_path):
     return pd.concat(filtered_chunks, ignore_index=True)
 
 
-# ── Phase 2: Split by calendar day ───────────────────────────────────
+# ── Phase 2: 1-hour window centred on median pickup time ─────────────
 
-def split_by_day(df):
+def extract_one_hour_window(df):
     """
-    Groups the spatially-filtered DataFrame by calendar date (day of month).
-    Returns a dict  {day_number: DataFrame}  e.g. {1: df_jan1, 2: df_jan2, …}.
+    Finds the median tpep_pickup_datetime of the spatially filtered dataset,
+    then returns every trip whose pickup falls within the symmetric 1-hour
+    window on either side  ->  [median - 0.5 h, median + 0.5 h).
     """
-    df["day"] = df["tpep_pickup_datetime"].dt.day
-    day_groups = {}
-    for day_num, group_df in df.groupby("day"):
-        day_groups[int(day_num)] = group_df.drop(columns=["day"]).copy()
-    return day_groups
+    median_time = df["tpep_pickup_datetime"].median()
+    window_start = median_time - pd.Timedelta(hours=0.5)
+    window_end   = median_time + pd.Timedelta(hours=0.5)
+
+    print(f"\nMedian pickup time : {median_time}")
+    print(f"1-hour window      : {window_start}  ->  {window_end}")
+
+    mask = df["tpep_pickup_datetime"].between(window_start, window_end,
+                                              inclusive="left")
+    return df[mask].copy()
 
 
-# ── Phase 3: Expand & save one day ───────────────────────────────────
+# ── Phase 3: Sort and save ────────────────────────────────────────────
 
-def save_day_csv(df, output_path):
+def save_output(df, output_path):
     """
     Sorts chronologically, expands multi-passenger trips into one row per
     individual passenger, assigns a group_id to link passengers from the
-    same original trip, then writes the CSV.
+    same original trip, then writes the final CSV.
     """
-    df = df.sort_values("tpep_pickup_datetime").reset_index(drop=True)
+    df.sort_values("tpep_pickup_datetime", inplace=True)
+    df.reset_index(drop=True, inplace=True)
 
-    # Sanitise passenger_count
+    # ── Sanitise passenger_count ──────────────────────────────────────────
+    # Fill NaN / zero / negative with 1; cap absurd values at 9.
     df["passenger_count"] = (
         df["passenger_count"]
         .fillna(1)
@@ -125,7 +126,8 @@ def save_day_csv(df, output_path):
         .clip(lower=1, upper=9)
     )
 
-    # Expand rows: one row per individual passenger
+    # ── Expand rows: one row per individual passenger ─────────────────────
+    # group_id identifies passengers that share the same original trip.
     expanded_rows = []
     for group_id, (_, row) in enumerate(df.iterrows()):
         n = int(row["passenger_count"])
@@ -143,60 +145,23 @@ def save_day_csv(df, output_path):
     original_trips = len(df)
     total_passengers = len(expanded_df)
     multi = (df["passenger_count"] > 1).sum()
-    print(f"    Original trips       : {original_trips:,}")
-    print(f"    Multi-passenger trips: {multi:,}")
-    print(f"    Total passengers     : {total_passengers:,}  "
+    print(f"\nOriginal trips       : {original_trips:,}")
+    print(f"Multi-passenger trips: {multi:,}")
+    print(f"Total passengers     : {total_passengers:,}  "
           f"(expanded from {original_trips:,} trips)")
-    print(f"    Saved -> {output_path}")
-    return total_passengers
+    print(f"Saved -> {output_path}")
 
 
-def generate_day_data(day, spatial_df=None):
-    """
-    Convenience function: generate a single day's CSV.
-    If spatial_df is not provided, re-loads from the raw CSV (slower).
-    Returns the output file path.
-    """
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    if spatial_df is None:
-        print(f"=== Loading and filtering raw CSV for day {day} ===")
-        spatial_df = load_and_filter_spatial(INPUT_CSV)
-    day_groups = split_by_day(spatial_df)
-    if day not in day_groups:
-        raise ValueError(f"Day {day} not found in dataset. "
-                         f"Available days: {sorted(day_groups.keys())}")
-    out_path = os.path.join(OUTPUT_DIR, f"day_{day:02d}.csv")
-    print(f"\n  Day {day:02d}:")
-    save_day_csv(day_groups[day], out_path)
-    return out_path
-
-
-# ── Main ─────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("=" * 72)
-    print("  file0.py — Monthly Data Extraction & Per-Day Splitting")
-    print("=" * 72)
-
-    print("\n=== Phase 1: Spatial filtering (chunk-by-chunk) ===")
+    print("=== Phase 1: Spatial filtering (chunk-by-chunk) ===")
     spatial_df = load_and_filter_spatial(INPUT_CSV)
     print(f"\nTotal rows after spatial filter: {len(spatial_df):,}")
 
-    print("\n=== Phase 2: Splitting by calendar day ===")
-    day_groups = split_by_day(spatial_df)
-    print(f"Found {len(day_groups)} distinct days: {sorted(day_groups.keys())}")
+    print("\n=== Phase 2: Extracting 1-hour window ===")
+    windowed_df = extract_one_hour_window(spatial_df)
+    print(f"Rows in 1-hour window          : {len(windowed_df):,}")
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-    print("\n=== Phase 3: Saving per-day CSVs ===")
-    grand_total = 0
-    for day_num in sorted(day_groups.keys()):
-        out_path = os.path.join(OUTPUT_DIR, f"day_{day_num:02d}.csv")
-        print(f"\n  Day {day_num:02d}:")
-        count = save_day_csv(day_groups[day_num], out_path)
-        grand_total += count
-
-    print(f"\n{'=' * 72}")
-    print(f"  ✓  {len(day_groups)} per-day CSVs written to '{OUTPUT_DIR}/'")
-    print(f"     Grand total: {grand_total:,} individual passengers")
-    print(f"{'=' * 72}")
+    print("\n=== Phase 3: Saving output ===")
+    save_output(windowed_df, OUTPUT_CSV)

@@ -1,0 +1,1314 @@
+  spawned v0 on 2-edge base route
+  spawned v1 on 47-edge base route
+  spawned v2 on 50-edge base route
+  [WARN] could not build initial route for v3: No usable passenger edge attached to node 1696727885
+  [WARN] could not build initial route for v4: No usable passenger edge attached to node 277482223
+  spawned v5 on 56-edge base route
+  spawned v6 on 48-edge base route
+  spawned v7 on 39-edge base route
+  spawned v8 on 46-edge base route
+  spawned v9 on 55-edge base route
+  spawned v10 on 45-edge base route
+  spawned v11 on 24-edge base route
+  spawned v12 on 54-edge base route
+  spawned v13 on 50-edge base route
+  spawned v14 on 49-edge base route
+  spawned v15 on 50-edge base route
+  spawned v16 on 54-edge base route
+  spawned v17 on 50-edge base route
+  spawned v18 on 66-edge base route
+  [WARN] could not build initial route for v19: No usable passenger edge attached to node 7529976543
+  spawned v20 on 45-edge base route
+  spawned v21 on 50-edge base route
+  spawned v22 on 53-edge base route
+  spawned v23 on 50-edge base route
+  [WARN] could not build initial route for v24: No usable passenger edge attached to node cluster_10130977068_1545196705_42750160
+  [WARN] could not build initial route for v25: No usable passenger edge attached to node 6644311491
+  spawned v26 on 50-edge base route
+  spawned v27 on 53-edge base route
+  spawned v28 on 53-edge base route
+  spawned v29 on 50-edge base route
+  spawned v30 on 52-edge base route
+  spawned v31 on 58-edge base route
+  spawned v32 on 43-edge base route
+  [WARN] could not build initial route for v33: No usable passenger edge attached to node 6633355338
+  spawned v34 on 50-edge base route
+  spawned v35 on 49-edge base route
+  [WARN] could not build initial route for v36: No usable passenger edge attached to node 13207206238
+  spawned v37 on 51-edge base route
+  spawned v38 on 58-edge base route
+  spawned v39 on 50-edge base route
+  spawned v40 on 2-edge base route
+  spawned v41 on 38-edge base route
+  spawned v42 on 45-edge base route
+  spawned v43 on 46-edge base route
+  spawned v44 on 46-edge base route
+  spawned v45 on 46-edge base route
+  spawned v46 on 50-edge base route
+  spawned v47 on 40-edge base route
+  spawned v48 on 66-edge base route
+  [WARN] could not build initial route for v49: No usable passenger edge attached to node 1544756317
+  [WARN] could not build initial route for v50: No usable passenger edge attached to node cluster_10132643589_10132643590_12991055071_13017858967_#1more
+  spawned v51 on 2-edge base route
+  spawned v52 on 33-edge base route
+  spawned v53 on 50-edge base route
+  spawned v54 on 53-edge base route
+  spawned v55 on 52-edge base route
+  spawned v56 on 39-edge base route
+  spawned v57 on 32-edge base route
+  spawned v58 on 45-edge base route
+  spawned v59 on 51-edge base route
+  spawned v60 on 43-edge base route
+  spawned v61 on 50-edge base route
+  spawned v62 on 58-edge base route
+  spawned v63 on 44-edge base route
+  spawned v64 on 2-edge base route
+  spawned v65 on 33-edge base route
+  [WARN] could not build initial route for v66: No usable passenger edge attached to node 12067211124
+  spawned v67 on 37-edge base route
+  spawned v68 on 49-edge base route
+  spawned v69 on 50-edge base route
+  spawned v70 on 45-edge base route
+  spawned v71 on 2-edge base route
+  spawned v72 on 56-edge base route
+  spawned v73 on 33-edge base route
+  spawned v74 on 47-edge base route
+  spawned v75 on 59-edge base route
+  spawned v76 on 56-edge base route
+  spawned v77 on 51-edge base route
+  [WARN] could not build initial route for v78: No usable passenger edge attached to node cluster_3040261609_731930601
+  spawned v79 on 37-edge base route
+  spawned v80 on 32-edge base route
+  spawned v81 on 57-edge base route
+  spawned v82 on 50-edge base route
+  spawned v83 on 56-edge base route
+  spawned v84 on 56-edge base route
+  spawned v85 on 47-edge base route
+  spawned v86 on 52-edge base route
+  spawned v87 on 49-edge base route
+  spawned v88 on 35-edge base route
+  spawned v89 on 48-edge base route
+  spawned v90 on 2-edge base route
+  spawned v91 on 50-edge base route
+  spawned v92 on 25-edge base route
+  [WARN] could not build initial route for v93: No usable passenger edge attached to node cluster_13068319297_42735474
+  spawned v94 on 53-edge base route
+  spawned v95 on 47-edge base route
+  spawned v96 on 2-edge base route
+  spawned v97 on 56-edge base route
+  spawned v98 on 46-edge base route
+  [WARN] could not build initial route for v99: No usable passenger edge attached to node 60925897
+  spawned v100 on 58-edge base route
+  spawned v101 on 42-edge base route
+  [WARN] could not build initial route for v102: No usable passenger edge attached to node 886041646
+  spawned v103 on 34-edge base route
+  spawned v104 on 35-edge base route
+  spawned v105 on 33-edge base route
+  spawned v106 on 2-edge base route
+  spawned v107 on 27-edge base route
+  spawned v108 on 59-edge base route
+  spawned v109 on 46-edge base route
+  spawned v110 on 36-edge base route
+  spawned v111 on 45-edge base route
+  spawned v112 on 50-edge base route
+  [WARN] could not build initial route for v113: No usable passenger edge attached to node 12054487763
+  spawned v114 on 55-edge base route
+  [WARN] could not build initial route for v115: No usable passenger edge attached to node 42426915
+  spawned v116 on 37-edge base route
+  spawned v117 on 48-edge base route
+  spawned v118 on 50-edge base route
+  spawned v119 on 47-edge base route
+  spawned v120 on 55-edge base route
+  spawned v121 on 50-edge base route
+  spawned v122 on 39-edge base route
+  spawned v123 on 45-edge base route
+  spawned v124 on 50-edge base route
+  spawned v125 on 27-edge base route
+  spawned v126 on 41-edge base route
+  spawned v127 on 38-edge base route
+  spawned v128 on 46-edge base route
+  spawned v129 on 47-edge base route
+  spawned v130 on 43-edge base route
+  spawned v131 on 42-edge base route
+  spawned v132 on 50-edge base route
+  spawned v133 on 47-edge base route
+  spawned v134 on 36-edge base route
+  spawned v135 on 7-edge base route
+  spawned v136 on 43-edge base route
+  spawned v137 on 50-edge base route
+  spawned v138 on 50-edge base route
+  spawned v139 on 47-edge base route
+  spawned v140 on 2-edge base route
+  spawned v141 on 65-edge base route
+  spawned v142 on 54-edge base route
+  spawned v143 on 46-edge base route
+  spawned v144 on 59-edge base route
+  spawned v145 on 48-edge base route
+  spawned v146 on 38-edge base route
+  spawned v147 on 7-edge base route
+  spawned v148 on 50-edge base route
+  spawned v149 on 48-edge base route
+  spawned v150 on 42-edge base route
+  spawned v151 on 47-edge base route
+  spawned v152 on 48-edge base route
+  spawned v153 on 32-edge base route
+  spawned v154 on 36-edge base route
+  spawned v155 on 55-edge base route
+  spawned v156 on 53-edge base route
+  spawned v157 on 2-edge base route
+  spawned v158 on 49-edge base route
+  spawned v159 on 66-edge base route
+  spawned v160 on 50-edge base route
+  spawned v161 on 48-edge base route
+  spawned v162 on 53-edge base route
+  spawned v163 on 18-edge base route
+  spawned v164 on 49-edge base route
+  spawned v165 on 44-edge base route
+  spawned v166 on 65-edge base route
+  spawned v167 on 50-edge base route
+  spawned v168 on 50-edge base route
+  spawned v169 on 2-edge base route
+  spawned v170 on 44-edge base route
+  spawned v171 on 42-edge base route
+  spawned v172 on 58-edge base route
+  spawned v173 on 46-edge base route
+  spawned v174 on 37-edge base route
+  spawned v175 on 44-edge base route
+  spawned v176 on 50-edge base route
+  spawned v177 on 53-edge base route
+  spawned v178 on 50-edge base route
+  spawned v179 on 51-edge base route
+  spawned v180 on 50-edge base route
+  [WARN] could not build initial route for v181: No usable passenger edge attached to node cluster_1241864793_12825397392_12825397393
+  spawned v182 on 2-edge base route
+  [WARN] could not build initial route for v183: No usable passenger edge attached to node 1544756357
+  [WARN] could not build initial route for v184: No usable passenger edge attached to node 371218803
+  [WARN] could not build initial route for v185: No usable passenger edge attached to node 3551738975
+  spawned v186 on 64-edge base route
+  spawned v187 on 46-edge base route
+  spawned v188 on 57-edge base route
+  spawned v189 on 48-edge base route
+  [WARN] could not build initial route for v190: No usable passenger edge attached to node 33145993#0-AddedOnRampNode
+  spawned v191 on 58-edge base route
+  [WARN] could not build initial route for v192: No usable passenger edge attached to node 9153831902
+  spawned v193 on 63-edge base route
+  spawned v194 on 50-edge base route
+  spawned v195 on 37-edge base route
+  spawned v196 on 63-edge base route
+  [WARN] could not build initial route for v197: No usable passenger edge attached to node 10173362953
+  spawned v198 on 63-edge base route
+  spawned v199 on 76-edge base route
+  spawned v200 on 41-edge base route
+  spawned v201 on 42-edge base route
+  spawned v202 on 50-edge base route
+  spawned v203 on 51-edge base route
+  spawned v204 on 57-edge base route
+  spawned v205 on 51-edge base route
+  [WARN] could not build initial route for v206: No usable passenger edge attached to node 13232762731
+  spawned v207 on 50-edge base route
+  spawned v208 on 61-edge base route
+  spawned v209 on 48-edge base route
+  spawned v210 on 50-edge base route
+  [WARN] could not build initial route for v211: No usable passenger edge attached to node 60928941
+  spawned v212 on 36-edge base route
+  spawned v213 on 48-edge base route
+  spawned v214 on 50-edge base route
+  spawned v215 on 47-edge base route
+  [WARN] could not build initial route for v216: No usable passenger edge attached to node cluster_10132643254_42733253
+  spawned v217 on 50-edge base route
+  spawned v218 on 2-edge base route
+  spawned v219 on 45-edge base route
+  spawned v220 on 42-edge base route
+  spawned v221 on 50-edge base route
+  spawned v222 on 61-edge base route
+  spawned v223 on 49-edge base route
+  spawned v224 on 67-edge base route
+  [WARN] could not build initial route for v225: No usable passenger edge attached to node 3040306653
+  spawned v226 on 51-edge base route
+  [WARN] could not build initial route for v227: No usable passenger edge attached to node 277482241
+  spawned v228 on 50-edge base route
+  spawned v229 on 53-edge base route
+  [WARN] could not build initial route for v230: No usable passenger edge attached to node 60915166
+  [WARN] could not build initial route for v231: No usable passenger edge attached to node 701223494
+  spawned v232 on 44-edge base route
+  spawned v233 on 50-edge base route
+  [WARN] could not build initial route for v234: No usable passenger edge attached to node 2822090449
+  spawned v235 on 50-edge base route
+  spawned v236 on 43-edge base route
+  spawned v237 on 62-edge base route
+  spawned v238 on 57-edge base route
+  spawned v239 on 50-edge base route
+  spawned v240 on 50-edge base route
+  spawned v241 on 55-edge base route
+  spawned v242 on 55-edge base route
+  spawned v243 on 46-edge base route
+  spawned v244 on 45-edge base route
+  spawned v245 on 56-edge base route
+  spawned v246 on 50-edge base route
+  spawned v247 on 50-edge base route
+  spawned v248 on 49-edge base route
+  spawned v249 on 41-edge base route
+  spawned v250 on 50-edge base route
+  spawned v251 on 48-edge base route
+  spawned v252 on 48-edge base route
+  spawned v253 on 40-edge base route
+  spawned v254 on 50-edge base route
+  [WARN] could not build initial route for v255: No usable passenger edge attached to node 13703152977
+  spawned v256 on 50-edge base route
+  [WARN] could not build initial route for v257: No usable passenger edge attached to node 2472137176
+  spawned v258 on 50-edge base route
+  spawned v259 on 46-edge base route
+  [WARN] could not build initial route for v260: No usable passenger edge attached to node 49032026-AddedOffRampNode
+  spawned v261 on 50-edge base route
+  spawned v262 on 48-edge base route
+  spawned v263 on 57-edge base route
+  spawned v264 on 63-edge base route
+  [WARN] could not build initial route for v265: No usable passenger edge attached to node 13703746577
+  spawned v266 on 50-edge base route
+  spawned v267 on 43-edge base route
+  spawned v268 on 59-edge base route
+  spawned v269 on 49-edge base route
+  spawned v270 on 50-edge base route
+  spawned v271 on 48-edge base route
+  spawned v272 on 50-edge base route
+  spawned v273 on 45-edge base route
+  [WARN] could not build initial route for v274: No usable passenger edge attached to node 7668989451
+  spawned v275 on 50-edge base route
+  spawned v276 on 44-edge base route
+  spawned v277 on 53-edge base route
+  spawned v278 on 55-edge base route
+  spawned v279 on 50-edge base route
+  [WARN] could not build initial route for v280: No usable passenger edge attached to node 13701208462
+  [WARN] could not build initial route for v281: No usable passenger edge attached to node 1545097295
+  spawned v282 on 50-edge base route
+  spawned v283 on 51-edge base route
+  spawned v284 on 60-edge base route
+  [WARN] could not build initial route for v285: No usable passenger edge attached to node 42728196
+  spawned v286 on 48-edge base route
+  [WARN] could not build initial route for v287: No usable passenger edge attached to node cluster_1242825857_9913669047
+  spawned v288 on 40-edge base route
+  spawned v289 on 39-edge base route
+  spawned v290 on 46-edge base route
+  spawned v291 on 55-edge base route
+  spawned v292 on 2-edge base route
+  spawned v293 on 35-edge base route
+  [WARN] could not build initial route for v294: No usable passenger edge attached to node 5487855835
+  spawned v295 on 48-edge base route
+  spawned v296 on 77-edge base route
+  spawned v297 on 50-edge base route
+  spawned v298 on 50-edge base route
+  spawned v299 on 50-edge base route
+  [WARN] could not build initial route for v300: No usable passenger edge attached to node 42757307
+  spawned v301 on 50-edge base route
+  [WARN] could not build initial route for v302: No usable passenger edge attached to node 701223494
+  spawned v303 on 28-edge base route
+  spawned v304 on 2-edge base route
+  spawned v305 on 50-edge base route
+  spawned v306 on 50-edge base route
+  spawned v307 on 47-edge base route
+  spawned v308 on 60-edge base route
+  spawned v309 on 60-edge base route
+  spawned v310 on 32-edge base route
+  spawned v311 on 57-edge base route
+  spawned v312 on 54-edge base route
+  [WARN] could not build initial route for v313: No usable passenger edge attached to node 5212861646
+  spawned v314 on 42-edge base route
+  spawned v315 on 50-edge base route
+  spawned v316 on 2-edge base route
+  [WARN] could not build initial route for v317: No usable passenger edge attached to node 10173362953
+  spawned v318 on 58-edge base route
+  [WARN] could not build initial route for v319: No usable passenger edge attached to node 1545097295
+  spawned v320 on 52-edge base route
+  spawned v321 on 48-edge base route
+  spawned v322 on 48-edge base route
+  spawned v323 on 47-edge base route
+  spawned v324 on 55-edge base route
+  spawned v325 on 50-edge base route
+  spawned v326 on 55-edge base route
+  [WARN] could not build initial route for v327: No usable passenger edge attached to node 60922879
+  spawned v328 on 56-edge base route
+  spawned v329 on 45-edge base route
+  spawned v330 on 31-edge base route
+  spawned v331 on 34-edge base route
+  spawned v332 on 31-edge base route
+  [WARN] could not build initial route for v333: No usable passenger edge attached to node 6532277255
+  [WARN] could not build initial route for v334: No usable passenger edge attached to node 7998566475
+  [WARN] could not build initial route for v335: No usable passenger edge attached to node 277482762
+  spawned v336 on 50-edge base route
+  [WARN] could not build initial route for v337: No usable passenger edge attached to node 595462050
+  spawned v338 on 45-edge base route
+  spawned v339 on 50-edge base route
+  [WARN] could not build initial route for v340: No usable passenger edge attached to node cluster_10132643447_42733226
+  spawned v341 on 47-edge base route
+  spawned v342 on 50-edge base route
+  spawned v343 on 37-edge base route
+  spawned v344 on 37-edge base route
+  spawned v345 on 54-edge base route
+  spawned v346 on 51-edge base route
+  spawned v347 on 51-edge base route
+  spawned v348 on 48-edge base route
+  spawned v349 on 51-edge base route
+  spawned v350 on 45-edge base route
+  spawned v351 on 50-edge base route
+  spawned v352 on 46-edge base route
+  [WARN] could not build initial route for v353: No usable passenger edge attached to node cluster_13773047395_3037067136
+  [WARN] could not build initial route for v354: No usable passenger edge attached to node 3040306653
+  spawned v355 on 48-edge base route
+  spawned v356 on 55-edge base route
+  [WARN] could not build initial route for v357: No usable passenger edge attached to node 10132643265
+  spawned v358 on 48-edge base route
+  spawned v359 on 45-edge base route
+  spawned v360 on 37-edge base route
+  spawned v361 on 50-edge base route
+  spawned v362 on 55-edge base route
+  spawned v363 on 50-edge base route
+  [WARN] could not build initial route for v364: No usable passenger edge attached to node 42724759
+  spawned v365 on 44-edge base route
+  spawned v366 on 50-edge base route
+  spawned v367 on 57-edge base route
+  spawned v368 on 51-edge base route
+  spawned v369 on 43-edge base route
+  spawned v370 on 50-edge base route
+  spawned v371 on 50-edge base route
+  spawned v372 on 37-edge base route
+  spawned v373 on 46-edge base route
+  spawned v374 on 2-edge base route
+  spawned v375 on 2-edge base route
+  spawned v376 on 50-edge base route
+  [WARN] could not build initial route for v377: No usable passenger edge attached to node 7734773022
+  spawned v378 on 50-edge base route
+  spawned v379 on 50-edge base route
+  [WARN] could not build initial route for v380: No usable passenger edge attached to node 886041606
+  spawned v381 on 34-edge base route
+  spawned v382 on 50-edge base route
+  spawned v383 on 50-edge base route
+  spawned v384 on 50-edge base route
+  spawned v385 on 40-edge base route
+  [WARN] could not build initial route for v386: No usable passenger edge attached to node 12163704705
+  [WARN] could not build initial route for v387: No usable passenger edge attached to node 4886156170
+  spawned v388 on 47-edge base route
+  spawned v389 on 40-edge base route
+  spawned v390 on 64-edge base route
+  spawned v391 on 66-edge base route
+  spawned v392 on 46-edge base route
+  spawned v393 on 38-edge base route
+  spawned v394 on 41-edge base route
+  spawned v395 on 34-edge base route
+  [WARN] could not build initial route for v396: No usable passenger edge attached to node 13068268097
+  spawned v397 on 47-edge base route
+  spawned v398 on 50-edge base route
+  spawned v399 on 60-edge base route
+  spawned v400 on 48-edge base route
+  spawned v401 on 55-edge base route
+  spawned v402 on 46-edge base route
+  [WARN] could not build initial route for v403: No usable passenger edge attached to node cluster_11623090342_11623090344_42823482_8250917515
+  spawned v404 on 61-edge base route
+  spawned v405 on 49-edge base route
+  spawned v406 on 39-edge base route
+  spawned v407 on 2-edge base route
+  spawned v408 on 58-edge base route
+  [WARN] could not build initial route for v409: No usable passenger edge attached to node 6644096957
+  spawned v410 on 47-edge base route
+  [WARN] could not build initial route for v411: No usable passenger edge attached to node 60918579
+  spawned v412 on 50-edge base route
+  [WARN] could not build initial route for v413: No usable passenger edge attached to node 371206270
+  spawned v414 on 36-edge base route
+  spawned v415 on 2-edge base route
+  spawned v416 on 45-edge base route
+  spawned v417 on 36-edge base route
+  spawned v418 on 53-edge base route
+  spawned v419 on 39-edge base route
+  spawned v420 on 51-edge base route
+  [WARN] could not build initial route for v421: No usable passenger edge attached to node 9156860438
+  spawned v422 on 61-edge base route
+  spawned v423 on 50-edge base route
+  spawned v424 on 72-edge base route
+  spawned v425 on 50-edge base route
+  spawned v426 on 48-edge base route
+  [WARN] could not build initial route for v427: No usable passenger edge attached to node cluster_12991055074_7081562640
+  [WARN] could not build initial route for v428: No usable passenger edge attached to node 9908621375
+  spawned v429 on 40-edge base route
+  spawned v430 on 49-edge base route
+  spawned v431 on 49-edge base route
+  spawned v432 on 49-edge base route
+  [WARN] could not build initial route for v433: No usable passenger edge attached to node 42764987
+  spawned v434 on 53-edge base route
+  spawned v435 on 63-edge base route
+  spawned v436 on 2-edge base route
+  spawned v437 on 53-edge base route
+  spawned v438 on 49-edge base route
+  spawned v439 on 68-edge base route
+  spawned v440 on 46-edge base route
+  spawned v441 on 46-edge base route
+  spawned v442 on 50-edge base route
+  spawned v443 on 43-edge base route
+  [WARN] could not build initial route for v444: No usable passenger edge attached to node 7924346800
+  spawned v445 on 38-edge base route
+  spawned v446 on 50-edge base route
+  [WARN] could not build initial route for v447: No usable passenger edge attached to node cluster_6216836461_6257070569
+  spawned v448 on 44-edge base route
+  spawned v449 on 50-edge base route
+  spawned v450 on 50-edge base route
+  [WARN] could not build initial route for v451: No usable passenger edge attached to node 4604406921
+  spawned v452 on 50-edge base route
+  spawned v453 on 57-edge base route
+  spawned v454 on 36-edge base route
+  spawned v455 on 2-edge base route
+  spawned v456 on 2-edge base route
+  spawned v457 on 50-edge base route
+  spawned v458 on 51-edge base route
+  spawned v459 on 46-edge base route
+  spawned v460 on 2-edge base route
+  spawned v461 on 49-edge base route
+  spawned v462 on 46-edge base route
+  spawned v463 on 50-edge base route
+  spawned v464 on 44-edge base route
+  spawned v465 on 37-edge base route
+  spawned v466 on 42-edge base route
+  spawned v467 on 47-edge base route
+  spawned v468 on 2-edge base route
+  spawned v469 on 2-edge base route
+  spawned v470 on 59-edge base route
+  spawned v471 on 2-edge base route
+  spawned v472 on 2-edge base route
+  spawned v473 on 50-edge base route
+  [WARN] could not build initial route for v474: No usable passenger edge attached to node cluster_13020770637_1581431079_5478818942
+  [WARN] could not build initial route for v475: No usable passenger edge attached to node 3037022334
+  spawned v476 on 45-edge base route
+  spawned v477 on 45-edge base route
+  spawned v478 on 38-edge base route
+  [WARN] could not build initial route for v479: No usable passenger edge attached to node cluster_42761237_9908621374_9908621378_9908621380
+  spawned v480 on 52-edge base route
+  spawned v481 on 50-edge base route
+  [WARN] could not build initial route for v482: No usable passenger edge attached to node cluster_10868090834_42431724
+  spawned v483 on 43-edge base route
+  spawned v484 on 21-edge base route
+  spawned v485 on 50-edge base route
+  spawned v486 on 42-edge base route
+  spawned v487 on 49-edge base route
+  spawned v488 on 50-edge base route
+  spawned v489 on 61-edge base route
+  spawned v490 on 45-edge base route
+  spawned v491 on 49-edge base route
+  spawned v492 on 56-edge base route
+  spawned v493 on 50-edge base route
+  spawned v494 on 50-edge base route
+  spawned v495 on 54-edge base route
+  spawned v496 on 50-edge base route
+  spawned v497 on 50-edge base route
+  spawned v498 on 56-edge base route
+  spawned v499 on 64-edge base route
+  [ASSIGN] t=    30s  vehicle=v5     subset=['p44', 'p45']  cost=3.229  delta_new=46.9m
+  [ASSIGN] t=    30s  vehicle=v65    subset=['p87']  cost=7.252  delta_new=2633.1m
+  [ASSIGN] t=    30s  vehicle=v95    subset=['p66', 'p64', 'p63']  cost=4.260  delta_new=2548.6m
+  [ASSIGN] t=    30s  vehicle=v105   subset=['p78', 'p79']  cost=5.837  delta_new=2699.5m
+  [ASSIGN] t=    30s  vehicle=v155   subset=['p65']  cost=6.757  delta_new=2218.1m
+  [ASSIGN] t=    30s  vehicle=v166   subset=['p102']  cost=6.089  delta_new=1516.1m
+  [ASSIGN] t=    60s  vehicle=v6     subset=['p175', 'p176', 'p173']  cost=3.403  delta_new=1796.2m
+  [ASSIGN] t=    60s  vehicle=v8     subset=['p178', 'p177', 'p174']  cost=1.606  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v13    subset=['p138']  cost=7.177  delta_new=2597.2m
+  [ASSIGN] t=    60s  vehicle=v15    subset=['p207', 'p208']  cost=6.075  delta_new=2908.5m
+  [ASSIGN] t=    60s  vehicle=v22    subset=['p125', 'p124']  cost=5.742  delta_new=2498.2m
+  [ASSIGN] t=    60s  vehicle=v35    subset=['p118', 'p117']  cost=5.230  delta_new=2044.1m
+  [ASSIGN] t=    60s  vehicle=v54    subset=['p217', 'p221', 'p222']  cost=3.201  delta_new=1233.6m
+  [ASSIGN] t=    60s  vehicle=v60    subset=['p218', 'p220', 'p219']  cost=1.967  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v74    subset=['p163']  cost=7.419  delta_new=2861.0m
+  [ASSIGN] t=    60s  vehicle=v90    subset=['p167', 'p123', 'p195']  cost=1.611  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v120   subset=['p185', 'p186']  cost=6.182  delta_new=2977.8m
+  [ASSIGN] t=    60s  vehicle=v251   subset=['p128', 'p131', 'p126']  cost=3.054  delta_new=1172.4m
+  [ASSIGN] t=    90s  vehicle=v1     subset=['p231']  cost=4.542  delta_new=0.0m
+  [ASSIGN] t=    90s  vehicle=v7     subset=['p327']  cost=5.835  delta_new=1309.3m
+  [ASSIGN] t=    90s  vehicle=v12    subset=['p333', 'p330']  cost=5.383  delta_new=2165.3m
+  [ASSIGN] t=    90s  vehicle=v28    subset=['p363', 'p364']  cost=5.877  delta_new=2695.5m
+  [ASSIGN] t=    90s  vehicle=v94    subset=['p355', 'p353', 'p354']  cost=2.565  delta_new=808.3m
+  [ASSIGN] t=    90s  vehicle=v125   subset=['p352', 'p356', 'p357']  cost=4.244  delta_new=2488.0m
+  [ASSIGN] t=    90s  vehicle=v328   subset=['p339', 'p340']  cost=6.042  delta_new=2842.0m
+  [ASSIGN] t=    90s  vehicle=v349   subset=['p273', 'p274', 'p275']  cost=4.682  delta_new=2683.4m
+  [ASSIGN] t=    90s  vehicle=v385   subset=['p276', 'p272']  cost=5.921  delta_new=2595.0m
+  [ASSIGN] t=    90s  vehicle=v423   subset=['p307', 'p304']  cost=5.128  delta_new=1875.3m
+  [ASSIGN] t=    90s  vehicle=v441   subset=['p269']  cost=7.569  delta_new=2968.0m
+  [ASSIGN] t=   120s  vehicle=v29    subset=['p447']  cost=5.534  delta_new=911.9m
+  [ASSIGN] t=   120s  vehicle=v32    subset=['p474']  cost=6.581  delta_new=1960.0m
+  [ASSIGN] t=   120s  vehicle=v72    subset=['p457', 'p458']  cost=3.253  delta_new=52.7m
+  [ASSIGN] t=   120s  vehicle=v101   subset=['p300']  cost=6.743  delta_new=2132.6m
+  [ASSIGN] t=   150s  vehicle=v2     subset=['p495', 'p494']  cost=5.496  delta_new=2454.7m
+  [ASSIGN] t=   150s  vehicle=v143   subset=['p551', 'p552']  cost=4.083  delta_new=908.2m
+  [ASSIGN] t=   150s  vehicle=v153   subset=['p516']  cost=7.536  delta_new=2989.8m
+  [ASSIGN] t=   150s  vehicle=v191   subset=['p489', 'p490', 'p491']  cost=3.659  delta_new=1836.6m
+  [ASSIGN] t=   150s  vehicle=v217   subset=['p492', 'p488']  cost=6.146  delta_new=2933.2m
+  [ASSIGN] t=   180s  vehicle=v31    subset=['p628']  cost=7.343  delta_new=2777.4m
+  [ASSIGN] t=   180s  vehicle=v76    subset=['p664']  cost=4.564  delta_new=0.0m
+  [ASSIGN] t=   180s  vehicle=v144   subset=['p685', 'p686']  cost=5.553  delta_new=2237.9m
+  [ASSIGN] t=   180s  vehicle=v198   subset=['p689']  cost=7.378  delta_new=2844.1m
+  [ASSIGN] t=   180s  vehicle=v232   subset=['p647', 'p650']  cost=5.815  delta_new=2524.6m
+  [ASSIGN] t=   180s  vehicle=v264   subset=['p692']  cost=7.411  delta_new=2857.4m
+  [ASSIGN] t=   180s  vehicle=v492   subset=['p670', 'p671']  cost=5.445  delta_new=2244.6m
+  [BOARD]  t=   195s  vehicle=v8     passenger=p178    edge=387128267#20
+  [BOARD]  t=   195s  vehicle=v8     passenger=p177    edge=387128267#20
+  [BOARD]  t=   195s  vehicle=v8     passenger=p174    edge=387128267#20
+  [ASSIGN] t=   210s  vehicle=v114   subset=['p819']  cost=7.602  delta_new=2982.6m
+  [ASSIGN] t=   210s  vehicle=v126   subset=['p747', 'p750', 'p751']  cost=3.086  delta_new=1309.3m
+  [ASSIGN] t=   210s  vehicle=v132   subset=['p808', 'p806', 'p805']  cost=2.989  delta_new=1134.8m
+  [ASSIGN] t=   210s  vehicle=v138   subset=['p807', 'p809']  cost=4.151  delta_new=914.7m
+  [ASSIGN] t=   210s  vehicle=v205   subset=['p761', 'p762', 'p763']  cost=2.081  delta_new=434.5m
+  [ASSIGN] t=   210s  vehicle=v239   subset=['p811', 'p812']  cost=5.891  delta_new=2593.2m
+  [ASSIGN] t=   210s  vehicle=v318   subset=['p816', 'p818']  cost=6.214  delta_new=2959.0m
+  [ASSIGN] t=   240s  vehicle=v18    subset=['p872', 'p871']  cost=4.699  delta_new=1416.0m
+  [ASSIGN] t=   240s  vehicle=v26    subset=['p856']  cost=5.153  delta_new=597.0m
+  [ASSIGN] t=   240s  vehicle=v30    subset=['p979']  cost=7.414  delta_new=2857.3m
+  [ASSIGN] t=   240s  vehicle=v57    subset=['p981']  cost=6.613  delta_new=2054.2m
+  [ASSIGN] t=   240s  vehicle=v62    subset=['p865']  cost=6.772  delta_new=2175.9m
+  [ASSIGN] t=   240s  vehicle=v187   subset=['p982', 'p984', 'p985']  cost=3.671  delta_new=2017.5m
+  [ASSIGN] t=   240s  vehicle=v241   subset=['p879', 'p880']  cost=5.937  delta_new=2782.3m
+  [ASSIGN] t=   240s  vehicle=v308   subset=['p884', 'p882']  cost=5.983  delta_new=2735.4m
+  [ASSIGN] t=   270s  vehicle=v10    subset=['p1042']  cost=7.590  delta_new=2963.3m
+  [ASSIGN] t=   270s  vehicle=v42    subset=['p1013']  cost=6.191  delta_new=1520.7m
+  [ASSIGN] t=   270s  vehicle=v68    subset=['p1076']  cost=7.490  delta_new=2952.0m
+  [ASSIGN] t=   270s  vehicle=v110   subset=['p988']  cost=7.191  delta_new=2583.2m
+  [ASSIGN] t=   270s  vehicle=v180   subset=['p1068', 'p1070']  cost=5.374  delta_new=2163.4m
+  [ASSIGN] t=   270s  vehicle=v343   subset=['p986']  cost=6.628  delta_new=2077.0m
+  [ASSIGN] t=   270s  vehicle=v461   subset=['p841']  cost=7.567  delta_new=2973.9m
+  [BOARD]  t=   275s  vehicle=v318   passenger=p816    edge=1136391283#1
+  [BOARD]  t=   275s  vehicle=v318   passenger=p818    edge=1136391283#1
+  [BOARD]  t=   280s  vehicle=v29    passenger=p447    edge=1051525737#9
+  [BOARD]  t=   285s  vehicle=v308   passenger=p884    edge=968513230#1
+  [BOARD]  t=   285s  vehicle=v308   passenger=p882    edge=968513230#1
+  [ASSIGN] t=   300s  vehicle=v9     subset=['p1112', 'p1110', 'p1109']  cost=3.483  delta_new=1680.6m
+  [ASSIGN] t=   300s  vehicle=v16    subset=['p1108', 'p1111']  cost=4.320  delta_new=1139.0m
+  [ASSIGN] t=   300s  vehicle=v246   subset=['p1184', 'p1183']  cost=5.358  delta_new=2207.5m
+  [ASSIGN] t=   300s  vehicle=v296   subset=['p1180', 'p1182']  cost=4.029  delta_new=878.6m
+  [ASSIGN] t=   300s  vehicle=v307   subset=['p1174']  cost=6.020  delta_new=1486.9m
+  [ASSIGN] t=   300s  vehicle=v429   subset=['p1060', 'p1061', 'p1062']  cost=1.560  delta_new=0.0m
+  [BOARD]  t=   330s  vehicle=v72    passenger=p457    edge=-1136952921#0
+  [BOARD]  t=   330s  vehicle=v72    passenger=p458    edge=-1136952921#0
+  [ASSIGN] t=   330s  vehicle=v45    subset=['p1308']  cost=6.379  delta_new=1830.4m
+  [ASSIGN] t=   330s  vehicle=v244   subset=['p1252']  cost=7.262  delta_new=2725.2m
+  [ASSIGN] t=   330s  vehicle=v324   subset=['p1329', 'p1330', 'p1332']  cost=3.078  delta_new=1258.6m
+  [ASSIGN] t=   360s  vehicle=v14    subset=['p1380', 'p1381']  cost=6.033  delta_new=2914.0m
+  [ASSIGN] t=   360s  vehicle=v91    subset=['p1366', 'p1367', 'p1368']  cost=3.995  delta_new=1975.3m
+  [ASSIGN] t=   360s  vehicle=v212   subset=['p1370']  cost=7.560  delta_new=2896.4m
+  [ASSIGN] t=   360s  vehicle=v404   subset=['p1427', 'p1428']  cost=4.488  delta_new=1403.0m
+  [BOARD]  t=   370s  vehicle=v57    passenger=p981    edge=569266491#0
+  [BOARD]  t=   370s  vehicle=v205   passenger=p761    edge=1024556686#0
+  [BOARD]  t=   370s  vehicle=v205   passenger=p762    edge=1024556686#0
+  [BOARD]  t=   370s  vehicle=v205   passenger=p763    edge=1024556686#0
+  [BOARD]  t=   370s  vehicle=v217   passenger=p492    edge=46694769#9
+  [BOARD]  t=   370s  vehicle=v217   passenger=p488    edge=46694769#9
+  [BOARD]  t=   370s  vehicle=v328   passenger=p339    edge=1027189510#1
+  [BOARD]  t=   370s  vehicle=v328   passenger=p340    edge=1027189510#1
+  [ASSIGN] t=   390s  vehicle=v70    subset=['p1519']  cost=6.159  delta_new=1653.7m
+  [ASSIGN] t=   390s  vehicle=v73    subset=['p1569']  cost=7.515  delta_new=2948.8m
+  [ASSIGN] t=   390s  vehicle=v104   subset=['p1516']  cost=5.899  delta_new=1325.3m
+  [DROP]   t=   405s  vehicle=v8     passenger=p178    edge=1224480434#7  trip_time=210s
+  [DROP]   t=   405s  vehicle=v8     passenger=p177    edge=1224480434#7  trip_time=210s
+  [DROP]   t=   405s  vehicle=v8     passenger=p174    edge=1224480434#7  trip_time=210s
+  [BOARD]  t=   415s  vehicle=v1     passenger=p231    edge=978638882#0
+  [BOARD]  t=   415s  vehicle=v126   passenger=p747    edge=-167922076#1
+  [BOARD]  t=   415s  vehicle=v126   passenger=p750    edge=-167922076#1
+  [BOARD]  t=   415s  vehicle=v126   passenger=p751    edge=-167922076#1
+  [ASSIGN] t=   420s  vehicle=v8     subset=['p1633', 'p1635']  cost=4.989  delta_new=1725.4m
+  [ASSIGN] t=   420s  vehicle=v87    subset=['p1642']  cost=7.544  delta_new=2938.3m
+  [ASSIGN] t=   420s  vehicle=v122   subset=['p1644']  cost=7.539  delta_new=2933.4m
+  [ASSIGN] t=   420s  vehicle=v123   subset=['p1640', 'p1639', 'p1643']  cost=3.677  delta_new=1836.3m
+  [ASSIGN] t=   420s  vehicle=v162   subset=['p1641']  cost=6.797  delta_new=2191.4m
+  [ASSIGN] t=   420s  vehicle=v278   subset=['p1623']  cost=5.788  delta_new=1213.1m
+  [ASSIGN] t=   420s  vehicle=v305   subset=['p1696', 'p1528', 'p1698']  cost=1.640  delta_new=0.0m
+  [ASSIGN] t=   420s  vehicle=v388   subset=['p1630']  cost=7.268  delta_new=2696.8m
+  [ASSIGN] t=   420s  vehicle=v450   subset=['p1674', 'p1532', 'p1672']  cost=1.627  delta_new=0.0m
+  [BOARD]  t=   430s  vehicle=v13    passenger=p138    edge=-5673069#1
+  [BOARD]  t=   435s  vehicle=v26    passenger=p856    edge=46240372#3
+  [ASSIGN] t=   450s  vehicle=v21    subset=['p1818', 'p1819', 'p1820']  cost=4.068  delta_new=2344.4m
+  [ASSIGN] t=   450s  vehicle=v38    subset=['p1817', 'p1821']  cost=4.257  delta_new=1112.8m
+  [ASSIGN] t=   450s  vehicle=v88    subset=['p1807', 'p1808', 'p1809']  cost=3.520  delta_new=1757.5m
+  [ASSIGN] t=   450s  vehicle=v116   subset=['p1795']  cost=7.104  delta_new=2533.7m
+  [ASSIGN] t=   450s  vehicle=v145   subset=['p1810', 'p1811']  cost=4.754  delta_new=1579.1m
+  [ASSIGN] t=   450s  vehicle=v223   subset=['p1875']  cost=7.356  delta_new=2770.3m
+  [ASSIGN] t=   450s  vehicle=v491   subset=['p1806']  cost=7.135  delta_new=2552.6m
+  [BOARD]  t=   455s  vehicle=v60    passenger=p218    edge=46521993#1
+  [BOARD]  t=   455s  vehicle=v60    passenger=p220    edge=46521993#1
+  [BOARD]  t=   455s  vehicle=v60    passenger=p219    edge=46521993#1
+  [BOARD]  t=   455s  vehicle=v145   passenger=p1810   edge=420590038#3
+  [BOARD]  t=   455s  vehicle=v145   passenger=p1811   edge=420590038#3
+  [BOARD]  t=   465s  vehicle=v343   passenger=p986    edge=988977545#15
+  [DROP]   t=   465s  vehicle=v343   passenger=p986    edge=988977545#15  trip_time=0s
+  [ASSIGN] t=   480s  vehicle=v348   subset=['p1944']  cost=6.954  delta_new=2379.2m
+  [ASSIGN] t=   480s  vehicle=v466   subset=['p1936']  cost=6.232  delta_new=1666.5m
+  [DROP]   t=   485s  vehicle=v57    passenger=p981    edge=1024556672#1  trip_time=115s
+  [BOARD]  t=   490s  vehicle=v143   passenger=p551    edge=169381965#1
+  [BOARD]  t=   490s  vehicle=v143   passenger=p552    edge=169381965#1
+  [BOARD]  t=   495s  vehicle=v132   passenger=p808    edge=1150705656#1
+  [BOARD]  t=   495s  vehicle=v132   passenger=p806    edge=1150705656#1
+  [BOARD]  t=   495s  vehicle=v132   passenger=p805    edge=1150705656#1
+  [BOARD]  t=   500s  vehicle=v16    passenger=p1108   edge=421853972#1
+  [BOARD]  t=   500s  vehicle=v16    passenger=p1111   edge=421853972#1
+  [BOARD]  t=   500s  vehicle=v385   passenger=p276    edge=458180188#1
+  [BOARD]  t=   500s  vehicle=v385   passenger=p272    edge=458180188#1
+  [BOARD]  t=   500s  vehicle=v461   passenger=p841    edge=458180200#1
+  [BOARD]  t=   505s  vehicle=v349   passenger=p273    edge=458180188#1
+  [BOARD]  t=   505s  vehicle=v349   passenger=p274    edge=458180188#1
+  [BOARD]  t=   505s  vehicle=v349   passenger=p275    edge=458180188#1
+  [BOARD]  t=   510s  vehicle=v492   passenger=p670    edge=396444293#9
+  [BOARD]  t=   510s  vehicle=v492   passenger=p671    edge=396444293#9
+  [ASSIGN] t=   510s  vehicle=v82    subset=['p1508', 'p1509', 'p1511']  cost=1.623  delta_new=0.0m
+  [ASSIGN] t=   510s  vehicle=v170   subset=['p2091', 'p2026', 'p1706']  cost=1.674  delta_new=0.0m
+  [ASSIGN] t=   510s  vehicle=v215   subset=['p1989', 'p1988', 'p1991']  cost=1.797  delta_new=0.0m
+  [ASSIGN] t=   510s  vehicle=v235   subset=['p2103']  cost=7.417  delta_new=2807.1m
+  [ASSIGN] t=   510s  vehicle=v356   subset=['p1986']  cost=7.443  delta_new=2865.0m
+  [BOARD]  t=   525s  vehicle=v14    passenger=p1380   edge=1333150711#1
+  [BOARD]  t=   525s  vehicle=v14    passenger=p1381   edge=1333150711#1
+  [BOARD]  t=   525s  vehicle=v191   passenger=p489    edge=46694769#9
+  [BOARD]  t=   525s  vehicle=v191   passenger=p490    edge=46694769#9
+  [BOARD]  t=   525s  vehicle=v191   passenger=p491    edge=46694769#9
+  [BOARD]  t=   530s  vehicle=v264   passenger=p692    edge=1499196738#1
+  [RELEASE] t=   540s  vehicle=v5     passenger=p44     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v5     passenger=p45     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v65    passenger=p87     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v95    passenger=p66     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v95    passenger=p64     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v95    passenger=p63     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v105   passenger=p78     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v105   passenger=p79     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v155   passenger=p65     (stuck for 510s, freeing capacity)
+  [RELEASE] t=   540s  vehicle=v166   passenger=p102    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   540s  vehicle=v5     subset=['p2161', 'p2162', 'p2163']  cost=1.715  delta_new=0.0m
+  [ASSIGN] t=   540s  vehicle=v65    subset=['p902', 'p903']  cost=3.107  delta_new=0.0m
+  [ASSIGN] t=   540s  vehicle=v95    subset=['p2017', 'p2133']  cost=3.114  delta_new=0.0m
+  [ASSIGN] t=   540s  vehicle=v105   subset=['p1602', 'p1603']  cost=3.069  delta_new=0.0m
+  [ASSIGN] t=   540s  vehicle=v131   subset=['p2123']  cost=6.828  delta_new=2218.9m
+  [ASSIGN] t=   540s  vehicle=v166   subset=['p1550', 'p1551', 'p1493']  cost=1.779  delta_new=0.0m
+  [ASSIGN] t=   540s  vehicle=v361   subset=['p896', 'p898', 'p897']  cost=1.663  delta_new=0.0m
+  [ASSIGN] t=   540s  vehicle=v398   subset=['p2170']  cost=7.348  delta_new=2750.5m
+  [ASSIGN] t=   540s  vehicle=v445   subset=['p2172', 'p2173', 'p2174']  cost=3.577  delta_new=1741.4m
+  [ASSIGN] t=   540s  vehicle=v459   subset=['p765', 'p2082', 'p1693']  cost=1.765  delta_new=0.0m
+  [DROP]   t=   545s  vehicle=v1     passenger=p231    edge=-420882495#1  trip_time=130s
+  [BOARD]  t=   545s  vehicle=v31    passenger=p628    edge=-195743135#5
+  [BOARD]  t=   545s  vehicle=v38    passenger=p1817   edge=-806169765#1
+  [BOARD]  t=   545s  vehicle=v38    passenger=p1821   edge=-806169765#1
+  [BOARD]  t=   550s  vehicle=v91    passenger=p1366   edge=-420623120#0
+  [BOARD]  t=   550s  vehicle=v91    passenger=p1367   edge=-420623120#0
+  [BOARD]  t=   550s  vehicle=v91    passenger=p1368   edge=-420623120#0
+  [BOARD]  t=   550s  vehicle=v244   passenger=p1252   edge=1088325194
+  [DROP]   t=   550s  vehicle=v244   passenger=p1252   edge=1088325194  trip_time=0s
+  [BOARD]  t=   555s  vehicle=v7     passenger=p327    edge=-196117067
+  [BOARD]  t=   555s  vehicle=v324   passenger=p1329   edge=992144531#2
+  [BOARD]  t=   555s  vehicle=v324   passenger=p1330   edge=992144531#2
+  [BOARD]  t=   555s  vehicle=v324   passenger=p1332   edge=992144531#2
+  [BOARD]  t=   565s  vehicle=v2     passenger=p495    edge=5671357#19
+  [BOARD]  t=   565s  vehicle=v2     passenger=p494    edge=5671357#19
+  [RELEASE] t=   570s  vehicle=v6     passenger=p175    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v6     passenger=p176    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v6     passenger=p173    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v15    passenger=p207    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v15    passenger=p208    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v22    passenger=p125    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v22    passenger=p124    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v35    passenger=p118    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v35    passenger=p117    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v54    passenger=p217    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v54    passenger=p221    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v54    passenger=p222    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v74    passenger=p163    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v90    passenger=p167    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v90    passenger=p123    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v90    passenger=p195    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v120   passenger=p185    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v120   passenger=p186    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v251   passenger=p128    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v251   passenger=p131    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   570s  vehicle=v251   passenger=p126    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   570s  vehicle=v6     subset=['p2243']  cost=4.567  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v15    subset=['p2014']  cost=4.577  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v22    subset=['p63', 'p64', 'p65']  cost=2.160  delta_new=448.1m
+  [ASSIGN] t=   570s  vehicle=v35    subset=['p2248', 'p2250']  cost=3.119  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v54    subset=['p2209', 'p2211']  cost=3.165  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v90    subset=['p712', 'p567', 'p564']  cost=1.655  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v120   subset=['p1480', 'p1482', 'p1485']  cost=1.959  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v155   subset=['p1392']  cost=4.548  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v251   subset=['p324', 'p325']  cost=3.099  delta_new=0.0m
+  [ASSIGN] t=   570s  vehicle=v267   subset=['p2304']  cost=7.138  delta_new=2548.9m
+  [ASSIGN] t=   570s  vehicle=v477   subset=['p2239']  cost=7.447  delta_new=2899.8m
+  [DROP]   t=   580s  vehicle=v13    passenger=p138    edge=-945473889#1  trip_time=150s
+  [BOARD]  t=   580s  vehicle=v104   passenger=p1516   edge=-1377340846#1
+  [BOARD]  t=   590s  vehicle=v12    passenger=p333    edge=396444295#4
+  [BOARD]  t=   590s  vehicle=v12    passenger=p330    edge=396444295#4
+  [BOARD]  t=   590s  vehicle=v101   passenger=p300    edge=-46694753#5
+  [BOARD]  t=   595s  vehicle=v212   passenger=p1370   edge=-420623120#0
+  [DROP]   t=   600s  vehicle=v318   passenger=p816    edge=1442249234#8  trip_time=325s
+  [DROP]   t=   600s  vehicle=v318   passenger=p818    edge=1442249234#8  trip_time=325s
+  [RELEASE] t=   600s  vehicle=v28    passenger=p363    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v28    passenger=p364    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v94    passenger=p355    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v94    passenger=p353    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v94    passenger=p354    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v125   passenger=p352    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v125   passenger=p356    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v125   passenger=p357    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v423   passenger=p307    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v423   passenger=p304    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   600s  vehicle=v441   passenger=p269    (stuck for 510s, freeing capacity)
+  [WARN] setRoute failed for v28: Route replacement failed for vehicle 'v28' (Vehicle is on junction-internal edge leading elsewhere).
+  [ASSIGN] t=   600s  vehicle=v84    subset=['p2366', 'p2365']  cost=4.993  delta_new=1791.6m
+  [ASSIGN] t=   600s  vehicle=v94    subset=['p995', 'p996']  cost=3.132  delta_new=0.0m
+  [ASSIGN] t=   600s  vehicle=v318   subset=['p1261', 'p1262', 'p1263']  cost=1.752  delta_new=0.0m
+  [ASSIGN] t=   600s  vehicle=v402   subset=['p1701', 'p118', 'p2092']  cost=1.694  delta_new=0.0m
+  [ASSIGN] t=   600s  vehicle=v423   subset=['p2420', 'p2421', 'p2422']  cost=1.893  delta_new=0.0m
+  [ASSIGN] t=   600s  vehicle=v441   subset=['p1707', 'p45', 'p44']  cost=1.753  delta_new=0.0m
+  [ASSIGN] t=   600s  vehicle=v442   subset=['p1226', 'p221', 'p1227']  cost=1.624  delta_new=0.0m
+  [BOARD]  t=   625s  vehicle=v62    passenger=p865    edge=584971412#3
+  [DROP]   t=   630s  vehicle=v72    passenger=p457    edge=-384649121#4  trip_time=300s
+  [DROP]   t=   630s  vehicle=v72    passenger=p458    edge=-384649121#4  trip_time=300s
+  [RELEASE] t=   630s  vehicle=v32    passenger=p474    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   630s  vehicle=v28    subset=['p175', 'p176']  cost=3.071  delta_new=0.0m
+  [ASSIGN] t=   630s  vehicle=v72    subset=['p1046']  cost=6.823  delta_new=2291.1m
+  [ASSIGN] t=   630s  vehicle=v236   subset=['p2258', 'p2259', 'p2262']  cost=1.691  delta_new=0.0m
+  [ASSIGN] t=   630s  vehicle=v401   subset=['p207', 'p208']  cost=5.619  delta_new=2453.1m
+  [BOARD]  t=   635s  vehicle=v30    passenger=p979    edge=-806169765#7
+  [BOARD]  t=   635s  vehicle=v45    passenger=p1308   edge=420878089#0
+  [DROP]   t=   635s  vehicle=v126   passenger=p747    edge=492489884#1  trip_time=220s
+  [DROP]   t=   635s  vehicle=v126   passenger=p750    edge=492489884#1  trip_time=220s
+  [DROP]   t=   635s  vehicle=v126   passenger=p751    edge=492489884#1  trip_time=220s
+  [BOARD]  t=   640s  vehicle=v87    passenger=p1642   edge=-421844226
+  [BOARD]  t=   640s  vehicle=v138   passenger=p807    edge=1150705656#1
+  [BOARD]  t=   640s  vehicle=v138   passenger=p809    edge=1150705656#1
+  [BOARD]  t=   640s  vehicle=v153   passenger=p516    edge=587061869#2
+  [BOARD]  t=   640s  vehicle=v166   passenger=p1493   edge=421854004#0
+  [DROP]   t=   645s  vehicle=v38    passenger=p1817   edge=-910751834#0  trip_time=100s
+  [DROP]   t=   645s  vehicle=v38    passenger=p1821   edge=-910751834#0  trip_time=100s
+  [BOARD]  t=   645s  vehicle=v187   passenger=p982    edge=988977545#15
+  [BOARD]  t=   645s  vehicle=v187   passenger=p984    edge=988977545#15
+  [BOARD]  t=   645s  vehicle=v187   passenger=p985    edge=988977545#15
+  [DROP]   t=   645s  vehicle=v187   passenger=p982    edge=988977545#15  trip_time=0s
+  [DROP]   t=   645s  vehicle=v187   passenger=p984    edge=988977545#15  trip_time=0s
+  [DROP]   t=   645s  vehicle=v187   passenger=p985    edge=988977545#15  trip_time=0s
+  [DROP]   t=   645s  vehicle=v308   passenger=p884    edge=1051750427#1  trip_time=360s
+  [DROP]   t=   645s  vehicle=v308   passenger=p882    edge=1051750427#1  trip_time=360s
+  [BOARD]  t=   645s  vehicle=v404   passenger=p1427   edge=420907903#0
+  [BOARD]  t=   645s  vehicle=v404   passenger=p1428   edge=420907903#0
+  [BOARD]  t=   650s  vehicle=v18    passenger=p872    edge=-46583484#0
+  [BOARD]  t=   655s  vehicle=v348   passenger=p1944   edge=-196116967#7
+  [BOARD]  t=   660s  vehicle=v65    passenger=p902    edge=1328728620#1
+  [BOARD]  t=   660s  vehicle=v65    passenger=p903    edge=1328728620#1
+  [BOARD]  t=   660s  vehicle=v162   passenger=p1641   edge=-421844226
+  [WARN] setRoute failed for v193: Route replacement failed for vehicle 'v193' (Vehicle is on junction-internal edge leading elsewhere).
+  [ASSIGN] t=   660s  vehicle=v219   subset=['p2550', 'p2551']  cost=5.519  delta_new=2352.1m
+  [BOARD]  t=   680s  vehicle=v361   passenger=p896    edge=421853972#1
+  [BOARD]  t=   680s  vehicle=v361   passenger=p898    edge=421853972#1
+  [BOARD]  t=   680s  vehicle=v361   passenger=p897    edge=421853972#1
+  [BOARD]  t=   685s  vehicle=v5     passenger=p2161   edge=420356173#0
+  [BOARD]  t=   685s  vehicle=v5     passenger=p2162   edge=420356173#0
+  [BOARD]  t=   685s  vehicle=v5     passenger=p2163   edge=420356173#0
+  [BOARD]  t=   685s  vehicle=v22    passenger=p63     edge=46525065#13
+  [BOARD]  t=   685s  vehicle=v22    passenger=p64     edge=46525065#13
+  [BOARD]  t=   685s  vehicle=v22    passenger=p65     edge=46525065#13
+  [BOARD]  t=   685s  vehicle=v318   passenger=p1261   edge=964208970#0
+  [BOARD]  t=   685s  vehicle=v318   passenger=p1262   edge=964208970#0
+  [BOARD]  t=   685s  vehicle=v318   passenger=p1263   edge=964208970#0
+  [BOARD]  t=   690s  vehicle=v144   passenger=p685    edge=1224490986#1
+  [BOARD]  t=   690s  vehicle=v144   passenger=p686    edge=1224490986#1
+  [RELEASE] t=   690s  vehicle=v76    passenger=p664    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   690s  vehicle=v198   passenger=p689    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   690s  vehicle=v232   passenger=p647    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   690s  vehicle=v232   passenger=p650    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   690s  vehicle=v76    subset=['p2686', 'p2687', 'p2688']  cost=1.692  delta_new=0.0m
+  [ASSIGN] t=   690s  vehicle=v152   subset=['p2727']  cost=6.845  delta_new=2339.9m
+  [ASSIGN] t=   690s  vehicle=v193   subset=['p2553', 'p2554', 'p2552']  cost=4.010  delta_new=2259.0m
+  [ASSIGN] t=   690s  vehicle=v198   subset=['p2698', 'p2699', 'p2700']  cost=1.903  delta_new=3.3m
+  [ASSIGN] t=   690s  vehicle=v232   subset=['p2773', 'p2774']  cost=3.111  delta_new=0.0m
+  [BOARD]  t=   700s  vehicle=v18    passenger=p871    edge=1354419963#1
+  [RELEASE] t=   720s  vehicle=v114   passenger=p819    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   720s  vehicle=v239   passenger=p811    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   720s  vehicle=v239   passenger=p812    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   720s  vehicle=v114   subset=['p664', 'p665']  cost=3.094  delta_new=0.0m
+  [ASSIGN] t=   720s  vehicle=v187   subset=['p2013']  cost=4.579  delta_new=0.0m
+  [ASSIGN] t=   720s  vehicle=v239   subset=['p2840']  cost=4.609  delta_new=0.0m
+  [DROP]   t=   725s  vehicle=v14    passenger=p1380   edge=973448963  trip_time=200s
+  [DROP]   t=   725s  vehicle=v14    passenger=p1381   edge=973448963  trip_time=200s
+  [DROP]   t=   725s  vehicle=v324   passenger=p1329   edge=1025734020#1  trip_time=170s
+  [DROP]   t=   725s  vehicle=v324   passenger=p1330   edge=1025734020#1  trip_time=170s
+  [DROP]   t=   725s  vehicle=v324   passenger=p1332   edge=1025734020#1  trip_time=170s
+  [DROP]   t=   730s  vehicle=v16    passenger=p1108   edge=-587061857#0  trip_time=230s
+  [DROP]   t=   730s  vehicle=v16    passenger=p1111   edge=-587061857#0  trip_time=230s
+  [BOARD]  t=   730s  vehicle=v21    passenger=p1818   edge=-806169765#1
+  [BOARD]  t=   730s  vehicle=v21    passenger=p1819   edge=-806169765#1
+  [BOARD]  t=   730s  vehicle=v21    passenger=p1820   edge=-806169765#1
+  [BOARD]  t=   745s  vehicle=v278   passenger=p1623   edge=1106474773#0
+  [BOARD]  t=   750s  vehicle=v15    passenger=p2014   edge=420907903#0
+  [DROP]   t=   750s  vehicle=v104   passenger=p1516   edge=-806169765#7  trip_time=170s
+  [BOARD]  t=   750s  vehicle=v170   passenger=p2091   edge=1024556672#1
+  [BOARD]  t=   750s  vehicle=v356   passenger=p1986   edge=420877098#1
+  [RELEASE] t=   750s  vehicle=v241   passenger=p879    (stuck for 510s, freeing capacity)
+  [RELEASE] t=   750s  vehicle=v241   passenger=p880    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   750s  vehicle=v241   subset=['p1668', 'p1669']  cost=3.163  delta_new=0.0m
+  [BOARD]  t=   755s  vehicle=v88    passenger=p1807   edge=420590038#3
+  [BOARD]  t=   755s  vehicle=v88    passenger=p1808   edge=420590038#3
+  [BOARD]  t=   755s  vehicle=v88    passenger=p1809   edge=420590038#3
+  [DROP]   t=   755s  vehicle=v143   passenger=p551    edge=456409016#1  trip_time=265s
+  [DROP]   t=   755s  vehicle=v143   passenger=p552    edge=456409016#1  trip_time=265s
+  [BOARD]  t=   755s  vehicle=v296   passenger=p1180   edge=1025734019#0
+  [BOARD]  t=   755s  vehicle=v296   passenger=p1182   edge=1025734019#0
+  [DROP]   t=   760s  vehicle=v7     passenger=p327    edge=-420882495#1  trip_time=205s
+  [BOARD]  t=   760s  vehicle=v235   passenger=p2103   edge=5671352#8
+  [BOARD]  t=   775s  vehicle=v8     passenger=p1633   edge=198924727#0
+  [BOARD]  t=   775s  vehicle=v8     passenger=p1635   edge=198924727#0
+  [DROP]   t=   775s  vehicle=v348   passenger=p1944   edge=-420878817#0  trip_time=120s
+  [BOARD]  t=   780s  vehicle=v110   passenger=p988    edge=46130054#0
+  [BOARD]  t=   780s  vehicle=v441   passenger=p1707   edge=420906755#1
+  [RELEASE] t=   780s  vehicle=v10    passenger=p1042   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   780s  vehicle=v42    passenger=p1013   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   780s  vehicle=v68    passenger=p1076   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   780s  vehicle=v180   passenger=p1068   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   780s  vehicle=v180   passenger=p1070   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   780s  vehicle=v7     subset=['p3089', 'p3090', 'p3091']  cost=1.800  delta_new=0.0m
+  [ASSIGN] t=   780s  vehicle=v68    subset=['p2800', 'p2799']  cost=3.011  delta_new=0.0m
+  [ASSIGN] t=   780s  vehicle=v180   subset=['p2929', 'p2930']  cost=3.209  delta_new=0.0m
+  [BOARD]  t=   790s  vehicle=v95    passenger=p2017   edge=420907903#0
+  [BOARD]  t=   790s  vehicle=v223   passenger=p1875   edge=320516789#4
+  [BOARD]  t=   795s  vehicle=v73    passenger=p1569   edge=-420590068#2
+  [DROP]   t=   795s  vehicle=v87    passenger=p1642   edge=226007081#1  trip_time=155s
+  [DROP]   t=   805s  vehicle=v162   passenger=p1641   edge=226007081#1  trip_time=145s
+  [BOARD]  t=   805s  vehicle=v423   passenger=p2420   edge=479642033#3
+  [BOARD]  t=   805s  vehicle=v423   passenger=p2421   edge=479642033#3
+  [BOARD]  t=   805s  vehicle=v423   passenger=p2422   edge=479642033#3
+  [RELEASE] t=   810s  vehicle=v9     passenger=p1112   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v9     passenger=p1110   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v9     passenger=p1109   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v246   passenger=p1184   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v246   passenger=p1183   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v307   passenger=p1174   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v429   passenger=p1060   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v429   passenger=p1061   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   810s  vehicle=v429   passenger=p1062   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   810s  vehicle=v9     subset=['p2905', 'p2906']  cost=3.888  delta_new=697.1m
+  [ASSIGN] t=   810s  vehicle=v10    subset=['p3157', 'p3156']  cost=3.156  delta_new=0.0m
+  [ASSIGN] t=   810s  vehicle=v42    subset=['p3158', 'p3159']  cost=3.594  delta_new=534.1m
+  [ASSIGN] t=   810s  vehicle=v246   subset=['p2015', 'p2016']  cost=3.155  delta_new=0.0m
+  [ASSIGN] t=   810s  vehicle=v429   subset=['p1671', 'p2896', 'p2895']  cost=1.702  delta_new=0.0m
+  [DROP]   t=   815s  vehicle=v145   passenger=p1810   edge=-664893485#71  trip_time=360s
+  [DROP]   t=   815s  vehicle=v145   passenger=p1811   edge=-664893485#71  trip_time=360s
+  [BOARD]  t=   815s  vehicle=v402   passenger=p2092   edge=1024556672#1
+  [BOARD]  t=   820s  vehicle=v82    passenger=p1508   edge=499172074#15
+  [BOARD]  t=   820s  vehicle=v82    passenger=p1509   edge=499172074#15
+  [BOARD]  t=   820s  vehicle=v82    passenger=p1511   edge=499172074#15
+  [DROP]   t=   820s  vehicle=v404   passenger=p1427   edge=1211049195#0  trip_time=175s
+  [DROP]   t=   820s  vehicle=v404   passenger=p1428   edge=1211049195#0  trip_time=175s
+  [DROP]   t=   825s  vehicle=v30    passenger=p979    edge=1354419956#0  trip_time=190s
+  [DROP]   t=   825s  vehicle=v45    passenger=p1308   edge=420877076#0  trip_time=190s
+  [BOARD]  t=   825s  vehicle=v120   passenger=p1480   edge=396444295#4
+  [BOARD]  t=   825s  vehicle=v120   passenger=p1482   edge=396444295#4
+  [BOARD]  t=   825s  vehicle=v120   passenger=p1485   edge=396444295#4
+  [BOARD]  t=   825s  vehicle=v445   passenger=p2172   edge=1452145328#1
+  [BOARD]  t=   825s  vehicle=v445   passenger=p2173   edge=1452145328#1
+  [BOARD]  t=   825s  vehicle=v445   passenger=p2174   edge=1452145328#1
+  [BOARD]  t=   830s  vehicle=v94    passenger=p995    edge=464515614#1
+  [BOARD]  t=   830s  vehicle=v94    passenger=p996    edge=464515614#1
+  [DROP]   t=   835s  vehicle=v29    passenger=p447    edge=1216505162  trip_time=555s
+  [DROP]   t=   840s  vehicle=v62    passenger=p865    edge=420906662#1  trip_time=215s
+  [DROP]   t=   840s  vehicle=v73    passenger=p1569   edge=-1377368319#0  trip_time=45s
+  [DROP]   t=   850s  vehicle=v21    passenger=p1818   edge=-910751834#0  trip_time=120s
+  [DROP]   t=   850s  vehicle=v21    passenger=p1819   edge=-910751834#0  trip_time=120s
+  [DROP]   t=   850s  vehicle=v21    passenger=p1820   edge=-910751834#0  trip_time=120s
+  [DROP]   t=   855s  vehicle=v2     passenger=p495    edge=420886259#0  trip_time=290s
+  [DROP]   t=   855s  vehicle=v2     passenger=p494    edge=420886259#0  trip_time=290s
+  [BOARD]  t=   865s  vehicle=v54    passenger=p2209   edge=1198594027#0
+  [BOARD]  t=   865s  vehicle=v54    passenger=p2211   edge=1198594027#0
+  [BOARD]  t=   865s  vehicle=v114   passenger=p664    edge=1497612396#0
+  [BOARD]  t=   865s  vehicle=v114   passenger=p665    edge=1497612396#0
+  [ASSIGN] t=   870s  vehicle=v74    subset=['p3378', 'p3379']  cost=3.156  delta_new=0.0m
+  [BOARD]  t=   880s  vehicle=v193   passenger=p2553   edge=-630828566#4
+  [BOARD]  t=   880s  vehicle=v193   passenger=p2554   edge=-630828566#4
+  [BOARD]  t=   880s  vehicle=v193   passenger=p2552   edge=-630828566#4
+  [DROP]   t=   885s  vehicle=v18    passenger=p872    edge=-1390900599  trip_time=235s
+  [DROP]   t=   885s  vehicle=v18    passenger=p871    edge=-1390900599  trip_time=185s
+  [BOARD]  t=   885s  vehicle=v155   passenger=p1392   edge=46525065#11
+  [BOARD]  t=   890s  vehicle=v251   passenger=p324    edge=-584971530#3
+  [BOARD]  t=   890s  vehicle=v251   passenger=p325    edge=-584971530#3
+  [BOARD]  t=   900s  vehicle=v401   passenger=p207    edge=511699178#0
+  [BOARD]  t=   900s  vehicle=v401   passenger=p208    edge=511699178#0
+  [RELEASE] t=   900s  vehicle=v70    passenger=p1519   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   900s  vehicle=v307   subset=['p2171']  cost=5.756  delta_new=1169.3m
+  [ASSIGN] t=   900s  vehicle=v404   subset=['p3440', 'p3441', 'p3442']  cost=2.610  delta_new=923.8m
+  [DROP]   t=   905s  vehicle=v60    passenger=p218    edge=1030123273#4  trip_time=450s
+  [DROP]   t=   905s  vehicle=v60    passenger=p220    edge=1030123273#4  trip_time=450s
+  [DROP]   t=   905s  vehicle=v60    passenger=p219    edge=1030123273#4  trip_time=450s
+  [DROP]   t=   905s  vehicle=v132   passenger=p808    edge=458166897#0  trip_time=410s
+  [DROP]   t=   905s  vehicle=v132   passenger=p806    edge=458166897#0  trip_time=410s
+  [DROP]   t=   905s  vehicle=v132   passenger=p805    edge=458166897#0  trip_time=410s
+  [DROP]   t=   905s  vehicle=v492   passenger=p670    edge=194923800#4  trip_time=395s
+  [DROP]   t=   905s  vehicle=v492   passenger=p671    edge=194923800#4  trip_time=395s
+  [BOARD]  t=   910s  vehicle=v35    passenger=p2248   edge=-195743152#0
+  [BOARD]  t=   910s  vehicle=v35    passenger=p2250   edge=-195743152#0
+  [BOARD]  t=   910s  vehicle=v305   passenger=p1696   edge=1043350177#2
+  [BOARD]  t=   910s  vehicle=v305   passenger=p1698   edge=1043350177#2
+  [DROP]   t=   920s  vehicle=v15    passenger=p2014   edge=717625447#8  trip_time=170s
+  [BOARD]  t=   925s  vehicle=v7     passenger=p3089   edge=-806169765#10
+  [BOARD]  t=   925s  vehicle=v7     passenger=p3090   edge=-806169765#10
+  [BOARD]  t=   925s  vehicle=v7     passenger=p3091   edge=-806169765#10
+  [DROP]   t=   925s  vehicle=v65    passenger=p902    edge=1021949720#1  trip_time=265s
+  [DROP]   t=   925s  vehicle=v65    passenger=p903    edge=1021949720#1  trip_time=265s
+  [DROP]   t=   925s  vehicle=v95    passenger=p2017   edge=717625447#8  trip_time=135s
+  [BOARD]  t=   925s  vehicle=v122   passenger=p1644   edge=-421844226
+  [BOARD]  t=   925s  vehicle=v131   passenger=p2123   edge=-305323028#3
+  [BOARD]  t=   925s  vehicle=v198   passenger=p2698   edge=464515614#1
+  [BOARD]  t=   925s  vehicle=v198   passenger=p2699   edge=464515614#1
+  [BOARD]  t=   925s  vehicle=v198   passenger=p2700   edge=464515614#1
+  [BOARD]  t=   925s  vehicle=v398   passenger=p2170   edge=1136391283#1
+  [DROP]   t=   925s  vehicle=v445   passenger=p2172   edge=-734561425#0  trip_time=100s
+  [DROP]   t=   925s  vehicle=v445   passenger=p2173   edge=-734561425#0  trip_time=100s
+  [DROP]   t=   925s  vehicle=v445   passenger=p2174   edge=-734561425#0  trip_time=100s
+  [BOARD]  t=   930s  vehicle=v187   passenger=p2013   edge=420907903#0
+  [RELEASE] t=   930s  vehicle=v123   passenger=p1640   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v123   passenger=p1639   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v123   passenger=p1643   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v305   passenger=p1528   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v388   passenger=p1630   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v450   passenger=p1674   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v450   passenger=p1532   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   930s  vehicle=v450   passenger=p1672   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   930s  vehicle=v65    subset=['p1371', 'p1373', 'p2095']  cost=1.896  delta_new=0.0m
+  [ASSIGN] t=   930s  vehicle=v70    subset=['p3598', 'p3601', 'p3599']  cost=2.426  delta_new=785.7m
+  [ASSIGN] t=   930s  vehicle=v125   subset=['p2943', 'p2944', 'p2948']  cost=1.620  delta_new=0.0m
+  [ASSIGN] t=   930s  vehicle=v388   subset=['p3574', 'p3575', 'p3578']  cost=1.875  delta_new=0.0m
+  [ASSIGN] t=   930s  vehicle=v445   subset=['p2175', 'p2176']  cost=3.327  delta_new=103.7m
+  [ASSIGN] t=   930s  vehicle=v450   subset=['p3296', 'p2689', 'p2978']  cost=1.647  delta_new=0.0m
+  [DROP]   t=   950s  vehicle=v101   passenger=p300    edge=1030119881#1  trip_time=360s
+  [BOARD]  t=   955s  vehicle=v246   passenger=p2015   edge=420907903#0
+  [BOARD]  t=   955s  vehicle=v246   passenger=p2016   edge=420907903#0
+  [DROP]   t=   960s  vehicle=v223   passenger=p1875   edge=-1030243870#0  trip_time=170s
+  [BOARD]  t=   960s  vehicle=v236   passenger=p2258   edge=46111627#1
+  [BOARD]  t=   960s  vehicle=v236   passenger=p2259   edge=46111627#1
+  [BOARD]  t=   960s  vehicle=v236   passenger=p2262   edge=46111627#1
+  [BOARD]  t=   960s  vehicle=v239   passenger=p2840   edge=1156946158#1
+  [RELEASE] t=   960s  vehicle=v116   passenger=p1795   (stuck for 510s, freeing capacity)
+  [RELEASE] t=   960s  vehicle=v491   passenger=p1806   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   960s  vehicle=v101   subset=['p1110', 'p1112', 'p1109']  cost=1.758  delta_new=0.0m
+  [ASSIGN] t=   960s  vehicle=v123   subset=['p1639', 'p1640', 'p1643']  cost=1.803  delta_new=0.0m
+  [ASSIGN] t=   960s  vehicle=v247   subset=['p1519']  cost=5.538  delta_new=1032.8m
+  [ASSIGN] t=   960s  vehicle=v491   subset=['p3665', 'p3666']  cost=3.161  delta_new=0.0m
+  [DROP]   t=   965s  vehicle=v26    passenger=p856    edge=5670311#2  trip_time=530s
+  [BOARD]  t=   975s  vehicle=v429   passenger=p1671   edge=1049888072#1
+  [BOARD]  t=   980s  vehicle=v267   passenger=p2304   edge=-196117067
+  [DROP]   t=   985s  vehicle=v31    passenger=p628    edge=196117086#10  trip_time=440s
+  [RELEASE] t=   990s  vehicle=v466   passenger=p1936   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=   990s  vehicle=v98    subset=['p1795']  cost=7.105  delta_new=2533.9m
+  [WARN] setRoute failed for v466: Route replacement failed for vehicle 'v466' (Vehicle is on junction-internal edge leading elsewhere).
+  [BOARD]  t=   995s  vehicle=v10    passenger=p3157   edge=420625559#1
+  [BOARD]  t=   995s  vehicle=v10    passenger=p3156   edge=420625559#1
+  [DROP]   t=   995s  vehicle=v131   passenger=p2123   edge=420878115#1  trip_time=70s
+  [BOARD]  t=   995s  vehicle=v180   passenger=p2929   edge=569345537#6
+  [BOARD]  t=   995s  vehicle=v180   passenger=p2930   edge=569345537#6
+  [DROP]   t=   995s  vehicle=v296   passenger=p1180   edge=464516471#10  trip_time=240s
+  [DROP]   t=   995s  vehicle=v296   passenger=p1182   edge=464516471#10  trip_time=240s
+  [BOARD]  t=  1000s  vehicle=v9     passenger=p2905   edge=1059826031
+  [BOARD]  t=  1000s  vehicle=v9     passenger=p2906   edge=1059826031
+  [DROP]   t=  1000s  vehicle=v94    passenger=p995    edge=226040993#2  trip_time=170s
+  [DROP]   t=  1000s  vehicle=v94    passenger=p996    edge=226040993#2  trip_time=170s
+  [DROP]   t=  1005s  vehicle=v5     passenger=p2161   edge=1271749957#0  trip_time=320s
+  [DROP]   t=  1005s  vehicle=v5     passenger=p2162   edge=1271749957#0  trip_time=320s
+  [DROP]   t=  1005s  vehicle=v5     passenger=p2163   edge=1271749957#0  trip_time=320s
+  [BOARD]  t=  1005s  vehicle=v105   passenger=p1602   edge=348477348#9
+  [BOARD]  t=  1005s  vehicle=v105   passenger=p1603   edge=348477348#9
+  [DROP]   t=  1005s  vehicle=v114   passenger=p664    edge=1049888072#1  trip_time=140s
+  [DROP]   t=  1005s  vehicle=v114   passenger=p665    edge=1049888072#1  trip_time=140s
+  [DROP]   t=  1005s  vehicle=v138   passenger=p807    edge=458166897#0  trip_time=365s
+  [DROP]   t=  1005s  vehicle=v138   passenger=p809    edge=458166897#0  trip_time=365s
+  [BOARD]  t=  1010s  vehicle=v74    passenger=p3378   edge=835176556#2
+  [BOARD]  t=  1010s  vehicle=v74    passenger=p3379   edge=835176556#2
+  [BOARD]  t=  1015s  vehicle=v477   passenger=p2239   edge=-420590068#2
+  [DROP]   t=  1020s  vehicle=v144   passenger=p685    edge=923091034#0  trip_time=330s
+  [DROP]   t=  1020s  vehicle=v144   passenger=p686    edge=923091034#0  trip_time=330s
+  [BOARD]  t=  1020s  vehicle=v215   passenger=p1989   edge=5669985#13
+  [BOARD]  t=  1020s  vehicle=v215   passenger=p1988   edge=5669985#13
+  [BOARD]  t=  1020s  vehicle=v215   passenger=p1991   edge=5669985#13
+  [RELEASE] t=  1020s  vehicle=v170   passenger=p2026   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1020s  vehicle=v170   passenger=p1706   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1020s  vehicle=v5     subset=['p3413', 'p3415']  cost=3.143  delta_new=0.0m
+  [ASSIGN] t=  1020s  vehicle=v132   subset=['p3890', 'p3891']  cost=4.398  delta_new=1177.5m
+  [ASSIGN] t=  1020s  vehicle=v144   subset=['p3308']  cost=4.832  delta_new=251.3m
+  [ASSIGN] t=  1020s  vehicle=v296   subset=['p2349', 'p2352']  cost=4.769  delta_new=1573.4m
+  [WARN] setRoute failed for v466: Route replacement failed for vehicle 'v466' (Vehicle is on junction-internal edge leading elsewhere).
+  [DROP]   t=  1040s  vehicle=v235   passenger=p2103   edge=-734561425#10  trip_time=280s
+  [DROP]   t=  1045s  vehicle=v120   passenger=p1480   edge=1082072647#1  trip_time=220s
+  [DROP]   t=  1045s  vehicle=v120   passenger=p1482   edge=1082072647#1  trip_time=220s
+  [DROP]   t=  1045s  vehicle=v120   passenger=p1485   edge=1082072647#1  trip_time=220s
+  [BOARD]  t=  1045s  vehicle=v123   passenger=p1639   edge=194933372#10
+  [BOARD]  t=  1045s  vehicle=v123   passenger=p1640   edge=194933372#10
+  [BOARD]  t=  1045s  vehicle=v123   passenger=p1643   edge=194933372#10
+  [BOARD]  t=  1045s  vehicle=v166   passenger=p1550   edge=46420287#1
+  [BOARD]  t=  1045s  vehicle=v166   passenger=p1551   edge=46420287#1
+  [BOARD]  t=  1045s  vehicle=v307   passenger=p2171   edge=968513230#1
+  [DROP]   t=  1050s  vehicle=v12    passenger=p333    edge=1156946158#1  trip_time=460s
+  [DROP]   t=  1050s  vehicle=v12    passenger=p330    edge=1156946158#1  trip_time=460s
+  [BOARD]  t=  1050s  vehicle=v241   passenger=p1668   edge=226040993#1
+  [BOARD]  t=  1050s  vehicle=v241   passenger=p1669   edge=226040993#1
+  [RELEASE] t=  1050s  vehicle=v95    passenger=p2133   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1050s  vehicle=v459   passenger=p765    (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1050s  vehicle=v459   passenger=p2082   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1050s  vehicle=v459   passenger=p1693   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1050s  vehicle=v459   subset=['p3057', 'p3058', 'p3054']  cost=1.558  delta_new=0.0m
+  [BOARD]  t=  1060s  vehicle=v232   passenger=p2773   edge=-167922076#1
+  [BOARD]  t=  1060s  vehicle=v232   passenger=p2774   edge=-167922076#1
+  [BOARD]  t=  1065s  vehicle=v152   passenger=p2727   edge=196116985#4
+  [RELEASE] t=  1080s  vehicle=v6     passenger=p2243   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1080s  vehicle=v90    passenger=p712    (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1080s  vehicle=v90    passenger=p567    (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1080s  vehicle=v90    passenger=p564    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1080s  vehicle=v90    subset=['p3416', 'p3432', 'p3552']  cost=1.709  delta_new=0.0m
+  [ASSIGN] t=  1080s  vehicle=v116   subset=['p4007', 'p4008']  cost=3.117  delta_new=0.0m
+  [WARN] setRoute failed for v466: Route replacement failed for vehicle 'v466' (Vehicle is on junction-internal edge leading elsewhere).
+  [DROP]   t=  1085s  vehicle=v88    passenger=p1807   edge=-664893485#71  trip_time=330s
+  [DROP]   t=  1085s  vehicle=v88    passenger=p1808   edge=-664893485#71  trip_time=330s
+  [DROP]   t=  1085s  vehicle=v88    passenger=p1809   edge=-664893485#71  trip_time=330s
+  [DROP]   t=  1085s  vehicle=v91    passenger=p1366   edge=387128267#8  trip_time=535s
+  [DROP]   t=  1085s  vehicle=v91    passenger=p1367   edge=387128267#8  trip_time=535s
+  [DROP]   t=  1085s  vehicle=v91    passenger=p1368   edge=387128267#8  trip_time=535s
+  [DROP]   t=  1085s  vehicle=v187   passenger=p2013   edge=569345537#1  trip_time=155s
+  [BOARD]  t=  1095s  vehicle=v72    passenger=p1046   edge=194923800#4
+  [DROP]   t=  1095s  vehicle=v180   passenger=p2929   edge=808190577#0  trip_time=100s
+  [DROP]   t=  1095s  vehicle=v180   passenger=p2930   edge=808190577#0  trip_time=100s
+  [DROP]   t=  1095s  vehicle=v198   passenger=p2698   edge=46334598#4  trip_time=170s
+  [DROP]   t=  1095s  vehicle=v198   passenger=p2699   edge=46334598#4  trip_time=170s
+  [DROP]   t=  1095s  vehicle=v198   passenger=p2700   edge=46334598#4  trip_time=170s
+  [DROP]   t=  1095s  vehicle=v212   passenger=p1370   edge=387128267#8  trip_time=500s
+  [DROP]   t=  1100s  vehicle=v246   passenger=p2015   edge=717625447#8  trip_time=145s
+  [DROP]   t=  1100s  vehicle=v246   passenger=p2016   edge=717625447#8  trip_time=145s
+  [DROP]   t=  1105s  vehicle=v35    passenger=p2248   edge=630828581#0  trip_time=195s
+  [DROP]   t=  1105s  vehicle=v35    passenger=p2250   edge=630828581#0  trip_time=195s
+  [DROP]   t=  1105s  vehicle=v153   passenger=p516    edge=-587038082#1  trip_time=465s
+  [BOARD]  t=  1105s  vehicle=v404   passenger=p3440   edge=717625448#1
+  [BOARD]  t=  1105s  vehicle=v404   passenger=p3441   edge=717625448#1
+  [BOARD]  t=  1105s  vehicle=v404   passenger=p3442   edge=717625448#1
+  [RELEASE] t=  1110s  vehicle=v84    passenger=p2366   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v84    passenger=p2365   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v402   passenger=p1701   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v402   passenger=p118    (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v441   passenger=p45     (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v441   passenger=p44     (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v442   passenger=p1226   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v442   passenger=p221    (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1110s  vehicle=v442   passenger=p1227   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1110s  vehicle=v6     subset=['p2347', 'p2348', 'p2350']  cost=1.764  delta_new=0.0m
+  [ASSIGN] t=  1110s  vehicle=v84    subset=['p4110', 'p4109']  cost=3.951  delta_new=750.8m
+  [ASSIGN] t=  1110s  vehicle=v198   subset=['p4060', 'p4061', 'p4062']  cost=1.691  delta_new=0.0m
+  [ASSIGN] t=  1110s  vehicle=v442   subset=['p3298', 'p3295', 'p3368']  cost=1.668  delta_new=0.0m
+  [DROP]   t=  1130s  vehicle=v356   passenger=p1986   edge=420885236#1  trip_time=380s
+  [BOARD]  t=  1135s  vehicle=v445   passenger=p2175   edge=1452145328#1
+  [BOARD]  t=  1135s  vehicle=v445   passenger=p2176   edge=1452145328#1
+  [BOARD]  t=  1140s  vehicle=v388   passenger=p3574   edge=46520833#5
+  [BOARD]  t=  1140s  vehicle=v388   passenger=p3575   edge=46520833#5
+  [BOARD]  t=  1140s  vehicle=v388   passenger=p3578   edge=46520833#5
+  [DROP]   t=  1140s  vehicle=v441   passenger=p1707   edge=388240124#1  trip_time=360s
+  [RELEASE] t=  1140s  vehicle=v28    passenger=p175    (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1140s  vehicle=v28    passenger=p176    (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1140s  vehicle=v28    subset=['p3794', 'p3795', 'p3796']  cost=1.607  delta_new=0.0m
+  [ASSIGN] t=  1140s  vehicle=v35    subset=['p4213', 'p4214']  cost=3.103  delta_new=0.0m
+  [ASSIGN] t=  1140s  vehicle=v94    subset=['p2756', 'p2757']  cost=4.069  delta_new=561.0m
+  [ASSIGN] t=  1140s  vehicle=v143   subset=['p3910', 'p4196', 'p3511']  cost=1.620  delta_new=0.0m
+  [ASSIGN] t=  1140s  vehicle=v187   subset=['p2247', 'p2249']  cost=3.119  delta_new=0.0m
+  [ASSIGN] t=  1140s  vehicle=v441   subset=['p3349', 'p3351', 'p3353']  cost=1.843  delta_new=0.0m
+  [DROP]   t=  1150s  vehicle=v122   passenger=p1644   edge=226007081#1  trip_time=225s
+  [BOARD]  t=  1150s  vehicle=v247   passenger=p1519   edge=1442446617#0
+  [DROP]   t=  1150s  vehicle=v247   passenger=p1519   edge=1442446617#0  trip_time=0s
+  [DROP]   t=  1165s  vehicle=v264   passenger=p692    edge=420878113#1  trip_time=635s
+  [RELEASE] t=  1170s  vehicle=v219   passenger=p2550   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1170s  vehicle=v219   passenger=p2551   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1170s  vehicle=v91    subset=['p175', 'p176']  cost=3.748  delta_new=677.3m
+  [ASSIGN] t=  1170s  vehicle=v284   subset=['p4367']  cost=5.906  delta_new=1321.9m
+  [ASSIGN] t=  1170s  vehicle=v466   subset=['p4091']  cost=4.596  delta_new=0.0m
+  [BOARD]  t=  1175s  vehicle=v132   passenger=p3890   edge=441405435#1
+  [BOARD]  t=  1175s  vehicle=v132   passenger=p3891   edge=441405435#1
+  [DROP]   t=  1190s  vehicle=v398   passenger=p2170   edge=1051744070#0  trip_time=265s
+  [DROP]   t=  1190s  vehicle=v404   passenger=p3440   edge=1442249234#15  trip_time=85s
+  [DROP]   t=  1190s  vehicle=v404   passenger=p3441   edge=1442249234#15  trip_time=85s
+  [DROP]   t=  1190s  vehicle=v404   passenger=p3442   edge=1442249234#15  trip_time=85s
+  [DROP]   t=  1195s  vehicle=v307   passenger=p2171   edge=1051744070#0  trip_time=150s
+  [RELEASE] t=  1200s  vehicle=v76    passenger=p2686   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1200s  vehicle=v76    passenger=p2687   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1200s  vehicle=v76    passenger=p2688   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1200s  vehicle=v76    subset=['p2893', 'p2897', 'p2898']  cost=1.723  delta_new=0.0m
+  [ASSIGN] t=  1200s  vehicle=v136   subset=['p4421']  cost=7.241  delta_new=2606.7m
+  [ASSIGN] t=  1200s  vehicle=v219   subset=['p2550', 'p2551']  cost=3.161  delta_new=0.0m
+  [BOARD]  t=  1205s  vehicle=v90    passenger=p3416   edge=396444293#9
+  [DROP]   t=  1205s  vehicle=v170   passenger=p2091   edge=456409017#1  trip_time=455s
+  [BOARD]  t=  1210s  vehicle=v125   passenger=p2943   edge=420907903#0
+  [BOARD]  t=  1210s  vehicle=v125   passenger=p2944   edge=420907903#0
+  [BOARD]  t=  1210s  vehicle=v125   passenger=p2948   edge=420907903#0
+  [DROP]   t=  1215s  vehicle=v278   passenger=p1623   edge=1020832418  trip_time=470s
+  [DROP]   t=  1225s  vehicle=v205   passenger=p761    edge=44165030#0  trip_time=855s
+  [DROP]   t=  1225s  vehicle=v205   passenger=p762    edge=44165030#0  trip_time=855s
+  [DROP]   t=  1225s  vehicle=v205   passenger=p763    edge=44165030#0  trip_time=855s
+  [DROP]   t=  1230s  vehicle=v401   passenger=p207    edge=458166897#0  trip_time=330s
+  [DROP]   t=  1230s  vehicle=v401   passenger=p208    edge=458166897#0  trip_time=330s
+  [DROP]   t=  1230s  vehicle=v423   passenger=p2420   edge=1080982437#1  trip_time=425s
+  [DROP]   t=  1230s  vehicle=v423   passenger=p2421   edge=1080982437#1  trip_time=425s
+  [DROP]   t=  1230s  vehicle=v423   passenger=p2422   edge=1080982437#1  trip_time=425s
+  [BOARD]  t=  1230s  vehicle=v442   passenger=p3298   edge=1267505843#0
+  [BOARD]  t=  1230s  vehicle=v442   passenger=p3295   edge=1267505843#0
+  [ASSIGN] t=  1230s  vehicle=v138   subset=['p2686']  cost=6.596  delta_new=2031.4m
+  [ASSIGN] t=  1230s  vehicle=v170   subset=['p4473', 'p1674', 'p2546']  cost=1.671  delta_new=0.0m
+  [ASSIGN] t=  1230s  vehicle=v205   subset=['p3261', 'p3262', 'p3263']  cost=3.673  delta_new=1707.1m
+  [ASSIGN] t=  1230s  vehicle=v492   subset=['p2854', 'p2856', 'p2857']  cost=1.572  delta_new=0.0m
+  [BOARD]  t=  1235s  vehicle=v6     passenger=p2347   edge=46435596#3
+  [BOARD]  t=  1235s  vehicle=v6     passenger=p2348   edge=46435596#3
+  [BOARD]  t=  1235s  vehicle=v6     passenger=p2350   edge=46435596#3
+  [DROP]   t=  1245s  vehicle=v7     passenger=p3089   edge=584971412#2  trip_time=320s
+  [DROP]   t=  1245s  vehicle=v7     passenger=p3090   edge=584971412#2  trip_time=320s
+  [DROP]   t=  1245s  vehicle=v7     passenger=p3091   edge=584971412#2  trip_time=320s
+  [ASSIGN] t=  1260s  vehicle=v278   subset=['p44', 'p45']  cost=4.761  delta_new=1578.8m
+  [ASSIGN] t=  1260s  vehicle=v401   subset=['p4222', 'p4223']  cost=3.358  delta_new=226.6m
+  [DROP]   t=  1265s  vehicle=v328   passenger=p339    edge=-5671774#3  trip_time=895s
+  [DROP]   t=  1265s  vehicle=v328   passenger=p340    edge=-5671774#3  trip_time=895s
+  [DROP]   t=  1265s  vehicle=v402   passenger=p2092   edge=456409017#1  trip_time=450s
+  [BOARD]  t=  1270s  vehicle=v187   passenger=p2247   edge=-195743152#0
+  [BOARD]  t=  1270s  vehicle=v187   passenger=p2249   edge=-195743152#0
+  [DROP]   t=  1275s  vehicle=v8     passenger=p1633   edge=1025734020#1  trip_time=500s
+  [DROP]   t=  1275s  vehicle=v8     passenger=p1635   edge=1025734020#1  trip_time=500s
+  [DROP]   t=  1275s  vehicle=v217   passenger=p492    edge=1388287829#1  trip_time=905s
+  [DROP]   t=  1275s  vehicle=v217   passenger=p488    edge=1388287829#1  trip_time=905s
+  [BOARD]  t=  1275s  vehicle=v450   passenger=p3296   edge=1267505843#0
+  [BOARD]  t=  1280s  vehicle=v91    passenger=p175    edge=387128267#20
+  [BOARD]  t=  1280s  vehicle=v91    passenger=p176    edge=387128267#20
+  [BOARD]  t=  1280s  vehicle=v94    passenger=p2756   edge=1037772009#1
+  [BOARD]  t=  1280s  vehicle=v94    passenger=p2757   edge=1037772009#1
+  [DROP]   t=  1280s  vehicle=v105   passenger=p1602   edge=1316057256#0  trip_time=275s
+  [DROP]   t=  1280s  vehicle=v105   passenger=p1603   edge=1316057256#0  trip_time=275s
+  [BOARD]  t=  1280s  vehicle=v144   passenger=p3308   edge=465098290#1
+  [DROP]   t=  1285s  vehicle=v445   passenger=p2175   edge=-734561425#0  trip_time=150s
+  [DROP]   t=  1285s  vehicle=v445   passenger=p2176   edge=-734561425#0  trip_time=150s
+  [BOARD]  t=  1290s  vehicle=v42    passenger=p3158   edge=-420623124#0
+  [BOARD]  t=  1290s  vehicle=v42    passenger=p3159   edge=-420623124#0
+  [RELEASE] t=  1290s  vehicle=v68    passenger=p2800   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1290s  vehicle=v68    passenger=p2799   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1290s  vehicle=v95    subset=['p2687', 'p2688']  cost=3.283  delta_new=153.5m
+  [ASSIGN] t=  1290s  vehicle=v402   subset=['p4194', 'p4197', 'p4198']  cost=1.602  delta_new=0.0m
+  [DROP]   t=  1310s  vehicle=v54    passenger=p2209   edge=630828583#1  trip_time=445s
+  [DROP]   t=  1310s  vehicle=v54    passenger=p2211   edge=630828583#1  trip_time=445s
+  [BOARD]  t=  1310s  vehicle=v101   passenger=p1110   edge=421853972#1
+  [BOARD]  t=  1310s  vehicle=v101   passenger=p1112   edge=421853972#1
+  [BOARD]  t=  1310s  vehicle=v101   passenger=p1109   edge=421853972#1
+  [BOARD]  t=  1310s  vehicle=v296   passenger=p2349   edge=1156946157#1
+  [BOARD]  t=  1310s  vehicle=v296   passenger=p2352   edge=1156946157#1
+  [BOARD]  t=  1315s  vehicle=v35    passenger=p4213   edge=1049888072#1
+  [BOARD]  t=  1315s  vehicle=v35    passenger=p4214   edge=1049888072#1
+  [BOARD]  t=  1315s  vehicle=v76    passenger=p2893   edge=992144531#3
+  [BOARD]  t=  1315s  vehicle=v76    passenger=p2897   edge=992144531#3
+  [BOARD]  t=  1315s  vehicle=v76    passenger=p2898   edge=992144531#3
+  [RELEASE] t=  1320s  vehicle=v429   passenger=p2896   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1320s  vehicle=v429   passenger=p2895   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1320s  vehicle=v12    subset=['p3735', 'p3736', 'p3737']  cost=1.590  delta_new=0.0m
+  [ASSIGN] t=  1320s  vehicle=v54    subset=['p4811', 'p4812']  cost=4.499  delta_new=1298.6m
+  [ASSIGN] t=  1320s  vehicle=v68    subset=['p2799', 'p2800']  cost=3.011  delta_new=0.0m
+  [ASSIGN] t=  1320s  vehicle=v217   subset=['p3497', 'p3498', 'p3499']  cost=1.924  delta_new=36.6m
+  [DROP]   t=  1325s  vehicle=v318   passenger=p1261   edge=396444295#8  trip_time=640s
+  [DROP]   t=  1325s  vehicle=v318   passenger=p1262   edge=396444295#8  trip_time=640s
+  [DROP]   t=  1325s  vehicle=v318   passenger=p1263   edge=396444295#8  trip_time=640s
+  [BOARD]  t=  1325s  vehicle=v450   passenger=p2689   edge=226041032#1
+  [DROP]   t=  1335s  vehicle=v110   passenger=p988    edge=-664893485#71  trip_time=555s
+  [BOARD]  t=  1335s  vehicle=v198   passenger=p4060   edge=420496529#1
+  [BOARD]  t=  1335s  vehicle=v198   passenger=p4061   edge=420496529#1
+  [BOARD]  t=  1335s  vehicle=v198   passenger=p4062   edge=420496529#1
+  [DROP]   t=  1355s  vehicle=v239   passenger=p2840   edge=492489884#1  trip_time=395s
+  [DROP]   t=  1355s  vehicle=v361   passenger=p896    edge=834043284#0  trip_time=675s
+  [DROP]   t=  1355s  vehicle=v361   passenger=p898    edge=834043284#0  trip_time=675s
+  [DROP]   t=  1355s  vehicle=v361   passenger=p897    edge=834043284#0  trip_time=675s
+  [BOARD]  t=  1360s  vehicle=v28    passenger=p3794   edge=1059826031
+  [BOARD]  t=  1360s  vehicle=v28    passenger=p3795   edge=1059826031
+  [BOARD]  t=  1360s  vehicle=v28    passenger=p3796   edge=1059826031
+  [DROP]   t=  1360s  vehicle=v123   passenger=p1639   edge=226007081#1  trip_time=315s
+  [DROP]   t=  1360s  vehicle=v123   passenger=p1640   edge=226007081#1  trip_time=315s
+  [DROP]   t=  1360s  vehicle=v123   passenger=p1643   edge=226007081#1  trip_time=315s
+  [DROP]   t=  1360s  vehicle=v349   passenger=p273    edge=420598232#0  trip_time=855s
+  [DROP]   t=  1360s  vehicle=v349   passenger=p274    edge=420598232#0  trip_time=855s
+  [DROP]   t=  1360s  vehicle=v349   passenger=p275    edge=420598232#0  trip_time=855s
+  [DROP]   t=  1360s  vehicle=v385   passenger=p276    edge=420598232#0  trip_time=860s
+  [DROP]   t=  1360s  vehicle=v385   passenger=p272    edge=420598232#0  trip_time=860s
+  [DROP]   t=  1360s  vehicle=v461   passenger=p841    edge=5670771#1  trip_time=860s
+  [BOARD]  t=  1365s  vehicle=v138   passenger=p2686   edge=226041032#4
+  [DROP]   t=  1365s  vehicle=v388   passenger=p3574   edge=46334598#4  trip_time=225s
+  [DROP]   t=  1365s  vehicle=v388   passenger=p3575   edge=46334598#4  trip_time=225s
+  [DROP]   t=  1365s  vehicle=v388   passenger=p3578   edge=46334598#4  trip_time=225s
+  [DROP]   t=  1370s  vehicle=v22    passenger=p63     edge=1025731519#0  trip_time=685s
+  [DROP]   t=  1370s  vehicle=v22    passenger=p64     edge=1025731519#0  trip_time=685s
+  [DROP]   t=  1370s  vehicle=v22    passenger=p65     edge=1025731519#0  trip_time=685s
+  [DROP]   t=  1375s  vehicle=v132   passenger=p3890   edge=1025734020#1  trip_time=200s
+  [DROP]   t=  1375s  vehicle=v132   passenger=p3891   edge=1025734020#1  trip_time=200s
+  [BOARD]  t=  1375s  vehicle=v401   passenger=p4222   edge=710571388#2
+  [BOARD]  t=  1375s  vehicle=v401   passenger=p4223   edge=710571388#2
+  [DROP]   t=  1380s  vehicle=v267   passenger=p2304   edge=-664893485#16  trip_time=400s
+  [ASSIGN] t=  1380s  vehicle=v22    subset=['p2365', 'p2366']  cost=3.234  delta_new=32.3m
+  [ASSIGN] t=  1380s  vehicle=v349   subset=['p3971', 'p3972']  cost=3.297  delta_new=0.0m
+  [ASSIGN] t=  1380s  vehicle=v361   subset=['p3695', 'p4033', 'p4160']  cost=1.682  delta_new=0.0m
+  [BOARD]  t=  1385s  vehicle=v143   passenger=p3910   edge=1201651437#1
+  [DROP]   t=  1405s  vehicle=v72    passenger=p1046   edge=496986803#10  trip_time=310s
+  [BOARD]  t=  1410s  vehicle=v95    passenger=p2687   edge=226041032#4
+  [BOARD]  t=  1410s  vehicle=v95    passenger=p2688   edge=226041032#4
+  [DROP]   t=  1415s  vehicle=v187   passenger=p2247   edge=630828581#0  trip_time=145s
+  [DROP]   t=  1415s  vehicle=v187   passenger=p2249   edge=630828581#0  trip_time=145s
+  [BOARD]  t=  1415s  vehicle=v219   passenger=p2550   edge=-630828566#1
+  [BOARD]  t=  1415s  vehicle=v219   passenger=p2551   edge=-630828566#1
+  [BOARD]  t=  1420s  vehicle=v278   passenger=p44     edge=196117051#5
+  [BOARD]  t=  1420s  vehicle=v278   passenger=p45     edge=196117051#5
+  [DROP]   t=  1435s  vehicle=v241   passenger=p1668   edge=496986803#11  trip_time=385s
+  [DROP]   t=  1435s  vehicle=v241   passenger=p1669   edge=496986803#11  trip_time=385s
+  [RELEASE] t=  1440s  vehicle=v65    passenger=p1371   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1440s  vehicle=v65    passenger=p1373   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1440s  vehicle=v65    passenger=p2095   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1440s  vehicle=v70    passenger=p3598   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1440s  vehicle=v70    passenger=p3601   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1440s  vehicle=v70    passenger=p3599   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1440s  vehicle=v450   passenger=p2978   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1440s  vehicle=v65    subset=['p4070', 'p4071', 'p4072']  cost=1.675  delta_new=0.0m
+  [ASSIGN] t=  1440s  vehicle=v70    subset=['p4159', 'p4162', 'p4161']  cost=1.670  delta_new=0.0m
+  [BOARD]  t=  1445s  vehicle=v459   passenger=p3057   edge=-1268093037
+  [BOARD]  t=  1445s  vehicle=v459   passenger=p3058   edge=-1268093037
+  [BOARD]  t=  1445s  vehicle=v459   passenger=p3054   edge=-1268093037
+  [BOARD]  t=  1445s  vehicle=v492   passenger=p2854   edge=194923800#4
+  [BOARD]  t=  1445s  vehicle=v492   passenger=p2856   edge=194923800#4
+  [BOARD]  t=  1445s  vehicle=v492   passenger=p2857   edge=194923800#4
+  [BOARD]  t=  1450s  vehicle=v68    passenger=p2799   edge=-1430111223#2
+  [BOARD]  t=  1450s  vehicle=v68    passenger=p2800   edge=-1430111223#2
+  [DROP]   t=  1455s  vehicle=v35    passenger=p4213   edge=167922071#1  trip_time=140s
+  [DROP]   t=  1455s  vehicle=v35    passenger=p4214   edge=167922071#1  trip_time=140s
+  [DROP]   t=  1455s  vehicle=v191   passenger=p489    edge=1388287829#1  trip_time=930s
+  [DROP]   t=  1455s  vehicle=v191   passenger=p490    edge=1388287829#1  trip_time=930s
+  [DROP]   t=  1455s  vehicle=v191   passenger=p491    edge=1388287829#1  trip_time=930s
+  [BOARD]  t=  1455s  vehicle=v349   passenger=p3971   edge=-584971531#5
+  [BOARD]  t=  1455s  vehicle=v349   passenger=p3972   edge=-584971531#5
+  [DROP]   t=  1465s  vehicle=v477   passenger=p2239   edge=-243056522#5  trip_time=450s
+  [RELEASE] t=  1470s  vehicle=v491   passenger=p3665   (stuck for 510s, freeing capacity)
+  [RELEASE] t=  1470s  vehicle=v491   passenger=p3666   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1470s  vehicle=v35    subset=['p5222', 'p5223', 'p5224']  cost=1.868  delta_new=0.0m
+  [ASSIGN] t=  1470s  vehicle=v491   subset=['p3598', 'p3601', 'p3599']  cost=1.583  delta_new=0.0m
+  [DROP]   t=  1480s  vehicle=v74    passenger=p3378   edge=352858052#7  trip_time=470s
+  [DROP]   t=  1480s  vehicle=v74    passenger=p3379   edge=352858052#7  trip_time=470s
+  [BOARD]  t=  1480s  vehicle=v402   passenger=p4194   edge=465000799#0
+  [BOARD]  t=  1480s  vehicle=v402   passenger=p4197   edge=465000799#0
+  [BOARD]  t=  1480s  vehicle=v402   passenger=p4198   edge=465000799#0
+  [DROP]   t=  1485s  vehicle=v91    passenger=p175    edge=1224480434#7  trip_time=205s
+  [DROP]   t=  1485s  vehicle=v91    passenger=p176    edge=1224480434#7  trip_time=205s
+  [BOARD]  t=  1490s  vehicle=v65    passenger=p4070   edge=-5672138#1
+  [BOARD]  t=  1490s  vehicle=v65    passenger=p4071   edge=-5672138#1
+  [BOARD]  t=  1490s  vehicle=v65    passenger=p4072   edge=-5672138#1
+  [DROP]   t=  1495s  vehicle=v6     passenger=p2347   edge=808190577#0  trip_time=260s
+  [DROP]   t=  1495s  vehicle=v6     passenger=p2348   edge=808190577#0  trip_time=260s
+  [DROP]   t=  1495s  vehicle=v6     passenger=p2350   edge=808190577#0  trip_time=260s
+  [BOARD]  t=  1495s  vehicle=v54    passenger=p4811   edge=396444293#4
+  [BOARD]  t=  1495s  vehicle=v54    passenger=p4812   edge=396444293#4
+  [DROP]   t=  1495s  vehicle=v232   passenger=p2773   edge=-1088320649#0  trip_time=435s
+  [DROP]   t=  1495s  vehicle=v232   passenger=p2774   edge=-1088320649#0  trip_time=435s
+  [DROP]   t=  1495s  vehicle=v251   passenger=p324    edge=-1088325195#0  trip_time=605s
+  [DROP]   t=  1495s  vehicle=v251   passenger=p325    edge=-1088325195#0  trip_time=605s
+  [BOARD]  t=  1500s  vehicle=v5     passenger=p3413   edge=396444293#9
+  [BOARD]  t=  1500s  vehicle=v5     passenger=p3415   edge=396444293#9
+  [RELEASE] t=  1500s  vehicle=v98    passenger=p1795   (stuck for 510s, freeing capacity)
+  [ASSIGN] t=  1500s  vehicle=v232   subset=['p5184', 'p5185']  cost=3.533  delta_new=330.6m
+  [ASSIGN] t=  1500s  vehicle=v251   subset=['p3576', 'p3577']  cost=4.085  delta_new=827.3m
+  [BOARD]  t=  1510s  vehicle=v217   passenger=p3497   edge=169267541#1
+  [BOARD]  t=  1510s  vehicle=v217   passenger=p3498   edge=169267541#1
+  [BOARD]  t=  1510s  vehicle=v217   passenger=p3499   edge=169267541#1
+  [DROP]   t=  1515s  vehicle=v143   passenger=p3910   edge=1061623142#1  trip_time=130s
+  [ASSIGN] t=  1530s  vehicle=v6     subset=['p5329']  cost=5.660  delta_new=1107.5m
+  [BOARD]  t=  1540s  vehicle=v35    passenger=p5222   edge=420907903#0
+  [BOARD]  t=  1540s  vehicle=v35    passenger=p5223   edge=420907903#0
+  [BOARD]  t=  1540s  vehicle=v35    passenger=p5224   edge=420907903#0
+  [BOARD]  t=  1540s  vehicle=v84    passenger=p4110   edge=895398385#0
+  [BOARD]  t=  1540s  vehicle=v84    passenger=p4109   edge=895398385#0

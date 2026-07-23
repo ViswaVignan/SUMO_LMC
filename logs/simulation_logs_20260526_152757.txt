@@ -1,0 +1,583 @@
+  spawned v0 on 50-edge base route
+  spawned v1 on 50-edge base route
+  spawned v2 on 50-edge base route
+  spawned v3 on 40-edge base route
+  [WARN] could not build initial route for v4: No usable edge attached to node 748726602
+  spawned v5 on 50-edge base route
+  spawned v6 on 48-edge base route
+  [WARN] could not build initial route for v7: No usable edge attached to node 42737735
+  spawned v8 on 50-edge base route
+  spawned v9 on 59-edge base route
+  spawned v10 on 55-edge base route
+  spawned v11 on 39-edge base route
+  spawned v12 on 50-edge base route
+  spawned v13 on 40-edge base route
+  spawned v14 on 66-edge base route
+  spawned v15 on 53-edge base route
+  spawned v16 on 42-edge base route
+  spawned v17 on 51-edge base route
+  spawned v18 on 57-edge base route
+  spawned v19 on 50-edge base route
+  spawned v20 on 37-edge base route
+  spawned v21 on 48-edge base route
+  spawned v22 on 47-edge base route
+  spawned v23 on 46-edge base route
+  spawned v24 on 40-edge base route
+  spawned v25 on 45-edge base route
+  spawned v26 on 50-edge base route
+  spawned v27 on 44-edge base route
+  spawned v28 on 49-edge base route
+  spawned v29 on 50-edge base route
+  spawned v30 on 48-edge base route
+  spawned v31 on 37-edge base route
+  spawned v32 on 51-edge base route
+  spawned v33 on 49-edge base route
+  spawned v34 on 48-edge base route
+  spawned v35 on 50-edge base route
+  spawned v36 on 63-edge base route
+  spawned v37 on 53-edge base route
+  spawned v38 on 49-edge base route
+  [WARN] could not build initial route for v39: No usable edge attached to node 371206274
+  spawned v40 on 43-edge base route
+  spawned v41 on 41-edge base route
+  spawned v42 on 50-edge base route
+  spawned v43 on 48-edge base route
+  spawned v44 on 49-edge base route
+  spawned v45 on 47-edge base route
+  [WARN] could not build initial route for v46: No usable edge attached to node 13207206238
+  spawned v47 on 44-edge base route
+  spawned v48 on 43-edge base route
+  spawned v49 on 36-edge base route
+  spawned v50 on 50-edge base route
+  spawned v51 on 61-edge base route
+  spawned v52 on 42-edge base route
+  spawned v53 on 45-edge base route
+  spawned v54 on 53-edge base route
+  spawned v55 on 45-edge base route
+  spawned v56 on 49-edge base route
+  spawned v57 on 44-edge base route
+  spawned v58 on 50-edge base route
+  spawned v59 on 53-edge base route
+  spawned v60 on 43-edge base route
+  spawned v61 on 57-edge base route
+  spawned v62 on 50-edge base route
+  spawned v63 on 49-edge base route
+  spawned v64 on 53-edge base route
+  spawned v65 on 48-edge base route
+  spawned v66 on 50-edge base route
+  spawned v67 on 53-edge base route
+  spawned v68 on 53-edge base route
+  spawned v69 on 36-edge base route
+  spawned v70 on 50-edge base route
+  [WARN] could not build initial route for v71: No usable edge attached to node 589298105
+  spawned v72 on 46-edge base route
+  spawned v73 on 31-edge base route
+  spawned v74 on 50-edge base route
+  spawned v75 on 50-edge base route
+  spawned v76 on 49-edge base route
+  [WARN] could not build initial route for v77: No usable edge attached to node 42439514
+  spawned v78 on 54-edge base route
+  spawned v79 on 55-edge base route
+  spawned v80 on 47-edge base route
+  spawned v81 on 46-edge base route
+  spawned v82 on 82-edge base route
+  spawned v83 on 64-edge base route
+  spawned v84 on 58-edge base route
+  spawned v85 on 45-edge base route
+  spawned v86 on 50-edge base route
+  spawned v87 on 40-edge base route
+  spawned v88 on 57-edge base route
+  spawned v89 on 50-edge base route
+  spawned v90 on 50-edge base route
+  spawned v91 on 46-edge base route
+  spawned v92 on 53-edge base route
+  spawned v93 on 51-edge base route
+  spawned v94 on 43-edge base route
+  spawned v95 on 50-edge base route
+  spawned v96 on 50-edge base route
+  spawned v97 on 67-edge base route
+  spawned v98 on 45-edge base route
+  spawned v99 on 49-edge base route
+  spawned v100 on 50-edge base route
+  spawned v101 on 37-edge base route
+  spawned v102 on 54-edge base route
+  spawned v103 on 40-edge base route
+  spawned v104 on 61-edge base route
+  spawned v105 on 33-edge base route
+  spawned v106 on 43-edge base route
+  spawned v107 on 57-edge base route
+  spawned v108 on 75-edge base route
+  spawned v109 on 51-edge base route
+  spawned v110 on 52-edge base route
+  spawned v111 on 34-edge base route
+  spawned v112 on 29-edge base route
+  spawned v113 on 47-edge base route
+  spawned v114 on 36-edge base route
+  spawned v115 on 59-edge base route
+  spawned v116 on 45-edge base route
+  spawned v117 on 48-edge base route
+  spawned v118 on 65-edge base route
+  spawned v119 on 42-edge base route
+  spawned v120 on 48-edge base route
+  spawned v121 on 50-edge base route
+  spawned v122 on 45-edge base route
+  spawned v123 on 50-edge base route
+  spawned v124 on 46-edge base route
+  [WARN] could not build initial route for v125: No usable edge attached to node 1203709420
+  spawned v126 on 51-edge base route
+  spawned v127 on 50-edge base route
+  spawned v128 on 57-edge base route
+  [WARN] could not build initial route for v129: No usable edge attached to node 1331391393
+  spawned v130 on 48-edge base route
+  spawned v131 on 50-edge base route
+  spawned v132 on 43-edge base route
+  spawned v133 on 31-edge base route
+  spawned v134 on 50-edge base route
+  spawned v135 on 50-edge base route
+  spawned v136 on 44-edge base route
+  spawned v137 on 44-edge base route
+  spawned v138 on 44-edge base route
+  spawned v139 on 44-edge base route
+  spawned v140 on 52-edge base route
+  spawned v141 on 38-edge base route
+  spawned v142 on 50-edge base route
+  spawned v143 on 50-edge base route
+  spawned v144 on 55-edge base route
+  spawned v145 on 50-edge base route
+  spawned v146 on 51-edge base route
+  spawned v147 on 56-edge base route
+  spawned v148 on 50-edge base route
+  spawned v149 on 48-edge base route
+  spawned v150 on 55-edge base route
+  spawned v151 on 57-edge base route
+  spawned v152 on 59-edge base route
+  spawned v153 on 50-edge base route
+  spawned v154 on 50-edge base route
+  spawned v155 on 45-edge base route
+  spawned v156 on 56-edge base route
+  spawned v157 on 53-edge base route
+  spawned v158 on 55-edge base route
+  spawned v159 on 50-edge base route
+  spawned v160 on 60-edge base route
+  spawned v161 on 45-edge base route
+  spawned v162 on 33-edge base route
+  spawned v163 on 48-edge base route
+  spawned v164 on 50-edge base route
+  spawned v165 on 43-edge base route
+  spawned v166 on 50-edge base route
+  spawned v167 on 38-edge base route
+  spawned v168 on 68-edge base route
+  spawned v169 on 50-edge base route
+  spawned v170 on 61-edge base route
+  spawned v171 on 51-edge base route
+  [WARN] could not build initial route for v172: No usable edge attached to node 9153831826
+  spawned v173 on 65-edge base route
+  spawned v174 on 37-edge base route
+  spawned v175 on 46-edge base route
+  spawned v176 on 70-edge base route
+  spawned v177 on 51-edge base route
+  spawned v178 on 42-edge base route
+  spawned v179 on 38-edge base route
+  spawned v180 on 34-edge base route
+  spawned v181 on 42-edge base route
+  spawned v182 on 48-edge base route
+  spawned v183 on 59-edge base route
+  spawned v184 on 50-edge base route
+  spawned v185 on 50-edge base route
+  spawned v186 on 40-edge base route
+  spawned v187 on 54-edge base route
+  spawned v188 on 41-edge base route
+  spawned v189 on 47-edge base route
+  spawned v190 on 50-edge base route
+  spawned v191 on 50-edge base route
+  spawned v192 on 55-edge base route
+  spawned v193 on 50-edge base route
+  spawned v194 on 50-edge base route
+  spawned v195 on 45-edge base route
+  spawned v196 on 45-edge base route
+  spawned v197 on 48-edge base route
+  spawned v198 on 45-edge base route
+  spawned v199 on 48-edge base route
+  spawned v200 on 44-edge base route
+  spawned v201 on 37-edge base route
+  spawned v202 on 47-edge base route
+  spawned v203 on 50-edge base route
+  [WARN] could not build initial route for v204: No usable edge attached to node 42445561
+  spawned v205 on 50-edge base route
+  spawned v206 on 41-edge base route
+  spawned v207 on 51-edge base route
+  spawned v208 on 31-edge base route
+  spawned v209 on 48-edge base route
+  spawned v210 on 52-edge base route
+  spawned v211 on 48-edge base route
+  spawned v212 on 50-edge base route
+  spawned v213 on 45-edge base route
+  spawned v214 on 50-edge base route
+  spawned v215 on 44-edge base route
+  spawned v216 on 50-edge base route
+  spawned v217 on 47-edge base route
+  spawned v218 on 54-edge base route
+  spawned v219 on 53-edge base route
+  spawned v220 on 49-edge base route
+  spawned v221 on 39-edge base route
+  spawned v222 on 48-edge base route
+  spawned v223 on 38-edge base route
+  spawned v224 on 62-edge base route
+  spawned v225 on 50-edge base route
+  spawned v226 on 53-edge base route
+  spawned v227 on 50-edge base route
+  spawned v228 on 50-edge base route
+  spawned v229 on 33-edge base route
+  spawned v230 on 59-edge base route
+  spawned v231 on 50-edge base route
+  spawned v232 on 56-edge base route
+  spawned v233 on 41-edge base route
+  spawned v234 on 50-edge base route
+  spawned v235 on 50-edge base route
+  spawned v236 on 52-edge base route
+  spawned v237 on 56-edge base route
+  spawned v238 on 50-edge base route
+  spawned v239 on 55-edge base route
+  spawned v240 on 50-edge base route
+  spawned v241 on 49-edge base route
+  spawned v242 on 44-edge base route
+  spawned v243 on 50-edge base route
+  spawned v244 on 49-edge base route
+  spawned v245 on 52-edge base route
+  spawned v246 on 57-edge base route
+  spawned v247 on 42-edge base route
+  spawned v248 on 50-edge base route
+  spawned v249 on 50-edge base route
+  spawned v250 on 62-edge base route
+  spawned v251 on 46-edge base route
+  spawned v252 on 45-edge base route
+  spawned v253 on 53-edge base route
+  spawned v254 on 50-edge base route
+  spawned v255 on 50-edge base route
+  spawned v256 on 37-edge base route
+  spawned v257 on 26-edge base route
+  spawned v258 on 68-edge base route
+  spawned v259 on 35-edge base route
+  spawned v260 on 55-edge base route
+  spawned v261 on 76-edge base route
+  spawned v262 on 45-edge base route
+  spawned v263 on 44-edge base route
+  spawned v264 on 38-edge base route
+  spawned v265 on 51-edge base route
+  spawned v266 on 48-edge base route
+  spawned v267 on 29-edge base route
+  spawned v268 on 51-edge base route
+  spawned v269 on 57-edge base route
+  spawned v270 on 38-edge base route
+  spawned v271 on 50-edge base route
+  spawned v272 on 50-edge base route
+  spawned v273 on 49-edge base route
+  spawned v274 on 54-edge base route
+  spawned v275 on 43-edge base route
+  spawned v276 on 38-edge base route
+  spawned v277 on 32-edge base route
+  spawned v278 on 61-edge base route
+  spawned v279 on 36-edge base route
+  spawned v280 on 50-edge base route
+  spawned v281 on 50-edge base route
+  spawned v282 on 50-edge base route
+  spawned v283 on 50-edge base route
+  spawned v284 on 41-edge base route
+  spawned v285 on 39-edge base route
+  spawned v286 on 50-edge base route
+  spawned v287 on 40-edge base route
+  spawned v288 on 48-edge base route
+  spawned v289 on 51-edge base route
+  spawned v290 on 73-edge base route
+  spawned v291 on 50-edge base route
+  spawned v292 on 37-edge base route
+  spawned v293 on 39-edge base route
+  spawned v294 on 35-edge base route
+  spawned v295 on 40-edge base route
+  spawned v296 on 67-edge base route
+  spawned v297 on 44-edge base route
+  spawned v298 on 57-edge base route
+  spawned v299 on 31-edge base route
+  spawned v300 on 36-edge base route
+  spawned v301 on 50-edge base route
+  spawned v302 on 49-edge base route
+  spawned v303 on 45-edge base route
+  spawned v304 on 45-edge base route
+  spawned v305 on 44-edge base route
+  spawned v306 on 46-edge base route
+  spawned v307 on 38-edge base route
+  spawned v308 on 66-edge base route
+  spawned v309 on 53-edge base route
+  spawned v310 on 50-edge base route
+  spawned v311 on 52-edge base route
+  spawned v312 on 53-edge base route
+  spawned v313 on 45-edge base route
+  spawned v314 on 50-edge base route
+  spawned v315 on 52-edge base route
+  spawned v316 on 60-edge base route
+  spawned v317 on 39-edge base route
+  spawned v318 on 35-edge base route
+  spawned v319 on 58-edge base route
+  spawned v320 on 48-edge base route
+  spawned v321 on 45-edge base route
+  spawned v322 on 61-edge base route
+  spawned v323 on 23-edge base route
+  spawned v324 on 64-edge base route
+  spawned v325 on 38-edge base route
+  spawned v326 on 39-edge base route
+  spawned v327 on 50-edge base route
+  spawned v328 on 53-edge base route
+  spawned v329 on 52-edge base route
+  spawned v330 on 45-edge base route
+  spawned v331 on 47-edge base route
+  spawned v332 on 48-edge base route
+  spawned v333 on 55-edge base route
+  spawned v334 on 38-edge base route
+  spawned v335 on 54-edge base route
+  spawned v336 on 45-edge base route
+  spawned v337 on 50-edge base route
+  spawned v338 on 50-edge base route
+  spawned v339 on 48-edge base route
+  [WARN] could not build initial route for v340: No usable edge attached to node 10173362953
+  spawned v341 on 57-edge base route
+  spawned v342 on 38-edge base route
+  spawned v343 on 50-edge base route
+  spawned v344 on 47-edge base route
+  [WARN] could not build initial route for v345: No usable edge attached to node 370927297
+  spawned v346 on 45-edge base route
+  spawned v347 on 57-edge base route
+  spawned v348 on 42-edge base route
+  spawned v349 on 50-edge base route
+  spawned v350 on 46-edge base route
+  spawned v351 on 51-edge base route
+  spawned v352 on 52-edge base route
+  spawned v353 on 39-edge base route
+  spawned v354 on 50-edge base route
+  spawned v355 on 35-edge base route
+  spawned v356 on 50-edge base route
+  spawned v357 on 38-edge base route
+  spawned v358 on 50-edge base route
+  spawned v359 on 42-edge base route
+  spawned v360 on 37-edge base route
+  spawned v361 on 50-edge base route
+  spawned v362 on 45-edge base route
+  spawned v363 on 46-edge base route
+  spawned v364 on 50-edge base route
+  spawned v365 on 48-edge base route
+  spawned v366 on 50-edge base route
+  spawned v367 on 24-edge base route
+  spawned v368 on 50-edge base route
+  spawned v369 on 52-edge base route
+  spawned v370 on 38-edge base route
+  spawned v371 on 44-edge base route
+  spawned v372 on 62-edge base route
+  spawned v373 on 56-edge base route
+  spawned v374 on 48-edge base route
+  spawned v375 on 36-edge base route
+  spawned v376 on 50-edge base route
+  spawned v377 on 49-edge base route
+  spawned v378 on 49-edge base route
+  spawned v379 on 50-edge base route
+  spawned v380 on 50-edge base route
+  spawned v381 on 58-edge base route
+  spawned v382 on 43-edge base route
+  spawned v383 on 25-edge base route
+  spawned v384 on 46-edge base route
+  spawned v385 on 49-edge base route
+  spawned v386 on 53-edge base route
+  spawned v387 on 38-edge base route
+  spawned v388 on 63-edge base route
+  spawned v389 on 48-edge base route
+  spawned v390 on 48-edge base route
+  spawned v391 on 50-edge base route
+  spawned v392 on 50-edge base route
+  spawned v393 on 56-edge base route
+  spawned v394 on 42-edge base route
+  spawned v395 on 49-edge base route
+  spawned v396 on 54-edge base route
+  spawned v397 on 50-edge base route
+  spawned v398 on 46-edge base route
+  spawned v399 on 53-edge base route
+  spawned v400 on 40-edge base route
+  spawned v401 on 45-edge base route
+  spawned v402 on 60-edge base route
+  spawned v403 on 48-edge base route
+  spawned v404 on 49-edge base route
+  [WARN] could not build initial route for v405: No usable edge attached to node 10173362953
+  spawned v406 on 50-edge base route
+  spawned v407 on 49-edge base route
+  spawned v408 on 66-edge base route
+  [WARN] could not build initial route for v409: No usable edge attached to node 11217140028
+  spawned v410 on 50-edge base route
+  spawned v411 on 43-edge base route
+  spawned v412 on 48-edge base route
+  spawned v413 on 55-edge base route
+  spawned v414 on 50-edge base route
+  spawned v415 on 49-edge base route
+  spawned v416 on 57-edge base route
+  spawned v417 on 34-edge base route
+  spawned v418 on 54-edge base route
+  spawned v419 on 44-edge base route
+  spawned v420 on 57-edge base route
+  spawned v421 on 50-edge base route
+  spawned v422 on 57-edge base route
+  spawned v423 on 51-edge base route
+  spawned v424 on 50-edge base route
+  spawned v425 on 37-edge base route
+  spawned v426 on 30-edge base route
+  spawned v427 on 50-edge base route
+  spawned v428 on 42-edge base route
+  spawned v429 on 50-edge base route
+  spawned v430 on 47-edge base route
+  spawned v431 on 46-edge base route
+  spawned v432 on 49-edge base route
+  spawned v433 on 45-edge base route
+  spawned v434 on 60-edge base route
+  spawned v435 on 52-edge base route
+  spawned v436 on 50-edge base route
+  spawned v437 on 54-edge base route
+  spawned v438 on 40-edge base route
+  spawned v439 on 48-edge base route
+  spawned v440 on 54-edge base route
+  spawned v441 on 59-edge base route
+  spawned v442 on 60-edge base route
+  spawned v443 on 45-edge base route
+  spawned v444 on 45-edge base route
+  spawned v445 on 47-edge base route
+  spawned v446 on 39-edge base route
+  spawned v447 on 50-edge base route
+  spawned v448 on 56-edge base route
+  spawned v449 on 50-edge base route
+  spawned v450 on 50-edge base route
+  spawned v451 on 35-edge base route
+  spawned v452 on 34-edge base route
+  spawned v453 on 43-edge base route
+  spawned v454 on 43-edge base route
+  spawned v455 on 40-edge base route
+  spawned v456 on 75-edge base route
+  spawned v457 on 57-edge base route
+  spawned v458 on 50-edge base route
+  spawned v459 on 52-edge base route
+  spawned v460 on 41-edge base route
+  spawned v461 on 42-edge base route
+  spawned v462 on 64-edge base route
+  spawned v463 on 47-edge base route
+  spawned v464 on 60-edge base route
+  spawned v465 on 36-edge base route
+  spawned v466 on 48-edge base route
+  spawned v467 on 59-edge base route
+  spawned v468 on 57-edge base route
+  spawned v469 on 50-edge base route
+  spawned v470 on 47-edge base route
+  spawned v471 on 26-edge base route
+  spawned v472 on 41-edge base route
+  spawned v473 on 34-edge base route
+  spawned v474 on 38-edge base route
+  spawned v475 on 45-edge base route
+  spawned v476 on 46-edge base route
+  spawned v477 on 49-edge base route
+  spawned v478 on 50-edge base route
+  spawned v479 on 51-edge base route
+  spawned v480 on 49-edge base route
+  spawned v481 on 67-edge base route
+  spawned v482 on 50-edge base route
+  spawned v483 on 48-edge base route
+  spawned v484 on 49-edge base route
+  spawned v485 on 41-edge base route
+  spawned v486 on 55-edge base route
+  spawned v487 on 58-edge base route
+  spawned v488 on 63-edge base route
+  spawned v489 on 48-edge base route
+  spawned v490 on 50-edge base route
+  spawned v491 on 48-edge base route
+  spawned v492 on 44-edge base route
+  spawned v493 on 40-edge base route
+  spawned v494 on 50-edge base route
+  spawned v495 on 50-edge base route
+  spawned v496 on 76-edge base route
+  spawned v497 on 57-edge base route
+  spawned v498 on 50-edge base route
+  spawned v499 on 51-edge base route
+  [ASSIGN] t=    30s  vehicle=v3     subset=['p44', 'p45']  cost=3.182  delta_new=0.0m
+  [ASSIGN] t=    30s  vehicle=v23    subset=['p78', 'p79']  cost=5.822  delta_new=2685.2m
+  [ASSIGN] t=    30s  vehicle=v32    subset=['p66', 'p64', 'p63']  cost=3.764  delta_new=2051.8m
+  [ASSIGN] t=    30s  vehicle=v87    subset=['p87', 'p86']  cost=4.982  delta_new=1743.9m
+  [ASSIGN] t=    30s  vehicle=v268   subset=['p1']  cost=7.228  delta_new=2626.6m
+  [ASSIGN] t=    30s  vehicle=v318   subset=['p102']  cost=7.501  delta_new=2928.1m
+  [ASSIGN] t=    30s  vehicle=v402   subset=['p81']  cost=7.548  delta_new=2985.7m
+  [ASSIGN] t=    30s  vehicle=v476   subset=['p18', 'p15', 'p16']  cost=3.597  delta_new=1863.6m
+  [ASSIGN] t=    60s  vehicle=v0     subset=['p173', 'p176', 'p177']  cost=1.606  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v1     subset=['p174', 'p178', 'p175']  cost=3.233  delta_new=1626.3m
+  [ASSIGN] t=    60s  vehicle=v9     subset=['p208', 'p207']  cost=4.797  delta_new=1630.8m
+  [ASSIGN] t=    60s  vehicle=v13    subset=['p217', 'p222', 'p218']  cost=3.910  delta_new=1942.3m
+  [ASSIGN] t=    60s  vehicle=v15    subset=['p195']  cost=7.007  delta_new=2491.4m
+  [ASSIGN] t=    60s  vehicle=v18    subset=['p219', 'p221', 'p220']  cost=4.967  delta_new=2999.3m
+  [ASSIGN] t=    60s  vehicle=v19    subset=['p138']  cost=4.580  delta_new=0.0m
+  [ASSIGN] t=    60s  vehicle=v31    subset=['p124']  cost=7.561  delta_new=2938.8m
+  [ASSIGN] t=    60s  vehicle=v115   subset=['p118', 'p117']  cost=3.877  delta_new=691.8m
+  [ASSIGN] t=    60s  vehicle=v123   subset=['p128', 'p131', 'p126']  cost=3.707  delta_new=1785.8m
+  [ASSIGN] t=    60s  vehicle=v139   subset=['p163']  cost=7.260  delta_new=2701.3m
+  [ASSIGN] t=    60s  vehicle=v192   subset=['p144']  cost=7.323  delta_new=2756.8m
+  [ASSIGN] t=    60s  vehicle=v263   subset=['p186']  cost=6.982  delta_new=2447.7m
+  [ASSIGN] t=    90s  vehicle=v2     subset=['p231']  cost=6.593  delta_new=2050.6m
+  [ASSIGN] t=    90s  vehicle=v6     subset=['p327']  cost=5.105  delta_new=579.1m
+  [ASSIGN] t=    90s  vehicle=v68    subset=['p364', 'p363']  cost=3.173  delta_new=0.0m
+  [ASSIGN] t=    90s  vehicle=v86    subset=['p356', 'p354']  cost=4.119  delta_new=947.6m
+  [ASSIGN] t=    90s  vehicle=v105   subset=['p355', 'p353', 'p357']  cost=4.067  delta_new=2310.5m
+  [ASSIGN] t=    90s  vehicle=v109   subset=['p276']  cost=7.477  delta_new=2817.3m
+  [ASSIGN] t=    90s  vehicle=v127   subset=['p272', 'p274', 'p275']  cost=4.728  delta_new=2789.4m
+  [ASSIGN] t=    90s  vehicle=v232   subset=['p329']  cost=7.191  delta_new=2602.0m
+  [ASSIGN] t=    90s  vehicle=v283   subset=['p339', 'p340']  cost=5.262  delta_new=2062.0m
+  [ASSIGN] t=    90s  vehicle=v304   subset=['p292']  cost=7.010  delta_new=2469.5m
+  [ASSIGN] t=    90s  vehicle=v355   subset=['p324', 'p325']  cost=5.606  delta_new=2507.4m
+  [ASSIGN] t=    90s  vehicle=v474   subset=['p331']  cost=7.506  delta_new=2902.2m
+  [ASSIGN] t=    90s  vehicle=v488   subset=['p300']  cost=7.258  delta_new=2647.5m
+  [ASSIGN] t=   120s  vehicle=v22    subset=['p474']  cost=6.166  delta_new=1545.5m
+  [ASSIGN] t=   120s  vehicle=v37    subset=['p447']  cost=6.783  delta_new=2161.2m
+  [ASSIGN] t=   120s  vehicle=v82    subset=['p458']  cost=6.862  delta_new=2268.1m
+  [ASSIGN] t=   150s  vehicle=v16    subset=['p494', 'p495']  cost=4.127  delta_new=1085.3m
+  [ASSIGN] t=   150s  vehicle=v61    subset=['p551', 'p552']  cost=3.595  delta_new=419.9m
+  [ASSIGN] t=   150s  vehicle=v110   subset=['p490', 'p491', 'p492']  cost=3.869  delta_new=2045.6m
+  [ASSIGN] t=   150s  vehicle=v153   subset=['p489']  cost=7.546  delta_new=2939.1m
+  [ASSIGN] t=   150s  vehicle=v167   subset=['p533', 'p536']  cost=6.005  delta_new=2875.0m
+  [ASSIGN] t=   180s  vehicle=v14    subset=['p628']  cost=5.074  delta_new=506.7m
+  [ASSIGN] t=   180s  vehicle=v108   subset=['p665', 'p664']  cost=3.094  delta_new=0.0m
+  [ASSIGN] t=   180s  vehicle=v290   subset=['p712', 'p713']  cost=5.065  delta_new=1956.8m
+  [ASSIGN] t=   180s  vehicle=v295   subset=['p690']  cost=6.760  delta_new=2226.1m
+  [ASSIGN] t=   180s  vehicle=v363   subset=['p645', 'p648']  cost=5.493  delta_new=2202.6m
+  [ASSIGN] t=   180s  vehicle=v417   subset=['p270']  cost=6.844  delta_new=2243.0m
+  [ASSIGN] t=   210s  vehicle=v62    subset=['p809', 'p806']  cost=5.143  delta_new=1906.5m
+  [ASSIGN] t=   210s  vehicle=v72    subset=['p808', 'p805']  cost=4.615  delta_new=1378.7m
+  [ASSIGN] t=   210s  vehicle=v88    subset=['p761', 'p762', 'p763']  cost=4.233  delta_new=2585.9m
+  [ASSIGN] t=   210s  vehicle=v111   subset=['p74', 'p72', 'p71']  cost=1.642  delta_new=0.0m
+  [ASSIGN] t=   210s  vehicle=v144   subset=['p817', 'p818']  cost=6.102  delta_new=2847.2m
+  [ASSIGN] t=   210s  vehicle=v271   subset=['p765', 'p764']  cost=5.292  delta_new=2157.6m
+  [ASSIGN] t=   210s  vehicle=v351   subset=['p686']  cost=6.119  delta_new=1469.3m
+  [ASSIGN] t=   210s  vehicle=v457   subset=['p797']  cost=7.248  delta_new=2580.1m
+  [BOARD]  t=   230s  vehicle=v19    passenger=p138    edge=-5673069#1
+  [ASSIGN] t=   240s  vehicle=v8     subset=['p872', 'p871']  cost=6.125  delta_new=2857.6m
+  [ASSIGN] t=   240s  vehicle=v10    subset=['p979']  cost=7.316  delta_new=2733.5m
+  [ASSIGN] t=   240s  vehicle=v24    subset=['p865']  cost=6.144  delta_new=1548.0m
+  [ASSIGN] t=   240s  vehicle=v36    subset=['p981']  cost=5.314  delta_new=754.5m
+  [ASSIGN] t=   240s  vehicle=v40    subset=['p856']  cost=7.389  delta_new=2859.9m
+  [ASSIGN] t=   240s  vehicle=v116   subset=['p882', 'p883', 'p884']  cost=4.689  delta_new=2817.5m
+  [ASSIGN] t=   240s  vehicle=v128   subset=['p984']  cost=6.998  delta_new=2447.3m
+  [ASSIGN] t=   240s  vehicle=v267   subset=['p985']  cost=7.161  delta_new=2610.1m
+  [ASSIGN] t=   240s  vehicle=v281   subset=['p839', 'p840']  cost=4.961  delta_new=1775.2m
+  [ASSIGN] t=   240s  vehicle=v341   subset=['p858']  cost=6.516  delta_new=1959.5m
+  [ASSIGN] t=   240s  vehicle=v389   subset=['p878']  cost=6.571  delta_new=1993.2m
+  [ASSIGN] t=   270s  vehicle=v11    subset=['p1042']  cost=6.522  delta_new=1895.7m
+  [ASSIGN] t=   270s  vehicle=v30    subset=['p1013']  cost=6.205  delta_new=1534.2m
+  [ASSIGN] t=   270s  vehicle=v53    subset=['p1076']  cost=7.256  delta_new=2718.0m
+  [ASSIGN] t=   270s  vehicle=v113   subset=['p988']  cost=7.303  delta_new=2695.4m
+  [ASSIGN] t=   270s  vehicle=v140   subset=['p1068', 'p1069']  cost=5.191  delta_new=1980.8m
+  [BOARD]  t=   275s  vehicle=v68    passenger=p364    edge=1442249234#11
+  [BOARD]  t=   300s  vehicle=v16    passenger=p494    edge=5671357#19
+  [BOARD]  t=   300s  vehicle=v16    passenger=p495    edge=5671357#19
+  [ASSIGN] t=   300s  vehicle=v42    subset=['p1109', 'p1110', 'p1111']  cost=3.642  delta_new=1839.4m
+  [ASSIGN] t=   300s  vehicle=v43    subset=['p1112', 'p1108']  cost=5.784  delta_new=2578.3m
+  [ASSIGN] t=   300s  vehicle=v160   subset=['p1180', 'p1182', 'p1183']  cost=4.004  delta_new=2278.3m
+  [ASSIGN] t=   300s  vehicle=v324   subset=['p1032']  cost=7.122  delta_new=2533.6m
+  [ASSIGN] t=   300s  vehicle=v408   subset=['p1181']  cost=4.790  delta_new=214.4m
+  [ASSIGN] t=   300s  vehicle=v456   subset=['p1124']  cost=7.637  delta_new=2950.9m
+  [ASSIGN] t=   300s  vehicle=v486   subset=['p576']  cost=5.994  delta_new=1411.0m
