@@ -1,0 +1,3 @@
+Warning: Vehicle 'v2857' performs emergency braking on lane ':4207913309_2_2' with decel=9.00, wished=4.50, severity=1.00, time=5.00.
+
+Interrupted by user.

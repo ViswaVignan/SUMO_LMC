@@ -1,0 +1,311 @@
+# Simulation Summary
+
+- Total system cost: 38428.555
+- Passengers assigned: 5128
+- Passengers completed (dropped off): 4759
+- Passengers rejected (timeout): 115
+- Passengers evacuated (failed mid-ride): 21
+  - Rejection Reasons:
+    - no_vehicles_nearby: 94
+    - deadlock_timeout_onboard: 21
+- Passengers pending: 77
+- Average waiting time: 644.4 s
+- Average in-vehicle time: 1385.5 s
+
+## Vehicle utilization
+
+- v85: assigned=0, onboard=1, completed=10, delta_used=0.000
+- v156: assigned=0, onboard=2, completed=9, delta_used=0.000
+- v197: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v251: assigned=0, onboard=1, completed=8, delta_used=0.000
+- v308: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v382: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v667: assigned=0, onboard=2, completed=5, delta_used=119.630
+- v910: assigned=0, onboard=3, completed=1, delta_used=0.000
+- v476_r2520: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v239_r2730: assigned=0, onboard=2, completed=7, delta_used=0.000
+- v281_r2730: assigned=0, onboard=3, completed=5, delta_used=0.000
+- v61_r2820: assigned=0, onboard=1, completed=9, delta_used=0.000
+- v517_r3000: assigned=0, onboard=1, completed=6, delta_used=955.560
+- v836_r3120: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v47_r3270: assigned=0, onboard=2, completed=9, delta_used=0.000
+- v327_r3270: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v102_r3330: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v897_r3330: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v813_r3390: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v305_r3540: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v499_r3540: assigned=0, onboard=3, completed=7, delta_used=0.000
+- v716_r8880: assigned=0, onboard=1, completed=4, delta_used=400.340
+- v585_r8880: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v523_r8880: assigned=0, onboard=2, completed=5, delta_used=0.000
+- v509_r8880: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v53_r8880: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v436_r8880: assigned=0, onboard=1, completed=5, delta_used=661.740
+- v332_r8880: assigned=0, onboard=1, completed=9, delta_used=9.440
+- v982_r8880: assigned=0, onboard=1, completed=5, delta_used=44.630
+- v364_r8880: assigned=0, onboard=2, completed=3, delta_used=0.000
+- v17_r8880: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v498_r8880: assigned=0, onboard=1, completed=2, delta_used=0.000
+- v985_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v116_r8880: assigned=0, onboard=2, completed=3, delta_used=0.000
+- v339_r8880: assigned=0, onboard=1, completed=8, delta_used=55.190
+- v715_r8880: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v732_r8880: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v261_r8880: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v340_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v581_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v743_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v931_r8880: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v996_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v807_r8880: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v271_r8880: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v232_r8880: assigned=0, onboard=1, completed=3, delta_used=717.580
+- v423_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v658_r8880: assigned=0, onboard=2, completed=0, delta_used=0.000
+- v428_r8880: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v358_r8880: assigned=0, onboard=2, completed=4, delta_used=0.000
+- v112_r8880: assigned=0, onboard=3, completed=7, delta_used=0.000
+- v209_r8880: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v48_r8880: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v673_r8880: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v369_r8880: assigned=0, onboard=1, completed=2, delta_used=0.000
+- v195_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v314_r8880: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v561_r8880: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v686_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v919_r8880: assigned=0, onboard=2, completed=4, delta_used=0.000
+- v162_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v674_r8880: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v19_r8880: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v873_r8880: assigned=0, onboard=2, completed=0, delta_used=0.000
+- v57_r8880: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v139_r8880: assigned=0, onboard=3, completed=1, delta_used=0.000
+- v265_r8880: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v621_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v924_r8880: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v597_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v259_r8880: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v537_r8880: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v602_r8880: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v629_r8880: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v63_r8880: assigned=0, onboard=3, completed=0, delta_used=0.000
+- v357_r8880: assigned=0, onboard=1, completed=2, delta_used=0.000
+- v556_r8880: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v267_r8880: assigned=0, onboard=2, completed=0, delta_used=0.000
+- v572_r8880: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v355_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v976_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v876_r8910: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v558_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v614_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v60_r8910: assigned=0, onboard=1, completed=11, delta_used=114.860
+- v146_r8910: assigned=0, onboard=2, completed=2, delta_used=658.190
+- v951_r8910: assigned=0, onboard=2, completed=3, delta_used=0.000
+- v316_r8910: assigned=0, onboard=1, completed=2, delta_used=0.000
+- v698_r8910: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v463_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v795_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v587_r8910: assigned=0, onboard=1, completed=8, delta_used=0.000
+- v689_r8910: assigned=0, onboard=1, completed=2, delta_used=831.310
+- v11_r8910: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v333_r8910: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v560_r8910: assigned=0, onboard=1, completed=8, delta_used=0.000
+- v348_r8910: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v671_r8910: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v783_r8910: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v833_r8910: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v100_r8910: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v600_r8910: assigned=0, onboard=1, completed=5, delta_used=105.020
+- v101_r8910: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v402_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v93_r8910: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v619_r8910: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v32_r8910: assigned=0, onboard=2, completed=6, delta_used=770.070
+- v275_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v875_r8910: assigned=1, onboard=0, completed=4, delta_used=0.000
+- v73_r8910: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v193_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v542_r8910: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v960_r8910: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v152_r8910: assigned=0, onboard=1, completed=3, delta_used=995.330
+- v472_r8910: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v540_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v678_r8910: assigned=0, onboard=2, completed=1, delta_used=0.000
+- v588_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v341_r8910: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v761_r8910: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v501_r8910: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v7_r8910: assigned=0, onboard=3, completed=1, delta_used=0.000
+- v300_r8910: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v391_r8910: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v5_r8910: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v353_r8940: assigned=0, onboard=1, completed=9, delta_used=0.000
+- v4_r8940: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v172_r8940: assigned=0, onboard=1, completed=8, delta_used=94.880
+- v578_r8940: assigned=0, onboard=1, completed=6, delta_used=945.000
+- v620_r8940: assigned=0, onboard=1, completed=3, delta_used=928.510
+- v549_r8940: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v601_r8940: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v385_r8940: assigned=0, onboard=3, completed=1, delta_used=0.000
+- v904_r8940: assigned=0, onboard=2, completed=2, delta_used=347.010
+- v395_r8940: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v58_r8940: assigned=0, onboard=2, completed=10, delta_used=0.000
+- v397_r8940: assigned=0, onboard=1, completed=7, delta_used=20.530
+- v937_r8940: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v254_r8940: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v676_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v55_r8940: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v250_r8940: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v592_r8940: assigned=0, onboard=2, completed=5, delta_used=316.550
+- v394_r8940: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v233_r8940: assigned=0, onboard=1, completed=7, delta_used=288.660
+- v905_r8940: assigned=0, onboard=1, completed=2, delta_used=131.690
+- v610_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v633_r8940: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v131_r8940: assigned=0, onboard=1, completed=9, delta_used=963.740
+- v717_r8940: assigned=0, onboard=1, completed=5, delta_used=676.060
+- v35_r8940: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v179_r8940: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v218_r8940: assigned=0, onboard=1, completed=1, delta_used=718.130
+- v297_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v727_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v791_r8940: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v18_r8940: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v508_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v441_r8940: assigned=0, onboard=1, completed=5, delta_used=894.040
+- v433_r8940: assigned=0, onboard=1, completed=2, delta_used=0.000
+- v823_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v538_r8940: assigned=0, onboard=1, completed=9, delta_used=934.100
+- v157_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v625_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v894_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v121_r8940: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v1_r8940: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v299_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v407_r8940: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v584_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v765_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v107_r8940: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v272_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v731_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v181_r8940: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v606_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v471_r8940: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v646_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v482_r8940: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v506_r8940: assigned=0, onboard=2, completed=0, delta_used=0.000
+- v920_r8940: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v576_r8970: assigned=0, onboard=1, completed=6, delta_used=214.840
+- v245_r8970: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v418_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v150_r8970: assigned=0, onboard=1, completed=8, delta_used=396.910
+- v655_r8970: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v69_r8970: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v766_r8970: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v350_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v703_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v822_r8970: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v650_r8970: assigned=0, onboard=1, completed=8, delta_used=0.000
+- v322_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v722_r8970: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v939_r8970: assigned=0, onboard=1, completed=4, delta_used=905.660
+- v916_r8970: assigned=0, onboard=3, completed=1, delta_used=0.000
+- v72_r8970: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v857_r8970: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v228_r8970: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v262_r8970: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v432_r8970: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v298_r8970: assigned=0, onboard=2, completed=3, delta_used=0.000
+- v449_r8970: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v484_r8970: assigned=0, onboard=1, completed=2, delta_used=580.800
+- v528_r8970: assigned=0, onboard=1, completed=8, delta_used=0.000
+- v701_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v750_r8970: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v998_r8970: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v227_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v780_r8970: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v215_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v114_r8970: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v78_r8970: assigned=0, onboard=2, completed=5, delta_used=0.000
+- v718_r8970: assigned=0, onboard=1, completed=2, delta_used=0.000
+- v68_r8970: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v304_r8970: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v283_r8970: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v422_r8970: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v574_r8970: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v248_r8970: assigned=0, onboard=1, completed=0, delta_used=0.000
+- v45_r8970: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v136_r9000: assigned=0, onboard=1, completed=8, delta_used=0.000
+- v189_r9000: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v115_r9000: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v624_r9000: assigned=0, onboard=1, completed=7, delta_used=852.480
+- v543_r9000: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v153_r9000: assigned=0, onboard=1, completed=11, delta_used=0.000
+- v337_r9000: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v988_r9000: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v963_r9000: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v269_r9000: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v302_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v461_r9000: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v103_r9000: assigned=0, onboard=2, completed=5, delta_used=510.580
+- v887_r9000: assigned=0, onboard=1, completed=7, delta_used=0.000
+- v95_r9000: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v659_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v961_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v890_r9000: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v817_r9000: assigned=0, onboard=1, completed=5, delta_used=491.590
+- v802_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v577_r9000: assigned=0, onboard=4, completed=2, delta_used=0.000
+- v242_r9000: assigned=0, onboard=2, completed=3, delta_used=623.560
+- v247_r9000: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v663_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v912_r9000: assigned=0, onboard=1, completed=3, delta_used=677.710
+- v878_r9000: assigned=0, onboard=3, completed=2, delta_used=0.000
+- v222_r9000: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v318_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v443_r9000: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v596_r9000: assigned=0, onboard=1, completed=4, delta_used=67.950
+- v656_r9000: assigned=0, onboard=2, completed=1, delta_used=0.000
+- v832_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v519_r9000: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v842_r9000: assigned=0, onboard=2, completed=0, delta_used=0.000
+- v886_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v434_r9000: assigned=0, onboard=2, completed=4, delta_used=0.000
+- v687_r9000: assigned=0, onboard=1, completed=5, delta_used=0.000
+- v749_r9000: assigned=0, onboard=1, completed=6, delta_used=0.000
+- v828_r9000: assigned=0, onboard=2, completed=1, delta_used=63.100
+- v881_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v786_r9000: assigned=0, onboard=2, completed=6, delta_used=0.000
+- v216_r9000: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v946_r9000: assigned=0, onboard=1, completed=4, delta_used=0.000
+- v135_r9000: assigned=0, onboard=1, completed=1, delta_used=0.000
+- v486_r9000: assigned=0, onboard=2, completed=0, delta_used=0.000
+- v451_r9000: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v194_r9000: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v336_r9000: assigned=0, onboard=2, completed=2, delta_used=703.360
+- v378_r9000: assigned=0, onboard=2, completed=2, delta_used=0.000
+- v335_r9000: assigned=0, onboard=1, completed=3, delta_used=0.000
+- v83_r9000: assigned=0, onboard=1, completed=0, delta_used=0.000
+
+## First 20 step statistics
+
+- t=30.0: new=98, active=100, rejected=0, assigned=94, boarded=0, dropped=0
+- t=60.0: new=85, active=91, rejected=0, assigned=81, boarded=1, dropped=0
+- t=90.0: new=69, active=79, rejected=0, assigned=68, boarded=4, dropped=0
+- t=120.0: new=79, active=90, rejected=0, assigned=72, boarded=10, dropped=0
+- t=150.0: new=46, active=64, rejected=0, assigned=48, boarded=8, dropped=1
+- t=180.0: new=56, active=72, rejected=0, assigned=59, boarded=9, dropped=0
+- t=210.0: new=94, active=107, rejected=0, assigned=100, boarded=27, dropped=3
+- t=240.0: new=73, active=80, rejected=0, assigned=65, boarded=20, dropped=2
+- t=270.0: new=77, active=92, rejected=0, assigned=80, boarded=14, dropped=0
+- t=300.0: new=77, active=89, rejected=0, assigned=69, boarded=29, dropped=3
+- t=330.0: new=60, active=80, rejected=0, assigned=55, boarded=27, dropped=2
+- t=360.0: new=44, active=69, rejected=0, assigned=48, boarded=13, dropped=1
+- t=390.0: new=54, active=75, rejected=0, assigned=49, boarded=37, dropped=3
+- t=420.0: new=68, active=94, rejected=0, assigned=68, boarded=31, dropped=3
+- t=450.0: new=37, active=63, rejected=0, assigned=45, boarded=13, dropped=2
+- t=480.0: new=65, active=83, rejected=0, assigned=68, boarded=52, dropped=11
+- t=510.0: new=69, active=84, rejected=0, assigned=57, boarded=60, dropped=4
+- t=540.0: new=70, active=97, rejected=0, assigned=75, boarded=21, dropped=3
+- t=570.0: new=67, active=89, rejected=0, assigned=58, boarded=56, dropped=12
+- t=600.0: new=49, active=80, rejected=0, assigned=50, boarded=41, dropped=7

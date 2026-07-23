@@ -1,0 +1,128 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{\textbf{Hierarchical Spatial Decomposition and Game-Theoretic Soft Route Integration}}
+\author{Research Draft - Version 3.0}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document outlines the Version 3.0 architectural upgrade to the Last Mile Assignment Model. It transitions the monolithic combinatorial dispatch into a parallelized Map-Reduce framework based on spatial decomposition. Furthermore, it introduces rigorous Algorithmic Game Theory and Mechanism Design to the dispatch logic. By replacing naive ratios with Urn-Ball supply-demand matching, implementing a bounded Market Disequilibrium Index, and utilizing Pigouvian Subsidies (Surge Pricing) to align driver incentives, the architecture achieves a highly optimized and mathematically stable Fleet Equilibrium.
+\end{abstract}
+
+\section{Predictive Inputs: The Sliding Window Forecast}
+To transition the simulation from a reactive state to a predictive state, soft routes are calculated using a 1-hour demand forecast window, which advances in 30-minute sliding steps (e.g., 08:00--09:00, 08:30--09:30). 
+
+Within the simulation engine, the active soft route architecture is updated strictly every 30 minutes. This provides the dispatcher with a 60-minute "predictive vision," leveraging historical averages to organically reposition vehicles before demand physically manifests.
+
+\section{Spatial Decomposition and Parallelization (Map-Reduce)}
+The primary computational bottleneck of legacy models is the monolithic combinatorial search, where every unassigned vehicle evaluates every unassigned passenger ($O(V \times P)$). 
+
+To solve this, the architecture implements \textbf{Spatial Decomposition}. Each active soft route is instantiated as an independent mathematical subproblem (a "Bucket"). Passengers and vehicles are segregated into specific buckets via a low-latency Triage Meta-Cost Function. 
+
+Because these buckets are mathematically isolated, the core optimization routines are executed concurrently using multi-core parallel processing (Map-Reduce architecture). 
+\begin{itemize}
+    \item \textbf{Map (Multi-Core):} Combinatorial routing permutations and cost scoring (\texttt{evaluate\_subset}) are calculated in isolated CPU threads per soft route.
+    \item \textbf{Reduce (Single-Core):} The finalized, lowest-cost assignments are merged back into the main thread. TraCI physical routing commands (\texttt{setVia}, \texttt{changeTarget}) and the simulation physics step (\texttt{simulationStep}) are executed on a single core to prevent microscopic traffic deadlocks.
+\end{itemize}
+
+\section{Hybrid Transit and The Grounded Reserve Fleet}
+A fundamental challenge of spatial decomposition is the routing of "outlier" passengers whose trips span multiple soft route boundaries or travel entirely perpendicular to the active corridors.
+
+To service these requests without breaking the soft route isolation, the simulation operates as a \textbf{Hybrid Transit System}. A portion of the 3,000-vehicle fleet is intentionally withheld from the soft route assignment buckets and placed in a "Grounded Reserve Fleet." This reserve fleet acts as a traditional point-to-point Dial-a-Ride service.
+
+The size of the reserve fleet is dynamically calculated at the start of every 30-minute simulation block to mirror the proportion of historical demand that falls outside the active soft routes:
+\begin{equation}
+    ReserveRatio = 1.0 - \left( \frac{\sum_{i} Expected\_Demand_i}{Total\_Expected\_Network\_Demand} \right)
+\end{equation}
+
+\subsection{Low-Demand Thresholding}
+This dynamic scaling inherently solves the low-demand thresholding constraint. During off-peak hours (e.g., 03:00 AM) where ride-sharing is mathematically improbable and $\sum Expected\_Demand_i \approx 0$, the $ReserveRatio$ approaches $1.0$. Consequently, $100\%$ of the fleet transitions into the reserve pool, effectively disabling soft-route pre-positioning and preventing inefficient deadheading.
+
+\section{Game-Theoretic Supply and Demand (Wardrop Equilibrium)}
+In Version 2.0, fleet distribution relied on a rigid saturation ratio (\texttt{demSupVar}). Version 3.0 models the fleet distribution dynamically as a Non-Cooperative Congestion Game. 
+
+Each soft route $i$ acts as a matching market. A vehicle's expected utility for joining route $i$ is driven by the probability of successfully matching with a passenger. Utilizing the Urn-Ball (Cobb-Douglas) matching function, the probability of a match is defined as:
+\begin{equation}
+    P(\text{match}_i) = 1 - e^{-\frac{D_i}{S_i + 1}}
+\end{equation}
+where $D_i$ is the active passenger demand and $S_i$ is the active vehicle supply on the soft route. As more empty vehicles flock to a popular route, $S_i$ increases, causing $P(\text{match}_i)$ to drop logarithmically. Rational vehicles will organically distribute themselves across secondary routes to maximize their match probability, achieving a natural Wardrop User Equilibrium without hard-coded saturation caps.
+
+\section{The Triage Layer: The Meta-Cost Function}
+To securely isolate the soft routes for parallel execution, a low-latency "Triage" Meta-Cost Function sorts vehicles and passengers into their optimal soft-route buckets.
+
+\subsection[Market Disequilibrium Index]{The Market Disequilibrium Index ($\Omega_i$)}
+To model network stress and replace legacy saturation variables, the architecture utilizes the bounded Market Disequilibrium Index:
+\begin{equation}
+    \Omega_i = \frac{D_i - S_i}{D_i + S_i}
+\end{equation}
+The index is mathematically bounded on $[-1, 1]$. An $\Omega_i \to 1$ indicates extreme undersupply (maximum stress), while $\Omega_i \to -1$ indicates severe oversupply (dead zone). Perfect equilibrium occurs at $\Omega_i = 0$. Consequently, dispatch intervention mechanisms operate strictly on the domain $[-1, 1] \setminus \{0\}$, as an equilibrium state ($0$) requires zero systemic correction.
+
+\subsection[Vehicle Assignment Meta-Cost (M v,i)]{Vehicle Assignment Meta-Cost ($M_{v, i}$)}
+Every idle vehicle $v$ is scored against every active soft route $i$. The vehicle is assigned to the route that minimizes $M_{v, i}$. If $\forall i, M_{v, i} \to \infty$, the vehicle is overflowed into the Grounded Reserve Fleet.
+\begin{equation}
+    M_{v, i} = GTC(v, i) \times e^{-\Omega_i} \times Fatigue_v
+\end{equation}
+
+\textbf{Variable Definitions:}
+\begin{itemize}
+    \item \textbf{$GTC(v, i)$:} The Generalized Travel Cost, calculated as $(\text{VoT} \times TravelTime) + (C_{op} \times Distance)$. Here, $\text{VoT}$ represents the economic Value of Time (the monetary cost of a driver's time per second) and $C_{op}$ is the physical operating cost per meter. This incorporates localized traffic congestion instead of simple Euclidean distance. Bounded constraint: If $GTC$ exceeds a critical threshold, $M_{v, i} = \infty$.
+    \item \textbf{$e^{-\Omega_i}$:} The intervention multiplier. If a route is stressed ($\Omega_i > 0$), the negative exponent shrinks the cost, acting as a magnet. If a route is oversupplied ($\Omega_i < 0$), the positive exponent inflates the cost, organically repelling vehicles.
+    \item \textbf{$Fatigue_v$:} A dynamic scalar tracking vehicle wear. Overworked vehicles are penalized ($>1.0$) to force parking, while long-standing idle vehicles are mathematically subsidized ($<1.0$) to encourage mobilization.
+\end{itemize}
+
+\subsection[Passenger Assignment Meta-Cost (M p,i)]{Passenger Assignment and Walk Flexibility ($M_{p, i}$)}
+To maximize pooling efficiency, passenger triage incorporates Willingness to Walk (WtW). Rather than strict origin-destination vector overlap, each soft route trunk generates a Spatial Catchment Buffer (e.g., a $500$m radius). 
+\begin{equation}
+    M_{p, i} = 
+    \begin{cases} 
+      Overlap(p, i) & \text{if } Origin_p \in Catchment(Access_i) \text{ and } Dest_p \in Catchment(Egress_i) \\
+      \infty & \text{otherwise}
+   \end{cases}
+\end{equation}
+In this equation:
+\begin{itemize}
+    \item $Origin_p$ and $Dest_p$ represent the actual geographic coordinates of passenger $p$'s starting location and final destination.
+    \item $Access_i$ and $Egress_i$ are the physical entry (pickup) and exit (dropoff) coordinate nodes of the soft route trunk $i$.
+    \item $Catchment(x)$ defines the acceptable geographic walking radius (e.g., 500 meters) surrounding point $x$.
+\end{itemize}
+Thus, a passenger is only assigned to a trunk if their origin is within walking distance of the trunk's access point, and their destination is within walking distance of the trunk's egress point. If a passenger is categorized as an outlier ($M_{p, i} = \infty$), they are routed to the Reserve Fleet for standard point-to-point dial-a-ride fulfillment.
+
+\section{Global Integration: The Principal-Agent Problem}
+While the Meta-Cost ($M_{v, i}$) successfully triages vehicles into buckets, its abstract constraints (like $\Omega_i$) must be enforced within the physical routing algorithm (\texttt{evaluate\_subset}) without causing unit scaling distortions.
+
+\subsection{Passenger Walking Discomfort (Decay Function)}
+While the binary meta-cost ($M_{p, i}$) only triages passengers, the final objective function must account for the physical effort required for passengers to walk to the soft-route trunk. To balance vehicle detour efficiency against passenger effort, we implement an exponential decay function for walking discomfort. For each passenger leg (pickup and dropoff), the discomfort is calculated as $1 - e^{-\beta \cdot WalkDist}$. This ensures short walks incur negligible penalty, while approaching the maximum catchment boundary spikes the cost exponentially.
+
+\subsection{Pigouvian Subsidies (Surge Pricing Bonus)}
+A critical flaw in standard spatial routing is the Principal-Agent misalignment. If a route is highly stressed ($\Omega_i > 0$), the \textit{Platform (Principal)} desires a vehicle to navigate there. However, navigating to a stressed route incurs a physical and temporal penalty ($GTC$) for the \textit{Driver (Agent)}. If the system merely modifies the cost function by artificially scaling distance, it mathematically assumes the driver is willing to absorb the operational cost for free.
+
+In economics, a \textbf{Pigouvian Subsidy} is a financial incentive provided to individuals or businesses to encourage behaviors that generate positive externalities (benefits to society or the system as a whole). To correctly align incentives in our model, the platform issues a Pigouvian Subsidy, $B(\Omega_i)$, a monetary Surge Bonus compensating the driver for the positive externality of balancing the network and relieving congestion.
+
+The final objective cost function evaluated by the greedy dispatcher is the net economic disutility to the driver, penalized by passenger walking discomfort:
+\begin{equation}
+    Cost_{final} = \left( \gamma \cdot C_{op} \cdot \Delta_{new} \right) + \left( \alpha \sum \left( 1 - e^{-\beta \cdot WalkDist} \right) \right) - B(\Omega_i)
+\end{equation}
+
+Where the variables are defined as follows:
+\begin{itemize}
+    \item \textbf{$\gamma$ and $\alpha$}: Priority weighting scalars for the driver detour penalty and passenger walking penalty, respectively.
+    \item \textbf{$C_{op}$}: The vehicle's physical operating cost per unit distance (e.g., dollars per kilometer).
+    \item \textbf{$\Delta_{new}$}: The additional physical detour distance the vehicle must drive to service the assigned subset of passengers.
+    \item \textbf{$\beta$}: The exponential decay coefficient defining how rapidly passenger discomfort spikes with walking distance.
+    \item \textbf{$WalkDist$}: The actual walking distance for the passenger (calculated independently for both pickup and dropoff legs).
+    \item \textbf{$B(\Omega_i)$}: The Pigouvian Subsidy, a monetary surge bonus computed from the Market Disequilibrium Index ($\Omega_i$) that rewards drivers for servicing stressed routes.
+\end{itemize}
+
+By subtracting the monetary Surge Bonus from the physical detour penalty ($\Delta_{new}$), the system mathematically "pays" the driver to take the longer detour. The driver acts rationally to minimize their Net Cost, and the platform successfully guides supply to the stressed route, achieving a perfect Mechanism Design formulation.
+
+\end{document}

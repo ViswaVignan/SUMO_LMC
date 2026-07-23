@@ -1,19 +1,14 @@
-# Ignore heavy Shared_Data entirely
-Shared_Data/
-
-# Ignore output state dumps and traces
-*.xml
-!*net.xml
-!*rou.xml
-!*add.xml
-!edges_to_remove.xml
-*.json
-!scenario_data.json
+# Ignore large simulation output and data files
+simulation_trace_*.xml
 *.csv
-*.txt
+dynamic_soft_routes.json
+simulation_state.json
 
-# Keep standard Python ignores
+# Python caches and virtual environments
 __pycache__/
 *.pyc
 venv/
 .env
+
+# Logs
+*.log

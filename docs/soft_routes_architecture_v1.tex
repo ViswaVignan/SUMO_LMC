@@ -1,0 +1,58 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{\textbf{Baseline Reactive Dispatch and Combinatorial Optimization Model}}
+\author{Research Draft - Version 1.0 (Legacy Architecture)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document records the architectural baseline of the Last Mile Assignment Model (Version 1.0). It details the mathematical formulation of the objective cost function, the subset sampling heuristics, and the reactive fleet rebalancing mechanics. This baseline model relies on a monolithic combinatorial search space and relies exclusively on real-time request generation, providing the operational framework upon which predictive routing algorithms are subsequently integrated.
+\end{abstract}
+
+\section{Monolithic Dispatch Architecture}
+The Version 1.0 dispatch engine operates on a batch-dispatch paradigm with a temporal resolution of $\Delta t = 30$ seconds. 
+
+During each execution cycle, the system generates a global pool of all unassigned passengers and all available vehicles. The dispatcher relies on a monolithic architecture, executing a global $O(V \times P)$ combinatorial search. To mitigate factorial explosion within the single-core environment, the model utilizes a \texttt{sample\_subsets} heuristic, which strictly groups passengers based on geographic proximity (e.g., $1.5$ km clustering radii) and identical demand profiles.
+
+\section{The Objective Cost Function}
+The core logic of the dispatcher is governed by a greedy assignment solver driven by a multi-variable objective cost function. For any proposed vehicle-to-subset routing permutation, the algorithmic penalty score is computed as follows:
+
+\begin{equation}
+    Cost = \gamma \cdot C^{km}_v \cdot \Delta_{new} + \alpha \sum Discomfort_{walk} + \beta \sum Delay_{trip} + \mu(Cap_v - n)
+\end{equation}
+
+\subsection{Parameter Definitions}
+\begin{itemize}
+    \item \textbf{Vehicle Detour Penalty ($\gamma$):} Evaluates the additional physical distance ($\Delta_{new}$ in kilometers) the vehicle must traverse beyond its current live route, multiplied by the vehicle's specific operational cost per kilometer ($C^{km}_v$).
+    \item \textbf{Walking Discomfort Penalty ($\alpha$):} Utilizes an exponential decay model ($1 - e^{-1.71 \cdot d}$) to evaluate passenger first-mile/last-mile walking distances. This bounds the discomfort penalty strictly between $[0, 1]$ per leg.
+    \item \textbf{Trip Delay Penalty ($\beta$):} Computes the total excess time a passenger spends waiting or deviating from their ideal direct-route travel time ($T_{ideal}$).
+    \item \textbf{Unused Capacity Penalty ($\mu$):} Evaluates the subset size ($n$) against the vehicle's total capacity ($Cap_v$). This acts as a mathematical incentive to aggressively pool multiple passengers into a single vehicle.
+\end{itemize}
+
+\section{Reactive Rebalancing and Idle Management}
+In the absence of predictive demand forecasting, Version 1.0 relies entirely on reactive rebalancing heuristics to manage idle fleet distribution.
+
+When a vehicle completes its final drop-off and the active passenger queue is empty, the vehicle enters a \textit{Cooldown Phase}. The system monitors regional vehicle densities using a rigid grid threshold (e.g., \texttt{MIN\_IDLE\_DENSITY}). 
+\begin{itemize}
+    \item \textbf{Parking:} If regional supply is sufficient, the vehicle physically parks.
+    \item \textbf{Wandering:} If regional supply falls below the threshold, the vehicle is assigned a randomized \texttt{far\_edge\_candidate} to prevent TraCI deletion and simulate generic wandering.
+\end{itemize}
+
+\section{Architectural Limitations}
+While highly effective for moderate fleet sizes, Version 1.0 exhibits three primary limitations at a 3,000-vehicle Manhattan scale:
+\begin{enumerate}
+    \item \textbf{Combinatorial Bottleneck:} The monolithic global pool scales poorly, creating severe CPU saturation during peak demand spikes.
+    \item \textbf{Herd Behavior:} Reactive density thresholds often cause clustered deadheading, where hundreds of idle vehicles simultaneously target the same density-deficient grid.
+    \item \textbf{Spatially Blind:} Because the cost function exclusively evaluates active passenger requests, vehicles are unable to pre-position along anticipated high-demand corridors prior to physical request instantiation.
+\end{enumerate}
+
+\end{document}

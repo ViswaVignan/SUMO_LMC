@@ -1,0 +1,938 @@
+Warning: Vehicle 'v2857' performs emergency braking on lane ':4207913309_2_2' with decel=9.00, wished=4.50, severity=1.00, time=5.00.
+[CRITICAL-DESPAWN] t=     5s 8 vehicles reached destination and despawned: ('v1890', 'v1481', 'v1298', 'v1556', 'v1778', 'v577', 'v1250', 'v1749')
+[CRITICAL-DESPAWN] t=    10s 9 vehicles reached destination and despawned: ('v300', 'v675', 'v2194', 'v2717', 'v809', 'v1107', 'v1256', 'v1406', 'v2817')
+[CRITICAL-DESPAWN] t=    15s 14 vehicles reached destination and despawned: ('v430', 'v956', 'v1323', 'v1934', 'v2353', 'v14', 'v24', 'v1664', 'v1675', 'v2286', 'v373', 'v2969', 'v342', 'v1586')
+[CRITICAL-DESPAWN] t=    20s 7 vehicles reached destination and despawned: ('v1492', 'v2010', 'v407', 'v1202', 'v1307', 'v424', 'v1252')
+[CRITICAL-DESPAWN] t=    25s 4 vehicles reached destination and despawned: ('v1953', 'v1816', 'v906', 'v129')
+[CRITICAL-DESPAWN] t=    30s 6 vehicles reached destination and despawned: ('v754', 'v907', 'v1517', 'v1856', 'v2187', 'v1123')
+  [DIAGNOSTICS] Edge '420890026#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1530486870#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1530486870#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '420890026#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515490486#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1530486870#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515490486#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1529521817#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801902#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515490424#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1530486870#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515490486#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1418279952#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801902#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515490424#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1532218058#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801902#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515490486#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '420890026#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '460065820#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '460065820#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1532218058#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1532218058#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1529521817#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1530486870#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1418279952#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '420890026#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '460065820#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1418279952#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801902#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1418279952#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1532218058#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801902#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1046481427#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1532218058#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '171574337#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1418279952#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '768381525#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '439801903#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [LOGICAL-SPAWN] t=    30s  passenger=p2      walk_dist=56.9m  walk_time=47.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p3      walk_dist=56.9m  walk_time=47.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v17    subset=['p2', 'p3']  cost=4.977  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p34     walk_dist=48.2m  walk_time=40.2s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p35     walk_dist=48.2m  walk_time=40.2s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v37    subset=['p34', 'p35']  cost=5.617  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p36     walk_dist=48.2m  walk_time=40.2s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p37     walk_dist=48.2m  walk_time=40.2s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v75    subset=['p36', 'p37']  cost=5.421  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p38     walk_dist=48.2m  walk_time=40.2s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p39     walk_dist=48.2m  walk_time=40.2s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v116   subset=['p38', 'p39']  cost=5.286  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p81     walk_dist=45.4m  walk_time=37.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p4      walk_dist=56.9m  walk_time=47.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v123   subset=['p81', 'p4']  cost=5.527  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p30     walk_dist=29.7m  walk_time=24.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p31     walk_dist=29.7m  walk_time=24.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v145   subset=['p30', 'p31']  cost=6.041  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p46     walk_dist=66.4m  walk_time=55.3s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p48     walk_dist=66.4m  walk_time=55.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v207   subset=['p46', 'p48']  cost=6.430  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p82     walk_dist=67.4m  walk_time=56.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v213   subset=['p82']  cost=6.259  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p73     walk_dist=65.2m  walk_time=54.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p75     walk_dist=65.2m  walk_time=54.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v216   subset=['p73', 'p75']  cost=5.987  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p83     walk_dist=37.2m  walk_time=31.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p12     walk_dist=71.8m  walk_time=59.8s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v257   subset=['p83', 'p12']  cost=6.087  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p32     walk_dist=29.7m  walk_time=24.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v270   subset=['p32']  cost=7.229  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p60     walk_dist=66.5m  walk_time=55.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p71     walk_dist=55.7m  walk_time=46.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v273   subset=['p60', 'p71']  cost=6.851  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p0      walk_dist=67.4m  walk_time=56.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p1      walk_dist=67.4m  walk_time=56.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v298   subset=['p0', 'p1']  cost=8.448  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p49     walk_dist=67.8m  walk_time=56.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v350   subset=['p49']  cost=12.535  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p51     walk_dist=63.7m  walk_time=53.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p52     walk_dist=63.7m  walk_time=53.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v2     subset=['p51', 'p52']  cost=5.666  delta_new=0.0mError: Vehicle 'v619' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v369' could not assign stop 'lane:44164413#0_0 pos:61.71' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v1354' could not assign stop 'lane:346613529#0_0 pos:58.39' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v1497' could not assign stop 'lane:196117092#0_0 pos:65.11' after rerouting (traci:changeTarget) at time=930.00.
+
+  [LOGICAL-SPAWN] t=    30s  passenger=p78     walk_dist=16.9m  walk_time=14.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v5     subset=['p78']  cost=6.870  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p13     walk_dist=24.5m  walk_time=20.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v48    subset=['p13']  cost=7.061  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p61     walk_dist=17.8m  walk_time=14.8s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v53    subset=['p61']  cost=6.372  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p14     walk_dist=22.4m  walk_time=18.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v55    subset=['p14']  cost=8.681  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p50     walk_dist=68.4m  walk_time=57.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v71    subset=['p50']  cost=10.533  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p85     walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p90     walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v619   subset=['p85', 'p90']  cost=6.063  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p74     walk_dist=65.2m  walk_time=54.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p76     walk_dist=65.2m  walk_time=54.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v644   subset=['p74', 'p76']  cost=8.028  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p77     walk_dist=65.2m  walk_time=54.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v669   subset=['p77']  cost=6.554  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p62     walk_dist=67.2m  walk_time=56.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p63     walk_dist=63.0m  walk_time=52.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v27    subset=['p62', 'p63']  cost=3.904  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p64     walk_dist=67.2m  walk_time=56.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p65     walk_dist=63.0m  walk_time=52.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v93    subset=['p64', 'p65']  cost=3.704  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p66     walk_dist=67.2m  walk_time=56.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p67     walk_dist=63.0m  walk_time=52.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v94    subset=['p66', 'p67']  cost=3.798  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p6      walk_dist=67.2m  walk_time=56.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v103   subset=['p6']  cost=7.303  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p10     walk_dist=61.7m  walk_time=51.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v236   subset=['p10']  cost=6.236  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p7      walk_dist=33.4m  walk_time=27.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p8      walk_dist=33.4m  walk_time=27.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v369   subset=['p7', 'p8']  cost=5.706  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p92     walk_dist=63.4m  walk_time=52.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p93     walk_dist=63.4m  walk_time=52.8s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v799   subset=['p92', 'p93']  cost=5.787  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p94     walk_dist=63.4m  walk_time=52.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p95     walk_dist=63.4m  walk_time=52.8s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1225  subset=['p94', 'p95']  cost=5.736  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p20     walk_dist=0.9m  walk_time=0.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p22     walk_dist=35.0m  walk_time=29.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1354  subset=['p20', 'p22']  cost=6.522  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p96     walk_dist=63.4m  walk_time=52.8s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1438  subset=['p96']  cost=6.652  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p9      walk_dist=33.4m  walk_time=27.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1497  subset=['p9']  cost=6.803  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p16     walk_dist=28.9m  walk_time=24.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1522  subset=['p16']  cost=9.782  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p44     walk_dist=49.3m  walk_time=41.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p45     walk_dist=49.3m  walk_time=41.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v33    subset=['p44', 'p45']  cost=5.176  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p70     walk_dist=55.7m  walk_time=46.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v200   subset=['p70']  cost=6.799  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p47     walk_dist=66.4m  walk_time=55.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v343   subset=['p47']  cost=6.336  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p29     walk_dist=29.7m  walk_time=24.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v357   subset=['p29']  cost=6.844  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p80     walk_dist=34.5m  walk_time=28.8s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v464   subset=['p80']  cost=6.162  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p58     walk_dist=66.0m  walk_time=55.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v141   subset=['p58']  cost=10.352  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p23     walk_dist=31.1m  walk_time=25.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v212   subset=['p23']  cost=11.742  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p24     walk_dist=31.1m  walk_time=25.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p25     walk_dist=31.1m  walk_time=25.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v259   subset=['p24', 'p25']  cost=10.612  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p26     walk_dist=31.1m  walk_time=25.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p27     walk_dist=31.1m  walk_time=25.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v322   subset=['p26', 'p27']  cost=6.015  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p84     walk_dist=61.5m  walk_time=51.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v688   subset=['p84']  cost=12.715  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p28     walk_dist=29.7m  walk_time=24.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p33     walk_dist=29.7m  walk_time=24.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v244   subset=['p28', 'p33']  cost=6.204  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p86     walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p89     walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v15    subset=['p86', 'p89']  cost=8.558  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p72     walk_dist=55.7m  walk_time=46.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v16    subset=['p72']  cost=6.732  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p99     walk_dist=48.0m  walk_time=40.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v314   subset=['p99']  cost=10.178  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p15     walk_dist=69.8m  walk_time=58.2s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1027  subset=['p15']  cost=7.090  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p87     walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v8     subset=['p87']  cost=6.025  delta_new=0.0mError: Vehicle 'v170' could not assign stop 'lane:195743139#0_0 pos:66.19' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v462' could not assign stop 'lane:196116983#0_0 pos:71.88' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v1154' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v2446' could not assign stop 'lane:735173276#0_0 pos:68.73' after rerouting (traci:changeTarget) at time=930.00.
+Error: Vehicle 'v1477' could not assign stop 'lane:346613529#0_0 pos:58.39' after rerouting (traci:changeTarget) at time=930.00.
+Warning: Vehicle 'v1320' performs emergency braking on lane '-46211840#2_1' with decel=9.00, wished=4.50, severity=1.00, time=932.00.
+
+  [LOGICAL-SPAWN] t=    30s  passenger=p40     walk_dist=70.7m  walk_time=58.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p41     walk_dist=70.7m  walk_time=58.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v76    subset=['p40', 'p41']  cost=5.527  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p68     walk_dist=67.2m  walk_time=56.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v140   subset=['p68']  cost=7.215  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p59     walk_dist=29.6m  walk_time=24.6s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v2888  subset=['p59']  cost=5.452  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p18     walk_dist=17.6m  walk_time=14.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1231  subset=['p18']  cost=8.166  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p21     walk_dist=48.1m  walk_time=40.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v40    subset=['p21']  cost=8.509  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p88     walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v162   subset=['p88']  cost=6.617  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p53     walk_dist=8.4m  walk_time=7.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p54     walk_dist=8.4m  walk_time=7.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v170   subset=['p53', 'p54']  cost=6.010  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p55     walk_dist=8.4m  walk_time=7.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p56     walk_dist=8.4m  walk_time=7.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v303   subset=['p55', 'p56']  cost=7.948  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p57     walk_dist=8.4m  walk_time=7.0s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v462   subset=['p57']  cost=7.474  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p42     walk_dist=16.2m  walk_time=13.5s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p43     walk_dist=16.2m  walk_time=13.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v858   subset=['p42', 'p43']  cost=7.314  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p97     walk_dist=66.7m  walk_time=55.6s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    30s  passenger=p98     walk_dist=66.7m  walk_time=55.6s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1501  subset=['p97', 'p98']  cost=5.004  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p5      walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1417  subset=['p5']  cost=6.163  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p11     walk_dist=153.1m  walk_time=127.6s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1385  subset=['p11']  cost=6.295  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p17     walk_dist=70.7m  walk_time=58.9s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1154  subset=['p17']  cost=8.805  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p19     walk_dist=17.6m  walk_time=14.7s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v2446  subset=['p19']  cost=7.230  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p69     walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1238  subset=['p69']  cost=5.694  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p79     walk_dist=59.3m  walk_time=49.5s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v1477  subset=['p79']  cost=5.791  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    30s  passenger=p91     walk_dist=46.1m  walk_time=38.4s  state=walking_to_pickup
+  [ASSIGN] t=    30s  vehicle=v2985  subset=['p91']  cost=7.938  delta_new=0.0m
+[t=    30s] new= 98  active=100  rej= 0  assn=100  board= 0  drop= 0  | fleet=2113 (serve=69 idle=2044 park=1501) | pax=0on,100pn,0dn | Ω[-1.00,+1.00] str=403 bal=319 ovr=1526
+  [LOGICAL] t=    35s  passenger=p20     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    40s  passenger=p53     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    40s  passenger=p54     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    40s  passenger=p55     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    40s  passenger=p56     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    40s  passenger=p57     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    45s  passenger=p78     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    45s  passenger=p61     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    45s  passenger=p18     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    45s  passenger=p42     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    45s  passenger=p43     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    45s  passenger=p19     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    50s  passenger=p14     walking_to_pickup → waiting_at_pickup
+[CRITICAL-DESPAWN] t=    55s 3 vehicles reached destination and despawned: ('v1255', 'v889', 'v1711')
+  [LOGICAL] t=    55s  passenger=p30     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p31     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p32     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p13     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p85     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p90     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p16     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p29     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p28     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p33     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p86     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p89     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p87     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p59     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    55s  passenger=p88     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p7      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p8      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p22     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p9      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p80     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p23     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p24     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p25     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p26     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    60s  passenger=p27     walking_to_pickup → waiting_at_pickup
+  [BOARD]  t=    60s  vehicle=v322   passenger=p26     edge=438389785#0  (logical)
+  [BOARD]  t=    60s  vehicle=v322   passenger=p27     edge=438389785#0  (logical)
+  [RESPAWN-EMPTY] t=    60s vehicle=v889  -> v889_r60 route=1edges to maintain fleet.
+  [RESPAWN-EMPTY] t=    60s vehicle=v1255 -> v1255_r60 route=1edges to maintain fleet.
+  [RESPAWN-EMPTY] t=    60s vehicle=v1711 -> v1711_r60 route=1edges to maintain fleet.
+  [EXTEND-STOPS] t=    60s  vehicle=v2     routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v5     routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v16    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v17    routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1030139837#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v27    routing through 2 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v33    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v37    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v53    routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v75    routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v93    routing through 2 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v94    routing through 2 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v103   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '587038048#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v116   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v123   routing through 1 pickups + 2 dropoffs
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v140   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v145   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v162   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v170   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '587038048#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v200   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v207   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v213   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v236   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v270   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v273   routing through 2 pickups + 2 dropoffs
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '587038048#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v343   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v357   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v462   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1529946082#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v619   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v799   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030139837#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030139837#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v1027  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '587038048#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '587038048#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v1225  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v1231  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v1385  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v1438  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    60s  vehicle=v1501  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030139837#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030139837#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1523945330#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1523945330#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1523945330#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '33117933#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v2446  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030123272#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '587038048#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1030139837#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1529946082#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1003871114#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '988994185#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1523945330#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1523945330#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v2888  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '32937832#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.Error: Vehicle 'v684' could not assign stop 'lane:195743139#0_0 pos:66.19' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v772' could not assign stop 'lane:524569306#0_0 pos:68.24' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v2936' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v1187' could not assign stop 'lane:44164413#0_0 pos:61.71' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v211' could not assign stop 'lane:5669581#0_0 pos:5.55' after rerouting (traci:changeTarget) at time=960.00.
+
+  [DIAGNOSTICS] Edge '1529946082#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1529946082#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1524091365#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    60s  vehicle=v2985  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1515002105#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [LOGICAL-SPAWN] t=    60s  passenger=p125    walk_dist=66.4m  walk_time=55.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v52    subset=['p125']  cost=8.474  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p136    walk_dist=69.5m  walk_time=58.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v304   subset=['p136']  cost=7.512  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p157    walk_dist=62.8m  walk_time=52.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v442   subset=['p157']  cost=10.464  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p131    walk_dist=72.2m  walk_time=60.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v450   subset=['p131']  cost=6.469  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p156    walk_dist=73.5m  walk_time=61.2s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v572   subset=['p156']  cost=9.727  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p100    walk_dist=68.4m  walk_time=57.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v684   subset=['p100']  cost=6.943  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p158    walk_dist=103.8m  walk_time=86.5s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p159    walk_dist=103.8m  walk_time=86.5s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p160    walk_dist=103.8m  walk_time=86.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v688   subset=['p158', 'p159', 'p160']  cost=3.467  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p179    walk_dist=11.1m  walk_time=9.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v691   subset=['p179']  cost=9.141  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p165    walk_dist=72.4m  walk_time=60.4s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v786   subset=['p165']  cost=11.113  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p161    walk_dist=103.8m  walk_time=86.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v808   subset=['p161']  cost=9.176  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p134    walk_dist=16.0m  walk_time=13.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1105  subset=['p134']  cost=9.463  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p118    walk_dist=38.1m  walk_time=31.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p121    walk_dist=38.1m  walk_time=31.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1268  subset=['p118', 'p121']  cost=9.595  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p163    walk_dist=49.4m  walk_time=41.2s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1464  subset=['p163']  cost=8.489  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p172    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p173    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v772   subset=['p172', 'p173']  cost=3.171  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p105    walk_dist=50.5m  walk_time=42.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2936  subset=['p105']  cost=8.545  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p102    walk_dist=70.9m  walk_time=59.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v298   subset=['p102']  cost=5.130  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p169    walk_dist=74.6m  walk_time=62.2s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v61    subset=['p169']  cost=6.487  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p124    walk_dist=45.3m  walk_time=37.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v311   subset=['p124']  cost=7.194  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p154    walk_dist=39.1m  walk_time=32.6s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p155    walk_dist=39.1m  walk_time=32.6s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v331   subset=['p154', 'p155']  cost=10.351  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p135    walk_dist=69.5m  walk_time=58.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v505   subset=['p135']  cost=6.691  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p107    walk_dist=38.2m  walk_time=31.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p110    walk_dist=38.2m  walk_time=31.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2462  subset=['p107', 'p110']  cost=5.966  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p180    walk_dist=34.6m  walk_time=28.9s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v66    subset=['p180']  cost=10.489  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p106    walk_dist=38.2m  walk_time=31.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p108    walk_dist=38.2m  walk_time=31.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v11    subset=['p106', 'p108']  cost=4.879  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p109    walk_dist=38.2m  walk_time=31.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v79    subset=['p109']  cost=9.276  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p119    walk_dist=38.1m  walk_time=31.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v252   subset=['p119']  cost=7.284  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p174    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p175    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p176    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v236   subset=['p174', 'p175', 'p176']  cost=2.389  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p142    walk_dist=0.2m  walk_time=0.2s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p143    walk_dist=0.2m  walk_time=0.2s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p144    walk_dist=0.2m  walk_time=0.2s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1027  subset=['p142', 'p143', 'p144']  cost=1.717  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p177    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1187  subset=['p177']  cost=7.746  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p182    walk_dist=72.4m  walk_time=60.4s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1937  subset=['p182']  cost=6.908  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p129    walk_dist=68.3m  walk_time=56.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p130    walk_dist=68.3m  walk_time=56.9s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v211   subset=['p129', 'p130']  cost=6.496  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p113    walk_dist=24.1m  walk_time=20.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p114    walk_dist=24.1m  walk_time=20.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v245   subset=['p113', 'p114']  cost=7.205  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p115    walk_dist=24.1m  walk_time=20.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p116    walk_dist=24.1m  walk_time=20.1s  state=walking_to_pickupError: Vehicle 'v1726' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v45' could not assign stop 'lane:346613529#0_0 pos:58.39' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v65' could not assign stop 'lane:195743139#0_0 pos:66.19' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v306' could not assign stop 'lane:195743131#0_0 pos:67.18' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v2054' could not assign stop 'lane:346613529#0_0 pos:58.39' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v1362' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v722' could not assign stop 'lane:196116983#0_0 pos:71.88' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v1773' could not assign stop 'lane:384178816#0_0 pos:64.77' after rerouting (traci:changeTarget) at time=960.00.
+Error: Vehicle 'v1904' could not assign stop 'lane:320516789#0_0 pos:65.19' after rerouting (traci:changeTarget) at time=960.00.
+
+  [ASSIGN] t=    60s  vehicle=v396   subset=['p115', 'p116']  cost=6.936  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p117    walk_dist=24.1m  walk_time=20.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v411   subset=['p117']  cost=8.426  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p170    walk_dist=67.1m  walk_time=55.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p171    walk_dist=67.1m  walk_time=55.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p151    walk_dist=16.0m  walk_time=13.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v140   subset=['p170', 'p171', 'p151']  cost=2.741  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p120    walk_dist=33.4m  walk_time=27.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p123    walk_dist=33.4m  walk_time=27.9s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1726  subset=['p120', 'p123']  cost=3.914  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p166    walk_dist=23.4m  walk_time=19.5s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p167    walk_dist=23.4m  walk_time=19.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1771  subset=['p166', 'p167']  cost=4.417  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p153    walk_dist=45.2m  walk_time=37.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    60s  passenger=p168    walk_dist=23.4m  walk_time=19.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1409  subset=['p153', 'p168']  cost=5.511  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p184    walk_dist=55.7m  walk_time=46.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v45    subset=['p184']  cost=5.877  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p122    walk_dist=33.4m  walk_time=27.9s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v65    subset=['p122']  cost=7.002  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p152    walk_dist=40.7m  walk_time=33.9s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v162   subset=['p152']  cost=4.040  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p164    walk_dist=43.2m  walk_time=36.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v618   subset=['p164']  cost=6.739  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p128    walk_dist=30.1m  walk_time=25.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1316  subset=['p128']  cost=7.413  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p181    walk_dist=27.2m  walk_time=22.7s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v306   subset=['p181']  cost=9.102  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p178    walk_dist=42.3m  walk_time=35.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v27    subset=['p178']  cost=1.971  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p101    walk_dist=72.6m  walk_time=60.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1417  subset=['p101']  cost=3.754  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p103    walk_dist=62.1m  walk_time=51.7s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1677  subset=['p103']  cost=7.074  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p104    walk_dist=27.6m  walk_time=23.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2054  subset=['p104']  cost=7.932  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p111    walk_dist=72.2m  walk_time=60.2s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1362  subset=['p111']  cost=5.158  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p112    walk_dist=72.2m  walk_time=60.2s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v462   subset=['p112']  cost=3.538  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p126    walk_dist=46.0m  walk_time=38.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2114  subset=['p126']  cost=5.458  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p127    walk_dist=46.0m  walk_time=38.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2246  subset=['p127']  cost=5.458  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p132    walk_dist=48.1m  walk_time=40.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1356  subset=['p132']  cost=5.218  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p133    walk_dist=48.1m  walk_time=40.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v722   subset=['p133']  cost=5.321  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p137    walk_dist=27.6m  walk_time=23.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2446  subset=['p137']  cost=3.901  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p138    walk_dist=27.6m  walk_time=23.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2985  subset=['p138']  cost=4.054  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p139    walk_dist=64.2m  walk_time=53.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1231  subset=['p139']  cost=4.002  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p140    walk_dist=64.2m  walk_time=53.5s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2060  subset=['p140']  cost=7.579  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p141    walk_dist=27.6m  walk_time=23.0s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1385  subset=['p141']  cost=3.685  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p145    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2596  subset=['p145']  cost=6.049  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p146    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v2718  subset=['p146']  cost=6.468  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p147    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v503   subset=['p147']  cost=6.468  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p148    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1773  subset=['p148']  cost=6.918  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p162    walk_dist=66.4m  walk_time=55.3s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v1904  subset=['p162']  cost=5.379  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    60s  passenger=p183    walk_dist=20.2m  walk_time=16.8s  state=walking_to_pickup
+  [ASSIGN] t=    60s  vehicle=v33    subset=['p183']  cost=2.337  delta_new=0.0m
+[t=    60s] new= 85  active= 85  rej= 0  assn=83  board= 2  drop= 0  | fleet=2110 (serve=119 idle=1991 park=1040) | pax=2on,181pn,0dn | Ω[-1.00,+1.00] str=315 bal=305 ovr=1618
+  [LOGICAL] t=    65s  passenger=p83     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    65s  passenger=p142    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    65s  passenger=p143    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    65s  passenger=p144    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    70s  passenger=p81     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    70s  passenger=p91     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    70s  passenger=p179    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p34     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p35     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p36     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p37     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p38     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p39     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p44     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p45     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p99     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p21     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p134    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    75s  passenger=p151    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p2      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p3      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p4      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p71     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p70     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p72     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p79     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p166    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p167    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p168    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    80s  passenger=p183    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p73     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p75     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p51     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p52     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p74     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p76     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p77     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p63     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p65     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p67     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p10     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p92     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p93     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p94     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p95     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p96     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p58     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p84     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p5      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p69     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p113    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p114    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p115    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p116    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p117    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p181    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p104    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p137    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p138    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    85s  passenger=p141    walking_to_pickup → waiting_at_pickup
+  [BOARD]  t=    85s  vehicle=v1417  passenger=p5      edge=1111706621#1  (logical)
+  [LOGICAL] t=    90s  passenger=p46     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p48     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p82     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p12     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p60     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p0      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p1      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p49     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p50     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p62     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p64     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p66     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p6      walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p47     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p15     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p40     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p41     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p68     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p97     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p98     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p17     walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p180    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p120    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p123    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p122    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    90s  passenger=p128    walking_to_pickup → waiting_at_pickup
+  [BOARD]  t=    90s  vehicle=v140   passenger=p68     edge=569345537#0  (logical)
+  [BOARD]  t=    90s  vehicle=v1154  passenger=p17     edge=127693383#3  (logical)
+  [EXTEND-STOPS] t=    90s  vehicle=v2     routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v5     routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v8     routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v11    routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v16    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v17    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v37    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v45    routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523180#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v52    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v53    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v61    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v65    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v75    routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v76    routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '46334665#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523180#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v93    routing through 2 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v94    routing through 2 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v103   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '46334665#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v116   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v145   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v170   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523180#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v200   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v207   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v213   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v244   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1526275910#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275910#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v270   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v273   routing through 2 pickups + 2 dropoffs
+  [DIAGNOSTICS] Edge '1271523182#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v303   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v304   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v311   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1526275910#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v343   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v357   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v450   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523180#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v462   routing through 1 pickups + 2 dropoffs
+  [DIAGNOSTICS] Edge '1080862160#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v503   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275910#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v618   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v619   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1526275910#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v722   routing through 0 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1080862160#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v772   routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v799   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1080862160#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523182#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v858   routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523180#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '760433120#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1080862160#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275910#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523182#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v1187  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523182#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v1225  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523182#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '46334665#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v1356  routing through 0 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v1362  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v1409  routing through 2 pickups + 2 dropoffs
+  [DIAGNOSTICS] Edge '1271523180#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v1438  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v1501  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.Error: Vehicle 'v111' could not assign stop 'lane:114654203#0_0 pos:35.68' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v118' could not assign stop 'lane:44164413#0_0 pos:61.71' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v118' could not assign stop 'lane:1136460181#0_0 pos:30.51' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v210' could not assign stop 'lane:1123883123#0_0 pos:66.33' after rerouting (traci:changeTarget) at time=990.00.
+
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v1726  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v1771  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v1773  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v1904  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '46334665#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '760433120#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v2114  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1271523186#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v2246  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523182#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '760433120#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v2596  routing through 1 pickups + 1 dropoffs
+  [EXTEND-STOPS] t=    90s  vehicle=v2718  routing through 1 pickups + 1 dropoffs
+  [DIAGNOSTICS] Edge '760433120#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1271523184#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '46334665#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [DIAGNOSTICS] Edge '1526275909#0' is present in sumolib (from node_to_edge) but rejected by TraCI. Check if it is a macro-edge, pedestrian-only, or altered by SUMO load options.
+  [EXTEND-STOPS] t=    90s  vehicle=v2888  routing through 1 pickups + 1 dropoffs
+  [LOGICAL-SPAWN] t=    90s  passenger=p149    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p150    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v772   subset=['p149', 'p150']  cost=2.345  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p188    walk_dist=67.9m  walk_time=56.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1105  subset=['p188']  cost=5.691  delta_new=874.3m
+  [LOGICAL-SPAWN] t=    90s  passenger=p205    walk_dist=66.4m  walk_time=55.3s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v691   subset=['p205']  cost=4.104  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p195    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p196    walk_dist=40.0m  walk_time=33.4s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v2936  subset=['p195', 'p196']  cost=3.527  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p192    walk_dist=38.0m  walk_time=31.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p193    walk_dist=38.0m  walk_time=31.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v2     subset=['p192', 'p193']  cost=1.594  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p253    walk_dist=16.7m  walk_time=13.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p256    walk_dist=16.7m  walk_time=13.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p257    walk_dist=16.7m  walk_time=13.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v5     subset=['p253', 'p256', 'p257']  cost=1.623  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p225    walk_dist=15.3m  walk_time=12.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p226    walk_dist=15.3m  walk_time=12.8s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p227    walk_dist=15.3m  walk_time=12.8s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v53    subset=['p225', 'p226', 'p227']  cost=2.774  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p197    walk_dist=70.9m  walk_time=59.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p198    walk_dist=70.9m  walk_time=59.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v71    subset=['p197', 'p198']  cost=3.853  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p194    walk_dist=38.0m  walk_time=31.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v76    subset=['p194']  cost=2.627  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p210    walk_dist=26.0m  walk_time=21.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p211    walk_dist=26.0m  walk_time=21.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v80    subset=['p210', 'p211']  cost=6.875  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p185    walk_dist=70.0m  walk_time=58.3s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v111   subset=['p185']  cost=5.606  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p212    walk_dist=26.0m  walk_time=21.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p213    walk_dist=26.0m  walk_time=21.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v118   subset=['p212', 'p213']  cost=7.342  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p201    walk_dist=15.8m  walk_time=13.2s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v151   subset=['p201']  cost=6.747  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p252    walk_dist=69.5m  walk_time=58.0s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v158   subset=['p252']  cost=7.018  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p214    walk_dist=26.0m  walk_time=21.7s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p215    walk_dist=26.0m  walk_time=21.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v206   subset=['p214', 'p215']  cost=7.266  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p204    walk_dist=25.4m  walk_time=21.2s  state=walking_to_pickupError: Vehicle 'v1374' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v610' could not assign stop 'lane:196116985#0_0 pos:69.08' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v468' could not assign stop 'lane:569345537#0_0 pos:65.22' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v769' could not assign stop 'lane:1123883123#0_0 pos:66.33' after rerouting (traci:changeTarget) at time=990.00.
+Error: Vehicle 'v1335' could not assign stop 'lane:497262775#0_0 pos:66.62' after rerouting (traci:changeTarget) at time=990.00.
+
+  [ASSIGN] t=    90s  vehicle=v210   subset=['p204']  cost=7.475  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p224    walk_dist=61.5m  walk_time=51.3s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v218   subset=['p224']  cost=11.067  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p237    walk_dist=26.7m  walk_time=22.3s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v234   subset=['p237']  cost=10.372  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p189    walk_dist=34.6m  walk_time=28.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v233   subset=['p189']  cost=10.192  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p206    walk_dist=62.9m  walk_time=52.5s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p207    walk_dist=62.9m  walk_time=52.5s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v350   subset=['p206', 'p207']  cost=4.109  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p186    walk_dist=28.1m  walk_time=23.5s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v303   subset=['p186']  cost=3.267  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p251    walk_dist=32.2m  walk_time=26.8s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v482   subset=['p251']  cost=8.653  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p200    walk_dist=61.9m  walk_time=51.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v450   subset=['p200']  cost=4.042  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p203    walk_dist=70.5m  walk_time=58.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1374  subset=['p203']  cost=11.483  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p229    walk_dist=54.1m  walk_time=45.1s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p230    walk_dist=54.1m  walk_time=45.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v244   subset=['p229', 'p230']  cost=0.901  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p223    walk_dist=72.4m  walk_time=60.4s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v610   subset=['p223']  cost=6.959  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p250    walk_dist=30.2m  walk_time=25.2s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v11    subset=['p250']  cost=3.347  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p187    walk_dist=40.8m  walk_time=34.0s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p254    walk_dist=68.5m  walk_time=57.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v162   subset=['p187', 'p254']  cost=2.431  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p228    walk_dist=63.2m  walk_time=52.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v231   subset=['p228']  cost=5.466  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p259    walk_dist=43.7m  walk_time=36.4s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v117   subset=['p259']  cost=9.306  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p255    walk_dist=16.7m  walk_time=13.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p258    walk_dist=16.7m  walk_time=13.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v799   subset=['p255', 'p258']  cost=1.654  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p222    walk_dist=13.9m  walk_time=11.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v668   subset=['p222']  cost=9.007  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p190    walk_dist=24.1m  walk_time=20.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v66    subset=['p190']  cost=4.202  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p191    walk_dist=38.7m  walk_time=32.3s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v468   subset=['p191']  cost=6.127  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p199    walk_dist=26.6m  walk_time=22.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v241   subset=['p199']  cost=8.247  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p216    walk_dist=61.1m  walk_time=50.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p217    walk_dist=61.1m  walk_time=50.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1409  subset=['p216', 'p217']  cost=0.542  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p218    walk_dist=61.1m  walk_time=50.9s  state=walking_to_pickup
+  [LOGICAL-SPAWN] t=    90s  passenger=p219    walk_dist=61.1m  walk_time=50.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v128   subset=['p218', 'p219']  cost=6.605  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p220    walk_dist=61.1m  walk_time=50.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v306   subset=['p220']  cost=4.095  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p231    walk_dist=19.9m  walk_time=16.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v596   subset=['p231']  cost=8.800  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p249    walk_dist=8.3m  walk_time=6.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v769   subset=['p249']  cost=11.313  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p202    walk_dist=65.2m  walk_time=54.3s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v193   subset=['p202']  cost=5.843  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p208    walk_dist=57.8m  walk_time=48.2s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v2054  subset=['p208']  cost=4.544  delta_new=472.1m
+  [LOGICAL-SPAWN] t=    90s  passenger=p209    walk_dist=61.7m  walk_time=51.4s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1335  subset=['p209']  cost=7.264  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p221    walk_dist=8.3m  walk_time=6.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1866  subset=['p221']  cost=6.154  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p232    walk_dist=68.0m  walk_time=56.7s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v377   subset=['p232']  cost=7.474  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p233    walk_dist=32.3m  walk_time=26.9s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1736  subset=['p233']  cost=5.720  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p234    walk_dist=72.6m  walk_time=60.5s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1417  subset=['p234']  cost=2.606  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p235    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v2596  subset=['p235']  cost=3.698  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p236    walk_dist=64.9m  walk_time=54.1s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v2718  subset=['p236']  cost=3.754  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p244    walk_dist=72.7m  walk_time=60.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v868   subset=['p244']  cost=6.179  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p245    walk_dist=72.7m  walk_time=60.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v1922  subset=['p245']  cost=6.001  delta_new=0.0m
+  [LOGICAL-SPAWN] t=    90s  passenger=p246    walk_dist=72.7m  walk_time=60.6s  state=walking_to_pickup
+  [ASSIGN] t=    90s  vehicle=v2171  subset=['p246']  cost=6.001  delta_new=0.0m
+[t=    90s] new= 69  active= 71  rej= 0  assn=69  board= 3  drop= 0  | fleet=2113 (serve=148 idle=1965 park=1818) | pax=5on,247pn,0dn | Ω[-1.00,+1.00] str=168 bal=561 ovr=1451
+  [LOGICAL] t=    95s  passenger=p118    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p121    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p172    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p173    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p154    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p155    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p107    walking_to_pickup → waiting_at_pickup
+Interrupted by user.
+
+  [LOGICAL] t=    95s  passenger=p110    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p106    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p108    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p109    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p119    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p174    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p175    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p176    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p177    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=    95s  passenger=p152    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p124    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p153    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p164    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p178    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p126    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p127    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p249    walking_to_pickup → waiting_at_pickup
+  [LOGICAL] t=   100s  passenger=p221    walking_to_pickup → waiting_at_pickup
