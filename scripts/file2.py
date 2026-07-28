@@ -201,6 +201,10 @@ _log_file = None
 def log_detail(*args, **kwargs):
     if _log_file is not None:
         print(*args, file=_log_file, **kwargs)
+        try:
+            _log_file.flush()
+        except Exception:
+            pass
 
 _route_cache: Dict[Tuple[str, str], Tuple[List[str], float, float]] = {}
 _node_to_edge_cache: Dict[str, str] = {}
@@ -2965,13 +2969,13 @@ def run_cooldown_phase(net, real_edges, vehicles: Dict[str, VehicleState],
 # ============================================================
 
 def init_trace_xml():
-    root = ET.Element("simulation_trace")
-    meta = ET.SubElement(root, "metadata")
-    meta.set("seed", str(RANDOM_SEED))
-    meta.set("source_state", STATE_FILE)
-    meta.set("network", NET_FILE)
-    meta.set("passenger_model", "logical" if not USE_PHYSICAL_PASSENGERS else "physical")
-    return root
+    fh = open(TRACE_XML_FILE, "w", encoding="utf-8")
+    fh.write('<?xml version="1.0" encoding="utf-8"?>\n')
+    fh.write('<simulation_trace>\n')
+    pax_model = "logical" if not USE_PHYSICAL_PASSENGERS else "physical"
+    fh.write(f'  <metadata seed="{RANDOM_SEED}" source_state="{STATE_FILE}" network="{NET_FILE}" passenger_model="{pax_model}" />\n')
+    fh.flush()
+    return fh
 
 
 def append_step_trace(root, step_time, new_passengers, active_passengers,
@@ -2979,7 +2983,7 @@ def append_step_trace(root, step_time, new_passengers, active_passengers,
                       boarded_pids, dropped_pids, passengers_by_id, live_vids=None):
     if live_vids is None:
         live_vids = set()
-    step = ET.SubElement(root, "step", time=str(step_time))
+    step = ET.Element("step", time=str(step_time))
     ET.SubElement(step, "new_passengers", count=str(len(new_passengers)))
     ET.SubElement(step, "active_passengers", count=str(len(active_passengers)))
     rej_el = ET.SubElement(step, "rejected_passengers", count=str(len(rejected_passengers)))
@@ -3090,11 +3094,23 @@ def append_step_trace(root, step_time, new_passengers, active_passengers,
                 ET.SubElement(p_el, "walk", d_walk=f"{best['stop_assignment'][pid]['d_walk']:.3f}")
                 ET.SubElement(p_el, "in_vehicle_time", t_in_veh=f"{best['t_in_veh'][pid]:.3f}")
 
+    # Stream step XML directly to disk and free memory immediately
+    try:
+        step_str = ET.tostring(step, encoding="unicode")
+        root.write("  " + step_str + "\n")
+        root.flush()
+    except Exception as e:
+        log_detail(f"  [WARN] Failed to write step trace to disk: {e}")
+
 
 def write_trace_xml(root):
-    tree = ET.ElementTree(root)
-    ET.indent(tree, space="  ")
-    tree.write(TRACE_XML_FILE, encoding="utf-8", xml_declaration=True)
+    try:
+        root.write("</simulation_trace>\n")
+        root.flush()
+        root.close()
+        print(f"  Trace XML stream closed : {TRACE_XML_FILE}")
+    except Exception as e:
+        log_detail(f"  [WARN] Error closing Trace XML file: {e}")
 
 
 def write_summary_md(system_cost_total, passengers, vehicles, step_stats):

@@ -68,7 +68,7 @@ VEHICLE_CAPACITY   = 4
 DELTA_MAX          = 1000  # maximum allowable detour (m)
 COST_PER_KM        = 1.0
 SPEED_M_S          = 8.33     # 30 km/h in m/s
-NUM_VEHICLES       = 3000
+NUM_VEHICLES       = 1500
 
 # ── Simulation meta-parameters ────────────────────────────────────────────────
 SIM_PARAMS = {
