@@ -10,8 +10,8 @@ Architecture & Modes:
   1. Auto-Scan Mode (`USE_CUSTOM_CONFIG = False`):
      - Automatically scans `data/Trips_data` and runs EVERY .csv file found there.
      - Generates a corresponding simulation_state.json for each file in
-       `data/Simulation_state` using up to 10 CPU cores in parallel.
-     - Once the JSON states are created, sequentially runs file2.py for each.
+       `data/Simulation_state` sequentially (once per day) to prevent cumulative RAM buildup.
+     - Once the JSON states are created, runs file2.py instances in parallel with RAM Guard.
   2. Custom Config Mode (`USE_CUSTOM_CONFIG = True`):
      - Runs ONLY the specific files listed in `CUSTOM_SIMULATION_RUNS` where
        `"include": True`.
@@ -341,18 +341,15 @@ def run_pipeline() -> None:
         print(f"  • {r['name']} -> CSV: {r['trip_csv']} | JSON: {r['state_json']}")
 
     # ──────────────────────────────────────────────────────────────────────────
-    # PHASE 1: Multi-Core Parallel JSON Generation (file1.py)
+    # PHASE 1: Sequential Simulation State JSON Generation (file1.py - Once per Day)
     # ──────────────────────────────────────────────────────────────────────────
     print("\n" + "=" * 76)
-    print("  PHASE 1: Multi-Core Simulation State JSON Generation (file1.py)")
+    print("  PHASE 1: Sequential Simulation State JSON Generation (file1.py)")
+    print("  Note: Executing once per day sequentially to prevent cumulative RAM buildup.")
     print("=" * 76)
 
     avail_gb, avail_pct = get_ram_status()
-    # Compute safe concurrency based on available RAM (each worker needs ~2.5 GB)
-    ram_based_max_cores = max(1, int(avail_gb // EST_RAM_PER_WORKER_GB))
-    num_cores = min(MAX_CORES_FOR_JSON_GEN, len(active_runs), mp.cpu_count(), ram_based_max_cores)
     print(f"  System RAM Available : {avail_gb:.2f} GB ({avail_pct:.1f}% free)")
-    print(f"  RAM-Safe Parallelism  : {num_cores} core(s) (RAM limit: {ram_based_max_cores} | Config max: {MAX_CORES_FOR_JSON_GEN})")
 
     tasks = []
     for r in active_runs:
@@ -360,8 +357,17 @@ def run_pipeline() -> None:
         json_path = os.path.join(STATES_DATA_DIR, r["state_json"])
         tasks.append((r["name"], csv_path, json_path))
 
-    with mp.Pool(processes=num_cores) as pool:
-        json_results = pool.map(_worker_generate_json, tasks)
+    json_results = []
+    for run_name, csv_path, json_path in tasks:
+        wait_for_safe_ram(f"Phase 1 JSON Gen -> {run_name}")
+        avail_before, _ = get_ram_status()
+        print(f"\n[{run_name}] Launching JSON generation (RAM free: {avail_before:.2f} GB)...")
+        # Using a 1-process pool ensures 100% of memory is released back to Linux after each day
+        with mp.Pool(processes=1) as pool:
+            res = pool.map(_worker_generate_json, [(run_name, csv_path, json_path)])[0]
+        avail_after, _ = get_ram_status()
+        print(f"[{run_name}] Finished (RAM free after cleanup: {avail_after:.2f} GB)")
+        json_results.append(res)
 
     print("\n  --- Phase 1 Summary ---")
     failed_runs = []
@@ -380,13 +386,15 @@ def run_pipeline() -> None:
         return
 
     # ──────────────────────────────────────────────────────────────────────────
-    # PHASE 2: Sequential TraCI Simulation Execution (file2.py)
+    # PHASE 2: Parallel TraCI Simulation Execution (file2.py)
     # ──────────────────────────────────────────────────────────────────────────
     print("\n" + "=" * 76)
-    print("  PHASE 2: Sequential TraCI Simulation Execution (file2.py)")
+    print("  PHASE 2: Parallel TraCI Simulation Execution (file2.py)")
+    print("  Note: Running TraCI simulations in parallel across separate OS processes.")
     print("=" * 76)
-    print("  Note: TraCI / libsumo runs sequentially to avoid in-process collisions.")
 
+    import signal
+    procs = []
     for r in active_runs:
         run_name = r["name"]
         if run_name not in successful_runs:
@@ -394,25 +402,53 @@ def run_pipeline() -> None:
             continue
 
         state_json_path = os.path.join(STATES_DATA_DIR, r["state_json"])
+        proc = mp.Process(target=_worker_run_traci, args=(state_json_path, run_name))
+        procs.append((run_name, proc))
 
-        print(f"\n──────────────────────────────────────────────────────────────────────────")
-        print(f"  Running Simulation: {run_name}")
-        print(f"──────────────────────────────────────────────────────────────────────────")
-
-        # Ensure RAM is safe before launching TraCI simulation
+    print(f"\n  Launching {len(procs)} TraCI simulation instance(s) in PARALLEL...")
+    for run_name, proc in procs:
         wait_for_safe_ram(f"Phase 2 Launch -> {run_name}")
+        proc.start()
+        print(f"  [PARALLEL LAUNCH] PID {proc.pid} -> {run_name}")
+        time.sleep(1.0)  # Slight stagger to prevent simultaneous I/O spikes
 
-        # Run file2 in an isolated child process with OS-level RAM monitoring & SIGSTOP/SIGCONT guard
-        exitcode = run_process_with_ram_guard(
-            target_fn=_worker_run_traci,
-            args=(state_json_path, run_name),
-            task_name=f"TraCI ({run_name})"
-        )
+    # Monitor system RAM while parallel simulations run
+    suspended_pids = set()
+    while any(p.is_alive() for _, p in procs):
+        avail_gb, avail_pct = get_ram_status()
 
-        if exitcode == 0:
-            print(f"[{run_name}] ✓ Simulation completed successfully.")
+        # Suspend if RAM drops below critical threshold
+        if avail_gb < MIN_FREE_RAM_GB or avail_pct < MIN_FREE_RAM_PERCENT:
+            print(f"\n[RAM GUARD] ⚠️  CRITICAL RAM PRESSURE ({avail_gb:.2f} GB / {avail_pct:.1f}% available).")
+            for run_name, p in procs:
+                if p.is_alive() and p.pid not in suspended_pids:
+                    print(f"[RAM GUARD]     Suspending PID {p.pid} ({run_name}) safely via SIGSTOP...")
+                    try:
+                        os.kill(p.pid, signal.SIGSTOP)
+                        suspended_pids.add(p.pid)
+                    except ProcessLookupError:
+                        pass
+        # Resume if RAM recovers with hysteresis
+        elif suspended_pids and avail_gb >= MIN_FREE_RAM_GB + 0.5 and avail_pct >= MIN_FREE_RAM_PERCENT + 3.0:
+            print(f"\n[RAM GUARD] ✓ RAM recovered ({avail_gb:.2f} GB / {avail_pct:.1f}% available).")
+            for run_name, p in procs:
+                if p.pid in suspended_pids:
+                    print(f"[RAM GUARD]     Resuming PID {p.pid} ({run_name}) via SIGCONT...")
+                    try:
+                        os.kill(p.pid, signal.SIGCONT)
+                    except ProcessLookupError:
+                        pass
+            suspended_pids.clear()
+
+        time.sleep(2.0)
+
+    print("\n  --- Phase 2 Summary ---")
+    for run_name, proc in procs:
+        proc.join()
+        if proc.exitcode == 0:
+            print(f"  ✓ [{run_name}] Simulation completed successfully (PID {proc.pid}).")
         else:
-            print(f"[{run_name}] ✗ Simulation exited with code {exitcode}.")
+            print(f"  ✗ [{run_name}] Simulation exited with code {proc.exitcode} (PID {proc.pid}).")
 
     print("\n" + "=" * 76)
     print("✓ Master Pipeline execution finished.")
