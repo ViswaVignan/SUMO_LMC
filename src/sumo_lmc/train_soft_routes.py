@@ -275,7 +275,8 @@ def main():
 
     print("\n[Phase 2] Loading and binning 7-day taxi trips from original dataset...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(script_dir, "yellow_tripdata_2016-01.csv")
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+    csv_path = os.path.join(repo_root, "data", "yellow_tripdata_2016-01.csv")
     
     binned_trips = {i: [] for i in range(48)}
     
@@ -342,9 +343,15 @@ def main():
     for bin_id, trunks in results:
         dynamic_soft_routes[str(bin_id)] = trunks
 
-    out_path = os.path.join(script_dir, "dynamic_soft_routes.json")
+    out_path = os.path.join(repo_root, "configs", "dynamic_soft_routes.json")
     with open(out_path, "w") as f:
         json.dump(dynamic_soft_routes, f)
+    # Also save a copy to script_dir for compatibility
+    try:
+        with open(os.path.join(script_dir, "dynamic_soft_routes.json"), "w") as f:
+            json.dump(dynamic_soft_routes, f)
+    except Exception:
+        pass
         
     print(f"\n[Phase 4] Success! Wrote dynamic soft routes to: {out_path}")
 

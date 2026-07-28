@@ -74,4 +74,9 @@ def build_lscc(net_file, out_file):
     print(f"LSCC edges saved to {out_file}")
 
 if __name__ == "__main__":
-    build_lscc("manhattan_clean.net.xml", "lscc_edges.json")
+    import os
+    REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    CONFIGS_DIR = os.path.join(REPO_ROOT, "configs")
+    net_path = os.path.join(CONFIGS_DIR, "manhattan_clean.net.xml")
+    out_path = os.path.join(CONFIGS_DIR, "lscc_edges.json")
+    build_lscc(net_path, out_path)

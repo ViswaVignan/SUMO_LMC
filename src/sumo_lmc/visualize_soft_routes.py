@@ -4,11 +4,18 @@ import folium
 import random
 import os
 
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+CONFIGS_DIR = os.path.join(REPO_ROOT, "configs")
+SRC_DIR = os.path.join(REPO_ROOT, "src", "sumo_lmc")
+
 print("Loading network (this may take a few seconds)...")
-net = sumolib.net.readNet("manhattan_clean.net.xml")
+net = sumolib.net.readNet(os.path.join(CONFIGS_DIR, "manhattan_clean.net.xml"))
 
 print("Loading dynamic_soft_routes.json...")
-with open("dynamic_soft_routes.json") as f:
+soft_routes_path = os.path.join(SRC_DIR, "dynamic_soft_routes.json")
+if not os.path.exists(soft_routes_path):
+    soft_routes_path = os.path.join(CONFIGS_DIR, "dynamic_soft_routes.json")
+with open(soft_routes_path) as f:
     routes = json.load(f)
 
 print(f"Loaded {len(routes)} time bins.")

@@ -6,19 +6,32 @@ import pandas as pd
 import numpy as np
 import xml.etree.ElementTree as ET
 
-# Configuration — paths are relative to calling directory
+# Configuration — dynamically resolve repository root and data directory
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-BASELINE_CSV = os.path.join(ROOT_DIR, "filtered_1hr_trips.csv")
-ORIGINAL_DATASET = os.path.join(ROOT_DIR, "yellow_tripdata_2016-01.csv")
-SIM_STATE = os.path.join(ROOT_DIR, "simulation_state.json")
+REPO_ROOT = ROOT_DIR
+for _ in range(4):
+    if os.path.exists(os.path.join(REPO_ROOT, "data", "filtered_1hr_trips.csv")):
+        break
+    REPO_ROOT = os.path.abspath(os.path.join(REPO_ROOT, ".."))
+
+DATA_DIR = os.path.join(REPO_ROOT, "data")
+BASELINE_CSV = os.path.join(DATA_DIR, "filtered_1hr_trips.csv")
+ORIGINAL_DATASET = os.path.join(DATA_DIR, "yellow_tripdata_2016-01.csv")
+SIM_STATE = os.path.join(DATA_DIR, "simulation_state.json")
 
 def get_latest_trace(search_dir=None):
     if search_dir is None:
         search_dir = ROOT_DIR
-    search_pattern = os.path.join(search_dir, "simulation_trace_*.xml")
-    files = glob.glob(search_pattern)
+    patterns = [
+        os.path.join(REPO_ROOT, "results", "trace", "simulation_trace_*.xml"),
+        os.path.join(search_dir, "results", "trace", "simulation_trace_*.xml"),
+        os.path.join(search_dir, "simulation_trace_*.xml"),
+    ]
+    files = []
+    for pat in patterns:
+        files.extend(glob.glob(pat))
     if not files:
-        raise FileNotFoundError(f"No simulation_trace_*.xml found in {search_dir}.")
+        raise FileNotFoundError(f"No simulation_trace_*.xml found in results/trace or {search_dir}.")
     return max(files, key=os.path.getmtime)
 
 
@@ -355,7 +368,9 @@ if __name__ == "__main__":
     except ValueError:
         fleet_size = 900  # default
 
-    out_report = os.path.join(run_dir, "results_v3", "Comparative_Analysis_Report.md")
+    analysis_dir = os.path.join(REPO_ROOT, "results", "analysis")
+    os.makedirs(analysis_dir, exist_ok=True)
+    out_report = os.path.join(analysis_dir, f"Comparative_Analysis_Report_{fleet_size}Veh.md")
 
     print(f"Starting Comparative Analysis for {fleet_size} vehicles...")
     trace_file = get_latest_trace(run_dir)

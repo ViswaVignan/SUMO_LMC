@@ -1,7 +1,11 @@
+import os
 import json
 
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+DATA_DIR = os.path.join(REPO_ROOT, "data")
+
 def find_edge():
-    with open("simulation_state.json", "r") as f:
+    with open(os.path.join(DATA_DIR, "simulation_state.json"), "r") as f:
         data = json.load(f)
         
     for p in data.get("passengers", []):

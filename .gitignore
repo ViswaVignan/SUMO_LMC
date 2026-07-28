@@ -1,5 +1,8 @@
 # Ignore large simulation output and data files
+results/trace/
+results/logs/
 simulation_trace_*.xml
+simulation_logs_*.txt
 *.csv
 dynamic_soft_routes.json
 simulation_state.json

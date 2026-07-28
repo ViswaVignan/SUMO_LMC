@@ -1,11 +1,15 @@
+import os
 import pandas as pd
 import numpy as np
 
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+DATA_DIR = os.path.join(REPO_ROOT, "data")
+
 print("Loading datasets...")
-filtered_df = pd.read_csv("filtered_1hr_trips.csv")
+filtered_df = pd.read_csv(os.path.join(DATA_DIR, "filtered_1hr_trips.csv"))
 # To speed up, we only load necessary columns from the huge CSV
 cols = ['tpep_pickup_datetime', 'tpep_dropoff_datetime', 'pickup_longitude', 'pickup_latitude', 'trip_distance']
-yellow_df = pd.read_csv("yellow_tripdata_2016-01.csv", usecols=cols)
+yellow_df = pd.read_csv(os.path.join(DATA_DIR, "yellow_tripdata_2016-01.csv"), usecols=cols)
 
 print("Merging...")
 # Merge on pickup_datetime and coordinates
