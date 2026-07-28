@@ -678,7 +678,11 @@ def write_json(passengers, vehicles, output_path):
       "vehicles":              [ … ]
     }
     """
-    print(f"[5/5] Writing '{output_path}' …")
+    if passengers:
+        max_t = max(p.get("t_req", 0) for p in passengers)
+        # Automatically expand horizon to cover all trips in the input CSV (rounded up to nearest half-hour)
+        SIM_PARAMS["horizon"] = max(SIM_PARAMS["horizon"], int(math.ceil(max_t / 1800.0) * 1800))
+    print(f"[5/5] Writing '{output_path}' (horizon={SIM_PARAMS['horizon']:,}s) …")
     state = {
         "simulation_parameters": SIM_PARAMS,
         "passengers":            passengers,
