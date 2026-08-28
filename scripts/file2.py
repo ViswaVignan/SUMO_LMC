@@ -291,9 +291,7 @@ def build_network(net_path: str):
     # Load LSCC (Largest Strongly Connected Component) if available
     lscc_file = os.path.join(CONFIGS_DIR, "lscc_edges.json")
     lscc_edges = set()
-    import os
     if os.path.exists(lscc_file):
-        import json
         with open(lscc_file, "r") as f:
             lscc_edges = set(json.load(f))
         print(f"  [INIT] Loaded {len(lscc_edges)} edges from LSCC graph.")
