@@ -1,0 +1,117 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{margin=0.65in, top=0.6in, bottom=0.6in}
+\setlength{\parskip}{0.2em}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+
+\title{\vspace{-1.5em}\textbf{Theoretical Formulation: Graph-Constrained Trajectory Language Model (GCT-LM) for Arterial Soft Route Discovery}\vspace{-0.5em}}
+\author{\textbf{Vignan} \quad (Last-Mile Commute / Shared Fleet Research)}
+\date{\vspace{-1.5em}}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Formalization}
+
+Let the urban road network be a directed graph $G = (V, E)$, restricted to the \textbf{Largest Strongly Connected Component (LSCC)} of drivable roads in the SUMO network (\texttt{manhattan\_clean.net.xml}). 
+
+We define the discrete vocabulary $\mathcal{V}$ as the set of all directed edge IDs in the LSCC:
+\begin{equation}
+\mathcal{V} = \{ e_1, e_2, \dots, e_{|\mathcal{V}|} \}, \quad |\mathcal{V}| \approx 5{,}000
+\end{equation}
+A historical trip is represented as a discrete sequence of road segments $\mathbf{e} = [e_1, e_2, \dots, e_L]$ occurring within a discrete 30-minute time bin $b \in \{0, 1, \dots, 47\}$. 
+
+The objective is to discover a set of continuous, high-density arterial corridors (\textbf{Soft Routes}) $\mathcal{T}_b = \{\text{Trunk}_1, \dots, \text{Trunk}_K\}$ for each time bin $b$, such that each corridor represents a high-probability directed traffic backbone without requiring rigid whole-path matching.
+
+---
+
+\section{Input Representation and Multi-Modal Embeddings}
+
+At each trajectory step $t \in \{1, \dots, L\}$, the input vector $\mathbf{h}_t^{(0)} \in \mathbb{R}^d$ ($d = 256$) is constructed via the additive fusion of three continuous embedding manifolds:
+\begin{equation}
+\mathbf{h}_t^{(0)} = \mathbf{E}_{\text{edge}}(e_t) + \mathbf{E}_{\text{time}}(b) + \mathbf{E}_{\text{pos}}(t)
+\end{equation}
+
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Edge Token Embedding $\mathbf{E}_{\text{edge}} \in \mathbb{R}^{|\mathcal{V}| \times d}$:} Maps discrete SUMO edge IDs into a continuous latent space where co-occurring and spatially proximate roads project closely together.
+    \item \textbf{Continuous Temporal Embedding $\mathbf{E}_{\text{time}} \in \mathbb{R}^{48 \times d}$:} Encodes the 30-minute time bin $b \in \{0, \dots, 47\}$. Unlike isolated bins, temporal representations are continuous and share parameter updates across adjacent hours. For harmonic index $k \in \{1, \dots, d/2\}$:
+    \begin{equation}
+    \mathbf{E}_{\text{time}}^{(0)}(b)_{2k} = \sin\left(\frac{2\pi \cdot k \cdot b}{48}\right), \quad \mathbf{E}_{\text{time}}^{(0)}(b)_{2k+1} = \cos\left(\frac{2\pi \cdot k \cdot b}{48}\right)
+    \end{equation}
+    This mathematical continuity prevents off-peak collapse: low-demand hours (e.g., 3:30 AM) borrow statistical flow patterns from surrounding hours.
+    \item \textbf{Learnable Positional Encoding $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{L_{\max} \times d}$:} Preserves sequence order and flow directionality along the trip.
+\end{enumerate}
+
+---
+
+\section{Causal Attention and Topological Graph Masking}
+
+The sequence $\mathbf{H}^{(0)} = [\mathbf{h}_1^{(0)}, \dots, \mathbf{h}_L^{(0)}]$ passes through $N$ causal Transformer layers ($N = 4$, 8 attention heads) to compute the hidden state $\mathbf{h}_t^{(N)}$. The output projection computes raw logits over the entire road vocabulary:
+\begin{equation}
+\mathbf{z}_t = \mathbf{W}_{\text{vocab}} \mathbf{h}_t^{(N)} + \mathbf{b}_{\text{vocab}} \quad \in \mathbb{R}^{|\mathcal{V}|}
+\end{equation}
+
+\subsection{Topological Adjacency Masking (Physical Drivability Guarantee)}
+To prevent the model from generating disconnected roads (hallucinations) that would crash SUMO with routing errors, we enforce a strict topological constraint directly derived from the network graph.
+
+Let $\mathcal{N}^+(e_t)$ denote the set of physically valid outgoing edges from edge $e_t$ in the SUMO network:
+\begin{equation}
+\mathcal{N}^+(e_t) = \{ e' \in \mathcal{V} \mid \text{FromNode}(e') = \text{ToNode}(e_t) \}
+\end{equation}
+We define the state-dependent graph transition mask $\mathbf{M}_{\text{topo}}(e_t) \in \mathbb{R}^{|\mathcal{V}|}$ as:
+\begin{equation}
+(\mathbf{M}_{\text{topo}}(e_t))_j = \begin{cases} 
+0 & \text{if } j \in \mathcal{N}^+(e_t) \\
+-\infty & \text{if } j \notin \mathcal{N}^+(e_t)
+\end{cases}
+\end{equation}
+
+The constrained next-edge probability distribution is:
+\begin{equation}
+P(e_{t+1} = j \mid e_{\le t}, b) = \frac{\exp\left( (\mathbf{z}_t)_j + (\mathbf{M}_{\text{topo}}(e_t))_j \right)}{\sum_{k \in \mathcal{V}} \exp\left( (\mathbf{z}_t)_k + (\mathbf{M}_{\text{topo}}(e_t))_k \right)}
+\end{equation}
+
+\paragraph{Mathematical Guarantee:} 
+Because $\exp(-\infty) = 0$:
+\begin{equation}
+\forall j \notin \mathcal{N}^+(e_t), \quad P(e_{t+1} = j \mid e_{\le t}, b) \equiv 0
+\end{equation}
+The model is mathematically incapable of predicting an illegal turn or disconnected edge. Every generated sequence is 100\% continuous and drivable in SUMO.
+
+---
+
+\section{Training Objective and Corridor Extraction}
+
+\subsection{Self-Supervised Objective}
+The model is trained offline on historical trip sequences using the Next-Token Prediction negative log-likelihood loss:
+\begin{equation}
+\mathcal{L}(\theta) = - \frac{1}{|\mathcal{D}|} \sum_{(\mathbf{e}, b) \in \mathcal{D}} \sum_{t=1}^{L-1} \log P_\theta(e_{t+1} \mid e_1, \dots, e_t, b)
+\end{equation}
+
+\subsection{Maximum A Posteriori (MAP) Beam Search Decoding}
+To extract soft routes for time bin $b$, we query the model from candidate arterial entry seeds $e_1 \in \mathcal{V}_{\text{entry}}$ (major incoming avenues, tunnel/bridge exits, southern tip gateways) using \textbf{Graph-Constrained Beam Search} ($W = 5$):
+\begin{equation}
+\text{Trunk}^* = \arg\max_{e_1, \dots, e_m} \frac{1}{m^\gamma} \sum_{t=1}^{m-1} \log P(e_{t+1} \mid e_{\le t}, b)
+\end{equation}
+\begin{equation*}
+\text{subject to:} \quad e_{t+1} \in \mathcal{N}^+(e_t), \quad \sum_{t=1}^m \text{Length}(e_t) \ge 1.5\text{ km}, \quad e_i \ne e_j \text{ (loop-free)}
+\end{equation*}
+where $\gamma = 0.7$ is a length normalization penalty.
+
+\paragraph{Diversity Filtering:} Pairwise Jaccard overlap between candidate trunks is enforced:
+\begin{equation}
+J(\text{TK}_a, \text{TK}_b) = \frac{|\text{TK}_a \cap \text{TK}_b|}{|\text{TK}_a \cup \text{TK}_b|} \le 0.70
+\end{equation}
+Duplicate or near-identical parallel lanes are pruned, retaining only distinct arterial spines.
+
+\paragraph{Simulation Output:} Final corridors are exported directly to \texttt{dynamic\_soft\_routes.json}, requiring \textbf{zero modifications} to the downstream simulation engine (\texttt{03\_run\_ridesharing.py}).
+
+\end{document}
