@@ -273,10 +273,14 @@ def main():
         dist_sq = dlat * dlat + dlon * dlon
         return _node_ids[int(np.argmin(dist_sq))]
 
-    print("\n[Phase 2] Loading and binning 7-day taxi trips from original dataset...")
+    print("\n[Phase 2] Loading and binning 7-day taxi trips from original dataset (Jan 4 - Jan 10, 2016)...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(script_dir, "yellow_tripdata_2016-01.csv")
+    root_dir = os.path.dirname(os.path.dirname(script_dir))
+    csv_path = os.path.join(root_dir, "data", "yellow_tripdata_2016-01.csv")
+    if not os.path.exists(csv_path):
+        csv_path = os.path.join(script_dir, "yellow_tripdata_2016-01.csv")
     
+    print(f"Reading from: {csv_path}")
     binned_trips = {i: [] for i in range(48)}
     
     with open(csv_path, "r", encoding="utf-8") as file:
@@ -284,11 +288,13 @@ def main():
         trip_count = 0
         for row in reader:
             try:
-                dt = datetime.datetime.strptime(row["tpep_pickup_datetime"], "%Y-%m-%d %H:%M:%S")
-                if dt.year != 2016 or dt.month != 1:
+                dt_str = row["tpep_pickup_datetime"]
+                if not dt_str.startswith("2016-01-"):
                     continue
-                if dt.day > 7:
-                    continue  # File is NOT sorted chronologically, skip non-target days
+                day = int(dt_str[8:10])
+                # Exact 7-day window: Jan 4 (Mon) to Jan 10 (Sun), 2016
+                if not (4 <= day <= 10):
+                    continue
                     
                 plat = float(row["pickup_latitude"])
                 plon = float(row["pickup_longitude"])
@@ -300,13 +306,13 @@ def main():
                 if not (40.69 < plat < 40.88 and -74.03 < plon < -73.90): continue
                 if not (40.69 < dlat < 40.88 and -74.03 < dlon < -73.90): continue
                 
-                time_sec = dt.hour * 3600 + dt.minute * 60 + dt.second
+                hour = int(dt_str[11:13])
+                minute = int(dt_str[14:16])
+                second = int(dt_str[17:19])
+                time_sec = hour * 3600 + minute * 60 + second
                 
                 # 1-Hour Window with 30-min Sliding Step
-                # Each trip belongs to TWO overlapping 1-hour windows.
-                # Window 1: Starts at the current 30-min block
-                bin1 = int(time_sec / 1800) 
-                # Window 2: Started 30 mins ago, still active for this trip
+                bin1 = int(time_sec / 1800) % 48
                 bin2 = (bin1 - 1) % 48
                 
                 # Store as lightweight tuple
@@ -315,11 +321,11 @@ def main():
                 binned_trips[bin2].append(trip_data)
                 
                 trip_count += 1
-                if trip_count % 100000 == 0:
-                    print(f"  Loaded {trip_count} trips so far...")
+                if trip_count % 500000 == 0:
+                    print(f"  Loaded {trip_count:,} trips so far...")
             except Exception:
                 continue
-    print(f"Total trips loaded for the 7-day period: {trip_count}")
+    print(f"Total trips loaded for target Jan 4-10 period: {trip_count:,}")
 
     dynamic_soft_routes = {}
 
@@ -332,7 +338,7 @@ def main():
         trips = bin_population[:SAMPLE_SIZE_PER_BIN]
         tasks.append((bin_id, trips))
         
-    num_cores = min(multiprocessing.cpu_count(), 15)
+    num_cores = min(multiprocessing.cpu_count(), 14)
     print(f"Dispatching TOPOSCAN to {num_cores} parallel cores...")
     
     dynamic_soft_routes = {}
@@ -342,11 +348,11 @@ def main():
     for bin_id, trunks in results:
         dynamic_soft_routes[str(bin_id)] = trunks
 
-    out_path = os.path.join(script_dir, "dynamic_soft_routes.json")
+    out_path = os.path.join(script_dir, "dynamic_soft_routes_toposcan.json")
     with open(out_path, "w") as f:
-        json.dump(dynamic_soft_routes, f)
+        json.dump(dynamic_soft_routes, f, indent=2)
         
-    print(f"\n[Phase 4] Success! Wrote dynamic soft routes to: {out_path}")
+    print(f"\n[Phase 4] Success! Wrote dynamic soft routes (TopoScan Jan 4-10) to: {out_path}")
 
 if __name__ == "__main__":
     main()

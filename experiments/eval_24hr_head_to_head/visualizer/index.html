@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manhattan Dynamic Soft Routes Visualizer | GCT-LM vs. TopoScan</title>
+  <meta name="description" content="Interactive 24-hour head-to-head visualization of GCT-LM Trajectory Language Model soft routes versus TopoScan heuristic clustering across Manhattan, NYC.">
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet.js CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-icon">🚕</div>
+      <div class="brand-title">
+        <span>Manhattan Dynamic Soft Routes</span>
+        <span class="brand-badge">Trained Models (48 Bins)</span>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- View Mode Selector -->
+      <div class="pill-group" id="view-mode-selector">
+        <button class="pill-btn active" data-view="split" id="view-split">Split Sync</button>
+        <button class="pill-btn" data-view="nlp" id="view-nlp">NLP Only</button>
+        <button class="pill-btn" data-view="topo" id="view-topo">TopoScan Only</button>
+      </div>
+
+      <!-- Layer Selector: SUMO Road Network vs Basemap Tiles -->
+      <div class="pill-group" id="layer-selector">
+        <button class="pill-btn active" id="btn-toggle-wireframe" title="Toggle SUMO Simulation Road Network">🛣️ SUMO Net</button>
+        <button class="pill-btn active" id="btn-toggle-tiles" title="Toggle Basemap Tiles">🗺️ Basemap</button>
+      </div>
+
+      <!-- Recenter View Button -->
+      <button class="btn-icon" id="btn-recenter" title="Recenter on Manhattan">📍</button>
+
+      <!-- Theme Toggle -->
+      <button class="btn-icon" id="btn-theme" title="Toggle Light/Dark Basemap">🌓</button>
+    </div>
+  </header>
+
+  <!-- Main Workspace: Dual Map Layout -->
+  <main class="main-workspace" id="workspace">
+    <!-- Left Map: GCT-LM (Proposed NLP) -->
+    <section class="map-container split-left" id="container-nlp">
+      <div class="map-badge-header">
+        <div class="badge-model-title">
+          <span class="nlp-badge-dot"></span>
+          <span>GCT-LM (Proposed NLP)</span>
+        </div>
+        <div class="badge-subtitle" id="nlp-badge-sub">8 Arterial Sequence Corridors</div>
+      </div>
+      <div class="map-wrapper" id="map-nlp"></div>
+    </section>
+
+    <!-- Right Map: TopoScan Baseline -->
+    <section class="map-container split-right" id="container-topo">
+      <div class="map-badge-header">
+        <div class="badge-model-title">
+          <span class="topo-badge-dot"></span>
+          <span>TopoScan Baseline</span>
+        </div>
+        <div class="badge-subtitle" id="topo-badge-sub">2,331 Geometric Clusters</div>
+      </div>
+      <div class="map-wrapper" id="map-topo"></div>
+    </section>
+
+    <!-- Floating HUD Panel (Telemetry & Trunk Inspector) -->
+    <aside class="floating-panel" id="hud-panel">
+      <div class="panel-header">
+        <span class="panel-title" id="hud-header-title">Model Structure & Metrics</span>
+        <button class="pill-btn" id="btn-toggle-hud" style="font-size: 11px; padding: 2px 8px;">Collapse</button>
+      </div>
+
+      <!-- KPI Grid comparing NLP vs TopoScan for this bin -->
+      <div class="hud-kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Active Trunks</div>
+          <div class="kpi-values">
+            <span class="kpi-nlp" id="kpi-nlp-count">--</span>
+            <span class="kpi-topo" id="kpi-topo-count">--</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Mean Route Length</div>
+          <div class="kpi-values">
+            <span class="kpi-nlp" id="kpi-nlp-edges">--</span>
+            <span class="kpi-topo" id="kpi-topo-edges">--</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Corridor Type</div>
+          <div class="kpi-values">
+            <span class="kpi-nlp" id="kpi-nlp-structure">--</span>
+            <span class="kpi-topo" id="kpi-topo-structure">--</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Spatial Scope</div>
+          <div class="kpi-values">
+            <span class="kpi-nlp" id="kpi-nlp-scope">--</span>
+            <span class="kpi-topo" id="kpi-topo-scope">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TopoScan Display Density Selector -->
+      <div class="density-selector">
+        <span style="color: var(--text-muted);">Topo Density:</span>
+        <button class="density-btn active" data-limit="50">Top 50</button>
+        <button class="density-btn" data-limit="100">Top 100</button>
+        <button class="density-btn" data-limit="200">Top 200</button>
+        <button class="density-btn" data-limit="0">All</button>
+      </div>
+
+      <!-- GCT-LM 8 Arterial Corridors List -->
+      <div class="panel-header" style="margin-top: 6px;">
+        <span class="panel-title" style="font-size: 12px; color: var(--accent-cyan);">Active GCT-LM Arterials</span>
+      </div>
+      <div class="trunk-list" id="nlp-trunk-list">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </aside>
+  </main>
+
+  <!-- Bottom Floating Controller & Time Scrubber -->
+  <footer class="bottom-controller">
+    <div class="controller-left">
+      <button class="play-btn" id="btn-play" title="Play 24-Hour Diurnal Cycle">▶</button>
+      <div class="time-clock-display">
+        <div class="time-clock" id="clock-display">00:00 - 00:30</div>
+        <div>
+          <span class="macro-badge macro-late-night" id="macro-badge">Late Night</span>
+          <span style="font-size: 11px; color: var(--text-muted); margin-left: 6px;" id="bin-idx-label">Bin 00/48</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrubber Slider -->
+    <div class="scrubber-section">
+      <input type="range" min="0" max="47" value="0" class="scrubber-slider" id="time-slider">
+      <div class="scrubber-ticks">
+        <span>00:00</span>
+        <span>04:00</span>
+        <span>08:00 (Morning)</span>
+        <span>12:00</span>
+        <span>16:00</span>
+        <span>19:00 (Rush)</span>
+        <span>23:30</span>
+      </div>
+    </div>
+
+    <div class="controller-right">
+      <select class="speed-select" id="select-speed" title="Animation Playback Speed">
+        <option value="1500">1x (Normal)</option>
+        <option value="800" selected>2x (Fast)</option>
+        <option value="400">4x (Ultra)</option>
+      </select>
+    </div>
+  </footer>
+
+  <!-- App Frontend Script -->
+  <script src="app.js?v=4"></script>
+</body>
+</html>

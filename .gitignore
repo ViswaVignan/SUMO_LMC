@@ -1,14 +1,41 @@
-# Ignore large simulation output and data files
-simulation_trace_*.xml
-*.csv
-dynamic_soft_routes.json
-simulation_state.json
-
 # Python caches and virtual environments
 __pycache__/
 *.pyc
 venv/
+.venv/
 .env
 
-# Logs
+# Logs and simulation traces
 *.log
+*simulation_logs*.txt
+simulation_logs_*.txt
+*.xml
+!configs/*.xml
+
+# Large simulation states and generated large JSONs (>50MB)
+*simulation_state*.json
+*dynamic_soft_routes_toposcan*.json
+*.backup
+cache/
+data/gct_lm_cache/
+archive/
+
+# Large model checkpoints (>50MB)
+models/**/*.pt
+*.pt
+
+# Raw datasets (keep repository lightweight)
+data/yellow_tripdata_2016-01.csv
+data/filtered_*.csv
+experiments/**/filtered_trips_*.csv
+
+# Historical experiment log archives
+experiments/Vehicles/
+experiments/Root_Latest_Run/
+experiments/*Veh/
+experiments/*veh/
+experiments/BeforeSCC/
+
+# CSVs generally ignored, except per-bin metrics summaries
+*.csv
+!*metrics_per_bin*.csv
